@@ -1,0 +1,39 @@
+---
+const screenshots = [
+  { label: 'Shot Screen', color: 'primary' },
+  { label: 'Live Chart', color: 'accent' },
+  { label: 'History', color: 'warning' },
+];
+---
+
+<section id="screenshots" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 animate">
+        Ein Blick in die App
+      </h2>
+      <p class="text-text-secondary max-w-xl mx-auto animate">
+        Placeholder-Screenshots — echte App-Bilder folgen bald.
+      </p>
+    </div>
+
+    <!-- Screenshot grid -->
+    <div class="grid md:grid-cols-3 gap-8">
+      {screenshots.map((screenshot, i) => (
+        <div class={`animate-scale stagger-${i + 1}`}>
+          <div class="aspect-[9/16] rounded-2xl bg-surface border border-border overflow-hidden hover:border-primary/30 transition-colors">
+            <div class="w-full h-full flex flex-col items-center justify-center gap-4 p-6">
+              <!-- Placeholder icon -->
+              <div class={`w-16 h-16 rounded-2xl bg-${screenshot.color}/10 flex items-center justify-center`}>
+                <div class={`w-8 h-8 rounded-lg bg-${screenshot.color}/30`}></div>
+              </div>
+              <span class="text-sm text-text-muted">{screenshot.label}</span>
+              <span class="text-xs text-text-muted/50">Screenshot kommt bald</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

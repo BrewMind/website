@@ -1,0 +1,58 @@
+---
+import FeatureCard from './FeatureCard.astro';
+---
+
+<section id="features" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 animate">
+        Alles was du brauchst.
+        <span class="text-gradient">Nichts was dich stört.</span>
+      </h2>
+      <p class="text-text-secondary max-w-xl mx-auto animate">
+        BrewMind kombiniert Live-Daten, Sprachbegleitung und intelligente Empfehlungen
+        in einem schnellen, ablenkungsfreien Workflow.
+      </p>
+    </div>
+
+    <!-- Feature grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="animate stagger-1">
+        <FeatureCard
+          icon="&#127908;"
+          title="Voice-Guided Brewing"
+          description="Sprachhinweise begleiten dich durch jeden Shot. Gewichts-Countdown, Ratio-Updates und Stop-Signal — ohne aufs Display zu schauen."
+          accentColor="primary"
+        />
+      </div>
+
+      <div class="animate stagger-2">
+        <FeatureCard
+          icon="&#9878;"
+          title="BLE-Geräte"
+          description="Verbinde deine Acaia Waage und andere BLE-Sensoren. Live-Gewicht, Temperatur und Druck direkt auf dem Screen."
+          accentColor="accent"
+        />
+      </div>
+
+      <div class="animate stagger-3">
+        <FeatureCard
+          icon="&#9749;"
+          title="Multi-Brew-Method"
+          description="Siebträger, Vollautomat, Pour-Over — jede Methode zeigt nur die relevanten Parameter. Kein Overload."
+          accentColor="warning"
+        />
+      </div>
+
+      <div class="animate stagger-4">
+        <FeatureCard
+          icon="&#129504;"
+          title="Smart Feedback"
+          description="Bewerte deinen Shot, erhalte Empfehlungen. BrewMind lernt aus deinen Daten und schlägt bessere Parameter vor."
+          accentColor="success"
+        />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Setup',
+    description: 'Wähle Bohne, Rezept und Brühmethode. Verbinde deine Waage — oder starte ohne.',
+    icon: '&#9881;',
+  },
+  {
+    number: '02',
+    title: 'Brew',
+    description: 'BrewMind begleitet dich mit Live-Daten und Sprachhinweisen. Handsfree und präzise.',
+    icon: '&#9749;',
+  },
+  {
+    number: '03',
+    title: 'Learn',
+    description: 'Bewerte den Geschmack, erhalte Empfehlungen. Jeder Shot macht den nächsten besser.',
+    icon: '&#128200;',
+  },
+];
+---
+
+<section id="how-it-works" class="py-24 px-6 bg-bg-alt">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 animate">
+        So einfach geht's
+      </h2>
+      <p class="text-text-secondary max-w-xl mx-auto animate">
+        Vom ersten Shot zum perfekten Workflow — in drei Schritten.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+      {steps.map((step, i) => (
+        <div class={`animate stagger-${i + 1} text-center md:text-left`}>
+          <!-- Step number + icon -->
+          <div class="flex items-center justify-center md:justify-start gap-4 mb-4">
+            <span class="text-5xl font-bold text-surface-light">{step.number}</span>
+            <span class="text-3xl">{step.icon}</span>
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-xl font-semibold text-text mb-2">{step.title}</h3>
+          <p class="text-text-secondary leading-relaxed">{step.description}</p>
+
+          {/* Connector line (hidden on last item and mobile) */}
+          {i < steps.length - 1 && (
+            <div class="hidden md:block absolute top-1/2 right-0 w-12 h-px bg-border" />
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

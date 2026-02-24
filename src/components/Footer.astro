@@ -1,0 +1,32 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-12 px-6 border-t border-border bg-bg-alt">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <!-- Logo + Copyright -->
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" viewBox="0 0 24 24">
+            <path d="m12 3.5 6.4 3.7v9.6L12 20.5l-6.4-3.7V7.2z"/>
+            <path d="M12 7.3c2.7 0 4.6 2 4.6 4.7s-1.9 4.7-4.6 4.7-4.6-2-4.6-4.7S9.3 7.3 12 7.3"/>
+            <path d="M10.9 8.1c1.6 1.8 1.6 6.1 0 7.8"/>
+          </svg>
+        </div>
+        <span class="text-sm text-text-muted">
+          &copy; {currentYear} BrewMind. Alle Rechte vorbehalten.
+        </span>
+      </div>
+
+      <!-- Links -->
+      <div class="flex items-center gap-6">
+        <a href="#" class="text-sm text-text-muted hover:text-text transition-colors">Impressum</a>
+        <a href="#" class="text-sm text-text-muted hover:text-text transition-colors">Datenschutz</a>
+        <a href="https://github.com/BrewMind" target="_blank" rel="noopener noreferrer" class="text-sm text-text-muted hover:text-text transition-colors">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
