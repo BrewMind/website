@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'BrewMind — Dein Espresso-Assistent',
-  description = 'BrewMind begleitet dich beim Brühen. Voice-Guided Brewing, BLE-Geräte-Integration und intelligente Empfehlungen — für den perfekten Espresso.'
+  title = 'BrewMind — Jede Tasse. Perfekt begleitet.',
+  description = 'BrewMind begleitet dich beim Brühen — mit Sprachsteuerung, Bluetooth-Geräteanbindung und intelligenten Empfehlungen. Für Espresso, Filter und mehr.'
 } = Astro.props;
 
 const ogImage = new URL('/og-image.png', Astro.site);
@@ -37,6 +37,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
