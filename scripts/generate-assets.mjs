@@ -70,6 +70,12 @@ async function generateOgImage() {
   <rect x="${(width / 2) - 40}" y="${markY + markSize + 140}"
         width="80" height="3" rx="1.5" fill="${ACCENT_TEAL}" opacity="0.6"/>
 
+  <!-- Subline -->
+  <text x="${width / 2}" y="${markY + markSize + 190}"
+        font-family="Inter, system-ui, -apple-system, sans-serif"
+        font-size="20" font-weight="400" fill="${TEXT_SECONDARY}" opacity="0.6"
+        text-anchor="middle">Espresso, Filter, Vollautomat &#x2014; trackt Shots, verbindet Ger&#xe4;te, lernt aus Geschmack.</text>
+
   <!-- Footer hint -->
   <text x="${width / 2}" y="${height - 40}"
         font-family="Inter, system-ui, -apple-system, sans-serif"
