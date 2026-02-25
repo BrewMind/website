@@ -110,7 +110,7 @@ body {
 .coffee-bean {
   position: absolute;
   color: var(--color-primary);
-  opacity: 0.06;
+  opacity: 0.12;
   pointer-events: none;
   will-change: transform;
 }
