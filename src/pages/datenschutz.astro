@@ -18,12 +18,54 @@ import Footer from '../components/Footer.astro';
         E-Mail: <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>
       </p>
 
-      <h2>2. &Uuml;berblick</h2>
+      <h2>2. BrewMind App &mdash; Datenschutz</h2>
       <p>
-        Der Schutz Ihrer personenbezogenen Daten ist mir wichtig. Diese Datenschutzerkl&auml;rung informiert Sie dar&uuml;ber, welche Daten beim Besuch dieser Website erhoben werden und wie diese verwendet werden.
+        Die BrewMind App f&uuml;r iOS speichert alle Daten <strong>ausschlie&szlig;lich lokal</strong> auf Ihrem Ger&auml;t. Es findet keine &Uuml;bertragung an Server statt.
       </p>
 
-      <h2>3. Hosting</h2>
+      <h3>2.1 Lokal gespeicherte Daten</h3>
+      <ul>
+        <li>Espresso-Parameter (Dosis, Yield, Zeit, Bewertungen)</li>
+        <li>Bohnen, Maschinen, Rezepte und M&uuml;hlen (vom Nutzer angelegt)</li>
+        <li>Alle Daten verbleiben in einer lokalen SQLite-Datenbank auf dem Ger&auml;t</li>
+        <li>Keine &Uuml;bertragung an Server, keine Cloud-Synchronisation</li>
+        <li>CSV-Export jederzeit m&ouml;glich (Datenhoheit beim Nutzer)</li>
+      </ul>
+
+      <h3>2.2 Bluetooth (BLE)</h3>
+      <ul>
+        <li>Optionale Verbindung zu Kaffeewaagen (z.&nbsp;B. Acaia Lunar)</li>
+        <li>Ausschlie&szlig;lich lokale Bluetooth-Kommunikation</li>
+        <li>Keine Daten werden &uuml;ber das Internet weitergeleitet</li>
+        <li>iOS-Berechtigung: &bdquo;Bluetooth&ldquo;</li>
+      </ul>
+
+      <h3>2.3 Spracherkennung</h3>
+      <ul>
+        <li>Optionale Sprachsteuerung via Apple On-Device Speech Recognition</li>
+        <li>Sprachdaten werden ausschlie&szlig;lich auf dem Ger&auml;t verarbeitet</li>
+        <li>Keine Audio-Daten verlassen das Ger&auml;t</li>
+        <li>iOS-Berechtigungen: &bdquo;Spracherkennung&ldquo; und &bdquo;Mikrofon&ldquo;</li>
+      </ul>
+
+      <h3>2.4 Keine Konten, kein Tracking</h3>
+      <ul>
+        <li>Keine Registrierung oder Anmeldung erforderlich</li>
+        <li>Kein Analytics, kein Advertising-Identifier, kein Tracking</li>
+        <li>Keine Weitergabe von Daten an Dritte</li>
+      </ul>
+
+      <h3>2.5 Datenl&ouml;schung</h3>
+      <p>
+        Durch Deinstallation der App werden alle lokalen Daten vollst&auml;ndig entfernt. Da keine Daten auf Servern gespeichert werden, ist kein serverseitiges L&ouml;schen erforderlich.
+      </p>
+
+      <h2>3. Website &mdash; &Uuml;berblick</h2>
+      <p>
+        Der Schutz Ihrer personenbezogenen Daten ist mir wichtig. Diese Datenschutzerkl&auml;rung informiert Sie dar&uuml;ber, welche Daten bei der Nutzung der BrewMind App und beim Besuch dieser Website erhoben werden und wie diese verwendet werden.
+      </p>
+
+      <h2>4. Hosting</h2>
       <p>
         Diese Website wird &uuml;ber <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA, ein Unternehmen der Microsoft Corporation) gehostet. Beim Aufruf dieser Website werden durch GitHub automatisch Informationen in sogenannten Server-Logfiles gespeichert, die Ihr Browser &uuml;bermittelt. Dies sind insbesondere:
       </p>
@@ -41,32 +83,32 @@ import Footer from '../components/Footer.astro';
         GitHub Inc. ist unter dem EU-US Data Privacy Framework zertifiziert, sodass ein angemessenes Datenschutzniveau gew&auml;hrleistet ist.
       </p>
 
-      <h2>4. Keine Cookies</h2>
+      <h2>5. Keine Cookies</h2>
       <p>
         Diese Website verwendet <strong>keine Cookies</strong> und kein Tracking. Es werden keine Analyse- oder Marketing-Tools eingesetzt.
       </p>
 
-      <h2>5. Keine Datenerfassung durch den Betreiber</h2>
+      <h2>6. Keine Datenerfassung durch den Betreiber</h2>
       <p>
-        Diese Website enth&auml;lt aktuell keine Formulare, Newsletter-Anmeldungen oder sonstige Eingabem&ouml;glichkeiten. Es werden durch den Betreiber &uuml;ber das unter Punkt 3 beschriebene Hosting hinaus keine personenbezogenen Daten erhoben.
+        Diese Website enth&auml;lt aktuell keine Formulare, Newsletter-Anmeldungen oder sonstige Eingabem&ouml;glichkeiten. Es werden durch den Betreiber &uuml;ber das unter Punkt 4 beschriebene Hosting hinaus keine personenbezogenen Daten erhoben.
       </p>
 
-      <h2>6. Schriftarten (Self-Hosted)</h2>
+      <h2>7. Schriftarten (Self-Hosted)</h2>
       <p>
         Diese Website verwendet die Schriftart &bdquo;Inter&ldquo;. Die Schriftdateien werden lokal von diesem Server ausgeliefert. Es findet <strong>keine Verbindung zu externen Servern</strong> (wie z.&nbsp;B. Google Fonts) statt.
       </p>
 
-      <h2>7. Externe Links</h2>
+      <h2>8. Externe Links</h2>
       <p>
         Diese Website enth&auml;lt Links zu externen Websites (z.&nbsp;B. GitHub). Beim Klick auf diese Links werden Sie auf die jeweilige externe Seite weitergeleitet. F&uuml;r die Datenverarbeitung auf diesen externen Seiten ist der jeweilige Anbieter verantwortlich.
       </p>
 
-      <h2>8. SSL-/TLS-Verschl&uuml;sselung</h2>
+      <h2>9. SSL-/TLS-Verschl&uuml;sselung</h2>
       <p>
         Diese Website nutzt aus Sicherheitsgr&uuml;nden eine SSL- bzw. TLS-Verschl&uuml;sselung. Eine verschl&uuml;sselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von &bdquo;http://&ldquo; auf &bdquo;https://&ldquo; wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
       </p>
 
-      <h2>9. Ihre Rechte</h2>
+      <h2>10. Ihre Rechte</h2>
       <p>Sie haben jederzeit das Recht:</p>
       <ul>
         <li>Auskunft &uuml;ber Ihre gespeicherten personenbezogenen Daten zu erhalten (Art. 15 DSGVO)</li>
@@ -81,9 +123,9 @@ import Footer from '../components/Footer.astro';
         Die zust&auml;ndige Aufsichtsbeh&ouml;rde ist die Landesbeauftragte f&uuml;r Datenschutz und Informationsfreiheit Nordrhein-Westfalen (<a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de</a>).
       </p>
 
-      <h2>10. &Auml;nderungen</h2>
+      <h2>11. &Auml;nderungen</h2>
       <p>
-        Diese Datenschutzerkl&auml;rung ist aktuell g&uuml;ltig (Stand: Februar 2026). Durch die Weiterentwicklung der Website oder aufgrund ge&auml;nderter gesetzlicher Vorgaben kann eine Anpassung dieser Erkl&auml;rung erforderlich werden.
+        Diese Datenschutzerkl&auml;rung ist aktuell g&uuml;ltig (Stand: M&auml;rz 2026). Durch die Weiterentwicklung der Website oder aufgrund ge&auml;nderter gesetzlicher Vorgaben kann eine Anpassung dieser Erkl&auml;rung erforderlich werden.
       </p>
     </article>
   </main>
@@ -105,6 +147,13 @@ import Footer from '../components/Footer.astro';
     font-weight: 600;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+  .prose h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
     color: var(--color-text);
   }
   .prose p {
