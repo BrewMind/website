@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <title>BrewMind Logo</title>
-  <desc>Stylized coffee bean with orbital ring — coffee as the center of your universe.</desc>
+  <desc>Stylized coffee bean with orbital ring and signal pulse — coffee as the center of your universe.</desc>
 
   <defs>
     <!-- Bean: copper gradient, light top-left to dark bottom-right -->
@@ -23,16 +23,24 @@
       <stop offset="100%" stop-color="#7A4E1A"/>
     </linearGradient>
 
-    <!-- Bean specular: glossy highlight top-left -->
+    <!-- Bean specular: glossy highlight top-left (slightly stronger for small-size clarity) -->
     <radialGradient id="brewmind-bean-gloss" cx="0.35" cy="0.28" r="0.4">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.18"/>
-      <stop offset="60%" stop-color="#D4935A" stop-opacity="0.10"/>
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#D4935A" stop-opacity="0.12"/>
       <stop offset="100%" stop-color="#D4935A" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Dot: radial highlight top-left (glossy) -->
-    <radialGradient id="brewmind-dot-grad" cx="0.35" cy="0.3" r="0.65">
-      <stop offset="0%" stop-color="#F5C96A"/>
+    <!-- Signal pulse glow: gold-core with teal fringe (tech accent) -->
+    <radialGradient id="brewmind-pulse-glow" cx="0.45" cy="0.4" r="0.55">
+      <stop offset="0%" stop-color="#F5C96A" stop-opacity="0.50"/>
+      <stop offset="50%" stop-color="#5AB3A0" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#5AB3A0" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Signal pulse core: bright gold center -->
+    <radialGradient id="brewmind-pulse-core" cx="0.4" cy="0.35" r="0.6">
+      <stop offset="0%" stop-color="#FDE8B0"/>
+      <stop offset="40%" stop-color="#F5C96A"/>
       <stop offset="100%" stop-color="#E8A838"/>
     </radialGradient>
 
@@ -48,12 +56,26 @@
         C 65,34  58,26  50,26
         Z"/>
     </clipPath>
+
+    <!--
+      Clip path for front ring: punch out only the UPPER bean area.
+      Ring enters bean at ~(40,31) upper-left, exits at ~(66,45) right.
+      Upper bean = left bezier to bean top + right bezier to exit + diagonal close.
+      Below this boundary the front ring paints OVER the bean (3D orbit effect).
+    -->
+    <clipPath id="brewmind-ring-front-clip">
+      <path clip-rule="evenodd" d="
+        M 0,0 H 100 V 100 H 0 Z
+        M 40,31
+        C 43,28  46,26  50,26
+        C 58,26  65,34  67,47
+        Z"/>
+    </clipPath>
   </defs>
 
-  <!-- === RING BACK HALF (behind bean) === -->
+  <!-- === RING BACK: full ellipse, behind bean in z-order === -->
   <ellipse cx="50" cy="47" rx="38" ry="12" transform="rotate(30 50 47)"
-    fill="none" stroke="url(#brewmind-ring-back)" stroke-width="2"
-    stroke-dasharray="136.8 102" stroke-dashoffset="102"/>
+    fill="none" stroke="url(#brewmind-ring-back)" stroke-width="3.5"/>
 
   <!-- === BEAN === -->
   <path d="
@@ -67,21 +89,25 @@
     Z"
     fill="url(#brewmind-bean-fill)"/>
 
-  <!-- Center crease: clipped to bean shape so it never overflows -->
+  <!-- Center crease: clipped to bean shape -->
   <g clip-path="url(#brewmind-bean-clip)">
     <path d="M 50,25 C 48.5,35 51.5,43 49,48 C 47,53 52,59 50,70"
-      fill="none" stroke="#3D1E08" stroke-width="1.4" stroke-linecap="round"/>
+      fill="none" stroke="#3D1E08" stroke-width="1.6" stroke-linecap="round"/>
   </g>
 
   <!-- Glossy specular highlight (top-left, white-to-copper fade) -->
   <ellipse cx="43" cy="37" rx="6" ry="9" fill="url(#brewmind-bean-gloss)"/>
 
-  <!-- === RING FRONT HALF (in front of bean) === -->
-  <ellipse cx="50" cy="47" rx="38" ry="12" transform="rotate(30 50 47)"
-    fill="none" stroke="url(#brewmind-ring-front)" stroke-width="2"
-    stroke-dasharray="110 128.8" stroke-dashoffset="0"/>
+  <!-- === RING FRONT: full ellipse, clipped to outside upper-bean only === -->
+  <!-- Below the ring crossing line, the ring paints OVER the bean = 3D depth -->
+  <g clip-path="url(#brewmind-ring-front-clip)">
+    <ellipse cx="50" cy="47" rx="38" ry="12" transform="rotate(30 50 47)"
+      fill="none" stroke="url(#brewmind-ring-front)" stroke-width="3.5"/>
+  </g>
 
-  <!-- Accent dot (top-left, brightest point — light source origin) -->
-  <circle cx="17" cy="31" r="3"
-    fill="url(#brewmind-dot-grad)" stroke="#C4842A" stroke-width="0.5"/>
+  <!-- === SIGNAL PULSE (on-ring, where orbit emerges from behind bean) === -->
+  <circle cx="18" cy="34" r="6"
+    fill="url(#brewmind-pulse-glow)" opacity="0.9"/>
+  <circle cx="18" cy="34" r="3"
+    fill="url(#brewmind-pulse-core)" stroke="#C4842A" stroke-width="0.4"/>
 </svg>
