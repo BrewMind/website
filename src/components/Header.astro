@@ -46,7 +46,7 @@
     aria-label="Navigation"
     class="fixed inset-0 z-40 flex flex-col items-center justify-center
            bg-bg/95 backdrop-blur-md
-           opacity-0 pointer-events-none
+           opacity-0 pointer-events-none invisible
            transition-opacity duration-200"
   >
     <nav class="flex flex-col items-center gap-8">
@@ -73,7 +73,7 @@
 
   function openMenu() {
     isOpen = true;
-    menu?.classList.remove('opacity-0', 'pointer-events-none');
+    menu?.classList.remove('opacity-0', 'pointer-events-none', 'invisible');
     menu?.classList.add('opacity-100');
     toggle?.setAttribute('aria-expanded', 'true');
     toggle?.setAttribute('aria-label', 'Menü schließen');
@@ -89,6 +89,14 @@
     isOpen = false;
     menu?.classList.add('opacity-0', 'pointer-events-none');
     menu?.classList.remove('opacity-100');
+    // Add invisible after fade-out transition (or immediately if reduced-motion)
+    if (prefersReducedMotion) {
+      menu?.classList.add('invisible');
+    } else {
+      menu?.addEventListener('transitionend', () => {
+        if (!isOpen) menu?.classList.add('invisible');
+      }, { once: true });
+    }
     toggle?.setAttribute('aria-expanded', 'false');
     toggle?.setAttribute('aria-label', 'Menü öffnen');
     iconOpen?.classList.remove('hidden');
