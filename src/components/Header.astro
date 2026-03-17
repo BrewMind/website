@@ -1,7 +1,7 @@
 ---
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-bg/80 border-b border-border">
+<header class="fixed top-0 left-0 right-0 z-[60] backdrop-blur-md bg-bg/80 border-b border-border">
   <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center gap-3 group">
@@ -37,25 +37,25 @@
       </svg>
     </button>
   </nav>
-
-  <!-- Fullscreen Overlay -->
-  <div
-    id="mobile-menu"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Navigation"
-    class="fixed inset-0 z-40 flex flex-col items-center justify-center
-           bg-bg/95 backdrop-blur-md
-           opacity-0 pointer-events-none invisible
-           transition-opacity duration-200"
-  >
-    <nav class="flex flex-col items-center gap-8">
-      <a href="#features" class="text-2xl font-semibold text-text mobile-nav-link">Features</a>
-      <a href="#how-it-works" class="text-2xl font-semibold text-text mobile-nav-link">So funktioniert's</a>
-      <span class="text-base text-text-secondary mt-4">Bald im App Store</span>
-    </nav>
-  </div>
 </header>
+
+<!-- Fullscreen Overlay (outside header to avoid stacking context issues with backdrop-blur) -->
+<div
+  id="mobile-menu"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation"
+  class="fixed inset-0 z-50 flex flex-col items-center justify-center
+         bg-bg/95 backdrop-blur-md
+         opacity-0 pointer-events-none invisible
+         transition-opacity duration-200"
+>
+  <nav class="flex flex-col items-center gap-8">
+    <a href="#features" class="text-2xl font-semibold text-text mobile-nav-link">Features</a>
+    <a href="#how-it-works" class="text-2xl font-semibold text-text mobile-nav-link">So funktioniert's</a>
+    <span class="text-base text-text-secondary mt-4">Bald im App Store</span>
+  </nav>
+</div>
 
 <script>
   const toggle = document.getElementById('menu-toggle');
