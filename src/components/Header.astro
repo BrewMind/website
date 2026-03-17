@@ -5,7 +5,7 @@
   <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center gap-3 group">
-      <img src="/logo-mark.svg" alt="BrewMind" class="w-8 h-8 transition-transform group-hover:scale-110" />
+      <img src="/logo-mark.svg" alt="BrewMind" width="32" height="32" class="w-8 h-8 transition-transform group-hover:scale-110" />
       <span class="text-lg font-semibold text-text">BrewMind</span>
     </a>
 
@@ -19,5 +19,117 @@
     <a href="#hero" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-colors">
       Bald verfügbar
     </a>
+
+    <!-- Hamburger Button (mobile only) -->
+    <button
+      id="menu-toggle"
+      aria-label="Menü öffnen"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="flex md:hidden items-center justify-center w-11 h-11 rounded-lg
+             text-text-secondary hover:text-text hover:bg-surface transition-colors"
+    >
+      <svg id="menu-icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
   </nav>
+
+  <!-- Fullscreen Overlay -->
+  <div
+    id="mobile-menu"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation"
+    class="fixed inset-0 z-40 flex flex-col items-center justify-center
+           bg-bg/95 backdrop-blur-md
+           opacity-0 pointer-events-none
+           transition-opacity duration-200"
+  >
+    <nav class="flex flex-col items-center gap-8">
+      <a href="#features" class="text-2xl font-semibold text-text mobile-nav-link">Features</a>
+      <a href="#how-it-works" class="text-2xl font-semibold text-text mobile-nav-link">So funktioniert's</a>
+      <span class="text-base text-text-secondary mt-4">Bald im App Store</span>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  const navLinks = menu?.querySelectorAll('.mobile-nav-link');
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion && menu) {
+    menu.classList.remove('transition-opacity', 'duration-200');
+  }
+
+  let isOpen = false;
+
+  function openMenu() {
+    isOpen = true;
+    menu?.classList.remove('opacity-0', 'pointer-events-none');
+    menu?.classList.add('opacity-100');
+    toggle?.setAttribute('aria-expanded', 'true');
+    toggle?.setAttribute('aria-label', 'Menü schließen');
+    iconOpen?.classList.add('hidden');
+    iconClose?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    // Focus first link
+    const firstLink = menu?.querySelector('.mobile-nav-link');
+    if (firstLink instanceof HTMLElement) firstLink.focus();
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    menu?.classList.add('opacity-0', 'pointer-events-none');
+    menu?.classList.remove('opacity-100');
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Menü öffnen');
+    iconOpen?.classList.remove('hidden');
+    iconClose?.classList.add('hidden');
+    document.body.style.overflow = '';
+    toggle?.focus();
+  }
+
+  // Toggle
+  toggle?.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+
+  // Close on nav link click
+  navLinks?.forEach(link => link.addEventListener('click', closeMenu));
+
+  // Backdrop click (click on overlay but not on nav)
+  menu?.addEventListener('click', (e) => {
+    if (e.target === menu) closeMenu();
+  });
+
+  // Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) closeMenu();
+  });
+
+  // Resize guard: close when viewport becomes desktop
+  window.matchMedia('(min-width: 768px)').addEventListener('change', (e) => {
+    if (e.matches && isOpen) closeMenu();
+  });
+
+  // Focus trap
+  menu?.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !isOpen) return;
+    const focusable = menu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      if (last instanceof HTMLElement) last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      if (first instanceof HTMLElement) first.focus();
+    }
+  });
+</script>

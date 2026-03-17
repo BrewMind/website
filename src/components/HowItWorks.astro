@@ -36,7 +36,7 @@ const steps = [
     <!-- Steps -->
     <div class="grid md:grid-cols-3 gap-8 md:gap-12">
       {steps.map((step, i) => (
-        <div class={`animate stagger-${i + 1} text-center md:text-left`}>
+        <div class={`relative animate stagger-${i + 1} text-center md:text-left`}>
           <!-- Step number + icon -->
           <div class="flex items-center justify-center md:justify-start gap-4 mb-4">
             <span class="text-5xl font-bold text-surface-light">{step.number}</span>

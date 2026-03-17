@@ -136,6 +136,15 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate, .animate-scale {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .stagger-1, .stagger-2, .stagger-3, .stagger-4 {
+    transition-delay: 0ms;
+  }
   .coffee-bean {
     animation: none !important;
   }

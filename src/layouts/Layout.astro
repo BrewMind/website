@@ -20,6 +20,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1A1A1A" />
     <meta name="description" content={description} />
 
     <!-- Open Graph -->
@@ -48,21 +49,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Intersection Observer for scroll animations -->
     <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-      );
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        document.querySelectorAll('.animate, .animate-scale').forEach(el => el.classList.add('visible'));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        );
 
-      document.querySelectorAll('.animate, .animate-scale').forEach((el) => {
-        observer.observe(el);
-      });
+        document.querySelectorAll('.animate, .animate-scale').forEach((el) => {
+          observer.observe(el);
+        });
+      }
     </script>
   </body>
 </html>
