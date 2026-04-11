@@ -23,7 +23,7 @@ import Footer from '../components/Footer.astro';
         Die BrewMind App f&uuml;r iOS erfordert eine Registrierung mit E-Mail und Passwort. Daten werden sowohl <strong>lokal auf Ihrem Ger&auml;t</strong> (SQLite) als auch <strong>in der Cloud</strong> (Supabase, EU-Region) gespeichert und synchronisiert.
       </p>
       <p>
-        Es werden keine Analyse-Daten, keine Werbekennungen und kein Tracking erhoben. Standortdaten werden nicht abgefragt. Alle Bluetooth- und Sprachverarbeitungsfunktionen laufen ausschlie&szlig;lich lokal auf Ihrem Ger&auml;t.
+        Es werden keine Werbekennungen (IDFA) erhoben und keine Nutzungsdaten an Dritte &uuml;bermittelt. Standortdaten werden nicht abgefragt. Alle Bluetooth- und Sprachverarbeitungsfunktionen laufen ausschlie&szlig;lich lokal auf Ihrem Ger&auml;t.
       </p>
       <p>
         Rechtsgrundlage f&uuml;r die Verarbeitung: Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&uuml;llung).
@@ -103,18 +103,22 @@ import Footer from '../components/Footer.astro';
         <li>iOS-Berechtigungen: &bdquo;Spracherkennung&ldquo; und &bdquo;Mikrofon&ldquo;</li>
       </ul>
 
-      <h2>9. Support und Fehlerbehebung</h2>
+      <h2>9. Datenanalyse und Produktverbesserung</h2>
       <p>
-        Auf Anfrage des Nutzers kann der Betreiber auf die in der Cloud gespeicherten Shot-Daten zugreifen, um technische Probleme zu analysieren und Support zu leisten. Dies geschieht ausschlie&szlig;lich auf ausdr&uuml;cklichen Wunsch des Nutzers und wird nicht routinem&auml;&szlig;ig durchgef&uuml;hrt.
+        Der Betreiber kann die in der Cloud gespeicherten Daten analysieren, um die App weiterzuentwickeln, Fehler zu beheben und die Nutzererfahrung zu verbessern. Dies umfasst insbesondere die Auswertung von Br&uuml;hparametern, Feedback-Daten und Nutzungsmustern.
       </p>
       <p>
-        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Fehlerbehebung).
+        Dar&uuml;ber hinaus kann der Betreiber bei Support-Anfragen auf die Daten einzelner Nutzer zugreifen, um technische Probleme zu diagnostizieren.
+      </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&uuml;llung) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Produktverbesserung und Fehlerbehebung).
       </p>
 
-      <h2>10. Kein Tracking, keine Analytics</h2>
+      <h2>10. Kein Werbe-Tracking, keine Drittanbieter-Analytics</h2>
       <ul>
-        <li>Kein Analytics, kein Advertising-Identifier (IDFA), kein Tracking</li>
-        <li>Keine Crash-Reporting-Dienste</li>
+        <li>Kein Advertising-Identifier (IDFA), kein Werbe-Tracking</li>
+        <li>Keine Drittanbieter-Analytics-Dienste (kein Google Analytics, kein Mixpanel o.&nbsp;&auml;.)</li>
+        <li>Keine Crash-Reporting-Dienste Dritter</li>
         <li>Kein Standortzugriff &mdash; explizit deaktiviert</li>
         <li>Keine Kontakte, keine Kamera, keine Fotos</li>
         <li>Keine Weitergabe von Daten an Dritte zu Werbezwecken</li>
