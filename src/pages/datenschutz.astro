@@ -18,29 +18,84 @@ import Footer from '../components/Footer.astro';
         E-Mail: <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>
       </p>
 
-      <h2>2. BrewMind App &mdash; Datenschutz</h2>
+      <h2>2. BrewMind App &mdash; &Uuml;berblick</h2>
       <p>
-        Die BrewMind App f&uuml;r iOS speichert alle Daten <strong>ausschlie&szlig;lich lokal</strong> auf Ihrem Ger&auml;t. Es findet keine &Uuml;bertragung an Server statt.
+        Die BrewMind App f&uuml;r iOS erfordert eine Registrierung mit E-Mail und Passwort. Daten werden sowohl <strong>lokal auf Ihrem Ger&auml;t</strong> (SQLite) als auch <strong>in der Cloud</strong> (Supabase, EU-Region) gespeichert und synchronisiert.
+      </p>
+      <p>
+        Es werden keine Analyse-Daten, keine Werbekennungen und kein Tracking erhoben. Standortdaten werden nicht abgefragt. Alle Bluetooth- und Sprachverarbeitungsfunktionen laufen ausschlie&szlig;lich lokal auf Ihrem Ger&auml;t.
+      </p>
+      <p>
+        Rechtsgrundlage f&uuml;r die Verarbeitung: Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&uuml;llung).
       </p>
 
-      <h3>2.1 Lokal gespeicherte Daten</h3>
+      <h2>3. Konto und Authentifizierung</h2>
+      <p>
+        Die Nutzung der App erfordert ein Benutzerkonto. Folgende Daten werden dabei verarbeitet:
+      </p>
       <ul>
-        <li>Espresso-Parameter (Dosis, Yield, Zeit, Bewertungen)</li>
-        <li>Bohnen, Maschinen, Rezepte und M&uuml;hlen (vom Nutzer angelegt)</li>
-        <li>Alle Daten verbleiben in einer lokalen SQLite-Datenbank auf dem Ger&auml;t</li>
-        <li>Keine &Uuml;bertragung an Server, keine Cloud-Synchronisation</li>
+        <li><strong>Registrierungsdaten:</strong> E-Mail-Adresse und Passwort. Das Passwort wird serverseitig gehasht und nie im Klartext &uuml;bertragen oder gespeichert.</li>
+        <li><strong>Profilfelder:</strong> Anzeigename, Founding-Member-Status, Datum des Beta-Beitritts.</li>
+        <li><strong>Sitzungstoken:</strong> Werden ausschlie&szlig;lich lokal im iOS Keychain (via <code>expo-secure-store</code>) gespeichert &mdash; nicht in der Cloud.</li>
+      </ul>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&uuml;llung).
+      </p>
+
+      <h2>4. Lokal gespeicherte Daten</h2>
+      <p>
+        Alle Nutzerdaten werden prim&auml;r lokal in einer SQLite-Datenbank auf dem Ger&auml;t gespeichert. Die App ist offline-f&auml;hig; Cloud-Synchronisation erfolgt zus&auml;tzlich, sobald eine Verbindung besteht.
+      </p>
+      <ul>
+        <li>Espresso-Parameter (Dosis, Yield, Zeit, Temperatur, Druck, Bewertungen, Notizen)</li>
+        <li>Maschinen, M&uuml;hlen, Bohnen, Roester, Hersteller, Rezepte, Brueh-Methoden, Messger&auml;te</li>
+        <li>Kalibrierungsdaten und Grind-Korrelationen</li>
+        <li>App-Einstellungen und Pr&auml;ferenzen (bleiben stets nur lokal, werden nicht synchronisiert)</li>
         <li>CSV-Export jederzeit m&ouml;glich (Datenhoheit beim Nutzer)</li>
+        <li>Bei fehlender Internetverbindung arbeitet die App offline; die Synchronisation erfolgt automatisch bei erneuter Verbindung</li>
       </ul>
 
-      <h3>2.2 Bluetooth (BLE)</h3>
+      <h2>5. Cloud-Synchronisation (Supabase)</h2>
+      <p>
+        Bei angemeldetem Konto werden folgende Daten mit dem Cloud-Server synchronisiert und in der EU-Region von <strong>Supabase</strong> (Supabase Inc., 444 De Haro Street, San Francisco, CA 94107, USA) gespeichert. Supabase agiert als Auftragsverarbeiter gem&auml;&szlig; Art. 28 DSGVO; ein Auftragsverarbeitungsvertrag besteht. N&auml;heres dazu unter Abschnitt&nbsp;13.
+      </p>
+      <ul>
+        <li><strong>Equipment:</strong> Maschinen, M&uuml;hlen, Bohnen, Roester, Hersteller, Rezepte, Brueh-Methoden, Messger&auml;te</li>
+        <li><strong>Shot-Daten:</strong> Brueh-Parameter (Dosis, Yield, Zeit, Temperatur, Druck, Verh&auml;ltnis, Durchflussrate, Bewertung, Notizen)</li>
+        <li><strong>Shot-Telemetrie:</strong> Zeitreihen-Messwerte (Gewicht, Durchflussrate, Temperatur, Druck) w&auml;hrend des Br&uuml;hvorgangs</li>
+        <li><strong>Geschmacks-Feedback:</strong> Bewertungen, Problem-Tags, Empfehlungen</li>
+        <li><strong>Mahlgrad-Korrelationen:</strong> Anpassungen zwischen aufeinanderfolgenden Bez&uuml;gen</li>
+        <li><strong>Katalog-Anpassungen:</strong> Vom Nutzer ge&auml;nderte Katalog-Eintr&auml;ge</li>
+      </ul>
+      <p>
+        Die Synchronisation dient der Datensicherung und dem ger&auml;te&uuml;bergreifenden Zugriff. Daten werden verschl&uuml;sselt &uuml;bertragen (TLS) und in der EU gespeichert.
+      </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&uuml;llung &mdash; die Synchronisation ist Kernfunktion der App).
+      </p>
+
+      <h2>6. Multi-Device Sync und Ger&auml;teverwaltung</h2>
+      <p>
+        Um Konflikte bei der ger&auml;te&uuml;bergreifenden Synchronisation aufzul&ouml;sen, wird f&uuml;r jede App-Installation eine zuf&auml;llige Ger&auml;te-ID (UUID) erzeugt. Gespeichert wird: Nutzer-ID, Ger&auml;te-UUID und der Zeitpunkt der letzten Aktivit&auml;t.
+      </p>
+      <ul>
+        <li>Pro Konto k&ouml;nnen maximal 10 aktive Ger&auml;te registriert sein</li>
+        <li>Wird das Limit &uuml;berschritten, wird das &auml;lteste Ger&auml;t automatisch entfernt</li>
+        <li>Ger&auml;te, die l&auml;nger als 90 Tage nicht genutzt wurden, werden bei der Z&auml;hlung aktiver Ger&auml;te nicht ber&uuml;cksichtigt</li>
+        <li>Alle Daten sind &uuml;ber die Nutzer-ID eindeutig dem jeweiligen Konto zugeordnet</li>
+      </ul>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.
+      </p>
+
+      <h2>7. Bluetooth (BLE)</h2>
       <ul>
         <li>Optionale Verbindung zu Kaffeewaagen (z.&nbsp;B. Acaia Lunar)</li>
-        <li>Ausschlie&szlig;lich lokale Bluetooth-Kommunikation</li>
-        <li>Keine Daten werden &uuml;ber das Internet weitergeleitet</li>
+        <li>Ausschlie&szlig;lich lokale Bluetooth-Kommunikation &mdash; keine Daten werden &uuml;ber das Internet weitergeleitet</li>
         <li>iOS-Berechtigung: &bdquo;Bluetooth&ldquo;</li>
       </ul>
 
-      <h3>2.3 Spracherkennung</h3>
+      <h2>8. Spracherkennung</h2>
       <ul>
         <li>Optionale Sprachsteuerung via Apple On-Device Speech Recognition</li>
         <li>Sprachdaten werden ausschlie&szlig;lich auf dem Ger&auml;t verarbeitet</li>
@@ -48,24 +103,66 @@ import Footer from '../components/Footer.astro';
         <li>iOS-Berechtigungen: &bdquo;Spracherkennung&ldquo; und &bdquo;Mikrofon&ldquo;</li>
       </ul>
 
-      <h3>2.4 Keine Konten, kein Tracking</h3>
+      <h2>9. Support und Fehlerbehebung</h2>
+      <p>
+        Auf Anfrage des Nutzers kann der Betreiber auf die in der Cloud gespeicherten Shot-Daten zugreifen, um technische Probleme zu analysieren und Support zu leisten. Dies geschieht ausschlie&szlig;lich auf ausdr&uuml;cklichen Wunsch des Nutzers und wird nicht routinem&auml;&szlig;ig durchgef&uuml;hrt.
+      </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Fehlerbehebung).
+      </p>
+
+      <h2>10. Kein Tracking, keine Analytics</h2>
       <ul>
-        <li>Keine Registrierung oder Anmeldung erforderlich</li>
-        <li>Kein Analytics, kein Advertising-Identifier, kein Tracking</li>
-        <li>Keine Weitergabe von Daten an Dritte</li>
+        <li>Kein Analytics, kein Advertising-Identifier (IDFA), kein Tracking</li>
+        <li>Keine Crash-Reporting-Dienste</li>
+        <li>Kein Standortzugriff &mdash; explizit deaktiviert</li>
+        <li>Keine Kontakte, keine Kamera, keine Fotos</li>
+        <li>Keine Weitergabe von Daten an Dritte zu Werbezwecken</li>
       </ul>
 
-      <h3>2.5 Datenl&ouml;schung</h3>
+      <h2>11. Datensicherheit</h2>
+      <ul>
+        <li><strong>Row Level Security (RLS):</strong> Auf Datenbankebene sichergestellt, dass Nutzer ausschlie&szlig;lich auf ihre eigenen Daten zugreifen k&ouml;nnen.</li>
+        <li><strong>TLS-Verschl&uuml;sselung:</strong> Alle Daten&uuml;bertragungen zwischen App und Cloud erfolgen verschl&uuml;sselt.</li>
+        <li><strong>Passwort-Hashing:</strong> Passw&ouml;rter werden serverseitig gehasht gespeichert; der Klartext wird zu keinem Zeitpunkt &uuml;bertragen oder persistiert.</li>
+        <li><strong>iOS Keychain:</strong> Authentifizierungs-Tokens werden lokal im iOS Keychain gespeichert (<code>expo-secure-store</code>) und nicht in der Cloud vorgehalten.</li>
+        <li><strong>EU-Datenhaltung:</strong> Alle personenbezogenen Daten werden in der EU-Region von Supabase gespeichert.</li>
+      </ul>
+
+      <h2>12. Datenl&ouml;schung und Kontol&ouml;schung</h2>
       <p>
-        Durch Deinstallation der App werden alle lokalen Daten vollst&auml;ndig entfernt. Da keine Daten auf Servern gespeichert werden, ist kein serverseitiges L&ouml;schen erforderlich.
+        Durch Deinstallation der App werden alle lokalen Daten entfernt. Angemeldete Nutzer k&ouml;nnen ihr Konto direkt in der App l&ouml;schen. Bei Kontol&ouml;schung werden alle serverseitig gespeicherten Daten vollst&auml;ndig und kaskadierend gel&ouml;scht:
+      </p>
+      <ul>
+        <li>Nutzerprofil und Authentifizierungsdaten (E-Mail, Passwort-Hash)</li>
+        <li>Alle Equipment-Daten (Maschinen, M&uuml;hlen, Bohnen, Roester, Hersteller, Rezepte etc.)</li>
+        <li>Alle Shot-Daten und Telemetrie-Daten</li>
+        <li>Alle Feedback-Daten und Geschmacksbewertungen</li>
+        <li>Alle Ger&auml;te-Registrierungen</li>
+      </ul>
+      <p>
+        Die L&ouml;schung erfolgt &uuml;ber eine serverseitige Edge Function (<code>delete-account</code>), die eine atomare und vollst&auml;ndige Bereinigung sicherstellt. Sie ist unmittelbar und unwiderruflich.
+      </p>
+      <p>
+        Das Recht auf L&ouml;schung nach Art. 17 DSGVO kann jederzeit ausge&uuml;bt werden, entweder direkt in der App oder per E-Mail an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>.
       </p>
 
-      <h2>3. Website &mdash; &Uuml;berblick</h2>
+      <h2>13. Auftragsverarbeitung</h2>
       <p>
-        Der Schutz Ihrer personenbezogenen Daten ist mir wichtig. Diese Datenschutzerkl&auml;rung informiert Sie dar&uuml;ber, welche Daten bei der Nutzung der BrewMind App und beim Besuch dieser Website erhoben werden und wie diese verwendet werden.
+        F&uuml;r die Cloud-Infrastruktur wird folgender Auftragsverarbeiter eingesetzt:
+      </p>
+      <p>
+        <strong>Supabase Inc.</strong><br />
+        444 De Haro Street, Suite 200, San Francisco, CA 94107, USA<br />
+        Funktion: Datenbankhosting (PostgreSQL), Authentifizierung, Edge Functions<br />
+        Datenspeicherort: EU-Region<br />
+        Datenschutzerkl&auml;rung: <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">supabase.com/privacy</a>
+      </p>
+      <p>
+        Ein Auftragsverarbeitungsvertrag (AVV) gem&auml;&szlig; Art. 28 DSGVO ist mit Supabase Inc. geschlossen. Supabase Inc. ist unter dem EU-US Data Privacy Framework zertifiziert, sodass ein angemessenes Datenschutzniveau f&uuml;r Datentransfers in die USA gew&auml;hrleistet ist; die Datenhaltung selbst erfolgt innerhalb der EU.
       </p>
 
-      <h2>4. Hosting</h2>
+      <h2>14. Website &mdash; Hosting</h2>
       <p>
         Diese Website wird &uuml;ber <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA, ein Unternehmen der Microsoft Corporation) gehostet. Beim Aufruf dieser Website werden durch GitHub automatisch Informationen in sogenannten Server-Logfiles gespeichert, die Ihr Browser &uuml;bermittelt. Dies sind insbesondere:
       </p>
@@ -83,32 +180,32 @@ import Footer from '../components/Footer.astro';
         GitHub Inc. ist unter dem EU-US Data Privacy Framework zertifiziert, sodass ein angemessenes Datenschutzniveau gew&auml;hrleistet ist.
       </p>
 
-      <h2>5. Keine Cookies</h2>
+      <h2>15. Website &mdash; Keine Cookies</h2>
       <p>
         Diese Website verwendet <strong>keine Cookies</strong> und kein Tracking. Es werden keine Analyse- oder Marketing-Tools eingesetzt.
       </p>
 
-      <h2>6. Keine Datenerfassung durch den Betreiber</h2>
+      <h2>16. Website &mdash; Keine Datenerfassung durch den Betreiber</h2>
       <p>
-        Diese Website enth&auml;lt aktuell keine Formulare, Newsletter-Anmeldungen oder sonstige Eingabem&ouml;glichkeiten. Es werden durch den Betreiber &uuml;ber das unter Punkt 4 beschriebene Hosting hinaus keine personenbezogenen Daten erhoben.
+        Diese Website enth&auml;lt aktuell keine Formulare, Newsletter-Anmeldungen oder sonstige Eingabem&ouml;glichkeiten. Es werden durch den Betreiber &uuml;ber das unter Abschnitt&nbsp;14 beschriebene Hosting hinaus keine personenbezogenen Daten erhoben.
       </p>
 
-      <h2>7. Schriftarten (Self-Hosted)</h2>
+      <h2>17. Website &mdash; Schriftarten (Self-Hosted)</h2>
       <p>
         Diese Website verwendet die Schriftart &bdquo;Inter&ldquo;. Die Schriftdateien werden lokal von diesem Server ausgeliefert. Es findet <strong>keine Verbindung zu externen Servern</strong> (wie z.&nbsp;B. Google Fonts) statt.
       </p>
 
-      <h2>8. Externe Links</h2>
+      <h2>18. Website &mdash; Externe Links</h2>
       <p>
         Diese Website enth&auml;lt Links zu externen Websites (z.&nbsp;B. GitHub). Beim Klick auf diese Links werden Sie auf die jeweilige externe Seite weitergeleitet. F&uuml;r die Datenverarbeitung auf diesen externen Seiten ist der jeweilige Anbieter verantwortlich.
       </p>
 
-      <h2>9. SSL-/TLS-Verschl&uuml;sselung</h2>
+      <h2>19. SSL-/TLS-Verschl&uuml;sselung</h2>
       <p>
         Diese Website nutzt aus Sicherheitsgr&uuml;nden eine SSL- bzw. TLS-Verschl&uuml;sselung. Eine verschl&uuml;sselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von &bdquo;http://&ldquo; auf &bdquo;https://&ldquo; wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
       </p>
 
-      <h2>10. Ihre Rechte</h2>
+      <h2>20. Ihre Rechte</h2>
       <p>Sie haben jederzeit das Recht:</p>
       <ul>
         <li>Auskunft &uuml;ber Ihre gespeicherten personenbezogenen Daten zu erhalten (Art. 15 DSGVO)</li>
@@ -120,12 +217,12 @@ import Footer from '../components/Footer.astro';
         <li>Sich bei einer Aufsichtsbeh&ouml;rde zu beschweren (Art. 77 DSGVO)</li>
       </ul>
       <p>
-        Die zust&auml;ndige Aufsichtsbeh&ouml;rde ist die Landesbeauftragte f&uuml;r Datenschutz und Informationsfreiheit Nordrhein-Westfalen (<a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de</a>).
+        Zur Aus&uuml;bung Ihrer Rechte wenden Sie sich bitte an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>. Die zust&auml;ndige Aufsichtsbeh&ouml;rde ist die Landesbeauftragte f&uuml;r Datenschutz und Informationsfreiheit Nordrhein-Westfalen (<a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de</a>).
       </p>
 
-      <h2>11. &Auml;nderungen</h2>
+      <h2>21. &Auml;nderungen</h2>
       <p>
-        Diese Datenschutzerkl&auml;rung ist aktuell g&uuml;ltig (Stand: M&auml;rz 2026). Durch die Weiterentwicklung der Website oder aufgrund ge&auml;nderter gesetzlicher Vorgaben kann eine Anpassung dieser Erkl&auml;rung erforderlich werden.
+        Diese Datenschutzerkl&auml;rung ist aktuell g&uuml;ltig (Stand: April 2026). Durch die Weiterentwicklung der App oder Website oder aufgrund ge&auml;nderter gesetzlicher Vorgaben kann eine Anpassung dieser Erkl&auml;rung erforderlich werden. Wesentliche &Auml;nderungen werden Nutzern mit aktivem Konto per E-Mail mitgeteilt.
       </p>
     </article>
   </main>
@@ -179,5 +276,12 @@ import Footer from '../components/Footer.astro';
   }
   .prose strong {
     color: var(--color-text);
+  }
+  .prose code {
+    background: var(--color-surface);
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
   }
 </style>
