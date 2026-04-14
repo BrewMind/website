@@ -4,11 +4,13 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  lang?: string;
 }
 
 const {
   title = 'BrewMind — Jede Tasse. Perfekt begleitet.',
-  description = 'BrewMind begleitet dich beim Brühen — mit Sprachsteuerung, Bluetooth-Geräteanbindung und intelligenten Empfehlungen. Für Espresso, Filter und mehr.'
+  description = 'BrewMind begleitet dich beim Brühen — mit Sprachsteuerung, Bluetooth-Geräteanbindung und intelligenten Empfehlungen. Für Espresso, Filter und mehr.',
+  lang = 'de'
 } = Astro.props;
 
 const ogImage = new URL('/og-image.png', Astro.site);
@@ -16,7 +18,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
