@@ -14,9 +14,15 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <!-- Links -->
-      <div class="flex items-center gap-6">
-        <a href="/impressum" class="text-sm text-text-secondary hover:text-text transition-colors">Impressum</a>
-        <a href="/datenschutz" class="text-sm text-text-secondary hover:text-text transition-colors">Datenschutz</a>
+      <div class="flex flex-col items-center md:flex-row md:items-center gap-3 md:gap-6">
+        <!-- Legal Links -->
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+          <a href="/impressum" class="text-sm text-text-secondary hover:text-text transition-colors">Impressum</a>
+          <a href="/datenschutz" class="text-sm text-text-secondary hover:text-text transition-colors">Datenschutz</a>
+          <a href="/privacy" class="text-sm text-text-secondary hover:text-text transition-colors">Privacy</a>
+          <a href="/terms" class="text-sm text-text-secondary hover:text-text transition-colors">Terms</a>
+        </div>
+        <!-- GitHub -->
         <a href="https://github.com/BrewMind" target="_blank" rel="noopener noreferrer" class="text-sm text-text-secondary hover:text-text transition-colors">
           GitHub
         </a>
