@@ -23,7 +23,7 @@ import Footer from '../components/Footer.astro';
         Die BrewMind App f&uuml;r iOS erfordert eine Registrierung mit E-Mail und Passwort. Daten werden sowohl <strong>lokal auf Ihrem Ger&auml;t</strong> (SQLite) als auch <strong>in der Cloud</strong> (Supabase, EU-Region) gespeichert und synchronisiert.
       </p>
       <p>
-        Es werden keine Werbekennungen (IDFA) erhoben und keine Nutzungsdaten an Dritte &uuml;bermittelt. Standortdaten werden nicht abgefragt. Alle Bluetooth- und Sprachverarbeitungsfunktionen laufen ausschlie&szlig;lich lokal auf Ihrem Ger&auml;t.
+        Es werden keine Werbekennungen (IDFA) erhoben und keine Nutzungsdaten an Dritte &uuml;bermittelt. Standortdaten werden nicht abgefragt. Die Bluetooth-Kommunikation mit Ihrer Waage erfolgt ausschlie&szlig;lich lokal auf Ihrem Ger&auml;t.
       </p>
       <p>
         Rechtsgrundlage f&uuml;r die Verarbeitung: Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&uuml;llung).
@@ -57,7 +57,7 @@ import Footer from '../components/Footer.astro';
 
       <h2>5. Cloud-Synchronisation (Supabase)</h2>
       <p>
-        Bei angemeldetem Konto werden folgende Daten mit dem Cloud-Server synchronisiert und in der EU-Region von <strong>Supabase</strong> (Supabase Inc., 444 De Haro Street, San Francisco, CA 94107, USA) gespeichert. Supabase agiert als Auftragsverarbeiter gem&auml;&szlig; Art. 28 DSGVO; ein Auftragsverarbeitungsvertrag besteht. N&auml;heres dazu unter Abschnitt&nbsp;13.
+        Bei angemeldetem Konto werden folgende Daten mit dem Cloud-Server synchronisiert und in der EU-Region von <strong>Supabase</strong> (Supabase Inc., 444 De Haro Street, San Francisco, CA 94107, USA) gespeichert. Supabase agiert als Auftragsverarbeiter gem&auml;&szlig; Art. 28 DSGVO; ein Auftragsverarbeitungsvertrag besteht. N&auml;heres dazu unter Abschnitt&nbsp;12.
       </p>
       <ul>
         <li><strong>Equipment:</strong> Maschinen, M&uuml;hlen, Bohnen, Roester, Hersteller, Rezepte, Brueh-Methoden, Messger&auml;te</li>
@@ -95,15 +95,7 @@ import Footer from '../components/Footer.astro';
         <li>iOS-Berechtigung: &bdquo;Bluetooth&ldquo;</li>
       </ul>
 
-      <h2>8. Spracherkennung</h2>
-      <ul>
-        <li>Optionale Sprachsteuerung via Apple On-Device Speech Recognition</li>
-        <li>Sprachdaten werden ausschlie&szlig;lich auf dem Ger&auml;t verarbeitet</li>
-        <li>Keine Audio-Daten verlassen das Ger&auml;t</li>
-        <li>iOS-Berechtigungen: &bdquo;Spracherkennung&ldquo; und &bdquo;Mikrofon&ldquo;</li>
-      </ul>
-
-      <h2>9. Datenanalyse und Produktverbesserung</h2>
+      <h2>8. Datenanalyse und Produktverbesserung</h2>
       <p>
         Der Betreiber kann die in der Cloud gespeicherten Daten analysieren, um die App weiterzuentwickeln, Fehler zu beheben und die Nutzererfahrung zu verbessern. Dies umfasst insbesondere die Auswertung von Br&uuml;hparametern, Feedback-Daten und Nutzungsmustern.
       </p>
@@ -114,7 +106,7 @@ import Footer from '../components/Footer.astro';
         Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&uuml;llung) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Produktverbesserung und Fehlerbehebung).
       </p>
 
-      <h2>10. Kein Werbe-Tracking, keine Drittanbieter-Analytics</h2>
+      <h2>9. Kein Werbe-Tracking, keine Drittanbieter-Analytics</h2>
       <ul>
         <li>Kein Advertising-Identifier (IDFA), kein Werbe-Tracking</li>
         <li>Keine Drittanbieter-Analytics-Dienste (kein Google Analytics, kein Mixpanel o.&nbsp;&auml;.)</li>
@@ -124,7 +116,7 @@ import Footer from '../components/Footer.astro';
         <li>Keine Weitergabe von Daten an Dritte zu Werbezwecken</li>
       </ul>
 
-      <h2>11. Datensicherheit</h2>
+      <h2>10. Datensicherheit</h2>
       <ul>
         <li><strong>Row Level Security (RLS):</strong> Auf Datenbankebene sichergestellt, dass Nutzer ausschlie&szlig;lich auf ihre eigenen Daten zugreifen k&ouml;nnen.</li>
         <li><strong>TLS-Verschl&uuml;sselung:</strong> Alle Daten&uuml;bertragungen zwischen App und Cloud erfolgen verschl&uuml;sselt.</li>
@@ -133,7 +125,7 @@ import Footer from '../components/Footer.astro';
         <li><strong>EU-Datenhaltung:</strong> Alle personenbezogenen Daten werden in der EU-Region von Supabase gespeichert.</li>
       </ul>
 
-      <h2>12. Datenl&ouml;schung und Kontol&ouml;schung</h2>
+      <h2>11. Datenl&ouml;schung und Kontol&ouml;schung</h2>
       <p>
         Durch Deinstallation der App werden alle lokalen Daten entfernt. Angemeldete Nutzer k&ouml;nnen ihr Konto direkt in der App l&ouml;schen. Bei Kontol&ouml;schung werden alle serverseitig gespeicherten Daten vollst&auml;ndig und kaskadierend gel&ouml;scht:
       </p>
@@ -151,7 +143,7 @@ import Footer from '../components/Footer.astro';
         Das Recht auf L&ouml;schung nach Art. 17 DSGVO kann jederzeit ausge&uuml;bt werden, entweder direkt in der App oder per E-Mail an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>.
       </p>
 
-      <h2>13. Auftragsverarbeitung</h2>
+      <h2>12. Auftragsverarbeitung</h2>
       <p>
         F&uuml;r die Cloud-Infrastruktur wird folgender Auftragsverarbeiter eingesetzt:
       </p>
@@ -166,7 +158,7 @@ import Footer from '../components/Footer.astro';
         Ein Auftragsverarbeitungsvertrag (AVV) gem&auml;&szlig; Art. 28 DSGVO ist mit Supabase Inc. geschlossen. Supabase Inc. ist unter dem EU-US Data Privacy Framework zertifiziert, sodass ein angemessenes Datenschutzniveau f&uuml;r Datentransfers in die USA gew&auml;hrleistet ist; die Datenhaltung selbst erfolgt innerhalb der EU.
       </p>
 
-      <h2>14. Website &mdash; Hosting</h2>
+      <h2>13. Website &mdash; Hosting</h2>
       <p>
         Diese Website wird &uuml;ber <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA, ein Unternehmen der Microsoft Corporation) gehostet. Beim Aufruf dieser Website werden durch GitHub automatisch Informationen in sogenannten Server-Logfiles gespeichert, die Ihr Browser &uuml;bermittelt. Dies sind insbesondere:
       </p>
@@ -184,32 +176,32 @@ import Footer from '../components/Footer.astro';
         GitHub Inc. ist unter dem EU-US Data Privacy Framework zertifiziert, sodass ein angemessenes Datenschutzniveau gew&auml;hrleistet ist.
       </p>
 
-      <h2>15. Website &mdash; Keine Cookies</h2>
+      <h2>14. Website &mdash; Keine Cookies</h2>
       <p>
         Diese Website verwendet <strong>keine Cookies</strong> und kein Tracking. Es werden keine Analyse- oder Marketing-Tools eingesetzt.
       </p>
 
-      <h2>16. Website &mdash; Keine Datenerfassung durch den Betreiber</h2>
+      <h2>15. Website &mdash; Keine Datenerfassung durch den Betreiber</h2>
       <p>
-        Diese Website enth&auml;lt aktuell keine Formulare, Newsletter-Anmeldungen oder sonstige Eingabem&ouml;glichkeiten. Es werden durch den Betreiber &uuml;ber das unter Abschnitt&nbsp;14 beschriebene Hosting hinaus keine personenbezogenen Daten erhoben.
+        Diese Website enth&auml;lt aktuell keine Formulare, Newsletter-Anmeldungen oder sonstige Eingabem&ouml;glichkeiten. Es werden durch den Betreiber &uuml;ber das unter Abschnitt&nbsp;13 beschriebene Hosting hinaus keine personenbezogenen Daten erhoben.
       </p>
 
-      <h2>17. Website &mdash; Schriftarten (Self-Hosted)</h2>
+      <h2>16. Website &mdash; Schriftarten (Self-Hosted)</h2>
       <p>
         Diese Website verwendet die Schriftart &bdquo;Inter&ldquo;. Die Schriftdateien werden lokal von diesem Server ausgeliefert. Es findet <strong>keine Verbindung zu externen Servern</strong> (wie z.&nbsp;B. Google Fonts) statt.
       </p>
 
-      <h2>18. Website &mdash; Externe Links</h2>
+      <h2>17. Website &mdash; Externe Links</h2>
       <p>
         Diese Website enth&auml;lt Links zu externen Websites (z.&nbsp;B. GitHub). Beim Klick auf diese Links werden Sie auf die jeweilige externe Seite weitergeleitet. F&uuml;r die Datenverarbeitung auf diesen externen Seiten ist der jeweilige Anbieter verantwortlich.
       </p>
 
-      <h2>19. SSL-/TLS-Verschl&uuml;sselung</h2>
+      <h2>18. SSL-/TLS-Verschl&uuml;sselung</h2>
       <p>
         Diese Website nutzt aus Sicherheitsgr&uuml;nden eine SSL- bzw. TLS-Verschl&uuml;sselung. Eine verschl&uuml;sselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von &bdquo;http://&ldquo; auf &bdquo;https://&ldquo; wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
       </p>
 
-      <h2>20. Ihre Rechte</h2>
+      <h2>19. Ihre Rechte</h2>
       <p>Sie haben jederzeit das Recht:</p>
       <ul>
         <li>Auskunft &uuml;ber Ihre gespeicherten personenbezogenen Daten zu erhalten (Art. 15 DSGVO)</li>
@@ -224,7 +216,7 @@ import Footer from '../components/Footer.astro';
         Zur Aus&uuml;bung Ihrer Rechte wenden Sie sich bitte an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>. Die zust&auml;ndige Aufsichtsbeh&ouml;rde ist die Landesbeauftragte f&uuml;r Datenschutz und Informationsfreiheit Nordrhein-Westfalen (<a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de</a>).
       </p>
 
-      <h2>21. &Auml;nderungen</h2>
+      <h2>20. &Auml;nderungen</h2>
       <p>
         Diese Datenschutzerkl&auml;rung ist aktuell g&uuml;ltig (Stand: April 2026). Durch die Weiterentwicklung der App oder Website oder aufgrund ge&auml;nderter gesetzlicher Vorgaben kann eine Anpassung dieser Erkl&auml;rung erforderlich werden. Wesentliche &Auml;nderungen werden Nutzern mit aktivem Konto per E-Mail mitgeteilt.
       </p>
