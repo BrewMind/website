@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import shotScreen from '../assets/screens/shot_running_ble.png';
 ---
 
 <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
@@ -31,15 +33,15 @@
 
   <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
     <!-- Headline -->
-    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate">
+    <h1 class="font-display italic text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight mb-6 animate">
       Jede Tasse.<br />
       <span class="text-gradient">Perfekt begleitet.</span>
     </h1>
 
     <!-- Subline -->
     <p class="text-lg sm:text-xl text-text-secondary max-w-2xl mx-auto mb-10 animate">
-      Espresso, Filter, Vollautomat — BrewMind trackt deine Shots,
-      verbindet deine Geräte und lernt aus deinem Geschmack.
+      BrewMind trackt deine Shots live und coacht dich Shot für Shot zum
+      Sweet-Spot — mit smarter Waage oder ganz ohne Hardware.
     </p>
 
     <!-- CTA Buttons -->
@@ -66,56 +68,16 @@
       <span class="text-sm text-text-secondary">In aktiver Entwicklung</span>
     </div>
 
-    <!-- App Mockup Placeholder -->
-    <div class="relative max-w-sm mx-auto animate-scale">
-      <div class="aspect-[9/19] rounded-[2.5rem] bg-surface border-2 border-border overflow-hidden glow-primary">
-        <!-- Phone frame -->
-        <div class="w-full h-full flex flex-col">
-          <!-- Status bar -->
-          <div class="h-12 bg-bg-alt flex items-center justify-center">
-            <div class="w-24 h-5 rounded-full bg-bg"></div>
-          </div>
-
-          <!-- App content placeholder -->
-          <div class="flex-1 p-4 flex flex-col gap-3">
-            <!-- Header row -->
-            <div class="flex items-center justify-between">
-              <div class="w-20 h-4 rounded bg-surface-light"></div>
-              <div class="flex gap-2">
-                <div class="w-6 h-6 rounded-full bg-primary/20"></div>
-                <div class="w-6 h-6 rounded-full bg-accent/20"></div>
-              </div>
-            </div>
-
-            <!-- KPI Cards -->
-            <div class="grid grid-cols-3 gap-2 mt-2">
-              <div class="aspect-square rounded-xl bg-surface-light flex flex-col items-center justify-center p-2">
-                <div class="text-2xl font-bold text-primary">18.2</div>
-                <div class="text-[8px] text-text-muted mt-0.5">GEWICHT</div>
-              </div>
-              <div class="aspect-square rounded-xl bg-surface-light flex flex-col items-center justify-center p-2">
-                <div class="text-2xl font-bold text-accent">1:2.1</div>
-                <div class="text-[8px] text-text-muted mt-0.5">RATIO</div>
-              </div>
-              <div class="aspect-square rounded-xl bg-surface-light flex flex-col items-center justify-center p-2">
-                <div class="text-2xl font-bold text-text">28s</div>
-                <div class="text-[8px] text-text-muted mt-0.5">ZEIT</div>
-              </div>
-            </div>
-
-            <!-- Chart placeholder -->
-            <div class="flex-1 rounded-xl bg-surface-light mt-2 flex items-end p-3 gap-0.5 overflow-hidden">
-              {[20,25,35,50,60,68,72,74,75,75,74,73,71,68,65,62].map((h) => (
-                <div class="flex-1 rounded-t bg-primary/40" style={`height: ${h}%`}></div>
-              ))}
-            </div>
-
-            <!-- Bottom button -->
-            <div class="h-12 rounded-xl gradient-primary flex items-center justify-center mt-2">
-              <span class="text-sm font-semibold text-white">Bereit</span>
-            </div>
-          </div>
-        </div>
+    <!-- App Screenshot -->
+    <div class="relative max-w-[280px] sm:max-w-sm mx-auto animate-scale">
+      <div class="aspect-[9/18] rounded-[2.5rem] border-[8px] border-surface-light bg-surface overflow-hidden glow-primary">
+        <Image
+          src={shotScreen}
+          alt="BrewMind Live-Shot: Gewicht, Zeit, Flow, Druck und Temperatur im Live-Chart"
+          width={780}
+          format="webp"
+          class="w-full h-full object-cover object-top"
+        />
       </div>
     </div>
   </div>

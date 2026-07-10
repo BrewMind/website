@@ -1,0 +1,111 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - navigation [ref=f3e3]:
+      - link "BrewMind BrewMind" [ref=f3e4] [cursor=pointer]:
+        - /url: /
+        - img "BrewMind" [ref=f3e5]
+        - generic [ref=f3e6]: BrewMind
+      - generic [ref=f3e7]:
+        - link "Features" [ref=f3e8] [cursor=pointer]:
+          - /url: "#features"
+        - link "So funktioniert's" [ref=f3e9] [cursor=pointer]:
+          - /url: "#how-it-works"
+      - link "Bald verfügbar" [ref=f3e10] [cursor=pointer]:
+        - /url: "#hero"
+  - main [ref=f3e11]:
+    - generic [ref=f3e16]:
+      - heading "Jede Tasse. Perfekt begleitet." [level=1] [ref=f3e17]
+      - paragraph [ref=f3e18]: BrewMind trackt deine Shots live und coacht dich Shot für Shot zum Sweet-Spot — mit smarter Waage oder ganz ohne Hardware.
+      - generic [ref=f3e19]:
+        - img "App Store — Bald verfügbar" [ref=f3e20]:
+          - generic [ref=f3e23]:
+            - generic [ref=f3e24]: Bald im
+            - generic [ref=f3e25]: App Store
+        - link "Features entdecken ↓" [ref=f3e26] [cursor=pointer]:
+          - /url: "#features"
+      - generic [ref=f3e27]: In aktiver Entwicklung
+      - 'img "BrewMind Live-Shot: Gewicht, Zeit, Flow, Druck und Temperatur im Live-Chart" [ref=f3e32]'
+    - generic [ref=f3e34]:
+      - generic [ref=f3e35]:
+        - heading "Alles was du brauchst. Nichts was dich stört." [level=2] [ref=f3e36]
+        - paragraph [ref=f3e37]: Von Live-Daten über KI-Empfehlungen bis zum Geschmacks-Feedback — alles, was zwischen dir und dem perfekten Espresso steht.
+      - generic [ref=f3e38]:
+        - generic [ref=f3e40]:
+          - generic [ref=f3e41]: 🎯
+          - heading "Dein Dial-In-Coach" [level=3] [ref=f3e43]
+          - paragraph [ref=f3e44]: "Nach jedem Shot eine konkrete Empfehlung: Mahle feiner — 8.0 → 7.0. Ein Parameter pro Shot, bis du im Sweet-Spot bist."
+        - generic [ref=f3e46]:
+          - generic [ref=f3e47]: ⚖
+          - heading "Live-Daten per Bluetooth" [level=3] [ref=f3e49]
+          - paragraph [ref=f3e50]: "Verbinde deine Acaia-Waage: Gewicht, Flow, Druck und Temperatur laufen live ins Chart — Stopp auf den Gramm genau."
+        - generic [ref=f3e52]:
+          - generic [ref=f3e53]: 🧭
+          - heading "Geschmack statt Zahlen" [level=3] [ref=f3e55]
+          - paragraph [ref=f3e56]: Sauer? Bitter? Zu stark? Tippe dein Geschmacksurteil auf den Kompass — BrewMind übersetzt es in Brühparameter.
+        - generic [ref=f3e58]:
+          - generic [ref=f3e59]: 📈
+          - heading "Trends & Verlauf" [level=3] [ref=f3e61]
+          - paragraph [ref=f3e62]: "Jeder Shot zahlt ein: 14-Tage-Trend, Shot-Serien und deine Konvergenz Richtung Sweet-Spot auf einen Blick."
+    - generic [ref=f3e64]:
+      - generic [ref=f3e65]:
+        - paragraph [ref=f3e66]: Ein Blick in die App
+        - heading "So fühlt sich BrewMind an." [level=2] [ref=f3e67]
+        - paragraph [ref=f3e68]: Vom ersten Setup bis zum Trend über Wochen — jeder Screen zeigt dir genau, was gerade zählt.
+      - generic [ref=f3e69]:
+        - generic [ref=f3e70]:
+          - img "Coach-Screen mit einem hervorgehobenen Bruehparameter" [ref=f3e73]
+          - paragraph [ref=f3e74]: "Der Coach: ein Parameter pro Shot"
+        - generic [ref=f3e75]:
+          - img "Dial-In-Verlauf der sich dem Sweet-Spot annaehert" [ref=f3e78]
+          - paragraph [ref=f3e79]: Deine Konvergenz zum Sweet-Spot
+        - generic [ref=f3e80]:
+          - img "Geschmackskompass zur Shot-Bewertung" [ref=f3e83]
+          - paragraph [ref=f3e84]: Geschmack per Kompass bewerten
+        - generic [ref=f3e85]:
+          - img "Trend-Chart der letzten Shots ueber zwei Wochen" [ref=f3e88]
+          - paragraph [ref=f3e89]: Trends über 14 Tage
+    - generic [ref=f3e91]:
+      - generic [ref=f3e92]:
+        - heading "So einfach geht's" [level=2] [ref=f3e93]
+        - paragraph [ref=f3e94]: Vom ersten Shot zum perfekten Workflow — in drei Schritten.
+      - generic [ref=f3e95]:
+        - generic [ref=f3e96]:
+          - generic [ref=f3e97]:
+            - generic [ref=f3e98]: "01"
+            - generic [ref=f3e99]: ⚙
+          - heading "Setup anlegen" [level=3] [ref=f3e100]
+          - paragraph [ref=f3e101]: Maschine, Mühle und Bohne einmal anlegen — der Coach kennt dein Equipment und startet mit passenden Werten.
+        - generic [ref=f3e103]:
+          - generic [ref=f3e104]:
+            - generic [ref=f3e105]: "02"
+            - generic [ref=f3e106]: ☕
+          - heading "Shot ziehen" [level=3] [ref=f3e107]
+          - paragraph [ref=f3e108]: Tracke live mit Waage und Sensorik oder trage Werte manuell nach. Gewicht, Zeit und Flow immer im Blick.
+        - generic [ref=f3e110]:
+          - generic [ref=f3e111]:
+            - generic [ref=f3e112]: "03"
+            - generic [ref=f3e113]: 📈
+          - heading "Bewerten & verfeinern" [level=3] [ref=f3e114]
+          - paragraph [ref=f3e115]: Bewerte den Geschmack mit einem Tipp. Der Coach schlägt den nächsten Schritt vor — meistens bist du nach 3–5 Shots im Sweet-Spot.
+  - contentinfo [ref=f3e116]:
+    - generic [ref=f3e118]:
+      - generic [ref=f3e119]:
+        - img "BrewMind" [ref=f3e120]
+        - generic [ref=f3e121]: © 2026 BrewMind. Alle Rechte vorbehalten.
+      - generic [ref=f3e122]:
+        - generic [ref=f3e123]:
+          - link "Impressum" [ref=f3e124] [cursor=pointer]:
+            - /url: /impressum
+          - link "Datenschutz" [ref=f3e125] [cursor=pointer]:
+            - /url: /datenschutz
+          - link "Privacy" [ref=f3e126] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=f3e127] [cursor=pointer]:
+            - /url: /terms
+        - link "GitHub" [ref=f3e128] [cursor=pointer]:
+          - /url: https://github.com/BrewMind
+  - generic [ref=f3e131]:
+    - button [ref=f3e132]
+    - button [ref=f3e138]
+    - button [ref=f3e142]
+    - button [ref=f3e150]

@@ -38,6 +38,8 @@
   --color-text-secondary: #B8B0A8;
   --color-text-muted: #6E6862;
   --color-border: #2A2B32;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-data: 'Geist Mono', ui-monospace, 'SF Mono', monospace;
 }
 
 /* Base styles */
