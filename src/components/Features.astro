@@ -4,54 +4,66 @@ import FeatureCard from './FeatureCard.astro';
 
 <section id="features" class="py-24 px-6">
   <div class="max-w-6xl mx-auto">
-    <!-- Section header -->
-    <div class="text-center mb-16">
-      <h2 class="font-display italic text-3xl sm:text-4xl md:text-5xl mb-4 animate">
-        Alles was du brauchst.
-        <span class="text-gradient">Nichts was dich stört.</span>
+    <div class="max-w-2xl mb-14">
+      <p class="label mb-4 animate">Was drin ist</p>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-balance mb-5 animate">
+        Was die App wirklich macht.
       </h2>
-      <p class="text-text-secondary max-w-xl mx-auto animate">
-        Von Live-Daten über KI-Empfehlungen bis zum Geschmacks-Feedback —
-        alles, was zwischen dir und dem perfekten Espresso steht.
+      <p class="text-ink-2 leading-relaxed animate">
+        Kein Ratgeber, kein Punktesystem, keine Wochenstatistik. BrewMind
+        nimmt auf, was passiert ist, und legt es dorthin, wo du es beim
+        nächsten Mal brauchst.
       </p>
     </div>
 
-    <!-- Feature grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
       <div class="animate stagger-1">
         <FeatureCard
-          icon="&#127919;"
-          title="Dein Dial-In-Coach"
-          description="Nach jedem Shot eine konkrete Empfehlung: Mahle feiner — 8.0 → 7.0. Ein Parameter pro Shot, bis du im Sweet-Spot bist."
-          accentColor="primary"
-        />
+          title="Live über die Waage"
+          description="Bluetooth-Waage koppeln, Tasse drauf, Start beim Pumpenstart. Gewicht und Flow laufen live mit, den ersten Tropfen erkennt die App selbst. Bei Ziel-Yield gibt sie das Stopp-Signal und erfasst den Afterdrip nach."
+        >
+          <svg slot="icon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 17c2.5 0 3-8 5.5-8S11 17 13.5 17s3-11 5.5-11" />
+            <circle cx="21" cy="6" r="1.4" fill="currentColor" stroke="none" />
+          </svg>
+        </FeatureCard>
       </div>
 
       <div class="animate stagger-2">
         <FeatureCard
-          icon="&#9878;"
-          title="Live-Daten per Bluetooth"
-          description="Verbinde deine Acaia-Waage: Gewicht, Flow, Druck und Temperatur laufen live ins Chart — Stopp auf den Gramm genau."
-          accentColor="accent"
-        />
+          title="Ohne Waage genauso"
+          description="Keine zweite Betriebsart, kein gesperrtes Feature: Timer per Tap, Yield und Zeit nachtragen. Bricht die Verbindung mitten im Bezug ab, läuft die Aufnahme als Timer weiter, die schon erfassten Messpunkte bleiben."
+        >
+          <svg slot="icon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="13" r="8" />
+            <path d="M12 9v4.5l3 1.8M9.5 2h5" />
+          </svg>
+        </FeatureCard>
       </div>
 
       <div class="animate stagger-3">
         <FeatureCard
-          icon="&#129517;"
-          title="Geschmack statt Zahlen"
-          description="Sauer? Bitter? Zu stark? Tippe dein Geschmacksurteil auf den Kompass — BrewMind übersetzt es in Brühparameter."
-          accentColor="warning"
-        />
+          title="Einstell-Gedächtnis"
+          description="Das Cockpit zeigt zur aktiven Bohne die zuletzt gefahrene Einstellung: Mahlgrad, Dosis, Ziel-Yield, Temperatur, dazu der Tag nach Röstung. Bohne wechseln heißt: deren Einstellung steht sofort da."
+        >
+          <svg slot="icon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 6.5C4 5 5.2 4 6.8 4H19v16H6.8C5.2 20 4 19 4 17.5z" />
+            <path d="M4 16.5h15M9 4v16" />
+          </svg>
+        </FeatureCard>
       </div>
 
       <div class="animate stagger-4">
         <FeatureCard
-          icon="&#128200;"
-          title="Trends & Verlauf"
-          description="Jeder Shot zahlt ein: 14-Tage-Trend, Shot-Serien und deine Konvergenz Richtung Sweet-Spot auf einen Blick."
-          accentColor="success"
-        />
+          tone="flow"
+          title="Jeder Shot bleibt nachrechenbar"
+          description="Im Detail liegen die Gewichts- und die Flow-Kurve, First Drip, Pumpenstopp, korrigierte Zeit und Peak-Flow. Einzeln oder als Liste exportierbar, als JSON, mit dokumentierten Einheiten und Vorbehalten."
+        >
+          <svg slot="icon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4v15.5h16" />
+            <path d="M7 15.5c2-6 3.5-8 5-8s2.5 3 3.5 3 1.8-2.5 4.5-6.5" />
+          </svg>
+        </FeatureCard>
       </div>
     </div>
   </div>

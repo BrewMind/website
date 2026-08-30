@@ -4,156 +4,118 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout lang="en" title="Terms of Service | BrewMind" description="Terms of Service for the BrewMind app and website.">
+<Layout lang="en" title="Terms of Service | BrewMind" description="Terms of service for the BrewMind app and website.">
   <Header />
-  <main class="pt-24 pb-16 px-6">
+  <main class="pt-28 pb-20 px-6">
     <article class="max-w-3xl mx-auto prose">
       <h1>Terms of Service</h1>
 
       <h2>1. Scope</h2>
       <p>
-        These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of the BrewMind mobile application (&ldquo;App&rdquo;) and the BrewMind website at <a href="https://brewmind.app">brewmind.app</a> (&ldquo;Website&rdquo;), both operated by Tegrovio &mdash; Dominik Palzer, Sterntalerweg 65, 40235 D&uuml;sseldorf, Germany (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;).
+        These Terms of Service (&ldquo;Terms&rdquo;) govern your use of the BrewMind mobile
+        application (&ldquo;App&rdquo;) and the BrewMind website at
+        <a href="https://brewmind.app">brewmind.app</a> (&ldquo;Website&rdquo;), both operated
+        by Tegrovio, Dominik Palzer, Sterntalerweg 65, 40235 D&uuml;sseldorf, Germany
+        (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;).
       </p>
       <p>
-        By installing the App or using the Website you agree to these Terms. If you do not agree, please do not use the App or Website.
-      </p>
-
-      <h2>2. Account Requirement</h2>
-      <p>
-        Use of the App requires the creation of a personal user account with a valid e-mail address and a password. You are responsible for keeping your credentials confidential and for all activities that occur under your account. Please notify us immediately at <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> if you suspect unauthorised access.
-      </p>
-
-      <h2>3. Cloud Sync</h2>
-      <p>
-        When signed in, the App synchronises your brew data (espresso parameters, equipment, feedback) with our cloud infrastructure (Supabase, EU region) to enable backup and cross-device access. This synchronisation is a core function of the App and cannot be disabled while your account is active.
-      </p>
-      <p>
-        All data is stored exclusively in the EU. For details on what is synchronised and how it is protected, please refer to our <a href="/privacy">Privacy Policy</a>.
+        By installing the App or using the Website you agree to these Terms. If you do not
+        agree, please do not use the App or Website.
       </p>
 
-      <h2>4. Beta Status</h2>
+      <h2>2. No account, no server</h2>
       <p>
-        The App is currently provided as <strong>beta software</strong>. This means:
+        The App requires no user account and no registration. It stores your data locally on
+        your device and does not transmit it to us. Accordingly, there is no login to protect,
+        no server-side profile, and nothing for us to restore if your device is lost. Backing
+        up your device is your responsibility.
+      </p>
+      <p>
+        The App can copy a single shot or a selection from your history to the clipboard as
+        JSON. What you do with that export is entirely up to you.
+      </p>
+
+      <h2>3. Beta status</h2>
+      <p>
+        The App is currently provided as <strong>beta software</strong>, distributed through
+        Apple TestFlight. This means:
       </p>
       <ul>
-        <li>Features, functionality, and design may change at any time without prior notice.</li>
-        <li>The App may contain bugs, errors, or interruptions in service.</li>
-        <li>We do not guarantee uninterrupted availability of the App or cloud services.</li>
-        <li>Beta access is provided free of charge and may be discontinued or transitioned to a paid model in the future.</li>
+        <li>Features, functionality and design may change at any time without prior notice.</li>
+        <li>The App may contain bugs, errors or interruptions.</li>
+        <li>A build may expire or be replaced; TestFlight builds have a limited lifetime set by Apple.</li>
+        <li>Beta access is provided free of charge and may be discontinued, or the App may move to a paid model later.</li>
       </ul>
-
-      <h2>5. No Warranty</h2>
       <p>
-        The App and Website are provided <strong>&ldquo;as is&rdquo; and &ldquo;as available&rdquo;</strong> without warranties of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. We do not warrant that the App will be error-free, secure, or continuously available.
-      </p>
-      <p>
-        We are not liable for any loss of data, loss of brew records, or other damages arising from the use of the App, to the extent permitted by applicable law.
+        Distribution through TestFlight is additionally subject to Apple's own terms for that
+        service.
       </p>
 
-      <h2>6. Termination and Account Deletion</h2>
+      <h2>4. No warranty</h2>
       <p>
-        You may stop using the App at any time. You can delete your account directly within the App. Upon account deletion all server-side data associated with your account is permanently and irreversibly erased. See our <a href="/privacy">Privacy Policy</a>, Section&nbsp;12 for details.
+        The App and Website are provided <strong>&ldquo;as is&rdquo; and &ldquo;as
+        available&rdquo;</strong> without warranties of any kind, express or implied, including
+        warranties of merchantability, fitness for a particular purpose or non-infringement. We
+        do not warrant that the App will be error-free or continuously available.
       </p>
       <p>
-        We reserve the right to suspend or terminate accounts that violate these Terms or applicable law.
+        We are not liable for loss of data or brew records, to the extent permitted by
+        applicable law. Because the App keeps everything on your device, a device reset, a lost
+        phone or an uninstall removes your records permanently.
+      </p>
+      <p>
+        The App records and displays what you measured. It does not give brewing advice, and
+        nothing it shows is a recommendation you should follow without your own judgement.
       </p>
 
-      <h2>7. User Obligations</h2>
+      <h2>5. Ending use</h2>
       <p>
-        When using the App and Website you agree not to:
+        You may stop using the App at any time by uninstalling it, which removes its local
+        data. There is no account to close.
       </p>
+
+      <h2>6. Your obligations</h2>
+      <p>When using the App and Website you agree not to:</p>
       <ul>
-        <li>Reverse-engineer, decompile, or disassemble the App or any part thereof.</li>
-        <li>Access or attempt to access other users&rsquo; data.</li>
-        <li>Use the App or Website for any unlawful purpose or in violation of applicable regulations.</li>
-        <li>Attempt to overload, disrupt, or compromise our infrastructure or cloud services.</li>
-        <li>Resell, sublicense, or redistribute access to the App without our express written consent.</li>
+        <li>reverse-engineer, decompile or disassemble the App or any part of it;</li>
+        <li>use the App or Website for any unlawful purpose;</li>
+        <li>attempt to disrupt or compromise the Website or its hosting infrastructure;</li>
+        <li>resell, sublicense or redistribute access to the App without our express written consent.</li>
       </ul>
 
-      <h2>8. Changes to These Terms</h2>
+      <h2>7. Changes to these Terms</h2>
       <p>
-        We may update these Terms from time to time. Material changes will be communicated to users with an active account by e-mail at least 14 days before taking effect. Continued use of the App after that date constitutes acceptance of the revised Terms. The current version is always available at <a href="/terms">brewmind.app/terms</a>.
+        We may update these Terms from time to time. The current version is always available at
+        <a href="/terms">brewmind.app/terms</a>. Material changes affecting beta testers will be
+        communicated by e-mail before they take effect.
       </p>
 
-      <h2>9. Governing Law and Jurisdiction</h2>
+      <h2>8. Governing law and jurisdiction</h2>
       <p>
-        These Terms are governed exclusively by the laws of the Federal Republic of Germany, excluding its conflict-of-law provisions. The United Nations Convention on Contracts for the International Sale of Goods (CISG) does not apply.
+        These Terms are governed exclusively by the laws of the Federal Republic of Germany,
+        excluding its conflict-of-law provisions. The United Nations Convention on Contracts for
+        the International Sale of Goods (CISG) does not apply.
       </p>
       <p>
-        The place of jurisdiction for all disputes arising from or in connection with these Terms is D&uuml;sseldorf, Germany, to the extent permitted by law.
-      </p>
-      <p>
-        If you are a consumer resident in the European Union you may also bring proceedings before the courts of your country of residence.
+        The place of jurisdiction for all disputes arising from or in connection with these
+        Terms is D&uuml;sseldorf, Germany, to the extent permitted by law. If you are a consumer
+        resident in the European Union, you may also bring proceedings before the courts of your
+        country of residence.
       </p>
 
-      <h2>10. Contact</h2>
+      <h2>9. Contact</h2>
       <p>
-        For questions regarding these Terms, please contact us at:<br />
+        For questions regarding these Terms:<br />
         <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>
       </p>
       <p>
-        Tegrovio &mdash; Dominik Palzer<br />
+        Tegrovio, Dominik Palzer<br />
         Sterntalerweg 65<br />
         40235 D&uuml;sseldorf, Germany
       </p>
+
+      <p class="stand">Last updated: August 2026</p>
     </article>
   </main>
   <Footer />
 </Layout>
-
-<style>
-  .prose {
-    line-height: 1.75;
-  }
-  .prose h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: var(--color-text);
-  }
-  .prose h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
-    color: var(--color-text);
-  }
-  .prose h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
-  }
-  .prose p {
-    color: var(--color-text-secondary);
-    margin-bottom: 1rem;
-  }
-  .prose ul {
-    color: var(--color-text-secondary);
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-    list-style-type: disc;
-  }
-  .prose li {
-    margin-bottom: 0.25rem;
-  }
-  .prose a {
-    color: var(--color-primary);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .prose a:hover {
-    color: var(--color-primary-light);
-  }
-  .prose strong {
-    color: var(--color-text);
-  }
-  .prose code {
-    background: var(--color-surface);
-    padding: 0.15rem 0.35rem;
-    border-radius: 4px;
-    font-size: 0.9em;
-    color: var(--color-text-secondary);
-  }
-</style>

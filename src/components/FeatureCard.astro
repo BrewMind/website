@@ -1,50 +1,30 @@
 ---
 interface Props {
-  icon: string;
   title: string;
   description: string;
-  accentColor?: 'primary' | 'accent' | 'success' | 'warning';
+  /**
+   * Bernstein ist die Akzentfarbe der Marke. Blau steht ausschliesslich fuer
+   * die Flow-Serie — dieselbe Zuordnung wie im Shot-Detail der App, damit die
+   * Farbe eine Bedeutung behaelt und nicht zur Dekoration wird.
+   */
+  tone?: 'accent' | 'flow';
 }
 
-const { icon, title, description, accentColor = 'primary' } = Astro.props;
+const { title, description, tone = 'accent' } = Astro.props;
 
-const colorMap = {
-  primary: {
-    bg: 'bg-primary/10',
-    text: 'text-primary',
-    border: 'border-primary/20',
-    borderHover: 'hover:border-primary/40',
-  },
-  accent: {
-    bg: 'bg-accent/10',
-    text: 'text-accent',
-    border: 'border-accent/20',
-    borderHover: 'hover:border-accent/40',
-  },
-  success: {
-    bg: 'bg-success/10',
-    text: 'text-success',
-    border: 'border-success/20',
-    borderHover: 'hover:border-success/40',
-  },
-  warning: {
-    bg: 'bg-warning/10',
-    text: 'text-warning',
-    border: 'border-warning/20',
-    borderHover: 'hover:border-warning/40',
-  },
+const tones = {
+  accent: { icon: 'text-accent', wash: 'bg-accent/10' },
+  flow: { icon: 'text-flow', wash: 'bg-flow/10' },
 };
 
-const colors = colorMap[accentColor];
+const t = tones[tone];
 ---
 
-<div class={`group relative rounded-2xl bg-surface border ${colors.border} p-6 ${colors.borderHover} transition-all duration-300 hover:-translate-y-1`}>
-  <!-- Icon -->
-  <div class={`w-12 h-12 rounded-xl ${colors.bg} flex items-center justify-center mb-4`}>
-    <span class={`text-2xl ${colors.text}`} set:html={icon} />
+<article class="group h-full rounded-2xl bg-surface border border-border p-6 transition-colors duration-300 hover:border-accent/35">
+  <div class={`w-11 h-11 rounded-xl ${t.wash} ${t.icon} flex items-center justify-center mb-5`}>
+    <slot name="icon" />
   </div>
 
-  <!-- Content -->
-  <h3 class="text-lg font-semibold text-text mb-2">{title}</h3>
-  <p class="text-sm text-text-secondary leading-relaxed">{description}</p>
-</div>
+  <h3 class="text-lg font-semibold text-ink mb-2 text-balance">{title}</h3>
+  <p class="text-sm text-ink-2 leading-relaxed">{description}</p>
+</article>

@@ -1,0 +1,46 @@
+---
+/**
+ * Ehrlicher Stand statt Warteliste: die Beta laeuft ueber TestFlight, die
+ * Anmeldung ist eine E-Mail. Kein Formular — die Seite ist statisch und soll
+ * es bleiben, damit sie keine Daten entgegennimmt, die sie nicht braucht.
+ */
+const mailto =
+  'mailto:hello@brewmind.app?subject=' +
+  encodeURIComponent('BrewMind Beta') +
+  '&body=' +
+  encodeURIComponent(
+    'Hallo,\n\nich würde BrewMind gern testen.\n\nMaschine:\nMühle:\nWaage:\n\nViele Grüße\n',
+  );
+---
+
+<section id="beta" class="py-24 px-6">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="label mb-4 animate">Stand heute</p>
+
+    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-balance mb-5 animate">
+      Noch nicht im App Store.
+    </h2>
+
+    <p class="text-lg text-ink-2 leading-relaxed mb-9 max-w-xl mx-auto animate">
+      BrewMind läuft in einer geschlossenen Beta über TestFlight, auf dem
+      iPhone, mit einer Bluetooth-Waage oder ohne. Wenn du einen Siebträger
+      auf dem Tisch hast und Lust, das früh mitzumachen: schreib mir kurz,
+      womit du brühst.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate">
+      <a
+        href={mailto}
+        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors"
+      >
+        Für die Beta melden
+      </a>
+      <a
+        href="/datenschutz"
+        class="text-sm text-ink-3 hover:text-ink-2 transition-colors"
+      >
+        Was mit deinen Daten passiert
+      </a>
+    </div>
+  </div>
+</section>
