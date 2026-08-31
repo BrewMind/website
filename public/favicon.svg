@@ -1,13 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="BrewMind">
-  <!--
-    BrewMind Signet. Zwei Lesarten in einer Form:
-    aus der Ferne eine Kaffeebohne, aus der Naehe die Shot-Kurve
-    (flach in der Praeinfusion, Anstieg, Plateau am Ziel-Yield),
-    die den Zielkreis durchschneidet. Geometrie: docs/design/ICON.md
-  -->
   <mask id="bm-cut">
     <circle cx="50" cy="50" r="36" fill="#fff"/>
     <path d="M10,76 C28,75 34,68 44,55 C54,42 64,28 90,26" fill="none" stroke="#000" stroke-width="12" stroke-linecap="butt"/>
   </mask>
-  <rect width="100" height="100" fill="#E0A458" mask="url(#bm-cut)"/>
+  <rect width="100" height="100" rx="22.3" fill="#181210"/>
+  <rect width="100" height="100" rx="22.3" fill="#E0A458" mask="url(#bm-cut)"/>
 </svg>
