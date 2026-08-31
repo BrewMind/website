@@ -1,9 +1,8 @@
 ---
 import '../styles/global.css';
-import '@fontsource/instrument-serif/400.css';
-import '@fontsource/instrument-serif/400-italic.css';
-import '@fontsource/geist-mono/400.css';
-import '@fontsource/geist-mono/500.css';
+import '@fontsource/calistoga/400.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
 
 interface Props {
   title?: string;
@@ -12,8 +11,8 @@ interface Props {
 }
 
 const {
-  title = 'BrewMind — Jede Tasse. Perfekt begleitet.',
-  description = 'BrewMind ist dein Espresso-Coach: Shots live tracken mit smarter Waage (BLE), Geschmack bewerten und mit KI-Empfehlungen Schritt für Schritt zum Sweet-Spot. Jede Tasse. Perfekt begleitet.',
+  title = 'BrewMind — Espresso einstellen, ohne zu raten',
+  description = 'BrewMind nimmt jeden Espresso-Shot auf: live über die Bluetooth-Waage oder per Timer. Und merkt sich pro Bohne, welche Einstellung funktioniert hat. Alles lokal auf dem Gerät, ohne Account.',
   lang = 'de'
 } = Astro.props;
 
@@ -26,7 +25,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#1A1A1A" />
+    <meta name="theme-color" content="#181210" />
+    <meta name="color-scheme" content="dark" />
     <meta name="description" content={description} />
 
     <!-- Open Graph -->
@@ -44,7 +44,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/logo-mark.svg" />
-    <!-- Self-hosted Inter font (DSGVO-konform, kein Google CDN) -->
+    <!-- Self-hosted Inter (DSGVO-konform, kein Google CDN) -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
 
@@ -53,7 +53,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <body class="min-h-screen overflow-x-hidden">
     <slot />
 
-    <!-- Intersection Observer for scroll animations -->
+    <!-- Intersection Observer fuer die Scroll-Animationen -->
     <script>
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReducedMotion) {

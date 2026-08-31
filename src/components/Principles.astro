@@ -1,0 +1,58 @@
+---
+/**
+ * Die Anti-Ziele aus dem Produkt-Zielbild, offen ausgesprochen. Wer eine
+ * Kaffee-App sucht, hat meistens schon eine deinstalliert — die Liste
+ * dessen, was fehlt, sagt mehr als eine weitere Feature-Aufzählung.
+ */
+const nots = [
+  {
+    title: 'Kein Konto',
+    body: 'Keine Anmeldung, keine E-Mail-Adresse, kein Passwort. Die App startet mit dem ersten Tap.',
+  },
+  {
+    title: 'Keine Cloud',
+    body: 'Shots, Bohnen und Geräte liegen in einer Datenbank auf deinem Telefon. Nichts wird hochgeladen, nichts synchronisiert.',
+  },
+  {
+    title: 'Keine Empfehlungen',
+    body: 'BrewMind sagt dir nicht, wie du mahlen sollst. Es zeigt dir, was du gemacht hast und wie es geschmeckt hat. Die Schlüsse ziehst du.',
+  },
+  {
+    title: 'Keine Serie, kein Punktestand',
+    body: 'Espresso ist kein Tagespensum. Zwei Wochen Pause und die App begrüßt dich wie vorher.',
+  },
+];
+---
+
+<section id="prinzipien" class="py-24 px-6 bg-bg-deep border-y border-border">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16">
+      <div>
+        <p class="label mb-4 animate">Haltung</p>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-balance mb-5 animate">
+          Was BrewMind nicht macht.
+        </h2>
+        <p class="text-ink-2 leading-relaxed animate">
+          Die App ist auf einen Zweck geschnitten: aufnehmen, was du gebrüht
+          hast, und es wiederfinden, wenn dieselbe Bohne wieder dran ist.
+          Alles, was diesen Weg länger macht, fehlt mit Absicht.
+        </p>
+      </div>
+
+      <dl class="grid sm:grid-cols-2 gap-x-8 gap-y-9">
+        {nots.map((item, i) => (
+          <div class={`animate stagger-${(i % 4) + 1}`}>
+            <dt class="flex items-center gap-2.5 text-base font-semibold text-ink mb-2">
+              <svg class="w-4 h-4 shrink-0 text-ink-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+                <circle cx="8" cy="8" r="6.25" />
+                <path d="M4.4 11.6 11.6 4.4" />
+              </svg>
+              {item.title}
+            </dt>
+            <dd class="text-sm text-ink-2 leading-relaxed ml-6.5">{item.body}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>
