@@ -5,7 +5,25 @@
   <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center gap-3 group">
-      <img src="/logo-mark.svg" alt="BrewMind" width="32" height="32" class="w-8 h-8 transition-transform group-hover:scale-110" />
+      <!--
+        Signet inline statt als <img>, damit der Schnitt beim Hover neu
+        gezeichnet werden kann: erst der volle Zielkreis, dann laeuft der Shot
+        hindurch und laesst die Bohne stehen. Ruhezustand ist die fertige Bohne.
+      -->
+      <svg class="w-8 h-8" viewBox="0 0 100 100" width="32" height="32" role="img" aria-label="BrewMind">
+        <mask id="header-mark-cut">
+          <circle cx="50" cy="50" r="36" fill="#fff" />
+          <path
+            class="logo-cut"
+            d="M10,76 C28,75 34,68 44,55 C54,42 64,28 90,26"
+            fill="none"
+            stroke="#000"
+            stroke-width="12"
+            stroke-linecap="butt"
+          />
+        </mask>
+        <rect width="100" height="100" fill="var(--color-accent)" mask="url(#header-mark-cut)" />
+      </svg>
       <span class="text-lg font-semibold text-ink">BrewMind</span>
     </a>
 
@@ -143,3 +161,30 @@
     }
   });
 </script>
+
+<style>
+  /* Pfadlaenge der Kurve: 98,32 — auf 99 aufgerundet. */
+  .logo-cut {
+    stroke-dasharray: 99;
+    stroke-dashoffset: 0;
+  }
+
+  .group:hover .logo-cut {
+    animation: logo-draw 0.9s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+  }
+
+  @keyframes logo-draw {
+    from {
+      stroke-dashoffset: 99;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .group:hover .logo-cut {
+      animation: none;
+    }
+  }
+</style>
