@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+/**
+ * Die Support-URL, die App Store Connect verlangt (Guideline 1.5). Apple
+ * prueft, ob ein Nutzer hier Hilfe findet — eine Landingpage mit
+ * Download-Knopf reicht dafuer nicht, das Impressum ist eine rechtliche
+ * Pflichtangabe und kein Supportweg.
+ *
+ * Die Fragen sind keine erfundenen FAQ: sie stehen in der Reihenfolge, in der
+ * ein Nutzer auf sie stoesst, und jede Antwort beschreibt, was die App
+ * tatsaechlich tut.
+ */
+const mailto =
+  'mailto:hello@brewmind.app?subject=' +
+  encodeURIComponent('BrewMind Support') +
+  '&body=' +
+  encodeURIComponent(
+    'Hallo,\n\nkurz zu meinem Problem:\n\n\n\nGerät (iPhone-Modell, iOS-Version):\nWaage (Marke und Modell, falls verbunden):\n\nViele Grüße\n',
+  );
+---
+
+<Layout
+  title="Support — BrewMind"
+  description="Hilfe zu BrewMind: Waage verbinden, ohne Waage aufnehmen, Daten exportieren, Fehler melden."
+>
+  <Header />
+  <main class="pt-28 pb-20 px-6">
+    <article class="max-w-3xl mx-auto prose">
+      <h1>Support</h1>
+
+      <p>
+        BrewMind zeichnet Espresso-Bezüge auf — über eine Bluetooth-Waage oder
+        von Hand — und merkt sich pro Bohne, welche Einstellung funktioniert
+        hat. Wenn etwas nicht tut, was es soll: schreib mir. Ich lese jede
+        Mail selbst.
+      </p>
+
+      <p>
+        <a href={mailto}>hello@brewmind.app</a>
+      </p>
+
+      <p>
+        Hilfreich für eine schnelle Antwort: iPhone-Modell, iOS-Version und —
+        falls es um die Waage geht — Marke und Modell.
+      </p>
+
+      <h2>Die Waage wird nicht gefunden</h2>
+
+      <p>Der Reihe nach:</p>
+
+      <ul>
+        <li>
+          Waage einschalten und aufs Koppeln warten lassen. Viele Waagen
+          schalten den Funk nach ein paar Minuten Ruhe wieder ab.
+        </li>
+        <li>
+          Bluetooth am iPhone einschalten (Einstellungen &rarr; Bluetooth,
+          nicht nur im Kontrollzentrum — dort ist es nur pausiert).
+        </li>
+        <li>
+          Berechtigung prüfen: Einstellungen &rarr; BrewMind &rarr; Bluetooth.
+          Ohne sie sucht die App gar nicht erst.
+        </li>
+        <li>
+          Waage in die Nähe legen. Zwischen Maschine und Telefon reicht ein
+          Meter, ein Raum weiter nicht mehr zuverlässig.
+        </li>
+        <li>
+          War die Waage schon mit einer anderen App verbunden, hält die den
+          Funk oft fest. Die andere App schließen, notfalls die Waage aus- und
+          wieder einschalten.
+        </li>
+      </ul>
+
+      <h2>Welche Waagen werden erkannt</h2>
+
+      <p>
+        Die App erkennt die Waage am Namen, den sie beim Koppeln ausstrahlt.
+        Eine Markenauswahl gibt es nicht: was gefunden wurde, steht im
+        Koppel-Bildschirm, ein Tipp verbindet.
+      </p>
+
+      <ul>
+        <li>Acaia — Lunar, Pearl, Pyxis, Proch, Cinco</li>
+        <li>Blackcoffee</li>
+        <li>Bookoo — Themis und weitere</li>
+        <li>Decent Espresso</li>
+        <li>DiFluid — Microbalance und Microbalance Ti</li>
+        <li>Eureka — Precisa</li>
+        <li>Felicita — Arc, Parallel</li>
+        <li>Futula / Lefu — LFSmart Scale</li>
+        <li>Hiroia — Jimmy</li>
+        <li>Coffee Skale — Skale und Skale 2</li>
+        <li>Smartchef</li>
+        <li>Timemore — Black Mirror und weitere</li>
+        <li>Varia — AKU und AKU Mini</li>
+      </ul>
+
+      <p>
+        <strong>Ehrlich dazu:</strong> nur die Acaia ist bisher an echter
+        Hardware abgenommen. Die übrigen Protokolle sind gegen offene
+        Referenzimplementierungen gebaut und getestet, aber noch von niemandem
+        an der Waage selbst gegengeprüft. Wenn deine dabei ist und etwas
+        daneben liegt — falsches Gewicht, Tara ohne Wirkung, gar keine Zahlen
+        — ist das genau die Rückmeldung, die weiterhilft. Schreib mir, was die
+        Waage anzeigt und was die App anzeigt.
+      </p>
+
+      <h2>Geht das auch ohne Waage?</h2>
+
+      <p>
+        Ja, vollständig. Der manuelle Weg ist kein Notbehelf: Der Timer läuft
+        per Tipp, Ausgabemenge und Bewertung trägst du nach dem Stoppen ein,
+        und der Shot landet mit allen Auswertungen in der Historie. In der
+        Einrichtung ist die Zeile „Waage“ als <em>optional</em>
+        gekennzeichnet; „Später ergänzen — direkt loslegen“ führt daran vorbei.
+      </p>
+
+      <h2>Die Waage hat mitten im Bezug getrennt</h2>
+
+      <p>
+        Der Timer läuft weiter, und was bis dahin gemessen wurde, bleibt
+        erhalten. Im Abschluss steht dann ein Hinweis, dass die Ausgabemenge
+        von Hand nachzutragen ist — die Kurve endet an der Stelle, an der die
+        Verbindung abriss, und ohne den Nachtrag fehlt dem Shot sein
+        Endgewicht.
+      </p>
+
+      <h2>Die App war während der Aufnahme im Hintergrund</h2>
+
+      <p>
+        Dann endet die Aufnahme an der letzten Sekunde, die tatsächlich
+        gemessen wurde, und sagt es. iOS friert die App im Hintergrund ein;
+        die verlorene Zeit nachträglich zu schätzen wäre geraten, und geratene
+        Zahlen sind in einer Shot-Historie schlimmer als eine kurze Kurve.
+      </p>
+
+      <h2>„Diese App-Version ist älter als deine Daten“</h2>
+
+      <p>
+        Das passiert, wenn auf dem Gerät schon eine neuere BrewMind-Version
+        lief — etwa nach einem Wechsel zurück auf einen älteren TestFlight-Build.
+        Deine Shots sind vollständig vorhanden und werden nicht angefasst;
+        diese Version kann die Datei nur nicht öffnen.
+      </p>
+
+      <p>
+        Installiere wieder die neuere Version, dann ist alles da.
+        <strong>Die App auf keinen Fall löschen</strong> — es gibt keine Cloud
+        und kein Backup, mit der App gehen die Shots.
+      </p>
+
+      <h2>Wie komme ich an meine Daten?</h2>
+
+      <p>
+        In der Historie liegt der Export: Deine Shots als JSON-Datei, mit allen
+        Messpunkten, zum Weiterverarbeiten in Tabelle oder Skript. Die Datei
+        enthält auch ein paar Hinweise dazu, wie die Werte zustande kommen —
+        Peak-Flow ist zum Beispiel taktabhängig und nicht mit dem Wert einer
+        anderen App vergleichbar.
+      </p>
+
+      <h2>Wo liegen meine Daten?</h2>
+
+      <p>
+        Auf dem Gerät, in einer lokalen Datenbank. Kein Konto, keine Cloud,
+        keine Übertragung — die App hat keinen Netzzugriff. Das heißt auch:
+        ein Gerätewechsel nimmt die Shots nicht mit, und ein Löschen der App
+        löscht sie. Details in der{' '}
+        <a href="/datenschutz">Datenschutzerklärung</a>.
+      </p>
+
+      <h2>Einen Fehler melden</h2>
+
+      <p>
+        In der Verwaltung steht unter <strong>Diagnose</strong> eine Liste der
+        zuletzt aufgetretenen technischen Fehler. Wenn du sie beim Melden
+        mitschickst, ist die Ursache meist in Minuten klar statt in Tagen.
+      </p>
+
+      <p>
+        Aus der TestFlight-Beta heraus geht es noch direkter: In TestFlight
+        auf „Feedback senden“ tippen — Screenshot und Notiz landen dann samt
+        Geräte- und Versionsangaben bei mir.
+      </p>
+
+      <p>
+        Sonst einfach eine Mail an{' '}
+        <a href={mailto}>hello@brewmind.app</a>.
+      </p>
+    </article>
+  </main>
+  <Footer />
+</Layout>
