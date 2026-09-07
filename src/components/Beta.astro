@@ -1,16 +1,14 @@
 ---
 /**
- * Ehrlicher Stand statt Warteliste: die Beta laeuft ueber TestFlight, die
- * Anmeldung ist eine E-Mail. Kein Formular — die Seite ist statisch und soll
- * es bleiben, damit sie keine Daten entgegennimmt, die sie nicht braucht.
+ * Die Beta laeuft ueber einen oeffentlichen TestFlight-Link, nicht mehr ueber
+ * eine E-Mail an mich. Jeder Kanal hat einen eigenen Link, damit App Store
+ * Connect zaehlen kann, woher die Tester kommen; dieser hier gehoert der
+ * Website und darf nirgends sonst auftauchen. Liste aller Links:
+ * brewmind-core/socials/beta-links.md
+ *
+ * Kein Formular: die Seite bleibt statisch und nimmt keine Daten entgegen.
  */
-const mailto =
-  'mailto:hello@brewmind.app?subject=' +
-  encodeURIComponent('BrewMind Beta') +
-  '&body=' +
-  encodeURIComponent(
-    'Hallo,\n\nich würde BrewMind gern testen.\n\nMaschine:\nMühle:\nWaage:\n\nViele Grüße\n',
-  );
+const testflight = 'https://testflight.apple.com/join/9VptC31s';
 ---
 
 <section id="beta" class="py-24 px-6">
@@ -22,18 +20,19 @@ const mailto =
     </h2>
 
     <p class="text-lg text-ink-2 leading-relaxed mb-9 max-w-xl mx-auto animate">
-      BrewMind läuft in einer geschlossenen Beta über TestFlight, auf dem
-      iPhone, mit einer Bluetooth-Waage oder ohne. Wenn du einen Siebträger
-      auf dem Tisch hast und Lust, das früh mitzumachen: schreib mir kurz,
-      womit du brühst.
+      BrewMind läuft als offene Beta über TestFlight, auf dem iPhone, mit
+      einer Bluetooth-Waage oder ohne. Du brauchst Apples TestFlight-App,
+      danach bist du direkt drin. Keine Warteliste, keine Anmeldung bei mir.
     </p>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate">
       <a
-        href={mailto}
+        href={testflight}
+        target="_blank"
+        rel="noopener"
         class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors"
       >
-        Für die Beta melden
+        Beta über TestFlight öffnen
       </a>
       <a
         href="/datenschutz"
