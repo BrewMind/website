@@ -18,7 +18,7 @@ const mailto =
   encodeURIComponent('BrewMind Support') +
   '&body=' +
   encodeURIComponent(
-    'Hallo,\n\nkurz zu meinem Problem:\n\n\n\nGerät (iPhone-Modell, iOS-Version):\nWaage (Marke und Modell, falls verbunden):\n\nViele Grüße\n',
+    'Hallo,\n\nkurz zu meinem Problem:\n\n\n\nGerät (iPhone-Modell, iOS-Version):\nWaage (Marke und Modell, falls verbunden):\nDiagnose (in der Verwaltung „Diagnose kopieren“, hier einfügen):\n\n\nViele Grüße\n',
   );
 ---
 
@@ -32,9 +32,10 @@ const mailto =
       <h1>Support</h1>
 
       <p>
-        BrewMind zeichnet Espresso-Bezüge auf — über eine Bluetooth-Waage oder
-        von Hand — und merkt sich pro Bohne, welche Einstellung funktioniert
-        hat. Wenn etwas nicht tut, was es soll: schreib mir. Ich lese jede
+        BrewMind zeichnet Espresso-Bezüge auf, über eine Bluetooth-Waage oder
+        von Hand, merkt sich je Bohne und Getränk, welche Einstellung
+        funktioniert hat, und schlägt vor dem nächsten Shot vor, was du
+        änderst. Wenn etwas nicht tut, was es soll: schreib mir. Ich lese jede
         Mail selbst.
       </p>
 
@@ -104,9 +105,26 @@ const mailto =
         Hardware abgenommen. Die übrigen Protokolle sind gegen offene
         Referenzimplementierungen gebaut und getestet, aber noch von niemandem
         an der Waage selbst gegengeprüft. Wenn deine dabei ist und etwas
-        daneben liegt — falsches Gewicht, Tara ohne Wirkung, gar keine Zahlen
-        — ist das genau die Rückmeldung, die weiterhilft. Schreib mir, was die
+        daneben liegt (falsches Gewicht, ein Live-Wert, der nicht folgt, gar
+        keine Zahlen), ist das genau die Rückmeldung, die weiterhilft. Schreib mir, was die
         Waage anzeigt und was die App anzeigt.
+      </p>
+
+      <h2>Wo ist der Tara-Knopf?</h2>
+
+      <p>
+        In der App gibt es keinen mehr. Tarieren passiert an der Waage mit
+        ihrer eigenen Taste, die App übernimmt nur den Wert. Einwiegen geht
+        so: Siebträger auf die Waage, an der Waage tarieren, Kaffee rein, dann
+        zeigt der Knopf unter den Steppern den Live-Wert, etwa
+        „18,2 g übernehmen“, und ein Tap setzt ihn als Dosis. Vor dem Bezug
+        dasselbe mit der Tasse: an der Waage tarieren, dann Start.
+      </p>
+
+      <p>
+        Dieser Weg lief bisher nur mit der simulierten Waage, jede echte
+        Waage ist ein Erstbeleg. Wenn der Wert nicht folgt oder ins Minus
+        springt: schreib mir, mit Marke und Modell.
       </p>
 
       <h2>Geht das auch ohne Waage?</h2>
@@ -133,7 +151,8 @@ const mailto =
 
       <p>
         Dann endet die Aufnahme an der letzten Sekunde, die tatsächlich
-        gemessen wurde, und sagt es. iOS friert die App im Hintergrund ein;
+        gemessen wurde, und sagt es; Zeit und Yield trägst du danach unten
+        nach. iOS friert die App im Hintergrund ein;
         die verlorene Zeit nachträglich zu schätzen wäre geraten, und geratene
         Zahlen sind in einer Shot-Historie schlimmer als eine kurze Kurve.
       </p>
@@ -156,11 +175,14 @@ const mailto =
       <h2>Wie komme ich an meine Daten?</h2>
 
       <p>
-        In der Historie liegt der Export: Deine Shots als JSON-Datei, mit allen
-        Messpunkten, zum Weiterverarbeiten in Tabelle oder Skript. Die Datei
-        enthält auch ein paar Hinweise dazu, wie die Werte zustande kommen —
-        Peak-Flow ist zum Beispiel taktabhängig und nicht mit dem Wert einer
-        anderen App vergleichbar.
+        In der Historie liegt der Export: „Als JSON kopieren“ legt deine
+        Shots mit ihren Kennzahlen als JSON in die Zwischenablage, im
+        Shot-Detail kopiert „Shot als JSON kopieren“ den einzelnen Shot mit
+        allen Messpunkten. Von dort geht es in Notizen, Mail, Tabelle oder
+        Skript. Der Text enthält auch ein paar Hinweise dazu, wie die Werte
+        zustande kommen: Der Flow wurde in älteren Shots nach einem anderen
+        Verfahren gerechnet als in neueren, und der ältere Wert hängt am
+        Sendetakt der Waage.
       </p>
 
       <h2>Wo liegen meine Daten?</h2>
@@ -176,9 +198,11 @@ const mailto =
       <h2>Einen Fehler melden</h2>
 
       <p>
-        In der Verwaltung steht unter <strong>Diagnose</strong> eine Liste der
-        zuletzt aufgetretenen technischen Fehler. Wenn du sie beim Melden
-        mitschickst, ist die Ursache meist in Minuten klar statt in Tagen.
+        In der Verwaltung steht unter <strong>Diagnose</strong> der Knopf
+        „Diagnose kopieren“: Er legt App- und Systemversion, die gekoppelten
+        Waagen und die zehn neuesten technischen Fehler samt Stacktrace in
+        die Zwischenablage. In die Mail eingefügt, ist die Ursache meist in
+        Minuten klar statt in Tagen.
       </p>
 
       <p>

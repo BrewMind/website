@@ -1,4 +1,5 @@
 ---
+import { TESTFLIGHT_URL } from '../data/links';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-[60] backdrop-blur-md bg-bg/80 border-b border-border">
@@ -35,8 +36,8 @@
     </div>
 
     <!-- CTA -->
-    <a href="/#beta" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium hover:bg-accent/20 transition-colors">
-      Beta
+    <a href={TESTFLIGHT_URL} target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium hover:bg-accent/20 transition-colors">
+      Beta testen
     </a>
 
     <!-- Hamburger Button (mobile only) -->
@@ -73,7 +74,7 @@
     <a href="/#features" class="text-2xl font-semibold text-ink mobile-nav-link">Funktionen</a>
     <a href="/#how-it-works" class="text-2xl font-semibold text-ink mobile-nav-link">Ablauf</a>
     <a href="/#app" class="text-2xl font-semibold text-ink mobile-nav-link">Screens</a>
-    <a href="/#beta" class="text-2xl font-semibold text-accent mobile-nav-link">Beta</a>
+    <a href={TESTFLIGHT_URL} target="_blank" rel="noopener" class="text-2xl font-semibold text-accent mobile-nav-link">Beta testen</a>
   </nav>
 </div>
 

@@ -10,17 +10,30 @@ import FeatureCard from './FeatureCard.astro';
         Was die App wirklich macht.
       </h2>
       <p class="text-ink-2 leading-relaxed animate">
-        Kein Ratgeber, kein Punktesystem, keine Wochenstatistik. BrewMind
-        nimmt auf, was passiert ist, und legt es dorthin, wo du es beim
-        nächsten Mal brauchst.
+        Kein Lehrbuch, kein Punktesystem, keine Wochenstatistik. BrewMind
+        nimmt auf, was passiert ist, sagt dir vor dem nächsten Shot, was du
+        änderst, und hält sich sonst raus.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       <div class="animate stagger-1">
         <FeatureCard
+          title="Vorschlag vor dem Shot"
+          description="Über den Steppern steht, was du diesmal änderst: ein Hebel, ein Satz, ein Knopf zum Übernehmen. Gerechnet aus deinen letzten Shots derselben Bohne, bei gerasterter Mühle in ganzen Rasten. Nichts davon wird gespeichert, entschieden wird an der Mühle."
+        >
+          <svg slot="icon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 8h7M17 8h3M4 16h2M10 16h10" />
+            <circle cx="14" cy="8" r="2.2" />
+            <circle cx="8" cy="16" r="2.2" />
+          </svg>
+        </FeatureCard>
+      </div>
+
+      <div class="animate stagger-2">
+        <FeatureCard
           title="Live über die Waage"
-          description="Bluetooth-Waage koppeln, Tasse drauf, Start beim Pumpenstart. Gewicht und Flow laufen live mit, den ersten Tropfen erkennt die App selbst. Bei Ziel-Yield gibt sie das Stopp-Signal und erfasst den Afterdrip nach."
+          description="Bluetooth-Waage koppeln, Dosis einwiegen: Tara an der Waage, ein Tap übernimmt den Wert. Tasse drauf, Start beim Pumpenstart. Gewicht und Flow laufen live mit, den ersten Tropfen erkennt die App selbst. Bei Ziel-Yield gibt sie das Stopp-Signal und erfasst den Afterdrip nach."
         >
           <svg slot="icon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M3 17c2.5 0 3-8 5.5-8S11 17 13.5 17s3-11 5.5-11" />
@@ -29,10 +42,10 @@ import FeatureCard from './FeatureCard.astro';
         </FeatureCard>
       </div>
 
-      <div class="animate stagger-2">
+      <div class="animate stagger-3">
         <FeatureCard
           title="Ohne Waage genauso"
-          description="Keine zweite Betriebsart, kein gesperrtes Feature: Timer per Tap, Yield und Zeit nachtragen. Bricht die Verbindung mitten im Bezug ab, läuft die Aufnahme als Timer weiter, die schon erfassten Messpunkte bleiben."
+          description="Keine zweite Betriebsart: Timer per Tap, Yield und Zeit nachtragen, derselbe Ablauf. Der Vorschlag nennt den Stopp dann nach der Uhr statt in Gramm. Bricht die Verbindung mitten im Bezug ab, läuft die Aufnahme als Timer weiter, die schon erfassten Messpunkte bleiben."
         >
           <svg slot="icon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="13" r="8" />
@@ -41,10 +54,22 @@ import FeatureCard from './FeatureCard.astro';
         </FeatureCard>
       </div>
 
-      <div class="animate stagger-3">
+      <div class="animate stagger-4">
+        <FeatureCard
+          title="Geschmack in zwei Achsen"
+          description="Nach dem Shot zwei Fragen statt einer: sauer, passt oder bitter, und dünn, passt oder zu stark. Dazu perfekt oder weiß nicht, ein Fragezeichen erklärt, woran man es erkennt. Eine Zeile fasst Zeit und Geschmack zusammen, ab dem zweiten Shot mit dem Vergleich zum Vorgänger."
+        >
+          <svg slot="icon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 4v16M4 12h16" />
+            <circle cx="15.5" cy="8.5" r="1.8" />
+          </svg>
+        </FeatureCard>
+      </div>
+
+      <div class="animate stagger-1">
         <FeatureCard
           title="Einstell-Gedächtnis"
-          description="Das Cockpit zeigt zur aktiven Bohne die zuletzt gefahrene Einstellung: Mahlgrad, Dosis, Ziel-Yield, Temperatur, dazu der Tag nach Röstung. Bohne wechseln heißt: deren Einstellung steht sofort da."
+          description="Das Cockpit zeigt zur aktiven Bohne die letzte gute Einstellung: Mahlgrad, Dosis, Ziel-Yield, Temperatur, dazu Getränk und Tag nach Röstung. Eine neue Bohne startet nicht bei null: Dosis und Ratio kommen vom Packungsrezept oder deinem letzten guten Shot, der Mahlgrad nur von derselben Rösterei."
         >
           <svg slot="icon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 6.5C4 5 5.2 4 6.8 4H19v16H6.8C5.2 20 4 19 4 17.5z" />
@@ -53,7 +78,7 @@ import FeatureCard from './FeatureCard.astro';
         </FeatureCard>
       </div>
 
-      <div class="animate stagger-4">
+      <div class="animate stagger-2">
         <FeatureCard
           tone="flow"
           title="Jeder Shot bleibt nachrechenbar"

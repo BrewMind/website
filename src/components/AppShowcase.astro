@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import vorschlag from '../assets/screens/vorschlag.png';
 import shotLive from '../assets/screens/shot-live.png';
 import shotAbschluss from '../assets/screens/shot-abschluss.png';
 import history from '../assets/screens/history.png';
@@ -7,14 +8,19 @@ import shotDetail from '../assets/screens/shot-detail.png';
 
 const shots = [
   {
+    src: vorschlag,
+    alt: 'Vorbereitungs-Screen mit dem Vorschlag für diesen Shot über den Steppern für Dosis, Mahlgrad, Temperatur und Ziel-Yield',
+    caption: 'Vorbereitung: der Vorschlag für diesen Shot, ein Hebel, ein Satz',
+  },
+  {
     src: shotLive,
     alt: 'Aufnahme-Screen mit Zeit ab Pumpenstart, Live-Gewicht und Fortschritt zum Ziel-Yield',
     caption: 'Aufnahme: Zeit ab Pumpenstart, Gewicht, Ziel-Fortschritt',
   },
   {
     src: shotAbschluss,
-    alt: 'Abschluss-Screen mit den Kennzahlen des Shots und dem Delta zum Vorgänger',
-    caption: 'Abschluss: Kennzahlen und Delta zum letzten Shot',
+    alt: 'Abschluss-Screen mit den Kennzahlen des Shots, dem Geschmack in zwei Achsen und dem Vergleich zum Vorgänger',
+    caption: 'Abschluss: Kennzahlen, Geschmack in zwei Achsen, Vergleich zum Vorgänger',
   },
   {
     src: history,
@@ -43,12 +49,12 @@ const shots = [
     </div>
 
     <!-- Mobil als Snap-Reihe, ab Desktop als Raster -->
-    <div class="flex md:grid md:grid-cols-4 gap-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
+    <div class="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
       {shots.map((shot, i) => (
-        <figure class={`animate stagger-${i + 1} shrink-0 w-[70vw] sm:w-[45vw] md:w-auto snap-center m-0`}>
+        <figure class={`animate stagger-${(i % 4) + 1} shrink-0 w-[70vw] sm:w-[45vw] md:w-auto snap-center m-0`}>
           <div class="rounded-2xl border border-border overflow-hidden bg-bg-deep">
-            <!-- Seitenverhaeltnis der Aufnahme (1206x2622): der Screen bleibt ganz. -->
-            <div class="relative aspect-[1206/2622] overflow-hidden">
+            <!-- Seitenverhaeltnis der Aufnahme (1320x2868, iPhone 17 Pro Max): der Screen bleibt ganz. -->
+            <div class="relative aspect-[1320/2868] overflow-hidden">
               <Image
                 src={shot.src}
                 alt={shot.alt}
