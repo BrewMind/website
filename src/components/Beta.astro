@@ -1,14 +1,12 @@
 ---
 /**
  * Die Beta laeuft ueber einen oeffentlichen TestFlight-Link, nicht mehr ueber
- * eine E-Mail an mich. Jeder Kanal hat einen eigenen Link, damit App Store
- * Connect zaehlen kann, woher die Tester kommen; dieser hier gehoert der
- * Website und darf nirgends sonst auftauchen. Liste aller Links:
- * brewmind-core/socials/beta-links.md
+ * eine E-Mail an mich. Der Link liegt in `src/data/links.ts`, weil ihn auch
+ * Hero und Header zeigen.
  *
  * Kein Formular: die Seite bleibt statisch und nimmt keine Daten entgegen.
  */
-const testflight = 'https://testflight.apple.com/join/9VptC31s';
+import { TESTFLIGHT_URL } from '../data/links';
 ---
 
 <section id="beta" class="py-24 px-6">
@@ -27,7 +25,7 @@ const testflight = 'https://testflight.apple.com/join/9VptC31s';
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate">
       <a
-        href={testflight}
+        href={TESTFLIGHT_URL}
         target="_blank"
         rel="noopener"
         class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors"
