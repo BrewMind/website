@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Datenschutz — BrewMind" description="Datenschutzerkl&auml;rung von BrewMind: Lokale Speicherung auf dem Ger&auml;t, Cloud-Funktionen nur mit Ihrer Einwilligung.">
+<Layout title="Datenschutz | BrewMind" description="Datenschutzerkl&auml;rung von BrewMind: Lokale Speicherung auf dem Ger&auml;t, Cloud-Funktionen nur mit Ihrer Einwilligung.">
   <Header />
   <main class="pt-28 pb-20 px-6">
     <article class="max-w-3xl mx-auto prose">
@@ -56,7 +56,7 @@ import Footer from '../components/Footer.astro';
       <p>
         Es gibt keine Werbekennung (IDFA), kein Werbe-Tracking, keine Analyse-Dienste
         Dritter, keinen Standortzugriff, keinen Zugriff auf Kontakte, Kamera oder Fotos.
-        Crash- und Fehlerdaten gehen nur dann an unseren Auftragsverarbeiter, wenn Sie den
+        Crash- und Fehlerdaten gehen nur dann an meinen Auftragsverarbeiter, wenn Sie den
         Schalter Fehlerberichte einschalten (Abschnitt&nbsp;4).
       </p>
       <p>
@@ -119,10 +119,11 @@ import Footer from '../components/Footer.astro';
         Unabh&auml;ngig von Ihrer Einwilligung &uuml;bertr&auml;gt jede Netzverbindung
         technisch bedingt eine IP-Adresse. Sie steht in den Anmelde-Protokollen meines
         Auftragsverarbeiters, nicht in Ihren Zubereitungsdaten; die allgemeinen
-        Zugriffsprotokolle des Auftragsverarbeiters selbst folgen dessen eigener, kurzer
-        Aufbewahrungsfrist. Rechtsgrundlage daf&uuml;r ist nicht Ihre Einwilligung, sondern
-        das berechtigte Interesse am sicheren Betrieb des Dienstes (Art. 6 Abs. 1 lit. f
-        DSGVO).
+        Zugriffsprotokolle des Auftragsverarbeiters selbst folgen dessen eigenen Fristen
+        f&uuml;r Betriebs- und Sicherheitsprotokolle. Supabase nennt daf&uuml;r auf dem
+        verwendeten Free-Plan eine Frist von einem Tag, danach werden sie gel&ouml;scht.
+        Rechtsgrundlage daf&uuml;r ist nicht Ihre Einwilligung, sondern das berechtigte
+        Interesse am sicheren Betrieb des Dienstes (Art. 6 Abs. 1 lit. f DSGVO).
       </p>
 
       <h3>Kurz-ID</h3>
@@ -149,53 +150,52 @@ import Footer from '../components/Footer.astro';
         der Auftragsverarbeitungsvertrag unter
         <a href="https://supabase.com/legal/customer-resources/data-processing-addendum" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/data-processing-addendum</a>,
         die Transfer Impact Assessment von Supabase unter
-        <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>.
+        <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>
+        (Fassung, die Supabase zum Zeitpunkt dieser Erkl&auml;rung bereitstellt; ich pr&uuml;fe
+        die verlinkten Dokumente bei jeder &Auml;nderung dieser Erkl&auml;rung).
       </p>
 
       <h3>Speicherdauer</h3>
-      <p>
-        Zubereitungsdaten werden 12 Monate ab Eingang der jeweiligen Zubereitung
-        gespeichert, Fehlerberichte 90 Tage. Die Angabe, mit welcher Waage eine
-        Zubereitung gemessen wurde, hat keine eigene Frist: Sie wird gemeinsam mit dieser
-        Zubereitung gel&ouml;scht, und ist die Zubereitung nicht mehr gespeichert, 12
-        Monate nach ihrem eigenen Eingang. Stammdaten zu Bohne, Maschine, M&uuml;hle und
-        Waage stehen so lange, wie die dazugeh&ouml;rige Installation bei mir gef&uuml;hrt
-        wird, und werden gemeinsam mit ihr gel&ouml;scht. Gef&uuml;hrt wird eine
-        Installation, solange noch mindestens eine Zubereitung, eine
-        Waagen-Verkn&uuml;pfung oder ein Fehlerbericht von ihr gespeichert ist, in jedem
-        Fall aber bis 12 Monate nach dem letzten dieser Vorg&auml;nge: Anmeldung der
-        Installation, ihr Zur&uuml;ckholen (etwa auf einem neuen Ger&auml;t), oder das
-        Erteilen oder der Widerruf einer Einwilligung. Das Hochladen von Zubereitungen
-        oder Fehlerberichten z&auml;hlt dabei nicht als eigener Vorgang. Trifft beides
-        nicht mehr zu, wird die Installation mit ihren Stammdaten beim n&auml;chsten
-        t&auml;glichen L&ouml;schlauf entfernt. Der Nachweis &uuml;ber Ihre Einwilligung
-        bleibt, solange Ihre Installation gef&uuml;hrt wird, danach noch bis zu drei Jahre
-        nach dem letzten Einwilligungsereignis. IP-Adressen in meinen Anmelde-Protokollen
-        l&ouml;sche ich nach 30 Tagen.
-      </p>
+      <ul>
+        <li><strong>Zubereitungen:</strong> 12 Monate ab Eingang der jeweiligen Zubereitung.</li>
+        <li><strong>Fehlerberichte:</strong> 90 Tage ab Eingang.</li>
+        <li><strong>Waagen-Angabe zu einer Zubereitung:</strong> mit der Zubereitung gel&ouml;scht; fehlt sie, 12 Monate ab eigenem Eingang.</li>
+        <li><strong>Bohnen, Maschinen, M&uuml;hlen, Waagen:</strong> solange die dazugeh&ouml;rige Installation bei mir gef&uuml;hrt wird.</li>
+        <li><strong>Installation:</strong> solange von ihr noch mindestens eine Zubereitung, eine Waagen-Verkn&uuml;pfung oder ein Fehlerbericht gespeichert ist, in jedem Fall aber bis 12 Monate nach dem letzten dieser Vorg&auml;nge: Anmeldung der Installation, ihr Zur&uuml;ckholen (etwa auf einem neuen Ger&auml;t), oder das Erteilen oder der Widerruf einer Einwilligung (das Hochladen von Zubereitungen oder Fehlerberichten z&auml;hlt dabei nicht als eigener Vorgang). Trifft beides nicht mehr zu, wird die Installation mit ihren Stammdaten beim n&auml;chsten t&auml;glichen L&ouml;schlauf entfernt.</li>
+        <li><strong>Nachweis Ihrer Einwilligung:</strong> solange Ihre Installation gef&uuml;hrt wird, danach noch bis zu drei Jahre nach dem letzten Einwilligungsereignis.</li>
+        <li><strong>IP-Adressen in meinen Anmelde-Protokollen:</strong> h&ouml;chstens 30 Tage.</li>
+      </ul>
 
       <h3>Widerruf</h3>
       <p>
         Sie widerrufen jederzeit &uuml;ber die beiden Schalter in der Verwaltung der App,
-        einzeln je Zweck. Der Widerruf l&ouml;scht die bereits hochgeladenen Daten des
-        jeweiligen Zwecks auf dem Server; lokal auf Ihrem Ger&auml;t bleibt alles
-        erhalten. Erreicht die App den Server im Moment des Widerrufs nicht, holt sie die
-        L&ouml;schung nach, sobald sie wieder online ist, und zeigt sie bis dahin als
-        ausstehend an. Nach einer Neuinstallation erh&auml;lt die App eine neue Kennung;
-        Daten zu einer alten Kennung l&ouml;sche ich auf Anfrage mit deren Kurz-ID, ebenso
-        wenn die App ihre bisherige Kennung nicht mehr zur&uuml;ckholen kann.
+        einzeln je Zweck, mit Wirkung f&uuml;r die Zukunft; die Rechtm&auml;&szlig;igkeit
+        der bis zum Widerruf erfolgten Verarbeitung bleibt unber&uuml;hrt. Der Widerruf
+        l&ouml;scht die bereits hochgeladenen Daten des jeweiligen Zwecks auf dem Server,
+        bei der Daten-Spende also Zubereitungen samt Bohnen, Maschinen, M&uuml;hlen und
+        Waagen-Angaben; sind beide Schalter aus, wird auch die Installation gel&ouml;scht.
+        Erhalten bleiben der Nachweis der Einwilligung und des Widerrufs (siehe
+        Speicherdauer) sowie die IP-Adresse in den Anmelde-Protokollen f&uuml;r
+        h&ouml;chstens 30 Tage; lokal auf Ihrem Ger&auml;t bleibt alles erhalten. Erreicht
+        die App den Server im Moment des Widerrufs nicht, holt sie die L&ouml;schung nach,
+        sobald sie wieder online ist, und zeigt sie bis dahin als ausstehend an. Nach
+        einer Neuinstallation erh&auml;lt die App eine neue Kennung; Daten zu einer alten
+        Kennung l&ouml;sche ich auf Anfrage mit deren Kurz-ID, ebenso wenn die App ihre
+        bisherige Kennung nicht mehr zur&uuml;ckholen kann.
       </p>
 
       <h3>Ihre Rechte zur Daten-Spende</h3>
       <p>
         F&uuml;r Auskunft und L&ouml;schung zu Ihrer Installation wenden Sie sich mit
-        Ihrer Kurz-ID an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>; f&uuml;r
-        eine Auskunft bitte ich zus&auml;tzlich um eine zweite Angabe, die zu Ihren Daten
-        passt (etwa das ungef&auml;hre Datum eines Shots oder Marke und Modell Ihrer
-        Waage), damit ich Daten nicht an die falsche Person herausgebe. Ohne Kurz-ID kann
-        ich eine Anfrage in der Regel nicht zuordnen (Art. 11 Abs. 2 DSGVO) und bearbeite
-        sie dann als begr&uuml;ndete Negativauskunft. Die &uuml;brigen Rechte aus
-        Abschnitt&nbsp;8 gelten unver&auml;ndert.
+        Ihrer Kurz-ID an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>. Weil
+        die Kurz-ID auch im Diagnose-Bericht steht und weitergegeben worden sein kann,
+        bitte ich in beiden F&auml;llen um eine zweite Angabe, die zu Ihren Daten passt
+        (etwa das ungef&auml;hre Datum eines Shots, den Namen einer gespeicherten Bohne
+        oder Marke und Modell Ihrer Waage), damit ich Daten nicht an die falsche Person
+        herausgebe oder auf fremde Anfrage l&ouml;sche (Art. 12 Abs. 6 DSGVO). Ohne
+        Kurz-ID kann ich eine Anfrage in der Regel nicht zuordnen (Art. 11 Abs. 2 DSGVO)
+        und bearbeite sie dann als begr&uuml;ndete Negativauskunft. Die &uuml;brigen
+        Rechte aus Abschnitt&nbsp;8 gelten unver&auml;ndert.
       </p>
 
       <h3>Freiwilligkeit und Auswertungen</h3>
@@ -205,15 +205,22 @@ import Footer from '../components/Footer.astro';
         Entscheidungsfindung im Sinne von Art. 22 DSGVO statt. Auswertungen f&uuml;r
         R&ouml;stereien gebe ich erst heraus, wenn mindestens f&uuml;nf unterschiedliche
         Installationen zu dem jeweiligen Ergebnis beigetragen haben; ein Ergebnis mit
-        weniger Beitragenden gebe ich nicht weiter.
+        weniger Beitragenden gebe ich nicht weiter. Die App richtet sich an Erwachsene.
+        Die Daten-Spende und die Fehlerberichte setzen voraus, dass Sie mindestens 16
+        Jahre alt sind.
       </p>
 
       <h3>Sitzungsdaten auf dem Ger&auml;t</h3>
       <p>
-        Erst mit einer der beiden Einwilligungen legt die App eine anonyme Sitzung an und
+        Erst mit einer der beiden Einwilligungen meldet die App die Installation ohne
+        Konto bei Supabase an (&bdquo;anonymous sign-in&ldquo; von Supabase; die Sitzung
+        ist pseudonym, nicht anonym, weil sie eine Installationskennung tr&auml;gt) und
         speichert Anmeldetoken, Installationskennung und ein Geheimnis im gesch&uuml;tzten
-        App-Speicher Ihres Ger&auml;ts (&sect;&nbsp;25 Abs. 1 TDDDG). Ohne Einwilligung
-        entsteht keine solche Sitzung.
+        App-Speicher Ihres Ger&auml;ts. Dieses Speichern ist unbedingt erforderlich, um
+        den von Ihnen mit dem Schalter ausdr&uuml;cklich gew&uuml;nschten Upload
+        auszuf&uuml;hren (&sect;&nbsp;25 Abs. 2 Nr. 2 TDDDG); ohne Einwilligung entsteht
+        keine solche Sitzung, und mit dem Widerruf beider Zwecke werden diese Daten auf
+        dem Ger&auml;t nicht weiter genutzt.
       </p>
 
       <h2>5. Teilnahme an der Beta (TestFlight)</h2>
@@ -306,9 +313,19 @@ import Footer from '../components/Footer.astro';
         <li>die L&ouml;schung Ihrer Daten zu verlangen (Art. 17 DSGVO)</li>
         <li>die Einschr&auml;nkung der Verarbeitung zu verlangen (Art. 18 DSGVO)</li>
         <li>Daten&uuml;bertragbarkeit zu verlangen (Art. 20 DSGVO)</li>
-        <li>der Verarbeitung zu widersprechen (Art. 21 DSGVO)</li>
+        <li>Ihre Einwilligung zur Daten-Spende und zu Fehlerberichten jederzeit zu
+          widerrufen (Art. 7 Abs. 3 DSGVO), &uuml;ber die Schalter in der App</li>
+        <li>der Verarbeitung auf Grundlage berechtigter Interessen aus Gr&uuml;nden Ihrer
+          besonderen Situation zu widersprechen (Art. 21 DSGVO)</li>
         <li>sich bei einer Aufsichtsbeh&ouml;rde zu beschweren (Art. 77 DSGVO)</li>
       </ul>
+      <p>
+        <strong>Widerspruchsrecht:</strong> Soweit ich Daten auf Grundlage von Art. 6 Abs. 1
+        lit. f DSGVO verarbeite (IP-Adressen in Anmelde-Protokollen, Missbrauchsabwehr),
+        k&ouml;nnen Sie aus Gr&uuml;nden, die sich aus Ihrer besonderen Situation ergeben,
+        jederzeit Widerspruch einlegen. Ich verarbeite die Daten dann nicht mehr, es sei
+        denn, ich kann zwingende schutzw&uuml;rdige Gr&uuml;nde nachweisen.
+      </p>
       <p>
         Wenden Sie sich dazu an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>.
         F&uuml;r Anfragen zur Daten-Spende und zu Fehlerberichten nennen Sie bitte Ihre

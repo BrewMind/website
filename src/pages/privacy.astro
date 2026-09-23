@@ -59,7 +59,7 @@ import Footer from '../components/Footer.astro';
       <p>
         There is no advertising identifier (IDFA), no ad tracking, no third-party analytics,
         no location access, and no access to contacts, camera or photos. Crash and error data
-        only reaches our processor if you turn on the Error Reports switch (section&nbsp;4).
+        only reaches my processor if you turn on the Error Reports switch (section&nbsp;4).
       </p>
       <p>
         <strong>Deletion:</strong> Individual shots can be deleted in the app. Uninstalling the
@@ -116,9 +116,11 @@ import Footer from '../components/Footer.astro';
       <p>
         Regardless of your consent, every network connection technically transmits an IP
         address. It is recorded in my processor's sign-in logs, not in your shot data; the
-        processor's own general access logs follow its own, short retention period. The
-        legal basis for this is not your consent but the legitimate interest in operating the
-        service securely (Art. 6(1)(f) GDPR).
+        processor's own general access logs follow its own retention rules for operational
+        and security logs. On the Free plan used here, Supabase states a retention period
+        of one day, after which they are deleted. The legal basis for this is not your
+        consent but the legitimate interest in operating the service securely
+        (Art. 6(1)(f) GDPR).
       </p>
 
       <h3>Short ID</h3>
@@ -142,48 +144,49 @@ import Footer from '../components/Footer.astro';
         the Data Processing Addendum at
         <a href="https://supabase.com/legal/customer-resources/data-processing-addendum" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/data-processing-addendum</a>,
         and Supabase's Transfer Impact Assessment at
-        <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>.
+        <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>
+        (the version Supabase provides at the time of this policy; I review the linked
+        documents whenever this policy is updated).
       </p>
 
       <h3>Retention period</h3>
-      <p>
-        Shot data is stored for 12 months from the receipt of each individual shot, error
-        reports for 90 days. The record of which scale measured a shot has no retention
-        period of its own: it is deleted together with that shot, and if the shot is no
-        longer stored, 12 months after its own receipt. Master data for beans, machines,
-        grinders and scales is kept as long as the corresponding installation is kept on
-        record with me, and is deleted together with it. An installation is kept on record
-        as long as at least one shot, one scale link, or one error report from it is still
-        stored, but in any case until 12 months after the last of the following events:
-        registration of the installation, its recovery (for example on a new device), or the
-        granting or withdrawal of consent. Uploading shots or error reports does not itself
-        count as such an event. Once neither applies any more, the installation and its
-        master data are removed at the next daily deletion run. Proof of your consent is kept
-        as long as your installation is kept on record, and afterwards for up to three years
-        after the last consent event. IP addresses in my sign-in logs are deleted after 30
-        days.
-      </p>
+      <ul>
+        <li><strong>Shots:</strong> 12 months from the receipt of each individual shot.</li>
+        <li><strong>Error reports:</strong> 90 days from receipt.</li>
+        <li><strong>Scale link for a shot:</strong> deleted together with that shot; if the shot is no longer stored, 12 months after its own receipt.</li>
+        <li><strong>Beans, machines, grinders, scales:</strong> as long as the corresponding installation is kept on record with me.</li>
+        <li><strong>Installation:</strong> as long as at least one shot, one scale link, or one error report from it is still stored, but in any case until 12 months after the last of the following events: registration of the installation, its recovery (for example on a new device), or the granting or withdrawal of consent (uploading shots or error reports does not itself count as such an event). Once neither applies any more, the installation and its master data are removed at the next daily deletion run.</li>
+        <li><strong>Proof of your consent:</strong> as long as your installation is kept on record, and afterwards for up to three years after the last consent event.</li>
+        <li><strong>IP addresses in my sign-in logs:</strong> at most 30 days.</li>
+      </ul>
 
       <h3>Withdrawing consent</h3>
       <p>
         You can withdraw consent at any time using the two switches in the app's settings
-        screen, separately for each purpose. Withdrawal deletes the data already uploaded for
-        that purpose on the server; local data on your device is unaffected. If the app
-        cannot reach the server at the moment of withdrawal, it retries the deletion once it
-        is back online and shows it as pending until then. After a reinstall, the app gets a
-        new identifier; I delete data tied to an old identifier on request, using its Short
-        ID, and likewise if the app can no longer recover its previous identifier.
+        screen, separately for each purpose, with effect for the future; the lawfulness of
+        processing carried out before the withdrawal is not affected. Withdrawal deletes
+        the data already uploaded for that purpose on the server, for Data Donation that
+        means shots together with their beans, machines, grinders and scale details; once
+        both switches are off, the installation is deleted as well. What remains is the
+        record of your consent and withdrawal (see Retention period) and the IP address in
+        the sign-in logs for up to 30 days; local data on your device is unaffected. If the
+        app cannot reach the server at the moment of withdrawal, it retries the deletion
+        once it is back online and shows it as pending until then. After a reinstall, the
+        app gets a new identifier; I delete data tied to an old identifier on request, using
+        its Short ID, and likewise if the app can no longer recover its previous identifier.
       </p>
 
       <h3>Your rights regarding Data Donation</h3>
       <p>
         For access and deletion requests about your installation, contact
-        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> with your Short ID; for an
-        access request I also ask for a second detail that matches your data (for example
-        the approximate date of a shot, or the brand and model of your scale), so that I do
-        not disclose data to the wrong person. Without a Short ID, I generally cannot match a
-        request (Art. 11(2) GDPR) and will handle it as a reasoned negative response. The
-        remaining rights in section&nbsp;8 apply unchanged.
+        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> with your Short ID.
+        Because the Short ID also appears in the diagnostics report and may have been
+        passed on, I ask in both cases for a second detail that matches your data (for
+        example the approximate date of a shot, the name of a saved bean, or the brand and
+        model of your scale), so that I do not disclose data to the wrong person or delete
+        it on someone else's request (Art. 12(6) GDPR). Without a Short ID, I generally
+        cannot match a request (Art. 11(2) GDPR) and will handle it as a reasoned negative
+        response. The remaining rights in section&nbsp;8 apply unchanged.
       </p>
 
       <h3>Voluntary participation and aggregate results</h3>
@@ -192,15 +195,21 @@ import Footer from '../components/Footer.astro';
         without either of them. No automated decision-making within the meaning of Art. 22
         GDPR takes place. I release aggregate evaluations for roasteries only once at least
         five different installations have contributed to a given result; a result with fewer
-        contributors is not shared.
+        contributors is not shared. The app is intended for adults. Data Donation and Error
+        Reports require that you are at least 16 years old.
       </p>
 
       <h3>Session data on your device</h3>
       <p>
-        Only once you give one of the two consents does the app create an anonymous session
-        and store a sign-in token, installation identifier and a secret in your device's
-        protected app storage (Section 25(1) TDDDG, the German telecommunications-digital-services
-        act). Without consent, no such session is created.
+        Only once you give one of the two consents does the app sign the installation in
+        without an account (Supabase &ldquo;anonymous sign-in&rdquo;; the session is
+        pseudonymous, not anonymous, because it carries an installation identifier) and
+        store a sign-in token, the installation identifier and a secret in your device's
+        protected app storage. This storage is strictly necessary to carry out the upload
+        you expressly requested via the switch (Section 25(2) no. 2 TDDDG, the German
+        telecommunications-digital-services act); without consent, no such session is
+        created, and once you withdraw both purposes, this data on the device is no longer
+        used.
       </p>
 
       <h2>5. Beta participation (TestFlight)</h2>
@@ -288,9 +297,18 @@ import Footer from '../components/Footer.astro';
         <li>request erasure of your data (Art. 17 GDPR)</li>
         <li>request restriction of processing (Art. 18 GDPR)</li>
         <li>request data portability (Art. 20 GDPR)</li>
-        <li>object to processing (Art. 21 GDPR)</li>
+        <li>withdraw your consent to Data Donation and Error Reports at any time
+          (Art. 7(3) GDPR), via the switches in the app</li>
+        <li>object to processing based on legitimate interests for reasons arising from
+          your particular situation (Art. 21 GDPR)</li>
         <li>lodge a complaint with a supervisory authority (Art. 77 GDPR)</li>
       </ul>
+      <p>
+        <strong>Right to object:</strong> Where I process data based on Art. 6(1)(f) GDPR
+        (IP addresses in sign-in logs, abuse prevention), you may object at any time for
+        reasons arising from your particular situation. I will then no longer process the
+        data unless I can demonstrate compelling legitimate grounds.
+      </p>
       <p>
         To exercise these rights, contact <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>.
         For requests about Data Donation or Error Reports, please include your Short ID
