@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Datenschutz — BrewMind" description="Datenschutzerklärung von BrewMind: Die App speichert alles lokal auf dem Gerät, ohne Konto und ohne Cloud.">
+<Layout title="Datenschutz — BrewMind" description="Datenschutzerkl&auml;rung von BrewMind: Lokale Speicherung auf dem Ger&auml;t, Cloud-Funktionen nur mit Ihrer Einwilligung.">
   <Header />
   <main class="pt-28 pb-20 px-6">
     <article class="max-w-3xl mx-auto prose">
@@ -21,19 +21,23 @@ import Footer from '../components/Footer.astro';
       <h2>2. Das Wichtigste vorweg</h2>
       <p>
         Die BrewMind App braucht <strong>kein Konto</strong>, keine E-Mail-Adresse und kein
-        Passwort. Sie speichert alles, was Sie erfassen, <strong>ausschlie&szlig;lich lokal auf
-        Ihrem Ger&auml;t</strong>. Es gibt keine Cloud, keine Synchronisation und keinen Server,
-        der Ihre Br&uuml;hdaten entgegennimmt. Ich als Betreiber sehe Ihre Shots nicht.
+        Passwort. Ohne Ihr Zutun speichert sie alles, was Sie erfassen,
+        <strong>ausschlie&szlig;lich lokal auf Ihrem Ger&auml;t</strong>: keine Cloud, keine
+        Synchronisation, kein Server, der Ihre Br&uuml;hdaten entgegennimmt, und ich als
+        Betreiber sehe Ihre Shots nicht. Das &auml;ndert sich nur, wenn Sie in der Verwaltung
+        einen von zwei eigens daf&uuml;r vorgesehenen Schaltern einschalten: Daten-Spende oder
+        Fehlerberichte (Abschnitt&nbsp;4). Beide stehen nach der Installation auf aus.
       </p>
       <p>
-        Personenbezogene Daten verarbeite ich deshalb nur an zwei Stellen: beim Aufruf dieser
-        Website (Abschnitt&nbsp;6) und wenn Sie mir schreiben oder an der Beta teilnehmen
-        (Abschnitte&nbsp;4 und&nbsp;5).
+        Ohne diese beiden Schalter verarbeite ich personenbezogene Daten nur an zwei
+        Stellen: beim Aufruf dieser Website (Abschnitt&nbsp;7) und wenn Sie mir schreiben
+        oder an der Beta teilnehmen (Abschnitte&nbsp;5 und&nbsp;6). Schalten Sie Daten-Spende
+        oder Fehlerberichte ein, kommt Abschnitt&nbsp;4 hinzu.
       </p>
 
       <h2>3. Daten in der App</h2>
       <p>
-        Alles, was Sie in der App anlegen, liegt in einer SQLite-Datenbank im geschützten
+        Alles, was Sie in der App anlegen, liegt in einer SQLite-Datenbank im gesch&uuml;tzten
         Speicherbereich der App auf Ihrem iPhone:
       </p>
       <ul>
@@ -44,20 +48,24 @@ import Footer from '../components/Footer.astro';
         <li>App-Einstellungen</li>
       </ul>
       <p>
-        Diese Daten verlassen das Ger&auml;t nicht von selbst. Sie k&ouml;nnen einen einzelnen Shot
-        oder Ihre Auswahl aus der History als JSON in die Zwischenablage kopieren und selbst
-        weitergeben. Wohin, entscheiden Sie.
+        Ohne die Schalter aus Abschnitt&nbsp;4 verlassen diese Daten das Ger&auml;t nicht
+        von selbst. Sie k&ouml;nnen einen einzelnen Shot oder Ihre Auswahl aus der History
+        als JSON in die Zwischenablage kopieren und selbst weitergeben. Wohin, entscheiden
+        Sie.
       </p>
       <p>
-        Es gibt keine Werbekennung (IDFA), kein Werbe-Tracking, keine Analyse-Dienste Dritter,
-        kein Crash-Reporting an Dritte, keinen Standortzugriff, keinen Zugriff auf Kontakte,
-        Kamera oder Fotos.
+        Es gibt keine Werbekennung (IDFA), kein Werbe-Tracking, keine Analyse-Dienste
+        Dritter, keinen Standortzugriff, keinen Zugriff auf Kontakte, Kamera oder Fotos.
+        Crash- und Fehlerdaten gehen nur dann an unseren Auftragsverarbeiter, wenn Sie den
+        Schalter Fehlerberichte einschalten (Abschnitt&nbsp;4).
       </p>
       <p>
-        <strong>L&ouml;schen:</strong> Einzelne Shots l&ouml;schen Sie in der App. Wenn Sie die
-        App deinstallieren, entfernt iOS die Datenbank mitsamt allen Inhalten. Da nichts
-        gespeichert wird, was &uuml;ber Ihr Ger&auml;t hinausgeht, gibt es auf meiner Seite auch
-        nichts zu l&ouml;schen.
+        <strong>L&ouml;schen:</strong> Einzelne Shots l&ouml;schen Sie in der App. Wenn Sie
+        die App deinstallieren, entfernt iOS die Datenbank mitsamt allen Inhalten. Solange
+        Sie keinen der beiden Schalter aus Abschnitt&nbsp;4 eingeschaltet haben, gibt es
+        auf meiner Seite nichts zu l&ouml;schen, weil nichts gespeichert wird, was &uuml;ber
+        Ihr Ger&auml;t hinausgeht. Haben Sie einen Schalter eingeschaltet, lesen Sie in
+        Abschnitt&nbsp;4, wie Sie die hochgeladenen Daten l&ouml;schen.
       </p>
 
       <h3>Bluetooth (BLE)</h3>
@@ -68,7 +76,147 @@ import Footer from '../components/Footer.astro';
         ab. &Uuml;ber Bluetooth werden keine Daten ins Internet weitergeleitet.
       </p>
 
-      <h2>4. Teilnahme an der Beta (TestFlight)</h2>
+      <h2>4. Daten-Spende und Fehlerberichte</h2>
+      <p>
+        In der Verwaltung der App gibt es zwei eigene Schalter, <strong>Daten-Spende</strong>
+        und <strong>Fehlerberichte</strong>. Beide stehen nach der Installation auf aus,
+        und ohne Ihre Einwilligung baut die App keine Netzverbindung auf und &uuml;bertr&auml;gt
+        keine Ihrer Daten. Dieser Abschnitt beschreibt, was passiert, wenn Sie einen oder
+        beide Schalter einschalten. Lassen Sie beide aus, gilt Abschnitt&nbsp;3 unver&auml;ndert.
+      </p>
+
+      <h3>Zwecke und Rechtsgrundlage</h3>
+      <p>
+        Mit der Daten-Spende werte ich Ihre Zubereitungen aus, um die Dial-in-Beratung der
+        App zu verbessern und zu messen, und beantworte damit Support-Anfragen zu Ihrer
+        Installation. Sp&auml;ter, sobald diese Funktion gebaut ist, sollen daraus
+        zus&auml;tzlich zusammengefasste Auswertungen f&uuml;r R&ouml;stereien entstehen,
+        etwa welcher Mahlgrad zu einer bestimmten Bohne passt (dazu mehr unter
+        &bdquo;Freiwilligkeit und Auswertungen&ldquo; unten). Mit den Fehlerberichten
+        diagnostiziere ich Abst&uuml;rze und Fehler in der App. Rechtsgrundlage f&uuml;r
+        beide Zwecke ist ausschlie&szlig;lich Ihre Einwilligung (Art. 6 Abs. 1 lit. a
+        DSGVO), die Sie &uuml;ber die beiden Schalter erteilen und jederzeit mit Wirkung
+        f&uuml;r die Zukunft widerrufen k&ouml;nnen.
+      </p>
+
+      <h3>Was hochgeht, was nie</h3>
+      <p>
+        Bei eingeschalteter Daten-Spende &uuml;bertr&auml;gt die App zu jeder Zubereitung
+        unter anderem Dosis, Mahlgrad-Einstellung, Ausbeute, Zeiten, Temperatur, Ratio,
+        Ihre Geschmacksbewertung sowie Angaben zu Bohne, Maschine, M&uuml;hle und
+        Waagentyp, dazu technische Angaben zu Einwilligung und App-Version. Bei
+        eingeschalteten Fehlerberichten kommen Ort, Meldung und technischer Ablauf eines
+        Fehlers sowie die Build-Nummer hinzu; Ger&auml;te- und Bluetooth-Kennungen werden
+        aus diesen Texten vorher automatisch entfernt.
+      </p>
+      <p>
+        Ausdr&uuml;cklich <strong>nicht</strong> &uuml;bertragen werden: die Druck- und
+        Gewichtskurven eines Bezugs, Ihre Freitext-Notizen, der Name Ihrer Waage,
+        Standortdaten jeder Art (weder GPS noch WLAN- oder Funkzellen-Standort) und
+        Kontaktdaten. Dabei entsteht kein Konto und keine E-Mail-Adresse.
+      </p>
+      <p>
+        Unabh&auml;ngig von Ihrer Einwilligung &uuml;bertr&auml;gt jede Netzverbindung
+        technisch bedingt eine IP-Adresse. Sie steht in den Anmelde-Protokollen meines
+        Auftragsverarbeiters, nicht in Ihren Zubereitungsdaten; die allgemeinen
+        Zugriffsprotokolle des Auftragsverarbeiters selbst folgen dessen eigener, kurzer
+        Aufbewahrungsfrist. Rechtsgrundlage daf&uuml;r ist nicht Ihre Einwilligung, sondern
+        das berechtigte Interesse am sicheren Betrieb des Dienstes (Art. 6 Abs. 1 lit. f
+        DSGVO).
+      </p>
+
+      <h3>Kurz-ID</h3>
+      <p>
+        Jede Installation der App erh&auml;lt eine pseudonyme, zuf&auml;llige Kennung. In
+        der App sichtbar ist davon nur die Kurz-ID, acht Hex-Zeichen in zwei
+        Vierergruppen (Beispiel &bdquo;4F3A&nbsp;91C2&ldquo;). Nennen Sie mir diese
+        Kurz-ID, etwa in einer Support-Anfrage, kann ich die zu Ihrer Installation
+        gespeicherten Daten zuordnen. Ohne Kurz-ID kann ich eine Anfrage in der Regel
+        nicht Ihrer Installation zuordnen (Art. 11 Abs. 2 DSGVO).
+      </p>
+
+      <h3>Empf&auml;nger, Region, Drittland</h3>
+      <p>
+        Auftragsverarbeiter ist Supabase, Inc., USA. Die Datenbank l&auml;uft im
+        Rechenzentrum Frankfurt am Main (AWS-Region eu-central-1). Die
+        Auftragsverarbeitung ist Bestandteil der Nutzungsbedingungen von Supabase (Data
+        Processing Addendum, Version 1 vom 1. August 2026); eine gesonderte
+        Vertragsunterschrift gibt es nicht. Weil Supabase, Inc. ein US-Unternehmen ist,
+        findet dabei eine &Uuml;bermittlung in ein Drittland statt; sie st&uuml;tzt sich
+        auf die im Auftragsverarbeitungsvertrag enthaltenen EU-Standardvertragsklauseln.
+        Die Liste der Unterauftragsverarbeiter von Supabase steht unter
+        <a href="https://supabase.com/legal/customer-resources/subprocessor-list" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/subprocessor-list</a>,
+        der Auftragsverarbeitungsvertrag unter
+        <a href="https://supabase.com/legal/customer-resources/data-processing-addendum" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/data-processing-addendum</a>,
+        die Transfer Impact Assessment von Supabase unter
+        <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>.
+      </p>
+
+      <h3>Speicherdauer</h3>
+      <p>
+        Zubereitungsdaten werden 12 Monate ab Eingang der jeweiligen Zubereitung
+        gespeichert, Fehlerberichte 90 Tage. Die Angabe, mit welcher Waage eine
+        Zubereitung gemessen wurde, hat keine eigene Frist: Sie wird gemeinsam mit dieser
+        Zubereitung gel&ouml;scht, und ist die Zubereitung nicht mehr gespeichert, 12
+        Monate nach ihrem eigenen Eingang. Stammdaten zu Bohne, Maschine, M&uuml;hle und
+        Waage stehen so lange, wie die dazugeh&ouml;rige Installation bei mir gef&uuml;hrt
+        wird, und werden gemeinsam mit ihr gel&ouml;scht. Gef&uuml;hrt wird eine
+        Installation, solange noch mindestens eine Zubereitung, eine
+        Waagen-Verkn&uuml;pfung oder ein Fehlerbericht von ihr gespeichert ist, in jedem
+        Fall aber bis 12 Monate nach dem letzten dieser Vorg&auml;nge: Anmeldung der
+        Installation, ihr Zur&uuml;ckholen (etwa auf einem neuen Ger&auml;t), oder das
+        Erteilen oder der Widerruf einer Einwilligung. Das Hochladen von Zubereitungen
+        oder Fehlerberichten z&auml;hlt dabei nicht als eigener Vorgang. Trifft beides
+        nicht mehr zu, wird die Installation mit ihren Stammdaten beim n&auml;chsten
+        t&auml;glichen L&ouml;schlauf entfernt. Der Nachweis &uuml;ber Ihre Einwilligung
+        bleibt, solange Ihre Installation gef&uuml;hrt wird, danach noch bis zu drei Jahre
+        nach dem letzten Einwilligungsereignis. IP-Adressen in meinen Anmelde-Protokollen
+        l&ouml;sche ich nach 30 Tagen.
+      </p>
+
+      <h3>Widerruf</h3>
+      <p>
+        Sie widerrufen jederzeit &uuml;ber die beiden Schalter in der Verwaltung der App,
+        einzeln je Zweck. Der Widerruf l&ouml;scht die bereits hochgeladenen Daten des
+        jeweiligen Zwecks auf dem Server; lokal auf Ihrem Ger&auml;t bleibt alles
+        erhalten. Erreicht die App den Server im Moment des Widerrufs nicht, holt sie die
+        L&ouml;schung nach, sobald sie wieder online ist, und zeigt sie bis dahin als
+        ausstehend an. Nach einer Neuinstallation erh&auml;lt die App eine neue Kennung;
+        Daten zu einer alten Kennung l&ouml;sche ich auf Anfrage mit deren Kurz-ID, ebenso
+        wenn die App ihre bisherige Kennung nicht mehr zur&uuml;ckholen kann.
+      </p>
+
+      <h3>Ihre Rechte zur Daten-Spende</h3>
+      <p>
+        F&uuml;r Auskunft und L&ouml;schung zu Ihrer Installation wenden Sie sich mit
+        Ihrer Kurz-ID an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>; f&uuml;r
+        eine Auskunft bitte ich zus&auml;tzlich um eine zweite Angabe, die zu Ihren Daten
+        passt (etwa das ungef&auml;hre Datum eines Shots oder Marke und Modell Ihrer
+        Waage), damit ich Daten nicht an die falsche Person herausgebe. Ohne Kurz-ID kann
+        ich eine Anfrage in der Regel nicht zuordnen (Art. 11 Abs. 2 DSGVO) und bearbeite
+        sie dann als begr&uuml;ndete Negativauskunft. Die &uuml;brigen Rechte aus
+        Abschnitt&nbsp;8 gelten unver&auml;ndert.
+      </p>
+
+      <h3>Freiwilligkeit und Auswertungen</h3>
+      <p>
+        Beide Schalter sind freiwillig und stehen nach der Installation auf aus; die App
+        funktioniert ohne beide vollst&auml;ndig. Es findet keine automatisierte
+        Entscheidungsfindung im Sinne von Art. 22 DSGVO statt. Auswertungen f&uuml;r
+        R&ouml;stereien gebe ich erst heraus, wenn mindestens f&uuml;nf unterschiedliche
+        Installationen zu dem jeweiligen Ergebnis beigetragen haben; ein Ergebnis mit
+        weniger Beitragenden gebe ich nicht weiter.
+      </p>
+
+      <h3>Sitzungsdaten auf dem Ger&auml;t</h3>
+      <p>
+        Erst mit einer der beiden Einwilligungen legt die App eine anonyme Sitzung an und
+        speichert Anmeldetoken, Installationskennung und ein Geheimnis im gesch&uuml;tzten
+        App-Speicher Ihres Ger&auml;ts (&sect;&nbsp;25 Abs. 1 TDDDG). Ohne Einwilligung
+        entsteht keine solche Sitzung.
+      </p>
+
+      <h2>5. Teilnahme an der Beta (TestFlight)</h2>
       <p>
         Die App wird derzeit als Beta &uuml;ber <strong>TestFlight</strong> verteilt, einen
         Dienst der Apple Inc. bzw. Apple Distribution International Ltd., Hollyhill
@@ -88,7 +236,7 @@ import Footer from '../components/Footer.astro';
         <a href="https://www.apple.com/legal/privacy/de-ww/" target="_blank" rel="noopener noreferrer">apple.com/legal/privacy</a>.
       </p>
 
-      <h2>5. Kontakt per E-Mail</h2>
+      <h2>6. Kontakt per E-Mail</h2>
       <p>
         Wenn Sie mir an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> schreiben,
         etwa um sich f&uuml;r die Beta zu melden, verarbeite ich Ihre E-Mail-Adresse und den
@@ -102,7 +250,7 @@ import Footer from '../components/Footer.astro';
         Anfragen).
       </p>
 
-      <h2>6. Diese Website</h2>
+      <h2>7. Diese Website</h2>
       <h3>Hosting</h3>
       <p>
         Diese Website wird &uuml;ber <strong>GitHub Pages</strong> ausgeliefert (GitHub Inc.,
@@ -150,7 +298,7 @@ import Footer from '../components/Footer.astro';
         erkennbar am &bdquo;https://&ldquo; in der Adresszeile.
       </p>
 
-      <h2>7. Ihre Rechte</h2>
+      <h2>8. Ihre Rechte</h2>
       <p>Sie haben jederzeit das Recht:</p>
       <ul>
         <li>Auskunft &uuml;ber Ihre gespeicherten personenbezogenen Daten zu erhalten (Art. 15 DSGVO)</li>
@@ -163,19 +311,24 @@ import Footer from '../components/Footer.astro';
       </ul>
       <p>
         Wenden Sie sich dazu an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>.
-        Zust&auml;ndige Aufsichtsbeh&ouml;rde ist die Landesbeauftragte f&uuml;r Datenschutz und
-        Informationsfreiheit Nordrhein-Westfalen
+        F&uuml;r Anfragen zur Daten-Spende und zu Fehlerberichten nennen Sie bitte Ihre
+        Kurz-ID (Abschnitt&nbsp;4). Zust&auml;ndige Aufsichtsbeh&ouml;rde ist die
+        Landesbeauftragte f&uuml;r Datenschutz und Informationsfreiheit Nordrhein-Westfalen
         (<a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de</a>).
       </p>
 
-      <h2>8. &Auml;nderungen</h2>
+      <h2>9. &Auml;nderungen</h2>
       <p>
-        Wenn die App sp&auml;ter Funktionen bekommt, die Daten das Ger&auml;t verlassen lassen,
-        wird diese Erkl&auml;rung vorher angepasst. Eine solche Funktion kommt nicht still und
-        leise: sie w&auml;re in der App sichtbar und h&auml;tte hier ihren eigenen Abschnitt.
+        Mit den Schaltern aus Abschnitt&nbsp;4 ist eine fr&uuml;here Ank&uuml;ndigung dieser
+        Erkl&auml;rung eingetreten: Die App hat eine Funktion bekommen, die Daten das
+        Ger&auml;t verlassen l&auml;sst, und die Funktion ist sichtbar in der Verwaltung
+        sowie hier mit einem eigenen Abschnitt beschrieben, bevor sie an Tester ausgeliefert
+        wurde. Kommen weitere Funktionen hinzu, die Daten das Ger&auml;t verlassen lassen,
+        passe ich diese Erkl&auml;rung vorher an; still und leise geschieht das auch
+        k&uuml;nftig nicht.
       </p>
 
-      <p class="stand">Stand: August 2026</p>
+      <p class="stand">Stand: 23. September 2026</p>
     </article>
   </main>
   <Footer />
