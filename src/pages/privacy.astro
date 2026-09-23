@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout lang="en" title="Privacy Policy | BrewMind" description="BrewMind's privacy policy: the app keeps everything on your device, with no account and no cloud.">
+<Layout lang="en" title="Privacy Policy | BrewMind" description="BrewMind's privacy policy: local storage on your device, cloud features only with your consent.">
   <Header />
   <main class="pt-28 pb-20 px-6">
     <article class="max-w-3xl mx-auto prose">
@@ -26,13 +26,17 @@ import Footer from '../components/Footer.astro';
       <h2>2. The short version</h2>
       <p>
         The BrewMind app requires <strong>no account</strong>, no e-mail address and no
-        password. Everything you record stays <strong>on your device</strong>. There is no
-        cloud, no synchronisation and no server that receives your brew data. As the operator,
-        I never see your shots.
+        password. Without any action on your part, everything you record stays
+        <strong>on your device only</strong>: no cloud, no synchronisation, no server that
+        receives your brew data, and as the operator I never see your shots. This changes
+        only if you turn on one of two dedicated switches in the app's settings screen,
+        Data Donation or Error Reports (section&nbsp;4). Both are off after installation.
       </p>
       <p>
-        Personal data is therefore processed in two places only: when you visit this website
-        (section&nbsp;6) and when you write to me or join the beta (sections&nbsp;4 and&nbsp;5).
+        Without these two switches, I process personal data in two places only: when you
+        visit this website (section&nbsp;7) and when you write to me or join the beta
+        (sections&nbsp;5 and&nbsp;6). Turning on Data Donation or Error Reports adds
+        section&nbsp;4.
       </p>
 
       <h2>3. Data inside the app</h2>
@@ -48,19 +52,21 @@ import Footer from '../components/Footer.astro';
         <li>App settings</li>
       </ul>
       <p>
-        This data does not leave the device on its own. You can copy a single shot or your
-        current history selection to the clipboard as JSON and pass it on yourself. Where it
-        goes is your call.
+        Without the switches described in section&nbsp;4, this data does not leave the
+        device on its own. You can copy a single shot or your current history selection to
+        the clipboard as JSON and pass it on yourself. Where it goes is your call.
       </p>
       <p>
-        There is no advertising identifier (IDFA), no ad tracking, no third-party analytics, no
-        third-party crash reporting, no location access, and no access to contacts, camera or
-        photos.
+        There is no advertising identifier (IDFA), no ad tracking, no third-party analytics,
+        no location access, and no access to contacts, camera or photos. Crash and error data
+        only reaches my processor if you turn on the Error Reports switch (section&nbsp;4).
       </p>
       <p>
         <strong>Deletion:</strong> Individual shots can be deleted in the app. Uninstalling the
-        app makes iOS remove the database and everything in it. Since nothing is stored beyond
-        your device, there is nothing on my side left to delete.
+        app makes iOS remove the database and everything in it. As long as you have not
+        turned on either switch from section&nbsp;4, there is nothing on my side to delete,
+        because nothing is stored beyond your device. If you have turned a switch on, see
+        section&nbsp;4 for how to delete the data you uploaded.
       </p>
 
       <h3>Bluetooth (BLE)</h3>
@@ -71,7 +77,142 @@ import Footer from '../components/Footer.astro';
         the internet over Bluetooth.
       </p>
 
-      <h2>4. Beta participation (TestFlight)</h2>
+      <h2>4. Data Donation and Error Reports</h2>
+      <p>
+        The app's settings screen has two dedicated switches, <strong>Data Donation</strong>
+        and <strong>Error Reports</strong>. Both are off after installation, and without your
+        consent the app makes no network connection and transmits none of your data. This
+        section describes what happens if you turn on one or both switches. If you leave both
+        off, section&nbsp;3 applies unchanged.
+      </p>
+
+      <h3>Purposes and legal basis</h3>
+      <p>
+        With Data Donation, I evaluate your shots to improve and measure the app's dial-in
+        guidance, and use them to answer support requests about your installation. Later,
+        once that feature is built, this is also meant to produce aggregated evaluations for
+        roasteries, for example which grind setting suits a given bean (see &ldquo;Voluntary
+        participation and aggregate results&rdquo; below). With Error Reports, I diagnose
+        crashes and errors in the app. The legal basis for both purposes is exclusively your
+        consent (Art. 6(1)(a) GDPR), which you give through the two switches and can withdraw
+        at any time with effect for the future.
+      </p>
+
+      <h3>What is uploaded, what never is</h3>
+      <p>
+        With Data Donation turned on, the app transmits, for each shot, among other things
+        the dose, grind setting, yield, times, temperature, ratio, your taste rating, and
+        details of the bean, machine, grinder and scale type, plus technical details about
+        consent and app version. With Error Reports turned on, the location, message and
+        technical trace of an error, plus the build number, are added; device and Bluetooth
+        identifiers are automatically stripped from these texts beforehand.
+      </p>
+      <p>
+        Explicitly <strong>never</strong> transmitted: the pressure and weight curves of a
+        shot, your free-text notes, your scale's name, location data of any kind (neither GPS
+        nor Wi-Fi or cell-tower based location), and contact details. No account and no
+        e-mail address are created in the process.
+      </p>
+      <p>
+        Regardless of your consent, every network connection technically transmits an IP
+        address. It is recorded in my processor's sign-in logs, not in your shot data; the
+        processor's own general access logs follow its own retention rules for operational
+        and security logs. On the Free plan used here, Supabase states a retention period
+        of one day, after which they are deleted. The legal basis for this is not your
+        consent but the legitimate interest in operating the service securely
+        (Art. 6(1)(f) GDPR).
+      </p>
+
+      <h3>Short ID</h3>
+      <p>
+        Each installation of the app gets a pseudonymous, random identifier. The only part of
+        it visible in the app is the Short ID, eight hex characters shown as two groups of
+        four (example &ldquo;4F3A&nbsp;91C2&rdquo;). If you give me this Short ID, for example
+        in a support request, I can match the data stored for your installation. Without a
+        Short ID, I generally cannot match a request to your installation (Art. 11(2) GDPR).
+      </p>
+
+      <h3>Recipients, region, third country</h3>
+      <p>
+        The processor is Supabase, Inc., USA. The database runs in the Frankfurt am Main data
+        centre (AWS region eu-central-1). Data processing is part of Supabase's terms of
+        service (Data Processing Addendum, version 1 of 1 August 2026); there is no separate
+        signed contract. Because Supabase, Inc. is a US company, this involves a transfer to a
+        third country; it relies on the EU standard contractual clauses contained in the data
+        processing agreement. Supabase's subprocessor list is at
+        <a href="https://supabase.com/legal/customer-resources/subprocessor-list" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/subprocessor-list</a>,
+        the Data Processing Addendum at
+        <a href="https://supabase.com/legal/customer-resources/data-processing-addendum" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/data-processing-addendum</a>,
+        and Supabase's Transfer Impact Assessment at
+        <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>
+        (the version Supabase provides at the time of this policy; I review the linked
+        documents whenever this policy is updated).
+      </p>
+
+      <h3>Retention period</h3>
+      <ul>
+        <li><strong>Shots:</strong> 12 months from the receipt of each individual shot.</li>
+        <li><strong>Error reports:</strong> 90 days from receipt.</li>
+        <li><strong>Scale link for a shot:</strong> deleted together with that shot; if the shot is no longer stored, 12 months after its own receipt.</li>
+        <li><strong>Beans, machines, grinders, scales:</strong> as long as the corresponding installation is kept on record with me.</li>
+        <li><strong>Installation:</strong> as long as at least one shot, one scale link, or one error report from it is still stored, but in any case until 12 months after the last of the following events: registration of the installation, its recovery (for example on a new device), or the granting or withdrawal of consent (uploading shots or error reports does not itself count as such an event). Once neither applies any more, the installation and its master data are removed at the next daily deletion run.</li>
+        <li><strong>Proof of your consent:</strong> as long as your installation is kept on record, and afterwards for up to three years after the last consent event.</li>
+        <li><strong>IP addresses in my sign-in logs:</strong> at most 30 days.</li>
+      </ul>
+
+      <h3>Withdrawing consent</h3>
+      <p>
+        You can withdraw consent at any time using the two switches in the app's settings
+        screen, separately for each purpose, with effect for the future; the lawfulness of
+        processing carried out before the withdrawal is not affected. Withdrawal deletes
+        the data already uploaded for that purpose on the server, for Data Donation that
+        means shots together with their beans, machines, grinders and scale details; once
+        both switches are off, the installation is deleted as well. What remains is the
+        record of your consent and withdrawal (see Retention period) and the IP address in
+        the sign-in logs for up to 30 days; local data on your device is unaffected. If the
+        app cannot reach the server at the moment of withdrawal, it retries the deletion
+        once it is back online and shows it as pending until then. After a reinstall, the
+        app gets a new identifier; I delete data tied to an old identifier on request, using
+        its Short ID, and likewise if the app can no longer recover its previous identifier.
+      </p>
+
+      <h3>Your rights regarding Data Donation</h3>
+      <p>
+        For access and deletion requests about your installation, contact
+        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> with your Short ID.
+        Because the Short ID also appears in the diagnostics report and may have been
+        passed on, I ask in both cases for a second detail that matches your data (for
+        example the approximate date of a shot, the name of a saved bean, or the brand and
+        model of your scale), so that I do not disclose data to the wrong person or delete
+        it on someone else's request (Art. 12(6) GDPR). Without a Short ID, I generally
+        cannot match a request (Art. 11(2) GDPR) and will handle it as a reasoned negative
+        response. The remaining rights in section&nbsp;8 apply unchanged.
+      </p>
+
+      <h3>Voluntary participation and aggregate results</h3>
+      <p>
+        Both switches are voluntary and are off after installation; the app works fully
+        without either of them. No automated decision-making within the meaning of Art. 22
+        GDPR takes place. I release aggregate evaluations for roasteries only once at least
+        five different installations have contributed to a given result; a result with fewer
+        contributors is not shared. The app is intended for adults. Data Donation and Error
+        Reports require that you are at least 16 years old.
+      </p>
+
+      <h3>Session data on your device</h3>
+      <p>
+        Only once you give one of the two consents does the app sign the installation in
+        without an account (Supabase &ldquo;anonymous sign-in&rdquo;; the session is
+        pseudonymous, not anonymous, because it carries an installation identifier) and
+        store a sign-in token, the installation identifier and a secret in your device's
+        protected app storage. This storage is strictly necessary to carry out the upload
+        you expressly requested via the switch (Section 25(2) no. 2 TDDDG, the German
+        telecommunications-digital-services act); without consent, no such session is
+        created, and once you withdraw both purposes, this data on the device is no longer
+        used.
+      </p>
+
+      <h2>5. Beta participation (TestFlight)</h2>
       <p>
         The app is currently distributed as a beta via <strong>TestFlight</strong>, a
         service of Apple Inc. / Apple Distribution International Ltd., Hollyhill Industrial
@@ -90,7 +231,7 @@ import Footer from '../components/Footer.astro';
         <a href="https://www.apple.com/legal/privacy/en-ww/" target="_blank" rel="noopener noreferrer">apple.com/legal/privacy</a>.
       </p>
 
-      <h2>5. Contact by e-mail</h2>
+      <h2>6. Contact by e-mail</h2>
       <p>
         If you write to <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>, for example
         to sign up for the beta, I process your e-mail address and the content of your message
@@ -102,7 +243,7 @@ import Footer from '../components/Footer.astro';
         Art. 6(1)(f) GDPR (legitimate interest in answering enquiries).
       </p>
 
-      <h2>6. This website</h2>
+      <h2>7. This website</h2>
       <h3>Hosting</h3>
       <p>
         This website is served via <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly
@@ -148,7 +289,7 @@ import Footer from '../components/Footer.astro';
         &ldquo;https://&rdquo; in the address bar.
       </p>
 
-      <h2>7. Your rights</h2>
+      <h2>8. Your rights</h2>
       <p>You have the right at any time to:</p>
       <ul>
         <li>request information about your stored personal data (Art. 15 GDPR)</li>
@@ -156,24 +297,37 @@ import Footer from '../components/Footer.astro';
         <li>request erasure of your data (Art. 17 GDPR)</li>
         <li>request restriction of processing (Art. 18 GDPR)</li>
         <li>request data portability (Art. 20 GDPR)</li>
-        <li>object to processing (Art. 21 GDPR)</li>
+        <li>withdraw your consent to Data Donation and Error Reports at any time
+          (Art. 7(3) GDPR), via the switches in the app</li>
+        <li>object to processing based on legitimate interests for reasons arising from
+          your particular situation (Art. 21 GDPR)</li>
         <li>lodge a complaint with a supervisory authority (Art. 77 GDPR)</li>
       </ul>
       <p>
+        <strong>Right to object:</strong> Where I process data based on Art. 6(1)(f) GDPR
+        (IP addresses in sign-in logs, abuse prevention), you may object at any time for
+        reasons arising from your particular situation. I will then no longer process the
+        data unless I can demonstrate compelling legitimate grounds.
+      </p>
+      <p>
         To exercise these rights, contact <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>.
-        The competent supervisory authority is the State Commissioner for Data Protection and
-        Freedom of Information of North Rhine-Westphalia
+        For requests about Data Donation or Error Reports, please include your Short ID
+        (section&nbsp;4). The competent supervisory authority is the State Commissioner for
+        Data Protection and Freedom of Information of North Rhine-Westphalia
         (<a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de</a>).
       </p>
 
-      <h2>8. Changes</h2>
+      <h2>9. Changes</h2>
       <p>
-        If the app later gains a feature that lets data leave the device, this policy will be
-        updated before it ships. Such a feature would not arrive quietly: it would be visible
-        in the app and would have its own section here.
+        With the switches described in section&nbsp;4, an earlier announcement in this policy
+        has come true: the app gained a feature that lets data leave the device, and that
+        feature is visible in the settings screen and described here in its own section,
+        before it shipped to testers. If further features are added that let data leave the
+        device, I will update this policy beforehand; that will not happen quietly in the
+        future either.
       </p>
 
-      <p class="stand">Last updated: August 2026</p>
+      <p class="stand">Last updated: 23 September 2026</p>
     </article>
   </main>
   <Footer />
