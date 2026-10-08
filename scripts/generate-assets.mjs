@@ -89,7 +89,7 @@ async function generateOgImage() {
   <text x="${width / 2}" y="${height - 40}"
         font-family="Inter, system-ui, -apple-system, sans-serif"
         font-size="18" font-weight="500" fill="${TEXT_SECONDARY}" opacity="0.5"
-        text-anchor="middle">www.brewmind.app</text>
+        text-anchor="middle">brewmind.app</text>
 </svg>`;
 
   const outputPath = join(publicDir, 'og-image.png');

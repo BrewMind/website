@@ -8,9 +8,41 @@ import AppShowcase from '../components/AppShowcase.astro';
 import Principles from '../components/Principles.astro';
 import Beta from '../components/Beta.astro';
 import Footer from '../components/Footer.astro';
+
+/**
+ * Strukturierte Daten der Startseite. Herausgeber-Angaben wie im Impressum
+ * (Tegrovio, Dominik Palzer). Bewusst ohne aggregateRating: es gibt keine
+ * Bewertungen, und TestFlight ist (noch) kein App-Store-Eintrag.
+ */
+const site = 'https://brewmind.app/';
+const publisher = {
+  '@type': 'Organization',
+  name: 'Tegrovio',
+  founder: { '@type': 'Person', name: 'Dominik Palzer' },
+  email: 'hello@brewmind.app',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Düsseldorf',
+    addressCountry: 'DE',
+  },
+};
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MobileApplication',
+  name: 'BrewMind',
+  url: site,
+  description:
+    'BrewMind nimmt jeden Espresso-Shot auf, live über die Bluetooth-Waage oder per Timer, merkt sich pro Bohne die letzte gute Einstellung und schlägt vor dem nächsten Shot vor, was du änderst.',
+  operatingSystem: 'iOS',
+  applicationCategory: 'LifestyleApplication',
+  inLanguage: 'de',
+  image: `${site}og-image.png`,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  publisher,
+};
 ---
 
-<Layout>
+<Layout jsonLd={jsonLd}>
   <Header />
   <main>
     <Hero />
