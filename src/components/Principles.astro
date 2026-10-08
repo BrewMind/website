@@ -10,8 +10,9 @@ const nots = [
     body: 'Keine Anmeldung, keine E-Mail-Adresse, kein Passwort. Die App startet mit dem ersten Tap.',
   },
   {
-    title: 'Keine Cloud',
-    body: 'Shots, Bohnen und Geräte liegen in einer Datenbank auf deinem Telefon. Nichts wird hochgeladen, nichts synchronisiert, die App hat keinen Netzzugriff.',
+    title: 'Keine Cloud-Pflicht',
+    body: 'Shots, Bohnen und Geräte liegen in einer Datenbank auf deinem Telefon. Standardmäßig bleibt alles dort, ohne deine Einwilligung gibt es keinen Netzzugriff. Wenn du willst, kannst du per Schalter Shot-Daten pseudonymisiert spenden, jederzeit widerrufbar.',
+    more: { href: '/datenschutz/', label: 'Mehr in der Datenschutzerklärung' },
   },
   {
     title: 'Kein Ratgeber',
@@ -50,7 +51,14 @@ const nots = [
               </svg>
               {item.title}
             </dt>
-            <dd class="text-sm text-ink-2 leading-relaxed ml-6.5">{item.body}</dd>
+            <dd class="text-sm text-ink-2 leading-relaxed ml-6.5">
+              {item.body}
+              {item.more && (
+                <>
+                  {' '}<a href={item.more.href} class="text-accent hover:text-accent-pressed underline underline-offset-2">{item.more.label}</a>.
+                </>
+              )}
+            </dd>
           </div>
         ))}
       </dl>

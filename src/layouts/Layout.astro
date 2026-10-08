@@ -8,15 +8,26 @@ interface Props {
   title?: string;
   description?: string;
   lang?: string;
+  /** Strukturierte Daten (schema.org), nur auf Seiten, die welche brauchen. */
+  jsonLd?: Record<string, unknown>;
+  /** Pfade der Sprachfassungen (mit Slash), z. B. { de: '/datenschutz/', en: '/privacy/' }. */
+  alternates?: { de: string; en: string };
 }
 
 const {
-  title = 'BrewMind — Espresso einstellen, ohne zu raten',
-  description = 'BrewMind nimmt jeden Espresso-Shot auf, live über die Bluetooth-Waage oder per Timer, merkt sich pro Bohne die letzte gute Einstellung und schlägt vor dem nächsten Shot vor, was du änderst. Alles lokal auf dem Gerät, ohne Account.',
-  lang = 'de'
+  title = 'BrewMind: Espresso-Dial-in mit Bluetooth-Waage für iPhone',
+  description = 'Espresso-Dial-in mit Bluetooth-Waage: BrewMind nimmt jeden Shot auf, merkt sich die beste Einstellung pro Bohne und schlägt den nächsten Schritt vor.',
+  lang = 'de',
+  jsonLd,
+  alternates
 } = Astro.props;
 
 const ogImage = new URL('/og-image.png', Astro.site);
+const ogImageAlt =
+  lang === 'de'
+    ? 'BrewMind: Espresso einstellen, ohne zu raten'
+    : 'BrewMind: dial in espresso without guessing';
+const ogLocale = lang === 'de' ? 'de_DE' : 'en_US';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -28,26 +39,43 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="theme-color" content="#181210" />
     <meta name="color-scheme" content="dark" />
     <meta name="description" content={description} />
+    <!-- Scroll-Animationen verstecken Inhalt nur, wenn JavaScript laeuft (siehe global.css) -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BrewMind" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <link rel="canonical" href={canonicalURL} />
+    {alternates && (
+      <>
+        <link rel="alternate" hreflang="de" href={new URL(alternates.de, Astro.site)} />
+        <link rel="alternate" hreflang="en" href={new URL(alternates.en, Astro.site)} />
+        <link rel="alternate" hreflang="x-default" href={new URL(alternates.de, Astro.site)} />
+      </>
+    )}
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <!-- Self-hosted Inter (DSGVO-konform, kein Google CDN) -->
+    <!-- Self-hosted Inter (DSGVO-konform, kein Google CDN). Nur latin vorladen, latin-ext laedt bei Bedarf per unicode-range -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
     <title>{title}</title>
   </head>

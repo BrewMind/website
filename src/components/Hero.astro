@@ -46,12 +46,12 @@ import { TESTFLIGHT_URL } from '../data/links';
       <div class="text-center lg:text-left">
         <p class="label mb-5 animate">Siebträger · Lokal · Ohne Account</p>
 
-        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-balance mb-6 animate">
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-balance mb-6">
           Espresso einstellen,<br class="hidden sm:block" />
           <span class="text-accent">ohne zu raten.</span>
         </h1>
 
-        <p class="text-lg text-ink-2 max-w-xl mx-auto lg:mx-0 mb-9 animate leading-relaxed">
+        <p class="text-lg text-ink-2 max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed">
           BrewMind nimmt jeden Shot auf, live über die Bluetooth-Waage oder
           per Timer, und merkt sich pro Bohne, was funktioniert hat. Vor dem
           nächsten Shot steht ein Vorschlag: ein Hebel, ein Satz. Damit die
@@ -63,7 +63,7 @@ import { TESTFLIGHT_URL } from '../data/links';
           nicht drin, und wer hier landet, soll testen koennen, ohne bis ans
           Seitenende zu scrollen.
         -->
-        <div class="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 mb-5 animate">
+        <div class="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 mb-5">
           <a
             href={TESTFLIGHT_URL}
             target="_blank"
@@ -95,13 +95,15 @@ import { TESTFLIGHT_URL } from '../data/links';
       </div>
 
       <!-- Geraet -->
-      <div class="relative mx-auto w-full max-w-[280px] sm:max-w-[300px] animate-scale">
+      <div class="relative mx-auto w-full max-w-[280px] sm:max-w-[300px]">
         <div class="aspect-[9/19.5] rounded-[2.75rem] border-[10px] border-surface-2 bg-surface overflow-hidden glow-accent">
           <Image
             src={cockpit}
             alt="Das Bohnen-Cockpit von BrewMind: aktive Bohne, Tag nach Röstung und die zuletzt gefahrene Einstellung"
             width={780}
             format="webp"
+            loading="eager"
+            fetchpriority="high"
             class="w-full h-full object-cover object-top"
           />
         </div>
