@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Daten l&ouml;schen | BrewMind" description="So l&ouml;schen Sie Ihre BrewMind-Daten: in der App, durch Deinstallieren oder per E-Mail. BrewMind hat keine Nutzerkonten.">
+  <Header />
+  <main class="pt-28 pb-20 px-6">
+    <article class="max-w-3xl mx-auto prose">
+      <h1>Daten l&ouml;schen</h1>
+
+      <p>
+        <strong>BrewMind hat keine Nutzerkonten.</strong> Es gibt nichts, was Sie anlegen
+        oder k&uuml;ndigen m&uuml;ssten. Diese Seite zeigt, was die App speichert und wie Sie
+        es l&ouml;schen, auf iPhone und auf Android.
+      </p>
+
+      <h2>Was gespeichert ist</h2>
+      <ul>
+        <li>
+          <strong>Auf Ihrem Ger&auml;t (immer):</strong> Bohnen, Maschinen, M&uuml;hlen, die
+          gekoppelte Waage, Ihre Shots mit Messwerten und Geschmacksurteil sowie die
+          App-Einstellungen. Diese Daten verlassen das Ger&auml;t nicht von selbst.
+        </li>
+        <li>
+          <strong>Auf meinem Server (nur mit Ihrer Einwilligung):</strong> Schalten Sie in der
+          App <em>Daten spenden</em> oder <em>Fehlerberichte senden</em> ein, liegen die
+          &uuml;bertragenen Daten bei meinem Auftragsverarbeiter Supabase (Rechenzentrum
+          Frankfurt am Main), zugeordnet zu einer zuf&auml;lligen Kennung Ihrer Installation,
+          nicht zu einem Namen oder einer E-Mail-Adresse. Beide Schalter stehen nach der
+          Installation auf aus.
+        </li>
+      </ul>
+      <p>
+        Was genau &uuml;bertragen wird und was nie, steht in der
+        <a href="/datenschutz/">Datenschutzerkl&auml;rung</a>, Abschnitt&nbsp;4.
+      </p>
+
+      <h2>So l&ouml;schen Sie Ihre Daten</h2>
+
+      <h3>1. In der App: hochgeladene Daten l&ouml;schen</h3>
+      <ol>
+        <li>Tab <strong>Verwaltung</strong> &ouml;ffnen, Karte <strong>Daten-Spende</strong>.</li>
+        <li>
+          Den Schalter <strong>Daten spenden</strong> und/oder <strong>Fehlerberichte senden</strong>
+          ausschalten.
+        </li>
+        <li>
+          Die R&uuml;ckfrage mit <strong>Ausschalten</strong> best&auml;tigen. Die App meldet
+          den Widerruf an den Server, und die bereits hochgeladenen Daten dieses Zwecks werden
+          dort gel&ouml;scht. Sind beide Schalter aus, wird auch die Installation selbst
+          gel&ouml;scht.
+        </li>
+      </ol>
+      <p>
+        Ist das Ger&auml;t im Moment offline, holt die App die L&ouml;schung nach, sobald sie
+        wieder online ist, und zeigt bis dahin &bdquo;L&ouml;schung ausstehend&ldquo; an. Alles,
+        was auf Ihrem Ger&auml;t liegt, bleibt dabei erhalten.
+      </p>
+
+      <h3>2. In der App: Daten auf dem Ger&auml;t l&ouml;schen</h3>
+      <ul>
+        <li>
+          <strong>Einen Shot:</strong> Shot in der History &ouml;ffnen und
+          <strong>Shot l&ouml;schen</strong> w&auml;hlen.
+        </li>
+        <li>
+          <strong>Eine Bohne, Maschine oder M&uuml;hle:</strong> in der Verwaltung den Eintrag
+          &ouml;ffnen und <strong>Bohne l&ouml;schen</strong>, <strong>Maschine l&ouml;schen</strong>
+          bzw. <strong>M&uuml;hle l&ouml;schen</strong> w&auml;hlen.
+        </li>
+        <li>
+          <strong>Aufgezeichnete Fehler:</strong> in der Verwaltung unter Diagnose
+          <strong>Fehlerliste leeren</strong>.
+        </li>
+      </ul>
+
+      <h3>3. App deinstallieren</h3>
+      <p>
+        Wenn Sie die App deinstallieren, entfernt das Betriebssystem (iOS oder Android) die
+        Datenbank auf Ihrem Ger&auml;t mitsamt allen Inhalten. Daten, die Sie zuvor &uuml;ber
+        die Daten-Spende oder die Fehlerberichte hochgeladen haben, bleiben dabei auf dem
+        Server liegen. Schalten Sie darum vor dem Deinstallieren beide Schalter aus (Weg&nbsp;1)
+        oder nutzen Sie Weg&nbsp;4.
+      </p>
+
+      <h3>4. Per E-Mail</h3>
+      <p>
+        Schreiben Sie an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> und nennen
+        Sie Ihre <strong>Kurz-ID</strong>. Sie finden sie in der App unter Verwaltung in der Karte
+        Daten-Spende als &bdquo;Deine Kennung&ldquo; (acht Zeichen in zwei Vierergruppen, mit
+        <strong>Kennung kopieren</strong> k&ouml;nnen Sie sie kopieren). Haben Sie die App neu
+        installiert oder kann sie ihre Kennung nicht mehr zur&uuml;ckholen, zeigt die Karte die
+        alte Kurz-ID als &bdquo;Fr&uuml;here Kennung zur L&ouml;schung auf Anfrage&ldquo; an;
+        nennen Sie diese.
+      </p>
+      <p>
+        Um zu verhindern, dass jemand mit einer abgeschriebenen Kurz-ID fremde Daten l&ouml;schen
+        l&auml;sst, bitte ich zus&auml;tzlich um eine zweite Angabe, die zu Ihren Daten passt
+        (etwa das ungef&auml;hre Datum eines Shots, den Namen einer gespeicherten Bohne oder
+        Marke und Modell Ihrer Waage). Ohne kann ich eine Anfrage nicht Ihrer Installation
+        zuordnen. Ich bearbeite Ihre Anfrage unverz&uuml;glich, sp&auml;testens innerhalb eines
+        Monats nach Eingang (Art. 12 Abs. 3 DSGVO).
+      </p>
+
+      <h2>Was nach dem L&ouml;schen noch bleibt, und wie lange</h2>
+      <ul>
+        <li><strong>Nachweis Ihrer Einwilligung und des Widerrufs</strong> (ohne Ihre Zubereitungsdaten): bis zu drei Jahre nach dem letzten Einwilligungsereignis.</li>
+        <li><strong>IP-Adresse in den Anmelde-Protokollen</strong> meines Auftragsverarbeiters: h&ouml;chstens 30 Tage.</li>
+        <li><strong>Auch ohne L&ouml;schung:</strong> Zubereitungen werden automatisch 12 Monate nach Eingang gel&ouml;scht, Fehlerberichte nach 90 Tagen.</li>
+        <li><strong>Auf Ihrem Ger&auml;t</strong> bleibt nach dem Ausschalten der Schalter alles, bis Sie es selbst l&ouml;schen oder die App deinstallieren.</li>
+        <li><strong>E-Mail-Korrespondenz</strong> mit mir (auch diese L&ouml;schanfrage): wird gel&ouml;scht, sobald sie nicht mehr gebraucht wird und keine gesetzliche Aufbewahrungspflicht entgegensteht.</li>
+      </ul>
+      <p>
+        Die vollst&auml;ndigen Fristen und die Rechtsgrundlagen stehen in der
+        <a href="/datenschutz/">Datenschutzerkl&auml;rung</a>. Ihre &uuml;brigen Rechte
+        (Auskunft, Berichtigung, Widerspruch, Beschwerde) finden Sie dort in Abschnitt&nbsp;8.
+      </p>
+
+      <h2>Teilnahme an der Beta beenden</h2>
+      <p>
+        Wenn Sie &uuml;ber Google Play am geschlossenen Test teilnehmen, steht Ihre
+        E-Mail-Adresse in meiner Testerliste in der Play Console. Schreiben Sie mir kurz an
+        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>, dann nehme ich sie
+        heraus. Bei TestFlight melden Sie sich selbst bei Apple an; ich erhalte Ihre
+        E-Mail-Adresse nicht.
+      </p>
+
+      <p class="stand">Stand: 11. Oktober 2026</p>
+    </article>
+  </main>
+  <Footer />
+</Layout>

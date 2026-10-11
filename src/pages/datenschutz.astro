@@ -38,7 +38,7 @@ import Footer from '../components/Footer.astro';
       <h2>3. Daten in der App</h2>
       <p>
         Alles, was Sie in der App anlegen, liegt in einer SQLite-Datenbank im gesch&uuml;tzten
-        Speicherbereich der App auf Ihrem iPhone:
+        Speicherbereich der App auf Ihrem iPhone oder Android-Ger&auml;t:
       </p>
       <ul>
         <li>Bohnen, Maschinen, M&uuml;hlen und die gekoppelte Waage</li>
@@ -61,19 +61,22 @@ import Footer from '../components/Footer.astro';
       </p>
       <p>
         <strong>L&ouml;schen:</strong> Einzelne Shots l&ouml;schen Sie in der App. Wenn Sie
-        die App deinstallieren, entfernt iOS die Datenbank mitsamt allen Inhalten. Solange
+        die App deinstallieren, entfernt das Betriebssystem (iOS oder Android) die Datenbank
+        mitsamt allen Inhalten. Solange
         Sie keinen der beiden Schalter aus Abschnitt&nbsp;4 eingeschaltet haben, gibt es
         auf meiner Seite nichts zu l&ouml;schen, weil nichts gespeichert wird, was &uuml;ber
         Ihr Ger&auml;t hinausgeht. Haben Sie einen Schalter eingeschaltet, lesen Sie in
-        Abschnitt&nbsp;4, wie Sie die hochgeladenen Daten l&ouml;schen.
+        Abschnitt&nbsp;4, wie Sie die hochgeladenen Daten l&ouml;schen. Eine Schritt-f&uuml;r-Schritt-Anleitung
+        mit allen Wegen steht auf der Seite
+        <a href="/loeschen/">Daten l&ouml;schen</a>.
       </p>
 
       <h3>Bluetooth (BLE)</h3>
       <p>
         Die Verbindung zu einer Kaffeewaage ist optional; die App funktioniert ohne Waage als
         Timer. Die Bluetooth-Kommunikation findet ausschlie&szlig;lich lokal zwischen Ihrem
-        iPhone und der Waage statt. iOS fragt daf&uuml;r die Berechtigung &bdquo;Bluetooth&ldquo;
-        ab. &Uuml;ber Bluetooth werden keine Daten ins Internet weitergeleitet.
+        Smartphone und der Waage statt. iOS und Android fragen daf&uuml;r die
+        Bluetooth-Berechtigung ab. &Uuml;ber Bluetooth werden keine Daten ins Internet weitergeleitet.
       </p>
 
       <h2>4. Daten-Spende und Fehlerberichte</h2>
@@ -223,7 +226,8 @@ import Footer from '../components/Footer.astro';
         dem Ger&auml;t nicht weiter genutzt.
       </p>
 
-      <h2>5. Teilnahme an der Beta (TestFlight)</h2>
+      <h2>5. Teilnahme an der Beta (TestFlight und Google Play)</h2>
+      <h3>iPhone: TestFlight</h3>
       <p>
         Die App wird derzeit als Beta &uuml;ber <strong>TestFlight</strong> verteilt, einen
         Dienst der Apple Inc. bzw. Apple Distribution International Ltd., Hollyhill
@@ -241,6 +245,37 @@ import Footer from '../components/Footer.astro';
         Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Durchf&uuml;hrung des Testverh&auml;ltnisses
         auf Ihre Anfrage hin). N&auml;heres zur Verarbeitung durch Apple:
         <a href="https://www.apple.com/legal/privacy/de-ww/" target="_blank" rel="noopener noreferrer">apple.com/legal/privacy</a>.
+      </p>
+
+      <h3>Android: Google Play (geschlossener Test)</h3>
+      <p>
+        Auf Android wird die Beta &uuml;ber einen <strong>geschlossenen Test in Google Play</strong>
+        verteilt, einen Dienst von Google Ireland Limited, Gordon House, Barrow Street,
+        Dublin 4, Irland, bzw. Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA
+        94043, USA. Die Teilnahme setzt voraus, dass ich Ihre E-Mail-Adresse (die
+        Adresse Ihres Google-Kontos) in die Testerliste in der Google Play Console eintrage.
+        Dazu schreiben Sie mir an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>
+        (Abschnitt&nbsp;6); ich verwende die Adresse nur f&uuml;r diese Testerliste. Die
+        Installation und die Anmeldung laufen danach unmittelbar zwischen Ihnen und Google.
+      </p>
+      <p>
+        Google ist dabei Empf&auml;nger der E-Mail-Adresse und verarbeitet sie in der
+        Play Console und im Play Store. Google stellt mir Angaben zu Installationen und
+        Abst&uuml;rzen der Beta-Version bereit. Auf die Inhalte Ihrer App-Datenbank hat
+        weder Google noch ich dadurch Zugriff. Weil Google LLC ein US-Unternehmen ist, kann
+        dabei eine &Uuml;bermittlung in ein Drittland stattfinden; Google LLC ist unter dem
+        EU-US Data Privacy Framework zertifiziert. M&ouml;chten Sie nicht mehr
+        teilnehmen, schreiben Sie mir kurz; dann nehme ich Ihre Adresse aus der
+        Testerliste.
+      </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Durchf&uuml;hrung des Testverh&auml;ltnisses
+        auf Ihre Anfrage hin). N&auml;heres zur Verarbeitung durch Google:
+        <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
+      </p>
+      <p>
+        Wie Sie Ihre Daten auf Android (und iPhone) l&ouml;schen, steht auf der Seite
+        <a href="/loeschen/">Daten l&ouml;schen</a>.
       </p>
 
       <h2>6. Kontakt per E-Mail</h2>
@@ -345,7 +380,7 @@ import Footer from '../components/Footer.astro';
         k&uuml;nftig nicht.
       </p>
 
-      <p class="stand">Stand: 23. September 2026</p>
+      <p class="stand">Stand: 11. Oktober 2026</p>
     </article>
   </main>
   <Footer />
