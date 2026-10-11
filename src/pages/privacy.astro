@@ -42,7 +42,7 @@ import Footer from '../components/Footer.astro';
       <h2>3. Data inside the app</h2>
       <p>
         Everything you create in the app lives in an SQLite database inside the app's protected
-        storage area on your iPhone:
+        storage area on your iPhone or Android device:
       </p>
       <ul>
         <li>Beans, machines, grinders and the paired scale</li>
@@ -63,17 +63,18 @@ import Footer from '../components/Footer.astro';
       </p>
       <p>
         <strong>Deletion:</strong> Individual shots can be deleted in the app. Uninstalling the
-        app makes iOS remove the database and everything in it. As long as you have not
+        app makes the operating system (iOS or Android) remove the database and everything in it. As long as you have not
         turned on either switch from section&nbsp;4, there is nothing on my side to delete,
         because nothing is stored beyond your device. If you have turned a switch on, see
-        section&nbsp;4 for how to delete the data you uploaded.
+        section&nbsp;4 for how to delete the data you uploaded. The page
+        <a href="/loeschen/">Delete your data</a> (German) walks you through every route.
       </p>
 
       <h3>Bluetooth (BLE)</h3>
       <p>
         Connecting a coffee scale is optional; without a scale the app records the shot as a
-        timer. Bluetooth communication happens locally between your iPhone and the scale only.
-        iOS asks for the &ldquo;Bluetooth&rdquo; permission for this. No data is forwarded to
+        timer. Bluetooth communication happens locally between your phone and the scale only.
+        iOS and Android ask for the Bluetooth permission for this. No data is forwarded to
         the internet over Bluetooth.
       </p>
 
@@ -212,7 +213,8 @@ import Footer from '../components/Footer.astro';
         used.
       </p>
 
-      <h2>5. Beta participation (TestFlight)</h2>
+      <h2>5. Beta participation (TestFlight and Google Play)</h2>
+      <h3>iPhone: TestFlight</h3>
       <p>
         The app is currently distributed as a beta via <strong>TestFlight</strong>, a
         service of Apple Inc. / Apple Distribution International Ltd., Hollyhill Industrial
@@ -229,6 +231,36 @@ import Footer from '../components/Footer.astro';
         Legal basis: Art. 6(1)(b) GDPR (performing the test relationship at your request). For
         details on Apple's processing see
         <a href="https://www.apple.com/legal/privacy/en-ww/" target="_blank" rel="noopener noreferrer">apple.com/legal/privacy</a>.
+      </p>
+
+      <h3>Android: Google Play (closed test)</h3>
+      <p>
+        On Android, the beta is distributed as a <strong>closed test in Google Play</strong>,
+        a service of Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland,
+        or Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.
+        Participation requires me to add your e-mail address (the address of your Google
+        account) to the tester list in the Google Play Console. To do that, write to me at
+        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> (section&nbsp;6); I use
+        the address only for this tester list. Installation and sign-in then happen directly
+        between you and Google.
+      </p>
+      <p>
+        Google is a recipient of the e-mail address and processes it in the Play Console and
+        the Play Store. Google provides me with figures on installations and crashes of the
+        beta build. This gives neither Google nor me access to the contents of your app
+        database. Because Google LLC is a US company, a transfer to a third country may take
+        place; Google LLC is certified under the EU-US Data Privacy Framework. If you no
+        longer wish to take part, write to me and I will remove your address from the tester
+        list.
+      </p>
+      <p>
+        Legal basis: Art. 6(1)(b) GDPR (performing the test relationship at your request). For
+        details on Google's processing see
+        <a href="https://policies.google.com/privacy?hl=en" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
+      </p>
+      <p>
+        How to delete your data on Android (and iPhone) is described on the page
+        <a href="/loeschen/">Delete your data</a> (German).
       </p>
 
       <h2>6. Contact by e-mail</h2>
@@ -327,7 +359,7 @@ import Footer from '../components/Footer.astro';
         future either.
       </p>
 
-      <p class="stand">Last updated: 23 September 2026</p>
+      <p class="stand">Last updated: 11 October 2026</p>
     </article>
   </main>
   <Footer />
