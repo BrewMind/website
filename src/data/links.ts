@@ -8,3 +8,11 @@
  * damit ein Linkwechsel nicht eine davon vergisst.
  */
 export const TESTFLIGHT_URL = 'https://testflight.apple.com/join/9VptC31s';
+
+/**
+ * Android laeuft als geschlossener Test in Google Play. Zugelassen ist, wer
+ * der Google-Gruppe beitritt (Beitritt offen fuer alle); erst danach zeigt der
+ * Teilnahme-Link die Seite "Tester werden", sonst kommt dort ein 404.
+ */
+export const ANDROID_GROUP_URL = 'https://groups.google.com/g/brewmind-beta';
+export const ANDROID_TESTING_URL = 'https://play.google.com/apps/testing/app.brewmind.core';

@@ -1,43 +1,89 @@
 ---
 /**
- * Die Beta laeuft ueber einen oeffentlichen TestFlight-Link, nicht mehr ueber
- * eine E-Mail an mich. Der Link liegt in `src/data/links.ts`, weil ihn auch
- * Hero und Header zeigen.
+ * Zwei Wege in die Beta: iPhone ueber einen oeffentlichen TestFlight-Link,
+ * Android ueber den geschlossenen Test in Google Play. Android braucht drei
+ * Schritte, weil Play nur Konten aus der Google-Gruppe zulaesst (siehe
+ * `src/data/links.ts`). Die Links liegen dort, weil Hero und Header sie auch
+ * zeigen.
  *
  * Kein Formular: die Seite bleibt statisch und nimmt keine Daten entgegen.
  */
-import { TESTFLIGHT_URL } from '../data/links';
+import { ANDROID_GROUP_URL, ANDROID_TESTING_URL, TESTFLIGHT_URL } from '../data/links';
 ---
 
 <section id="beta" class="py-24 px-6">
-  <div class="max-w-3xl mx-auto text-center">
-    <p class="label mb-4 animate">Stand heute</p>
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center">
+      <p class="label mb-4 animate">Stand heute</p>
 
-    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-balance mb-5 animate">
-      Noch nicht im App Store.
-    </h2>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-balance mb-5 animate">
+        Noch nicht im Store.
+      </h2>
 
-    <p class="text-lg text-ink-2 leading-relaxed mb-9 max-w-xl mx-auto animate">
-      BrewMind läuft als offene Beta über TestFlight, auf dem iPhone, mit
-      einer Bluetooth-Waage oder ohne. Du brauchst Apples TestFlight-App,
-      danach bist du direkt drin. Keine Warteliste, keine Anmeldung bei mir.
-    </p>
+      <p class="text-lg text-ink-2 leading-relaxed mb-12 max-w-xl mx-auto animate">
+        BrewMind läuft als kostenlose Beta auf iPhone und Android, mit einer
+        Bluetooth-Waage oder ohne. Keine Warteliste, keine Anmeldung bei mir.
+      </p>
+    </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate">
-      <a
-        href={TESTFLIGHT_URL}
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors"
-      >
-        Beta über TestFlight öffnen
-      </a>
+    <div class="grid gap-6 md:grid-cols-2 animate">
+      <div class="rounded-2xl bg-surface border border-border p-7 flex flex-col">
+        <h3 class="text-xl font-semibold text-ink mb-3">iPhone</h3>
+        <p class="text-ink-2 leading-relaxed mb-6">
+          Über Apples TestFlight-App. Link öffnen, TestFlight installieren,
+          danach bist du direkt drin.
+        </p>
+        <a
+          href={TESTFLIGHT_URL}
+          target="_blank"
+          rel="noopener"
+          class="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors"
+        >
+          Beta über TestFlight öffnen
+        </a>
+      </div>
+
+      <div id="android" class="rounded-2xl bg-surface border border-border p-7 flex flex-col scroll-mt-24">
+        <h3 class="text-xl font-semibold text-ink mb-3">Android</h3>
+        <p class="text-ink-2 leading-relaxed mb-4">
+          Über Google Play, in drei Schritten mit deinem Google-Konto:
+        </p>
+        <ol class="space-y-3 mb-6 text-ink-2 leading-relaxed">
+          <li>
+            <span class="text-accent font-semibold">1.</span>
+            <a href={ANDROID_GROUP_URL} target="_blank" rel="noopener" class="text-accent hover:text-accent-pressed underline underline-offset-2">Google-Gruppe beitreten</a>
+            (darüber schaltet Google Play dich frei, Mails gibt es keine).
+          </li>
+          <li>
+            <span class="text-accent font-semibold">2.</span>
+            <a href={ANDROID_TESTING_URL} target="_blank" rel="noopener" class="text-accent hover:text-accent-pressed underline underline-offset-2">Tester werden</a>
+            mit demselben Konto. Falls dort „nicht gefunden“ steht, ein paar
+            Minuten warten.
+          </li>
+          <li>
+            <span class="text-accent font-semibold">3.</span>
+            BrewMind aus Google Play installieren, der Link dafür steht auf
+            der Tester-Seite.
+          </li>
+        </ol>
+        <a
+          href={ANDROID_GROUP_URL}
+          target="_blank"
+          rel="noopener"
+          class="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors"
+        >
+          Mit Schritt 1 starten
+        </a>
+      </div>
+    </div>
+
+    <p class="text-center mt-8 animate">
       <a
         href="/datenschutz/"
         class="text-sm text-ink-3 hover:text-ink-2 transition-colors"
       >
         Was mit deinen Daten passiert
       </a>
-    </div>
+    </p>
   </div>
 </section>
