@@ -102,14 +102,16 @@ import Footer from '../components/Footer.astro';
       <h3>What is uploaded, what never is</h3>
       <p>
         With Data Donation turned on, the app transmits, for each shot, among other things
-        the dose, grind setting, yield, times, temperature, ratio, your taste rating, and
+        the dose, grind setting, yield, times, temperature, brew pressure (a single value, not a curve), ratio, your taste rating, and
         details of the bean, machine, grinder and scale type, plus technical details about
-        consent and app version. With Error Reports turned on, the location, message and
+        consent and app version. Names you gave yourself (for example for the bean, roaster,
+        machine or grinder) are sent exactly as you typed them. With Error Reports turned on, the location, message and
         technical trace of an error, plus the build number, are added; device and Bluetooth
-        identifiers are automatically stripped from these texts beforehand.
+        identifiers are automatically stripped from these texts beforehand, as far as they can be recognised by
+        their format.
       </p>
       <p>
-        Explicitly <strong>never</strong> transmitted: the pressure and weight curves of a
+        Explicitly <strong>never</strong> transmitted: the scale curves of a
         shot, your free-text notes, your scale's name, location data of any kind (neither GPS
         nor Wi-Fi or cell-tower based location), and contact details. No account and no
         e-mail address are created in the process.
@@ -146,19 +148,18 @@ import Footer from '../components/Footer.astro';
         <a href="https://supabase.com/legal/customer-resources/data-processing-addendum" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/data-processing-addendum</a>,
         and Supabase's Transfer Impact Assessment at
         <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>
-        (the version Supabase provides at the time of this policy; I review the linked
-        documents whenever this policy is updated).
+        (the version Supabase provides at the time of this policy).
       </p>
 
       <h3>Retention period</h3>
       <ul>
-        <li><strong>Shots:</strong> 12 months from the receipt of each individual shot.</li>
-        <li><strong>Error reports:</strong> 90 days from receipt.</li>
-        <li><strong>Scale link for a shot:</strong> deleted together with that shot; if the shot is no longer stored, 12 months after its own receipt.</li>
+        <li><strong>Shots:</strong> 12&nbsp;months from the receipt of each individual shot.</li>
+        <li><strong>Error reports:</strong> 90&nbsp;days from receipt.</li>
+        <li><strong>Scale link for a shot:</strong> deleted together with that shot; if the shot is no longer stored, 12&nbsp;months after its own receipt.</li>
         <li><strong>Beans, machines, grinders, scales:</strong> as long as the corresponding installation is kept on record with me.</li>
-        <li><strong>Installation:</strong> as long as at least one shot, one scale link, or one error report from it is still stored, but in any case until 12 months after the last of the following events: registration of the installation, its recovery (for example on a new device), or the granting or withdrawal of consent (uploading shots or error reports does not itself count as such an event). Once neither applies any more, the installation and its master data are removed at the next daily deletion run.</li>
+        <li><strong>Installation:</strong> as long as at least one shot, one scale link, or one error report from it is still stored, but in any case until 12&nbsp;months after the last of the following events: registration of the installation, its recovery (for example on a new device), the granting or withdrawal of consent, or the app's daily check-in with the server while Data Donation or Error Reports is turned on (uploading shots or error reports does not itself count as such an event). Once neither applies any more, the installation and its master data are removed at the next daily deletion run.</li>
         <li><strong>Proof of your consent:</strong> as long as your installation is kept on record, and afterwards for up to three years after the last consent event.</li>
-        <li><strong>IP addresses in my sign-in logs:</strong> at most 30 days.</li>
+        <li><strong>IP addresses in my sign-in logs:</strong> at most 30&nbsp;days.</li>
       </ul>
 
       <h3>Withdrawing consent</h3>
@@ -170,7 +171,7 @@ import Footer from '../components/Footer.astro';
         means shots together with their beans, machines, grinders and scale details; once
         both switches are off, the installation is deleted as well. What remains is the
         record of your consent and withdrawal (see Retention period) and the IP address in
-        the sign-in logs for up to 30 days; local data on your device is unaffected. If the
+        the sign-in logs for up to 30&nbsp;days; local data on your device is unaffected. If the
         app cannot reach the server at the moment of withdrawal, it retries the deletion
         once it is back online and shows it as pending until then. After a reinstall, the
         app gets a new identifier; I delete data tied to an old identifier on request, using
@@ -196,8 +197,8 @@ import Footer from '../components/Footer.astro';
         without either of them. No automated decision-making within the meaning of Art. 22
         GDPR takes place. I release aggregate evaluations for roasteries only once at least
         five different installations have contributed to a given result; a result with fewer
-        contributors is not shared. The app is intended for adults. Data Donation and Error
-        Reports require that you are at least 16 years old.
+        contributors is not shared. Data Donation and Error
+        Reports require that you are at least 16&nbsp;years old.
       </p>
 
       <h3>Session data on your device</h3>
@@ -359,7 +360,7 @@ import Footer from '../components/Footer.astro';
         future either.
       </p>
 
-      <p class="stand">Last updated: 11 October 2026</p>
+      <p class="stand">Last updated: 16 October 2026</p>
     </article>
   </main>
   <Footer />

@@ -172,10 +172,17 @@ body {
   color: var(--color-ink-2);
 }
 
+/*
+  "Datenschutzerklaerung" ist breiter als ein 390-px-Telefon minus Rand:
+  bei fester Groesse lief das letzte g ueber den Rand und body schnitt es ab.
+  Die Schrift waechst mit der Breite, unter ~340 px trennt der Browser.
+*/
 .prose h1 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 2.25rem;
+  font-size: clamp(1.75rem, 1.1rem + 3.2vw, 2.25rem);
+  hyphens: auto;
+  -webkit-hyphens: auto;
   line-height: 1.15;
   color: var(--color-ink);
   margin-bottom: 2.5rem;
@@ -215,10 +222,12 @@ body {
   color: var(--color-ink-3);
 }
 
+/* Lange URLs als Linktext (Supabase-TIA) liefen bei 320 px ueber den Rand */
 .prose a {
   color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 2px;
+  overflow-wrap: anywhere;
 }
 
 .prose a:hover {

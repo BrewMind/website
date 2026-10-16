@@ -105,16 +105,19 @@ import Footer from '../components/Footer.astro';
       <h3>Was hochgeht, was nie</h3>
       <p>
         Bei eingeschalteter Daten-Spende &uuml;bertr&auml;gt die App zu jeder Zubereitung
-        unter anderem Dosis, Mahlgrad-Einstellung, Ausbeute, Zeiten, Temperatur, Ratio,
+        unter anderem Dosis, Mahlgrad-Einstellung, Ausbeute, Zeiten, Temperatur, Br&uuml;hdruck (ein Wert, keine Kurve), Ratio,
         Ihre Geschmacksbewertung sowie Angaben zu Bohne, Maschine, M&uuml;hle und
-        Waagentyp, dazu technische Angaben zu Einwilligung und App-Version. Bei
+        Waagentyp, dazu technische Angaben zu Einwilligung und App-Version. Namen, die Sie selbst vergeben
+        haben (etwa f&uuml;r Bohne, R&ouml;sterei, Maschine oder M&uuml;hle), gehen so mit, wie Sie sie
+        eingetippt haben. Bei
         eingeschalteten Fehlerberichten kommen Ort, Meldung und technischer Ablauf eines
         Fehlers sowie die Build-Nummer hinzu; Ger&auml;te- und Bluetooth-Kennungen werden
-        aus diesen Texten vorher automatisch entfernt.
+        aus diesen Texten vorher automatisch entfernt, soweit sie an ihrem Format erkennbar
+        sind.
       </p>
       <p>
-        Ausdr&uuml;cklich <strong>nicht</strong> &uuml;bertragen werden: die Druck- und
-        Gewichtskurven eines Bezugs, Ihre Freitext-Notizen, der Name Ihrer Waage,
+        Ausdr&uuml;cklich <strong>nicht</strong> &uuml;bertragen werden: die Kurven eines
+        Bezugs aus der Waage, Ihre Freitext-Notizen, der Name Ihrer Waage,
         Standortdaten jeder Art (weder GPS noch WLAN- oder Funkzellen-Standort) und
         Kontaktdaten. Dabei entsteht kein Konto und keine E-Mail-Adresse.
       </p>
@@ -154,19 +157,18 @@ import Footer from '../components/Footer.astro';
         <a href="https://supabase.com/legal/customer-resources/data-processing-addendum" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/data-processing-addendum</a>,
         die Transfer Impact Assessment von Supabase unter
         <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>
-        (Fassung, die Supabase zum Zeitpunkt dieser Erkl&auml;rung bereitstellt; ich pr&uuml;fe
-        die verlinkten Dokumente bei jeder &Auml;nderung dieser Erkl&auml;rung).
+        (Fassung, die Supabase zum Zeitpunkt dieser Erkl&auml;rung bereitstellt).
       </p>
 
       <h3>Speicherdauer</h3>
       <ul>
-        <li><strong>Zubereitungen:</strong> 12 Monate ab Eingang der jeweiligen Zubereitung.</li>
-        <li><strong>Fehlerberichte:</strong> 90 Tage ab Eingang.</li>
-        <li><strong>Waagen-Angabe zu einer Zubereitung:</strong> mit der Zubereitung gel&ouml;scht; fehlt sie, 12 Monate ab eigenem Eingang.</li>
+        <li><strong>Zubereitungen:</strong> 12&nbsp;Monate ab Eingang der jeweiligen Zubereitung.</li>
+        <li><strong>Fehlerberichte:</strong> 90&nbsp;Tage ab Eingang.</li>
+        <li><strong>Waagen-Angabe zu einer Zubereitung:</strong> mit der Zubereitung gel&ouml;scht; fehlt sie, 12&nbsp;Monate ab eigenem Eingang.</li>
         <li><strong>Bohnen, Maschinen, M&uuml;hlen, Waagen:</strong> solange die dazugeh&ouml;rige Installation bei mir gef&uuml;hrt wird.</li>
-        <li><strong>Installation:</strong> solange von ihr noch mindestens eine Zubereitung, eine Waagen-Verkn&uuml;pfung oder ein Fehlerbericht gespeichert ist, in jedem Fall aber bis 12 Monate nach dem letzten dieser Vorg&auml;nge: Anmeldung der Installation, ihr Zur&uuml;ckholen (etwa auf einem neuen Ger&auml;t), oder das Erteilen oder der Widerruf einer Einwilligung (das Hochladen von Zubereitungen oder Fehlerberichten z&auml;hlt dabei nicht als eigener Vorgang). Trifft beides nicht mehr zu, wird die Installation mit ihren Stammdaten beim n&auml;chsten t&auml;glichen L&ouml;schlauf entfernt.</li>
+        <li><strong>Installation:</strong> solange von ihr noch mindestens eine Zubereitung, eine Waagen-Verkn&uuml;pfung oder ein Fehlerbericht gespeichert ist, in jedem Fall aber bis 12&nbsp;Monate nach dem letzten dieser Vorg&auml;nge: Anmeldung der Installation, ihr Zur&uuml;ckholen (etwa auf einem neuen Ger&auml;t), das Erteilen oder der Widerruf einer Einwilligung oder die t&auml;gliche R&uuml;ckmeldung der App an den Server, solange Daten-Spende oder Fehlerberichte eingeschaltet sind (das Hochladen von Zubereitungen oder Fehlerberichten z&auml;hlt dabei nicht als eigener Vorgang). Trifft beides nicht mehr zu, wird die Installation mit ihren Stammdaten beim n&auml;chsten t&auml;glichen L&ouml;schlauf entfernt.</li>
         <li><strong>Nachweis Ihrer Einwilligung:</strong> solange Ihre Installation gef&uuml;hrt wird, danach noch bis zu drei Jahre nach dem letzten Einwilligungsereignis.</li>
-        <li><strong>IP-Adressen in meinen Anmelde-Protokollen:</strong> h&ouml;chstens 30 Tage.</li>
+        <li><strong>IP-Adressen in meinen Anmelde-Protokollen:</strong> h&ouml;chstens 30&nbsp;Tage.</li>
       </ul>
 
       <h3>Widerruf</h3>
@@ -179,7 +181,7 @@ import Footer from '../components/Footer.astro';
         Waagen-Angaben; sind beide Schalter aus, wird auch die Installation gel&ouml;scht.
         Erhalten bleiben der Nachweis der Einwilligung und des Widerrufs (siehe
         Speicherdauer) sowie die IP-Adresse in den Anmelde-Protokollen f&uuml;r
-        h&ouml;chstens 30 Tage; lokal auf Ihrem Ger&auml;t bleibt alles erhalten. Erreicht
+        h&ouml;chstens 30&nbsp;Tage; lokal auf Ihrem Ger&auml;t bleibt alles erhalten. Erreicht
         die App den Server im Moment des Widerrufs nicht, holt sie die L&ouml;schung nach,
         sobald sie wieder online ist, und zeigt sie bis dahin als ausstehend an. Nach
         einer Neuinstallation erh&auml;lt die App eine neue Kennung; Daten zu einer alten
@@ -208,9 +210,8 @@ import Footer from '../components/Footer.astro';
         Entscheidungsfindung im Sinne von Art. 22 DSGVO statt. Auswertungen f&uuml;r
         R&ouml;stereien gebe ich erst heraus, wenn mindestens f&uuml;nf unterschiedliche
         Installationen zu dem jeweiligen Ergebnis beigetragen haben; ein Ergebnis mit
-        weniger Beitragenden gebe ich nicht weiter. Die App richtet sich an Erwachsene.
-        Die Daten-Spende und die Fehlerberichte setzen voraus, dass Sie mindestens 16
-        Jahre alt sind.
+        weniger Beitragenden gebe ich nicht weiter.
+        Die Daten-Spende und die Fehlerberichte setzen voraus, dass Sie mindestens 16&nbsp;Jahre alt sind.
       </p>
 
       <h3>Sitzungsdaten auf dem Ger&auml;t</h3>
@@ -380,7 +381,7 @@ import Footer from '../components/Footer.astro';
         k&uuml;nftig nicht.
       </p>
 
-      <p class="stand">Stand: 11. Oktober 2026</p>
+      <p class="stand">Stand: 16. Oktober 2026</p>
     </article>
   </main>
   <Footer />

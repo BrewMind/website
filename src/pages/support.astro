@@ -18,7 +18,7 @@ const mailto =
   encodeURIComponent('BrewMind Support') +
   '&body=' +
   encodeURIComponent(
-    'Hallo,\n\nkurz zu meinem Problem:\n\n\n\nGerät (iPhone-Modell, iOS-Version):\nWaage (Marke und Modell, falls verbunden):\nDiagnose (in der Verwaltung „Diagnose kopieren“, hier einfügen):\n\n\nViele Grüße\n',
+    'Hallo,\n\nkurz zu meinem Problem:\n\n\n\nGerät (Modell und iOS- oder Android-Version):\nWaage (Marke und Modell, falls verbunden):\nDiagnose (in der Verwaltung „Diagnose kopieren“, hier einfügen):\n\n\nViele Grüße\n',
   );
 ---
 
@@ -44,8 +44,8 @@ const mailto =
       </p>
 
       <p>
-        Hilfreich für eine schnelle Antwort: iPhone-Modell, iOS-Version und —
-        falls es um die Waage geht — Marke und Modell.
+        Hilfreich für eine schnelle Antwort: Telefon-Modell, iOS- oder
+        Android-Version und, falls es um die Waage geht, Marke und Modell.
       </p>
 
       <h2>Die Waage wird nicht gefunden</h2>
@@ -58,12 +58,14 @@ const mailto =
           schalten den Funk nach ein paar Minuten Ruhe wieder ab.
         </li>
         <li>
-          Bluetooth am iPhone einschalten (Einstellungen &rarr; Bluetooth,
-          nicht nur im Kontrollzentrum — dort ist es nur pausiert).
+          Bluetooth einschalten. Am iPhone über Einstellungen &rarr; Bluetooth,
+          nicht nur im Kontrollzentrum, dort ist es nur pausiert.
         </li>
         <li>
-          Berechtigung prüfen: Einstellungen &rarr; BrewMind &rarr; Bluetooth.
-          Ohne sie sucht die App gar nicht erst.
+          Berechtigung prüfen: am iPhone Einstellungen &rarr; BrewMind &rarr;
+          Bluetooth, unter Android ab Version 12 in den App-Infos von BrewMind die
+          Berechtigung „Geräte in der Nähe“. Ohne sie sucht die App gar nicht
+          erst.
         </li>
         <li>
           Waage in die Nähe legen. Zwischen Maschine und Telefon reicht ein
@@ -81,23 +83,23 @@ const mailto =
       <p>
         Die App erkennt die Waage am Namen, den sie beim Koppeln ausstrahlt.
         Eine Markenauswahl gibt es nicht: was gefunden wurde, steht im
-        Koppel-Bildschirm, ein Tipp verbindet.
+        Koppel-Bildschirm, ein Tap verbindet.
       </p>
 
       <ul>
-        <li>Acaia — Lunar, Pearl, Pyxis, Proch, Cinco</li>
+        <li>Acaia: Lunar, Pearl, Pyxis, Proch, Cinco</li>
         <li>Blackcoffee</li>
-        <li>Bookoo — Themis und weitere</li>
+        <li>Bookoo: Themis und weitere</li>
         <li>Decent Espresso</li>
-        <li>DiFluid — Microbalance und Microbalance Ti</li>
-        <li>Eureka — Precisa</li>
-        <li>Felicita — Arc, Parallel</li>
-        <li>Futula / Lefu — LFSmart Scale</li>
-        <li>Hiroia — Jimmy</li>
-        <li>Coffee Skale — Skale und Skale 2</li>
+        <li>DiFluid: Microbalance und Microbalance Ti</li>
+        <li>Eureka: Precisa</li>
+        <li>Felicita: Arc, Parallel</li>
+        <li>Futula / Lefu: LFSmart Scale</li>
+        <li>Hiroia: Jimmy</li>
+        <li>Coffee Skale: Skale und Skale 2</li>
         <li>Smartchef</li>
-        <li>Timemore — Black Mirror und weitere</li>
-        <li>Varia — AKU und AKU Mini</li>
+        <li>Timemore: Black Mirror und weitere</li>
+        <li>Varia: AKU und AKU Mini</li>
       </ul>
 
       <p>
@@ -117,7 +119,7 @@ const mailto =
         ihrer eigenen Taste, die App übernimmt nur den Wert. Einwiegen geht
         so: Siebträger auf die Waage, an der Waage tarieren, Kaffee rein, dann
         zeigt der Knopf unter den Steppern den Live-Wert, etwa
-        „18,2 g übernehmen“, und ein Tap setzt ihn als Dosis. Vor dem Bezug
+        „18,2&nbsp;g übernehmen“, und ein Tap setzt ihn als Dosis. Vor dem Bezug
         dasselbe mit der Tasse: an der Waage tarieren, dann Start.
       </p>
 
@@ -131,18 +133,18 @@ const mailto =
 
       <p>
         Ja, vollständig. Der manuelle Weg ist kein Notbehelf: Der Timer läuft
-        per Tipp, Ausgabemenge und Bewertung trägst du nach dem Stoppen ein,
-        und der Shot landet mit allen Auswertungen in der Historie. In der
-        Einrichtung ist die Zeile „Waage“ als <em>optional</em>
-        gekennzeichnet; „Später ergänzen — direkt loslegen“ führt daran vorbei.
+        per Tap, Yield und Bewertung trägst du nach dem Stoppen ein, und der
+        Shot landet mit allen Auswertungen in der History. Beim ersten Start
+        legst du Bohne, Maschine und Mühle an, die Waage steht dort als
+        „Optional: auch ohne Waage voll nutzbar“ und hält niemanden auf.
       </p>
 
       <h2>Die Waage hat mitten im Bezug getrennt</h2>
 
       <p>
         Der Timer läuft weiter, und was bis dahin gemessen wurde, bleibt
-        erhalten. Im Abschluss steht dann ein Hinweis, dass die Ausgabemenge
-        von Hand nachzutragen ist — die Kurve endet an der Stelle, an der die
+        erhalten. Im Abschluss steht dann ein Hinweis, dass der Yield von Hand
+        nachzutragen ist. Die Kurve endet an der Stelle, an der die
         Verbindung abriss, und ohne den Nachtrag fehlt dem Shot sein
         Endgewicht.
       </p>
@@ -157,11 +159,11 @@ const mailto =
         Zahlen sind in einer Shot-Historie schlimmer als eine kurze Kurve.
       </p>
 
-      <h2>„Diese App-Version ist älter als deine Daten“</h2>
+      <h2>„BrewMind ist älter als deine Daten.“</h2>
 
       <p>
         Das passiert, wenn auf dem Gerät schon eine neuere BrewMind-Version
-        lief — etwa nach einem Wechsel zurück auf einen älteren TestFlight-Build.
+        lief, etwa nach einem Wechsel zurück auf einen älteren Beta-Build.
         Deine Shots sind vollständig vorhanden und werden nicht angefasst;
         diese Version kann die Datei nur nicht öffnen.
       </p>
@@ -175,8 +177,9 @@ const mailto =
       <h2>Wie komme ich an meine Daten?</h2>
 
       <p>
-        In der Historie liegt der Export: „Als JSON kopieren“ legt deine
-        Shots mit ihren Kennzahlen als JSON in die Zwischenablage, im
+        In der History liegt der Export: „3 Shots als JSON kopieren“ (die
+        Zahl folgt dem Bohnenfilter) legt deine Shots mit ihren Kennzahlen
+        in die Zwischenablage, im
         Shot-Detail kopiert „Shot als JSON kopieren“ den einzelnen Shot mit
         allen Messpunkten. Von dort geht es in Notizen, Mail, Tabelle oder
         Skript. Der Text enthält auch ein paar Hinweise dazu, wie die Werte
@@ -209,7 +212,7 @@ const mailto =
 
       <p>
         Aus der TestFlight-Beta heraus geht es noch direkter: In TestFlight
-        auf „Feedback senden“ tippen — Screenshot und Notiz landen dann samt
+        auf „Feedback senden“ tippen, dann landen Screenshot und Notiz samt
         Geräte- und Versionsangaben bei mir.
       </p>
 
