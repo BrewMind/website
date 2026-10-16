@@ -91,18 +91,28 @@ import { TESTFLIGHT_URL } from '../data/links';
         </a>
       </div>
 
-      <!-- Geraet -->
+      <!--
+        Geraet wie ein echtes iPhone: Metallkante, schwarzer Glasrand, dann der
+        Bildschirm. Der Bildschirm traegt das Seitenverhaeltnis der Aufnahme
+        (1320x2868), sonst schneidet object-cover die Seiten ab und der
+        App-eigene Rand von 16 pt verschwindet; die Karten kleben dann am
+        Rahmen. Radien von innen nach aussen: Bildschirm + Glasrand + Kante.
+      -->
       <div class="relative mx-auto w-full max-w-[280px] sm:max-w-[300px]">
-        <div class="aspect-[9/19.5] rounded-[2.75rem] border-[10px] border-surface-2 bg-surface overflow-hidden glow-accent">
-          <Image
-            src={cockpit}
-            alt="Das Bohnen-Cockpit von BrewMind: aktive Bohne, Tag nach Röstung und die zuletzt gefahrene Einstellung"
-            width={780}
-            format="webp"
-            loading="eager"
-            fetchpriority="high"
-            class="w-full h-full object-cover object-top"
-          />
+        <div class="rounded-[46px] p-[3px] bg-gradient-to-b from-border to-surface-2 glow-accent">
+          <div class="rounded-[43px] bg-black p-[9px]">
+            <div class="aspect-[1320/2868] rounded-[34px] overflow-hidden bg-bg">
+              <Image
+                src={cockpit}
+                alt="Das Bohnen-Cockpit von BrewMind: aktive Bohne, Tag nach Röstung und die zuletzt gefahrene Einstellung"
+                width={780}
+                format="webp"
+                loading="eager"
+                fetchpriority="high"
+                class="block w-full h-full object-cover object-top"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
