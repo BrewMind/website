@@ -66,23 +66,33 @@ const ueberschrift =
 
         <p class="text-sm text-ink-3 mt-4">Rezept laut Ersteller des Codes.</p>
 
-        <h2 class="text-xl font-semibold text-ink mt-14 mb-4">So nutzt du es</h2>
+        <h2 class="text-xl font-semibold text-ink mt-14 mb-4">In BrewMind übernehmen</h2>
         <ol class="space-y-3 text-ink-2 leading-relaxed">
           <li>
             <span class="text-accent font-semibold">1.</span>
-            In BrewMind eine Bohne anlegen, mit dem Namen von oben.
+            Hast du BrewMind schon, öffnet der Code die App direkt bei „Bohne
+            anlegen“, mit diesem Rezept. Prüfen, speichern, fertig.
           </li>
           <li>
             <span class="text-accent font-semibold">2.</span>
-            Die Werte eintragen, die hier stehen.
+            Noch ohne App: BrewMind unten holen und den Code danach noch einmal
+            scannen.
           </li>
           <li id="schritt-mitte" hidden>
             <span class="text-accent font-semibold">3.</span>
-            Die Zeit ist eine Spanne: starte mit der Mitte, hier
-            <span id="zeit-mitte" class="tabular text-ink"></span>, und stell von
-            dort aus nach Geschmack nach.
+            Bei einer Spanne startet BrewMind mit der Mitte, hier
+            <span id="start-werte" class="tabular text-ink"></span>, und du stellst
+            von dort nach Geschmack nach.
           </li>
         </ol>
+
+        <p id="app-oeffnen-zeile" hidden class="mt-8">
+          <a id="app-oeffnen" class={knopf}>In BrewMind öffnen</a>
+          <span class="block text-sm text-ink-3 mt-3">
+            Falls statt der App diese Seite aufgeht, etwa direkt nach der
+            Installation.
+          </span>
+        </p>
       </section>
 
       <section id="fehler-leer" hidden>
@@ -139,7 +149,15 @@ const ueberschrift =
 </Layout>
 
 <script>
-  import { formatDatum, formatMitEinheit, formatSpanne, parseRezept, startzeitS } from '../lib/rezept-link';
+  import {
+    baueAppLink,
+    formatDatum,
+    formatMitEinheit,
+    formatSpanne,
+    parseRezept,
+    startertragG,
+    startzeitS,
+  } from '../lib/rezept-link';
 
   function finde(id: string): HTMLElement {
     const element = document.getElementById(id);
@@ -176,11 +194,20 @@ const ueberschrift =
     ];
     finde('rezept-werte').hidden = !sichtbar.includes(true);
 
-    // Eine Zeitspanne gibt einen Startwert vor: die Mitte, auf ganze Sekunden gerundet wie in der App
+    // Eine Spanne gibt einen Startwert vor: die Mitte, gerundet wie in der App
+    const startwerte: string[] = [];
+    const ertrag = rezept.ertragG;
+    if (ertrag !== undefined && ertrag.min !== ertrag.max) startwerte.push(formatMitEinheit(startertragG(ertrag), 'g'));
     const zeit = rezept.zeitS;
-    const hatSpanne = zeit !== undefined && zeit.min !== zeit.max;
-    finde('schritt-mitte').hidden = !hatSpanne;
-    if (hatSpanne) finde('zeit-mitte').textContent = formatMitEinheit(startzeitS(zeit), 's');
+    if (zeit !== undefined && zeit.min !== zeit.max) startwerte.push(formatMitEinheit(startzeitS(zeit), 's'));
+    finde('schritt-mitte').hidden = startwerte.length === 0;
+    finde('start-werte').textContent = startwerte.join(' und ');
+
+    // Nur auf dem Handy: dort ist die App, am Rechner führt das Schema ins Leere
+    if (/iPhone|iPad|Android/.test(navigator.userAgent)) {
+      finde('app-oeffnen').setAttribute('href', baueAppLink(rezept));
+      finde('app-oeffnen-zeile').hidden = false;
+    }
 
     finde('rezept').hidden = false;
     document.title = `${rezept.name} | Espresso-Rezept | BrewMind`;

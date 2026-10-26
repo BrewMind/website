@@ -1,0 +1,23 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.brewmind.core",
+      "sha256_cert_fingerprints": [
+        "76:24:DB:8D:4D:11:AD:A1:44:F8:EE:8E:78:E1:4D:2E:BF:F9:A2:33:72:12:C2:22:D0:06:90:27:DC:9D:89:DA",
+        "7F:21:33:FC:B4:40:74:7B:DA:E8:06:A3:9B:FD:47:00:8D:C6:59:F8:35:11:D2:45:97:2F:12:46:D4:CB:7B:F1"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.brewmind.core.dev",
+      "sha256_cert_fingerprints": [
+        "8C:AE:7D:BE:2A:C1:6A:8B:E5:1F:11:0D:54:AD:11:2D:F6:00:2A:F9:C5:6C:BD:E1:E4:F8:FE:41:5A:32:E9:50"
+      ]
+    }
+  }
+]

@@ -184,6 +184,20 @@ export function baueRezeptLink(rezept: Rezept): string {
   return LINK_BASIS + teile.map(([schluessel, wert]) => `${schluessel}=${encodeURIComponent(wert)}`).join('&');
 }
 
+/** Schema der App (`scheme` in der `app.json` von BrewMind). */
+export const APP_LINK_BASIS = 'brewmindcore://r?';
+
+/**
+ * Derselbe Link mit dem Schema der App, für den Knopf „In BrewMind öffnen“ auf
+ * /r/. Der Code selbst öffnet die App über den https-Link, aber nicht, wenn
+ * schon brewmind.app im Browser offen ist (etwa direkt nach der Installation)
+ * oder ein In-App-Browser den Link abfängt. Gebaut aus dem geprüften Rezept,
+ * damit nur Bekanntes in die App geht.
+ */
+export function baueAppLink(rezept: Rezept): string {
+  return APP_LINK_BASIS + baueRezeptLink(rezept).slice(LINK_BASIS.length);
+}
+
 // Anzeige auf /r/
 
 /** Deutsche Zahl mit Komma: 18,5. */
@@ -208,6 +222,15 @@ export function formatSpanne(spanne: Spanne, einheit: string): string {
  */
 export function startzeitS(spanne: Spanne): number {
   return Math.round((spanne.min + spanne.max) / 2);
+}
+
+/**
+ * Startwert einer Ertragsspanne: die Mitte auf eine Nachkommastelle, wie die
+ * App sie übernimmt. Mal 5 statt erst halbieren und dann mal 10, damit keine
+ * Gleitkomma-Reste das Runden kippen.
+ */
+export function startertragG(spanne: Spanne): number {
+  return Math.round((spanne.min + spanne.max) * 5) / 10;
 }
 
 const DATUMSFORMAT = new Intl.DateTimeFormat('de-DE', {

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  baueAppLink,
   baueRezeptLink,
   formatDatum,
   formatMitEinheit,
@@ -8,6 +9,7 @@ import {
   parseRezept,
   pruefeFormular,
   saeubereText,
+  startertragG,
   startzeitS,
   type FormularEingabe,
   type Rezept,
@@ -103,6 +105,30 @@ describe('Rundlauf bauen und lesen', () => {
   it('ein einzelnes kaputtes Zeichen lässt das Bauen nicht abstürzen', () => {
     expect(() => baueRezeptLink({ name: 'Test\uD800' })).not.toThrow();
     expect(rundlauf({ name: 'Test\uD800' })).toStrictEqual({ ok: true, rezept: { name: 'Test' } });
+  });
+});
+
+describe('Link für die App', () => {
+  const vrn: Rezept = {
+    name: 'VRN 80/20',
+    roesterei: 'Schvarz Kaffee',
+    dosisG: 19,
+    ertragG: { min: 47, max: 47 },
+    zeitS: { min: 28, max: 32 },
+  };
+
+  it('trägt dieselbe Query wie der Code, nur mit dem Schema der App', () => {
+    expect(baueAppLink(vrn)).toBe('brewmindcore://r?v=1&n=VRN%2080%2F20&r=Schvarz%20Kaffee&d=19&y=47&t=28-32');
+  });
+
+  it('liest sich zum selben Rezept zurück', () => {
+    const rezept: Rezept = { ...vrn, roestdatum: '2026-10-12' };
+    expect(parseRezept(new URL(baueAppLink(rezept)).searchParams, HEUTE)).toStrictEqual({ ok: true, rezept });
+  });
+
+  it('nimmt nur das geprüfte Rezept mit, Unbekanntes aus der Query fällt weg', () => {
+    const rezept = rezeptAus({ d: '19', x: 'fremd', y: '999' });
+    expect(baueAppLink(rezept)).toBe('brewmindcore://r?v=1&n=Test&d=19');
   });
 });
 
@@ -390,6 +416,13 @@ describe('Anzeige', () => {
     expect(startzeitS({ min: 25, max: 30 })).toBe(28);
     expect(startzeitS({ min: 30, max: 30 })).toBe(30);
     expect(startzeitS({ min: 1, max: 2 })).toBe(2);
+  });
+
+  it('Startertrag ist die Mitte auf eine Nachkommastelle', () => {
+    expect(startertragG({ min: 36, max: 40 })).toBe(38);
+    expect(startertragG({ min: 36, max: 41 })).toBe(38.5);
+    expect(startertragG({ min: 36.5, max: 40 })).toBe(38.3);
+    expect(startertragG({ min: 47, max: 47 })).toBe(47);
   });
 
   it('Datum ausgeschrieben, unabhängig von der Zeitzone des Geräts', () => {
