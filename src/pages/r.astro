@@ -58,6 +58,10 @@ const ueberschrift =
             <dt class="label">Zeit</dt>
             <dd class="tabular text-lg sm:text-xl text-ink mt-2"></dd>
           </div>
+          <div id="kachel-roestgrad" hidden class={kachel}>
+            <dt class="label">Röstgrad</dt>
+            <dd class="tabular text-lg sm:text-xl text-ink mt-2"></dd>
+          </div>
           <div id="kachel-roestung" hidden class={`${kachel} col-span-2`}>
             <dt class="label">Röstung</dt>
             <dd class="tabular text-lg sm:text-xl text-ink mt-2"></dd>
@@ -153,6 +157,7 @@ const ueberschrift =
     baueAppLink,
     formatDatum,
     formatMitEinheit,
+    formatRoestgrad,
     formatSpanne,
     parseRezept,
     startertragG,
@@ -190,6 +195,7 @@ const ueberschrift =
       setzeKachel('kachel-dosis', rezept.dosisG === undefined ? null : formatMitEinheit(rezept.dosisG, 'g')),
       setzeKachel('kachel-ertrag', rezept.ertragG === undefined ? null : formatSpanne(rezept.ertragG, 'g')),
       setzeKachel('kachel-zeit', rezept.zeitS === undefined ? null : formatSpanne(rezept.zeitS, 's')),
+      setzeKachel('kachel-roestgrad', rezept.roestgrad === undefined ? null : formatRoestgrad(rezept.roestgrad)),
       setzeKachel('kachel-roestung', rezept.roestdatum === undefined ? null : formatDatum(rezept.roestdatum)),
     ];
     finde('rezept-werte').hidden = !sichtbar.includes(true);

@@ -13,6 +13,7 @@
  *   y   Ertrag in g, Zahl oder Spanne 36-40, 0 < y <= 200
  *   t   Zeit in s, ganze Zahl oder Spanne 25-30, 0 < t <= 120
  *   rd  Röstdatum JJJJ-MM-TT, echtes Datum, nicht in der Zukunft
+ *   rg  Röstgrad: hell, mittel oder dunkel
  *
  * Ein ungültiger optionaler Parameter fällt für sich weg, der Rest bleibt
  * gültig. Unbekannte Parameter werden überlesen (Vorwärtskompatibilität).
@@ -23,6 +24,12 @@
 
 export type Spanne = { min: number; max: number };
 
+/** Röstgrad wie im Link (`rg`): genau diese drei Werte, kleingeschrieben. */
+export type Roestgrad = 'hell' | 'mittel' | 'dunkel';
+
+/** Die Werte von `rg` in der Reihenfolge von hell nach dunkel (so auch im Formular). */
+export const ROESTGRADE: readonly Roestgrad[] = ['hell', 'mittel', 'dunkel'];
+
 export type Rezept = {
   name: string;
   roesterei?: string;
@@ -31,6 +38,7 @@ export type Rezept = {
   zeitS?: Spanne;
   /** JJJJ-MM-TT */
   roestdatum?: string;
+  roestgrad?: Roestgrad;
 };
 
 export type ParseErgebnis =
@@ -112,6 +120,14 @@ export function liesSpanne(roh: string, art: Zahlenart, obergrenze: number): Spa
   return { min, max };
 }
 
+/**
+ * Der Röstgrad aus einem `rg`-Wert, `undefined` bei allem anderen. Exakter
+ * Vergleich: kein Trim, keine Großschreibung (`Hell`, ` mittel`, `light` fallen weg).
+ */
+export function liesRoestgrad(roh: string): Roestgrad | undefined {
+  return ROESTGRADE.find((grad) => grad === roh);
+}
+
 /** JJJJ-MM-TT als Datum (UTC, Mitternacht), `null` bei falschem Format oder 2026-02-30. */
 function kalenderdatum(iso: string): Date | null {
   const treffer = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
@@ -162,6 +178,10 @@ export function parseRezept(params: URLSearchParams, heute: Date): ParseErgebnis
   const roestdatum = params.get('rd') ?? '';
   if (pruefeRoestdatum(roestdatum, heute) === 'ok') rezept.roestdatum = roestdatum;
 
+  // Bei doppeltem rg gilt der erste Wert (URLSearchParams.get)
+  const roestgrad = liesRoestgrad(params.get('rg') ?? '');
+  if (roestgrad !== undefined) rezept.roestgrad = roestgrad;
+
   return { ok: true, rezept };
 }
 
@@ -176,7 +196,7 @@ function spanneFuerLink(spanne: Spanne): string {
     : `${zahlFuerLink(spanne.min)}-${zahlFuerLink(spanne.max)}`;
 }
 
-/** Baut den Link in der Reihenfolge v, n, r, d, y, t, rd. Ungesetzte Felder fehlen. */
+/** Baut den Link in der Reihenfolge v, n, r, d, y, t, rd, rg. Ungesetzte Felder fehlen. */
 export function baueRezeptLink(rezept: Rezept): string {
   const teile: [string, string][] = [
     ['v', '1'],
@@ -188,6 +208,7 @@ export function baueRezeptLink(rezept: Rezept): string {
   if (rezept.ertragG !== undefined) teile.push(['y', spanneFuerLink(rezept.ertragG)]);
   if (rezept.zeitS !== undefined) teile.push(['t', spanneFuerLink(rezept.zeitS)]);
   if (rezept.roestdatum !== undefined) teile.push(['rd', rezept.roestdatum]);
+  if (rezept.roestgrad !== undefined) teile.push(['rg', rezept.roestgrad]);
   return LINK_BASIS + teile.map(([schluessel, wert]) => `${schluessel}=${encodeURIComponent(wert)}`).join('&');
 }
 
@@ -241,6 +262,13 @@ export function startertragG(spanne: Spanne): number {
   return Math.round(zehntel / 2) / 10;
 }
 
+const ROESTGRAD_ANZEIGE: Record<Roestgrad, string> = { hell: 'Hell', mittel: 'Mittel', dunkel: 'Dunkel' };
+
+/** hell wird Hell, mittel wird Mittel, dunkel wird Dunkel. Für die Kachel auf /r/ und die Auswahl auf /qr/. */
+export function formatRoestgrad(roestgrad: Roestgrad): string {
+  return ROESTGRAD_ANZEIGE[roestgrad];
+}
+
 const DATUMSFORMAT = new Intl.DateTimeFormat('de-DE', {
   day: 'numeric',
   month: 'long',
@@ -265,6 +293,8 @@ export type FormularEingabe = {
   zeitVon: string;
   zeitBis: string;
   roestdatum: string;
+  /** Wert der Auswahl: leer (keine Angabe), `hell`, `mittel` oder `dunkel`. */
+  roestgrad: string;
 };
 
 export type FormularFeld = keyof FormularEingabe;
@@ -331,6 +361,13 @@ export function pruefeFormular(eingabe: FormularEingabe, heute: Date): FormularE
     if (urteil === 'ungueltig') fehler.roestdatum = 'Das Röstdatum ist kein gültiges Datum.';
     else if (urteil === 'zukunft') fehler.roestdatum = 'Das Röstdatum liegt in der Zukunft.';
     else rezept.roestdatum = datum;
+  }
+
+  // Auswahlfeld, kein Freitext: genau wie im Link, ohne Trim und ohne Umdeuten
+  if (eingabe.roestgrad !== '') {
+    const roestgrad = liesRoestgrad(eingabe.roestgrad);
+    if (roestgrad === undefined) fehler.roestgrad = 'Der Röstgrad muss Hell, Mittel oder Dunkel sein.';
+    else rezept.roestgrad = roestgrad;
   }
 
   return { rezept: Object.keys(fehler).length === 0 ? rezept : null, fehler };
