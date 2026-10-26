@@ -7,7 +7,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://brewmind.app',
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // /r/ zeigt je nach Query ein anderes Rezept und ist noindex, gehoert also nicht in die Sitemap
+      filter: (page) => new URL(page).pathname !== '/r/'
+    })
+  ],
   vite: {
     plugins: [tailwindcss()]
   }

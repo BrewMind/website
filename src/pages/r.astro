@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { TESTFLIGHT_URL } from '../data/links';
+
+/**
+ * Die Seite hinter dem QR-Code von /qr/: liest das Rezept aus der Query
+ * (Muster und Regeln in `src/lib/rezept-link.ts`) und zeigt es lesbar, dazu
+ * den Weg zur App. Statisch, nichts geht an einen Server.
+ *
+ * Das Gerüst steht im HTML, das Skript füllt es per textContent. Die Werte
+ * kommen aus einer Query, die jeder bauen kann, deshalb nie per innerHTML.
+ * noindex, weil der Inhalt in der Query steht, und nicht in der Sitemap
+ * (siehe astro.config.mjs).
+ */
+const knopf =
+  'inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors';
+const textlink = 'text-accent hover:text-accent-pressed underline underline-offset-2';
+const kachel = 'rounded-2xl bg-surface border border-border p-4';
+const ueberschrift =
+  'font-display text-4xl sm:text-5xl leading-tight text-balance [overflow-wrap:anywhere]';
+---
+
+<Layout
+  title="Espresso-Rezept | BrewMind"
+  description="Ein Espresso-Rezept aus einem BrewMind-QR-Code, mit Dosis, Ertrag und Zeit."
+  noindex
+>
+  <Header />
+  <main class="pt-28 pb-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <noscript>
+        <p class="label mb-4">Espresso-Rezept</p>
+        <h1 class={ueberschrift}>Ohne JavaScript geht es nicht</h1>
+        <p class="text-lg text-ink-2 leading-relaxed mt-4">
+          Diese Seite liest das Rezept im Browser aus dem Link und braucht dafür
+          JavaScript. Schalte es ein und lade die Seite neu. Es wird nichts an
+          einen Server geschickt.
+        </p>
+      </noscript>
+
+      <section id="rezept" hidden aria-labelledby="rezept-name">
+        <p class="label mb-4">Espresso-Rezept</p>
+        <h1 id="rezept-name" class={ueberschrift}></h1>
+        <p id="rezept-roesterei" hidden class="text-lg text-ink-2 mt-3 [overflow-wrap:anywhere]"></p>
+
+        <dl id="rezept-werte" hidden class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-10">
+          <div id="kachel-dosis" hidden class={kachel}>
+            <dt class="label">Dosis</dt>
+            <dd class="tabular text-lg sm:text-xl text-ink mt-2"></dd>
+          </div>
+          <div id="kachel-ertrag" hidden class={kachel}>
+            <dt class="label">Ertrag</dt>
+            <dd class="tabular text-lg sm:text-xl text-ink mt-2"></dd>
+          </div>
+          <div id="kachel-zeit" hidden class={kachel}>
+            <dt class="label">Zeit</dt>
+            <dd class="tabular text-lg sm:text-xl text-ink mt-2"></dd>
+          </div>
+          <div id="kachel-roestung" hidden class={`${kachel} col-span-2`}>
+            <dt class="label">Röstung</dt>
+            <dd class="tabular text-lg sm:text-xl text-ink mt-2"></dd>
+          </div>
+        </dl>
+
+        <p class="text-sm text-ink-3 mt-4">Rezept laut Ersteller des Codes.</p>
+
+        <h2 class="text-xl font-semibold text-ink mt-14 mb-4">So nutzt du es</h2>
+        <ol class="space-y-3 text-ink-2 leading-relaxed">
+          <li>
+            <span class="text-accent font-semibold">1.</span>
+            In BrewMind eine Bohne anlegen, mit dem Namen von oben.
+          </li>
+          <li>
+            <span class="text-accent font-semibold">2.</span>
+            Die Werte eintragen, die hier stehen.
+          </li>
+          <li id="schritt-mitte" hidden>
+            <span class="text-accent font-semibold">3.</span>
+            Die Zeit ist eine Spanne: starte mit der Mitte, hier
+            <span id="zeit-mitte" class="tabular text-ink"></span>, und stell von
+            dort aus nach Geschmack nach.
+          </li>
+        </ol>
+      </section>
+
+      <section id="fehler-leer" hidden>
+        <p class="label mb-4">Espresso-Rezept</p>
+        <h1 class={ueberschrift}>Kein Rezept gefunden</h1>
+        <p class="text-lg text-ink-2 leading-relaxed mt-4">
+          Dieser Link enthält kein lesbares Rezept.
+        </p>
+        <p class="mt-6"><a href="/" class={textlink}>Zur Startseite</a></p>
+      </section>
+
+      <section id="fehler-version" hidden>
+        <p class="label mb-4">Espresso-Rezept</p>
+        <h1 class={ueberschrift}>Neuere Fassung</h1>
+        <p class="text-lg text-ink-2 leading-relaxed mt-4">
+          Dieses Rezept stammt aus einer neueren Fassung des Codes und lässt sich
+          hier nicht lesen.
+        </p>
+        <p class="mt-6"><a href="/" class={textlink}>Zur Startseite</a></p>
+      </section>
+
+      <section class="mt-14" aria-labelledby="app-holen">
+        <h2 id="app-holen" class="text-xl font-semibold text-ink mb-2">BrewMind holen</h2>
+        <p class="text-ink-2 leading-relaxed mb-6">
+          BrewMind läuft als kostenlose Beta auf iPhone und Android, mit einer
+          Bluetooth-Waage oder ohne. Keine Warteliste, keine Anmeldung bei mir.
+        </p>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl bg-surface border border-border p-6 flex flex-col">
+            <h3 class="text-lg font-semibold text-ink mb-2">iPhone</h3>
+            <p class="text-ink-2 leading-relaxed mb-5">
+              Über Apples TestFlight-App. Link öffnen, TestFlight installieren,
+              danach bist du direkt drin.
+            </p>
+            <a href={TESTFLIGHT_URL} target="_blank" rel="noopener" class={`mt-auto ${knopf}`}>
+              Beta über TestFlight öffnen
+            </a>
+          </div>
+
+          <div class="rounded-2xl bg-surface border border-border p-6 flex flex-col">
+            <h3 class="text-lg font-semibold text-ink mb-2">Android</h3>
+            <p class="text-ink-2 leading-relaxed mb-5">
+              Über Google Play, in drei Schritten mit deinem Google-Konto. Die
+              Anleitung steht auf der Startseite.
+            </p>
+            <a href="/#android" class={`mt-auto ${knopf}`}>So kommst du in die Android-Beta</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { formatDatum, formatMitEinheit, formatSpanne, parseRezept, startzeitS } from '../lib/rezept-link';
+
+  function finde(id: string): HTMLElement {
+    const element = document.getElementById(id);
+    if (!element) throw new Error(`Element #${id} fehlt im Gerüst`);
+    return element;
+  }
+
+  /** Füllt eine Kachel (oder versteckt sie, bei `null`) und sagt, ob sie sichtbar ist. */
+  function setzeKachel(id: string, text: string | null): boolean {
+    const kachel = finde(id);
+    kachel.hidden = text === null;
+    const wert = kachel.querySelector('dd');
+    if (text !== null && wert) wert.textContent = text;
+    return text !== null;
+  }
+
+  const ergebnis = parseRezept(new URLSearchParams(window.location.search), new Date());
+
+  if (!ergebnis.ok) {
+    finde(ergebnis.grund === 'version' ? 'fehler-version' : 'fehler-leer').hidden = false;
+  } else {
+    const { rezept } = ergebnis;
+
+    finde('rezept-name').textContent = rezept.name;
+    const roesterei = finde('rezept-roesterei');
+    roesterei.hidden = rezept.roesterei === undefined;
+    if (rezept.roesterei !== undefined) roesterei.textContent = rezept.roesterei;
+
+    const sichtbar = [
+      setzeKachel('kachel-dosis', rezept.dosisG === undefined ? null : formatMitEinheit(rezept.dosisG, 'g')),
+      setzeKachel('kachel-ertrag', rezept.ertragG === undefined ? null : formatSpanne(rezept.ertragG, 'g')),
+      setzeKachel('kachel-zeit', rezept.zeitS === undefined ? null : formatSpanne(rezept.zeitS, 's')),
+      setzeKachel('kachel-roestung', rezept.roestdatum === undefined ? null : formatDatum(rezept.roestdatum)),
+    ];
+    finde('rezept-werte').hidden = !sichtbar.includes(true);
+
+    // Eine Zeitspanne gibt einen Startwert vor: die Mitte, auf ganze Sekunden gerundet wie in der App
+    const zeit = rezept.zeitS;
+    const hatSpanne = zeit !== undefined && zeit.min !== zeit.max;
+    finde('schritt-mitte').hidden = !hatSpanne;
+    if (hatSpanne) finde('zeit-mitte').textContent = formatMitEinheit(startzeitS(zeit), 's');
+
+    finde('rezept').hidden = false;
+    document.title = `${rezept.name} | Espresso-Rezept | BrewMind`;
+  }
+</script>

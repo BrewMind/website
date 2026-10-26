@@ -12,6 +12,8 @@ interface Props {
   jsonLd?: Record<string, unknown>;
   /** Pfade der Sprachfassungen (mit Slash), z. B. { de: '/datenschutz/', en: '/privacy/' }. */
   alternates?: { de: string; en: string };
+  /** Seite nicht indexieren lassen (z. B. /r/, deren Inhalt in der Query steht). */
+  noindex?: boolean;
 }
 
 const {
@@ -19,7 +21,8 @@ const {
   description = 'Espresso-Dial-in mit Bluetooth-Waage: BrewMind nimmt jeden Shot auf, merkt sich die beste Einstellung pro Bohne und schlägt den nächsten Schritt vor.',
   lang = 'de',
   jsonLd,
-  alternates
+  alternates,
+  noindex = false
 } = Astro.props;
 
 const ogImage = new URL('/og-image.png', Astro.site);
@@ -39,6 +42,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="theme-color" content="#181210" />
     <meta name="color-scheme" content="dark" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <!-- Scroll-Animationen verstecken Inhalt nur, wenn JavaScript laeuft (siehe global.css) -->
     <script is:inline>document.documentElement.classList.add('js');</script>
 

@@ -1,0 +1,515 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+/**
+ * Der Generator für den QR-Code, der ein Espresso-Rezept im Link trägt. Wer
+ * ihn scannt, landet auf /r/ (siehe r.astro). Alles läuft im Browser: kein
+ * Server, kein Tracking, keine externen Requests. Das Linkmuster und die
+ * Grenzen stehen in `src/lib/rezept-link.ts`, das Zeichnen in
+ * `src/lib/qr-code.ts`. Hier liegen nur Formular und Skript.
+ */
+const feld =
+  'w-full rounded-xl bg-surface border border-border px-4 py-3 text-base text-ink placeholder:text-ink-3 focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent/40 aria-[invalid=true]:border-danger';
+const beschriftung = 'block text-sm font-semibold text-ink mb-1.5';
+const hinweis = 'text-sm text-ink-3 mt-1.5';
+const fehler = 'text-sm text-danger [&:not(:empty)]:mt-1.5';
+const einheit = 'absolute right-4 top-1/2 -translate-y-1/2 text-ink-3 pointer-events-none';
+const knopf =
+  'inline-flex items-center justify-center px-4 py-3 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors disabled:opacity-40 disabled:pointer-events-none aria-disabled:opacity-40 aria-disabled:pointer-events-none';
+const knopfLeise =
+  'inline-flex items-center justify-center px-4 py-3 rounded-xl bg-surface-2 border border-border text-ink text-sm font-semibold hover:border-accent/50 transition-colors disabled:opacity-40 disabled:pointer-events-none aria-disabled:opacity-40 aria-disabled:pointer-events-none';
+---
+
+<Layout
+  title="QR-Code fürs Espresso-Rezept | BrewMind"
+  description="QR-Code mit Espresso-Rezept erzeugen, für Röstereien und alle, die ein Rezept weitergeben. Entsteht im Browser, ohne Server."
+>
+  <Header />
+  <main class="pt-28 pb-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <p class="label mb-4">QR-Rezept</p>
+      <h1 class="font-display text-4xl sm:text-5xl leading-tight text-balance mb-5">
+        QR-Code fürs Espresso-Rezept
+      </h1>
+      <p class="text-lg text-ink-2 leading-relaxed max-w-2xl">
+        Für Röstereien und alle, die ein Rezept weitergeben: Wer den Code
+        scannt, sieht Dosis, Ertrag und Zeit lesbar auf einer Seite, mit dem
+        Weg zu BrewMind.
+      </p>
+      <p class="text-ink-2 leading-relaxed max-w-2xl mt-3">
+        Der Code entsteht in deinem Browser, die Seite schickt nichts an einen
+        Server.
+      </p>
+      <noscript>
+        <p class="text-ink-2 leading-relaxed max-w-2xl mt-6">
+          Der Generator braucht JavaScript, weil der Code in deinem Browser
+          entsteht. Schalte es ein und lade die Seite neu.
+        </p>
+      </noscript>
+
+      <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] gap-10 mt-12 items-start">
+        <form id="formular" novalidate autocomplete="off" class="space-y-6">
+          <div>
+            <label for="f-name" class={beschriftung}>Name der Bohne</label>
+            <input
+              id="f-name"
+              name="bohne"
+              type="text"
+              maxlength="40"
+              required
+              autocomplete="off"
+              placeholder="z. B. Hausmischung"
+              aria-describedby="hinweis-name fehler-name"
+              class={feld}
+            />
+            <p id="hinweis-name" class={hinweis}>Pflicht, höchstens 40 Zeichen.</p>
+            <p id="fehler-name" class={fehler}></p>
+          </div>
+
+          <div>
+            <label for="f-roesterei" class={beschriftung}>Rösterei</label>
+            <input
+              id="f-roesterei"
+              name="roesterei"
+              type="text"
+              maxlength="40"
+              autocomplete="off"
+              placeholder="z. B. Rösterei Mustermann"
+              aria-describedby="hinweis-roesterei fehler-roesterei"
+              class={feld}
+            />
+            <p id="hinweis-roesterei" class={hinweis}>Optional, höchstens 40 Zeichen.</p>
+            <p id="fehler-roesterei" class={fehler}></p>
+          </div>
+
+          <div>
+            <label for="f-dosis" class={beschriftung}>Dosis in g</label>
+            <div class="relative">
+              <input
+                id="f-dosis"
+                name="dosis"
+                type="text"
+                inputmode="decimal"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                placeholder="18"
+                aria-describedby="hinweis-dosis fehler-dosis"
+                class={`${feld} pr-10`}
+              />
+              <span class={einheit} aria-hidden="true">g</span>
+            </div>
+            <p id="hinweis-dosis" class={hinweis}>
+              Optional. Gemahlener Kaffee im Sieb, 18 oder 18,5.
+            </p>
+            <p id="fehler-dosis" class={fehler}></p>
+          </div>
+
+          <fieldset class="min-w-0">
+            <legend class={beschriftung}>Ertrag in g</legend>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label for="f-ertragVon" class="block text-xs text-ink-3 mb-1">von</label>
+                <div class="relative">
+                  <input
+                    id="f-ertragVon"
+                    name="ertrag-von"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    placeholder="36"
+                    aria-describedby="hinweis-ertrag fehler-ertragVon"
+                    class={`${feld} pr-10`}
+                  />
+                  <span class={einheit} aria-hidden="true">g</span>
+                </div>
+              </div>
+              <div>
+                <label for="f-ertragBis" class="block text-xs text-ink-3 mb-1">bis (optional)</label>
+                <div class="relative">
+                  <input
+                    id="f-ertragBis"
+                    name="ertrag-bis"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    placeholder="40"
+                    aria-describedby="hinweis-ertrag fehler-ertragBis"
+                    class={`${feld} pr-10`}
+                  />
+                  <span class={einheit} aria-hidden="true">g</span>
+                </div>
+              </div>
+            </div>
+            <p id="hinweis-ertrag" class={hinweis}>
+              Optional. Gramm im Becher, ein Wert oder eine Spanne. Ist „bis“
+              leer, gilt „von“ als einzelner Wert.
+            </p>
+            <p id="fehler-ertragVon" class={fehler}></p>
+            <p id="fehler-ertragBis" class={fehler}></p>
+          </fieldset>
+
+          <fieldset class="min-w-0">
+            <legend class={beschriftung}>Zeit in s</legend>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label for="f-zeitVon" class="block text-xs text-ink-3 mb-1">von</label>
+                <div class="relative">
+                  <input
+                    id="f-zeitVon"
+                    name="zeit-von"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    placeholder="28"
+                    aria-describedby="hinweis-zeit fehler-zeitVon"
+                    class={`${feld} pr-10`}
+                  />
+                  <span class={einheit} aria-hidden="true">s</span>
+                </div>
+              </div>
+              <div>
+                <label for="f-zeitBis" class="block text-xs text-ink-3 mb-1">bis (optional)</label>
+                <div class="relative">
+                  <input
+                    id="f-zeitBis"
+                    name="zeit-bis"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    placeholder="32"
+                    aria-describedby="hinweis-zeit fehler-zeitBis"
+                    class={`${feld} pr-10`}
+                  />
+                  <span class={einheit} aria-hidden="true">s</span>
+                </div>
+              </div>
+            </div>
+            <p id="hinweis-zeit" class={hinweis}>
+              Optional. Ganze Sekunden ab Pumpenstart, ein Wert oder eine Spanne.
+            </p>
+            <p id="fehler-zeitVon" class={fehler}></p>
+            <p id="fehler-zeitBis" class={fehler}></p>
+          </fieldset>
+
+          <div>
+            <label for="f-roestdatum" class={beschriftung}>Röstdatum</label>
+            <input
+              id="f-roestdatum"
+              name="roestdatum"
+              type="date"
+              autocomplete="off"
+              aria-describedby="hinweis-roestdatum fehler-roestdatum"
+              class={feld}
+            />
+            <p id="hinweis-roestdatum" class={hinweis}>
+              Optional. Nur ausfüllen, wenn der Code auf eine einzelne Tüte
+              kommt. Ein Code für mehrere Röstungen sollte kein Datum tragen.
+            </p>
+            <p id="fehler-roestdatum" class={fehler}></p>
+          </div>
+        </form>
+
+        <section aria-labelledby="code-titel" class="rounded-2xl bg-surface border border-border p-6 lg:sticky lg:top-24">
+          <h2 id="code-titel" class="label mb-4">Dein Code</h2>
+
+          <!-- Hell bleibt die Fläche auch auf der dunklen Seite: Scanner brauchen dunkle Module auf hellem Grund -->
+          <div class="mx-auto w-full max-w-[22rem] aspect-square">
+            <div id="qr-bild" hidden class="rounded-xl overflow-hidden bg-white"></div>
+            <div
+              id="qr-hinweis"
+              class="size-full grid place-items-center rounded-xl border border-dashed border-border p-5 text-center"
+            >
+              <div>
+                <p class="text-ink font-semibold mb-2">Noch kein Code.</p>
+                <ul id="qr-fehlerliste" class="text-sm text-ink-2 space-y-1"></ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gleichbleibender Text für Screenreader: nur bei echter Änderung neu gesetzt -->
+          <p id="status" role="status" aria-live="polite" class="sr-only"></p>
+
+          <p
+            id="link-text"
+            hidden
+            class="font-data text-xs text-ink-2 leading-relaxed mt-5 break-all select-all"
+          >
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 mt-5">
+            <button id="knopf-png" type="button" disabled class={knopf}>PNG laden</button>
+            <button id="knopf-svg" type="button" disabled class={knopf}>SVG laden</button>
+            <button id="knopf-kopieren" type="button" disabled class={knopfLeise}>Link kopieren</button>
+            <a
+              id="knopf-testen"
+              aria-disabled="true"
+              target="_blank"
+              rel="noopener"
+              class={knopfLeise}
+            >Link testen</a>
+          </div>
+          <p id="rueckmeldung" aria-live="polite" class="text-sm text-ink-2 mt-3 min-h-5"></p>
+
+          <p class="text-sm text-ink-3 leading-relaxed mt-4">
+            Drucktipp: mindestens 2,5&nbsp;cm breit drucken, die weiße Fläche
+            rundherum mitdrucken und den Druck vor der Auflage einmal mit dem
+            Handy scannen. Je länger die Namen, desto dichter der Code: dann
+            etwas größer drucken.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { baueQrMatrix, dateiSlug, qrKante, qrPfad, qrSvgText, rasterMasse, type QrMatrix } from '../lib/qr-code';
+  import {
+    baueRezeptLink,
+    heuteAlsIso,
+    pruefeFormular,
+    type FormularEingabe,
+    type FormularFeld,
+  } from '../lib/rezept-link';
+
+  const FELDER: FormularFeld[] = [
+    'name',
+    'roesterei',
+    'dosis',
+    'ertragVon',
+    'ertragBis',
+    'zeitVon',
+    'zeitBis',
+    'roestdatum',
+  ];
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+
+  function finde<T extends HTMLElement = HTMLElement>(id: string): T {
+    const element = document.getElementById(id);
+    if (!element) throw new Error(`Element #${id} fehlt im Gerüst`);
+    return element as T;
+  }
+
+  const formular = finde<HTMLFormElement>('formular');
+  const eingaben = Object.fromEntries(
+    FELDER.map((name) => [name, finde<HTMLInputElement>(`f-${name}`)]),
+  ) as Record<FormularFeld, HTMLInputElement>;
+  const fehlerZeilen = Object.fromEntries(
+    FELDER.map((name) => [name, finde(`fehler-${name}`)]),
+  ) as Record<FormularFeld, HTMLElement>;
+
+  const qrBild = finde('qr-bild');
+  const qrHinweis = finde('qr-hinweis');
+  const qrFehlerliste = finde('qr-fehlerliste');
+  const status = finde('status');
+  const linkText = finde('link-text');
+  const knopfPng = finde<HTMLButtonElement>('knopf-png');
+  const knopfSvg = finde<HTMLButtonElement>('knopf-svg');
+  const knopfKopieren = finde<HTMLButtonElement>('knopf-kopieren');
+  const knopfTesten = finde<HTMLAnchorElement>('knopf-testen');
+  const rueckmeldung = finde('rueckmeldung');
+
+  /** Der Code, der gerade angezeigt wird, samt allem, was die Knöpfe brauchen. */
+  let aktuell: { link: string; matrix: QrMatrix; name: string } | null = null;
+  /** Felder, die der Nutzer schon angefasst hat: erst dann meldet ein leeres Pflichtfeld einen Fehler. */
+  const beruehrt = new Set<FormularFeld>();
+  let rueckmeldungTimer: number | undefined;
+
+  // Ein Röstdatum aus der Zukunft lehnt der Leser ab, also bietet der Kalender es gar nicht erst an
+  eingaben.roestdatum.max = heuteAlsIso(new Date());
+
+  function liesEingabe(): FormularEingabe {
+    return Object.fromEntries(FELDER.map((name) => [name, eingaben[name].value])) as FormularEingabe;
+  }
+
+  function setzeStatus(text: string) {
+    if (status.textContent !== text) status.textContent = text;
+  }
+
+  function meldung(text: string) {
+    rueckmeldung.textContent = text;
+    window.clearTimeout(rueckmeldungTimer);
+    rueckmeldungTimer = window.setTimeout(() => {
+      rueckmeldung.textContent = '';
+    }, 4000);
+  }
+
+  function baueSvgElement(matrix: QrMatrix, name: string): SVGSVGElement {
+    const kante = qrKante(matrix);
+    const svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('viewBox', `0 0 ${kante} ${kante}`);
+    svg.setAttribute('shape-rendering', 'crispEdges');
+    svg.setAttribute('role', 'img');
+    // Der Name kommt aus dem Formular: nur über setAttribute, nie in einen Markup-String
+    svg.setAttribute('aria-label', `QR-Code für das Rezept ${name}`);
+    svg.style.display = 'block';
+    svg.style.width = '100%';
+    svg.style.height = 'auto';
+
+    const grund = document.createElementNS(SVG_NS, 'rect');
+    grund.setAttribute('width', String(kante));
+    grund.setAttribute('height', String(kante));
+    grund.setAttribute('fill', '#fff');
+    const dunkel = document.createElementNS(SVG_NS, 'path');
+    dunkel.setAttribute('d', qrPfad(matrix));
+    dunkel.setAttribute('fill', '#000');
+    svg.append(grund, dunkel);
+    return svg;
+  }
+
+  function setzeKnoepfe(aktiv: boolean, link: string | null) {
+    for (const knopf of [knopfPng, knopfSvg, knopfKopieren]) knopf.disabled = !aktiv;
+    knopfTesten.setAttribute('aria-disabled', String(!aktiv));
+    if (aktiv && link) {
+      knopfTesten.href = link;
+      knopfTesten.removeAttribute('tabindex');
+    } else {
+      knopfTesten.removeAttribute('href');
+      knopfTesten.setAttribute('tabindex', '-1');
+    }
+  }
+
+  function zeigeFeldfehler(fehler: Partial<Record<FormularFeld, string>>) {
+    for (const name of FELDER) {
+      const text = fehler[name];
+      // Ein leeres Feld schweigt, bis der Nutzer es berührt hat. Ein gefülltes meldet sofort.
+      const zeigen = text !== undefined && (beruehrt.has(name) || eingaben[name].value !== '');
+      fehlerZeilen[name].textContent = zeigen ? text : '';
+      eingaben[name].setAttribute('aria-invalid', String(zeigen));
+    }
+  }
+
+  function zeigeHinweis(gruende: string[]) {
+    aktuell = null;
+    qrBild.hidden = true;
+    qrBild.replaceChildren();
+    qrHinweis.hidden = false;
+    qrFehlerliste.replaceChildren(
+      ...gruende.map((grund) => {
+        const eintrag = document.createElement('li');
+        eintrag.textContent = grund;
+        return eintrag;
+      }),
+    );
+    linkText.hidden = true;
+    linkText.textContent = '';
+    setzeKnoepfe(false, null);
+    setzeStatus(`Noch kein Code. ${gruende.join(' ')}`);
+  }
+
+  function zeigeCode(link: string, matrix: QrMatrix, name: string) {
+    aktuell = { link, matrix, name };
+    qrBild.replaceChildren(baueSvgElement(matrix, name));
+    qrBild.hidden = false;
+    qrHinweis.hidden = true;
+    linkText.textContent = link;
+    linkText.hidden = false;
+    setzeKnoepfe(true, link);
+    setzeStatus('Der Code ist fertig.');
+  }
+
+  function aktualisiere() {
+    const { rezept, fehler } = pruefeFormular(liesEingabe(), new Date());
+    zeigeFeldfehler(fehler);
+    if (!rezept) {
+      zeigeHinweis(FELDER.map((name) => fehler[name]).filter((text): text is string => text !== undefined));
+      return;
+    }
+    const link = baueRezeptLink(rezept);
+    try {
+      zeigeCode(link, baueQrMatrix(link), rezept.name);
+    } catch {
+      zeigeHinweis(['Für diesen Link wird der Code zu groß. Kürze die Namen.']);
+    }
+  }
+
+  /** Datei über einen kurzlebigen Link anbieten, danach den Speicher wieder freigeben. */
+  function lade(blob: Blob, dateiname: string) {
+    const url = URL.createObjectURL(blob);
+    const anker = document.createElement('a');
+    anker.href = url;
+    anker.download = dateiname;
+    document.body.append(anker);
+    anker.click();
+    anker.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 4000);
+  }
+
+  function erzeugePng(matrix: QrMatrix): Promise<Blob> {
+    const kante = 1024;
+    const leinwand = document.createElement('canvas');
+    leinwand.width = kante;
+    leinwand.height = kante;
+    const zeichner = leinwand.getContext('2d');
+    if (!zeichner) return Promise.reject(new Error('Canvas nicht verfügbar'));
+    zeichner.fillStyle = '#fff';
+    zeichner.fillRect(0, 0, kante, kante);
+    zeichner.fillStyle = '#000';
+    const { zelle, versatz } = rasterMasse(matrix, kante);
+    matrix.forEach((zeile, y) => {
+      zeile.forEach((dunkel, x) => {
+        if (dunkel) zeichner.fillRect(versatz + x * zelle, versatz + y * zelle, zelle, zelle);
+      });
+    });
+    return new Promise((fertig, fehler) => {
+      leinwand.toBlob((blob) => (blob ? fertig(blob) : fehler(new Error('PNG nicht erzeugt'))), 'image/png');
+    });
+  }
+
+  formular.addEventListener('submit', (ereignis) => ereignis.preventDefault());
+
+  formular.addEventListener('input', (ereignis) => {
+    const ziel = ereignis.target as HTMLInputElement;
+    const name = FELDER.find((feldname) => eingaben[feldname] === ziel);
+    if (name) beruehrt.add(name);
+    aktualisiere();
+  });
+
+  formular.addEventListener('focusout', (ereignis) => {
+    const name = FELDER.find((feldname) => eingaben[feldname] === ereignis.target);
+    if (!name) return;
+    beruehrt.add(name);
+    aktualisiere();
+  });
+
+  knopfPng.addEventListener('click', async () => {
+    if (!aktuell) return;
+    try {
+      lade(await erzeugePng(aktuell.matrix), `brewmind-rezept-${dateiSlug(aktuell.name)}.png`);
+    } catch {
+      meldung('Das Bild ließ sich nicht erzeugen. Probier die SVG-Datei.');
+    }
+  });
+
+  knopfSvg.addEventListener('click', () => {
+    if (!aktuell) return;
+    const svg = new Blob([qrSvgText(aktuell.matrix)], { type: 'image/svg+xml;charset=utf-8' });
+    lade(svg, `brewmind-rezept-${dateiSlug(aktuell.name)}.svg`);
+  });
+
+  knopfKopieren.addEventListener('click', async () => {
+    if (!aktuell) return;
+    try {
+      await navigator.clipboard.writeText(aktuell.link);
+      meldung('Kopiert');
+    } catch {
+      // Kein Zugriff auf die Zwischenablage (z. B. ohne HTTPS): Link markieren, der Nutzer kopiert selbst
+      window.getSelection()?.selectAllChildren(linkText);
+      meldung('Kopieren ging nicht. Der Link ist markiert, kopiere ihn von Hand.');
+    }
+  });
+
+  aktualisiere();
+</script>

@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "test": "vitest run",
     "astro": "astro",
     "generate-assets": "node scripts/generate-assets.mjs",
     "generate-favicon": "node scripts/generate-favicon.mjs"
@@ -16,6 +17,10 @@
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",
+    "qrcode-generator": "2.0.4",
     "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "vitest": "3.2.7"
   }
 }
