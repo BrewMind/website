@@ -4,7 +4,7 @@
       {
         "appIDs": ["P9QDDRX96U.app.brewmind.core", "P9QDDRX96U.app.brewmind.core.dev"],
         "components": [
-          { "/": "/r/*", "comment": "Rezept aus einem BrewMind-QR-Code" },
+          { "/": "/r/", "comment": "Rezept aus einem BrewMind-QR-Code" },
           { "/": "/r", "comment": "dieselbe Seite ohne Schrägstrich" }
         ]
       }

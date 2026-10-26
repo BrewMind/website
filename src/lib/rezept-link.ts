@@ -53,6 +53,9 @@ const NBSP = '\u00A0';
 /** Steuerzeichen, Zeilen- und Absatztrenner, Bidi-Steuerung (Umlenkung der Leserichtung). */
 const STEUERZEICHEN = /[\p{Cc}\u2028\u2029\u200E\u200F\u202A-\u202E\u2066-\u2069]/gu;
 
+/** Nur Leerraum und Formatzeichen (Zero-Width, weiches Trennzeichen): f\u00FCr das Auge leer. */
+const NUR_UNSICHTBAR = /^[\s\p{Cf}]*$/u;
+
 const DEZIMALZAHL = /^\d{1,3}(\.\d)?$/;
 const GANZZAHL = /^\d{1,3}$/;
 
@@ -73,9 +76,13 @@ function ohneLoseSurrogate(text: string): string {
   return ergebnis;
 }
 
-/** Text für n und r: Steuerzeichen und kaputte Zeichen raus, dann getrimmt. */
+/**
+ * Text für n und r: Steuerzeichen und kaputte Zeichen raus, dann getrimmt.
+ * Text ohne sichtbares Zeichen zählt als leer.
+ */
 export function saeubereText(roh: string): string {
-  return ohneLoseSurrogate(roh.replace(STEUERZEICHEN, '')).trim();
+  const text = ohneLoseSurrogate(roh.replace(STEUERZEICHEN, '')).trim();
+  return NUR_UNSICHTBAR.test(text) ? '' : text;
 }
 
 /** Länge in Zeichen (Codepoints), ein Emoji zählt als eins. */
@@ -226,11 +233,12 @@ export function startzeitS(spanne: Spanne): number {
 
 /**
  * Startwert einer Ertragsspanne: die Mitte auf eine Nachkommastelle, wie die
- * App sie übernimmt. Mal 5 statt erst halbieren und dann mal 10, damit keine
- * Gleitkomma-Reste das Runden kippen.
+ * App sie übernimmt, halbe Zehntel runden auf. Gerechnet in ganzen Zehnteln:
+ * in Gleitkomma liegt etwa 4,7 mal 5 knapp unter 23,5 und rundete ab.
  */
 export function startertragG(spanne: Spanne): number {
-  return Math.round((spanne.min + spanne.max) * 5) / 10;
+  const zehntel = Math.round(spanne.min * 10) + Math.round(spanne.max * 10);
+  return Math.round(zehntel / 2) / 10;
 }
 
 const DATUMSFORMAT = new Intl.DateTimeFormat('de-DE', {

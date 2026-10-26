@@ -157,6 +157,22 @@ describe('Pflichtfelder v und n', () => {
     expect(lies({ n })).toEqual({ ok: false, grund: 'leer' });
   });
 
+  it.each(['\u200B', '\u200D', '\u2060', '\uFEFF', '\u00AD', ' \u200B\u200C\u200D '])(
+    'n=%j (nur unsichtbare Zeichen): leer',
+    (n) => {
+      expect(lies({ n })).toEqual({ ok: false, grund: 'leer' });
+    },
+  );
+
+  it('Rösterei nur aus unsichtbaren Zeichen fällt weg, das Rezept bleibt', () => {
+    expect(rezeptAus({ r: '\u200B\u2060' }).roesterei).toBeUndefined();
+  });
+
+  it('sichtbarer Name mit Zero-Width-Joiner bleibt unverändert (Emoji-Folge)', () => {
+    const familie = '\u{1F468}\u200D\u{1F469}\u200D\u{1F467}';
+    expect(rezeptAus({ n: `Bohne ${familie}` }).name).toBe(`Bohne ${familie}`);
+  });
+
   it('n mit 61 Zeichen: leer, mit 60 Zeichen: gültig', () => {
     expect(lies({ n: 'x'.repeat(61) })).toEqual({ ok: false, grund: 'leer' });
     expect(rezeptAus({ n: 'x'.repeat(60) }).name).toBe('x'.repeat(60));
@@ -425,6 +441,25 @@ describe('Anzeige', () => {
     expect(startertragG({ min: 47, max: 47 })).toBe(47);
   });
 
+  it('Startertrag: halbe Zehntel runden auf, auch wo Gleitkomma knapp darunter liegt', () => {
+    expect(startertragG({ min: 30.4, max: 34.3 })).toBe(32.4);
+    expect(startertragG({ min: 10.1, max: 10.2 })).toBe(10.2);
+    expect(startertragG({ min: 0.1, max: 4.6 })).toBe(2.4);
+  });
+
+  it('Startertrag stimmt für jede Spanne in Zehnteln von 30 bis 50 g', () => {
+    const falsch: string[] = [];
+    for (let a = 300; a <= 500; a += 1) {
+      for (let b = a; b <= 500; b += 1) {
+        // Erwartung in ganzen Zehnteln, ohne die geprüfte Rechnung
+        const erwartet = Math.floor((a + b + 1) / 2) / 10;
+        const ist = startertragG({ min: Number((a / 10).toFixed(1)), max: Number((b / 10).toFixed(1)) });
+        if (ist !== erwartet) falsch.push(`${a / 10}-${b / 10}: ${ist} statt ${erwartet}`);
+      }
+    }
+    expect(falsch).toEqual([]);
+  });
+
   it('Datum ausgeschrieben, unabhängig von der Zeitzone des Geräts', () => {
     expect(formatDatum('2026-10-12')).toBe('12. Oktober 2026');
     expect(formatDatum('2026-03-01')).toBe('1. März 2026');
@@ -456,6 +491,12 @@ describe('Formular', () => {
     const ergebnis = pruefe({ name: '   ' });
     expect(ergebnis.rezept).toBeNull();
     expect(Object.keys(ergebnis.fehler)).toEqual(['name']);
+  });
+
+  it('ein Name nur aus unsichtbaren Zeichen zählt als fehlend', () => {
+    const ergebnis = pruefe({ name: '\u200B\u200D' });
+    expect(ergebnis.rezept).toBeNull();
+    expect(ergebnis.fehler.name).toBe('Der Name der Bohne fehlt.');
   });
 
   it('ein zu langer Name wird gemeldet', () => {
