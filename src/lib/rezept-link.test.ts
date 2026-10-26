@@ -4,15 +4,19 @@ import {
   baueRezeptLink,
   formatDatum,
   formatMitEinheit,
+  formatRoestgrad,
   formatSpanne,
   formatZahl,
+  liesRoestgrad,
   parseRezept,
   pruefeFormular,
+  ROESTGRADE,
   saeubereText,
   startertragG,
   startzeitS,
   type FormularEingabe,
   type Rezept,
+  type Roestgrad,
 } from './rezept-link';
 
 const NBSP = '\u00A0';
@@ -51,9 +55,13 @@ describe('Rundlauf bauen und lesen', () => {
         ertragG: { min: 36, max: 40 },
         zeitS: { min: 25, max: 30 },
         roestdatum: '2026-10-12',
+        roestgrad: 'mittel',
       },
     ],
     ['nur der Name', { name: 'Hausmischung' }],
+    ['nur der Röstgrad hell', { name: 'Test', roestgrad: 'hell' }],
+    ['nur der Röstgrad mittel', { name: 'Test', roestgrad: 'mittel' }],
+    ['nur der Röstgrad dunkel', { name: 'Test', roestgrad: 'dunkel' }],
     ['Umlaute und ß', { name: 'Äthiopien Yirgacheffe Röstung süß', roesterei: 'Röstgut Weiß' }],
     ['Schrägstrich', { name: 'Brasil 80/20' }],
     ['Plus und kaufmännisches Und', { name: 'Blend + Co & Söhne' }],
@@ -81,8 +89,9 @@ describe('Rundlauf bauen und lesen', () => {
     expect(link.length).toBeLessThanOrEqual(100);
   });
 
-  it('Reihenfolge v, n, r, d, y, t, rd und Leerzeichen als %20', () => {
+  it('Reihenfolge v, n, r, d, y, t, rd, rg und Leerzeichen als %20', () => {
     const link = baueRezeptLink({
+      roestgrad: 'dunkel',
       roestdatum: '2026-10-12',
       zeitS: { min: 25, max: 30 },
       ertragG: { min: 36, max: 40 },
@@ -90,7 +99,14 @@ describe('Rundlauf bauen und lesen', () => {
       roesterei: 'A B',
       name: 'C D',
     });
-    expect(link).toBe('https://brewmind.app/r/?v=1&n=C%20D&r=A%20B&d=18&y=36-40&t=25-30&rd=2026-10-12');
+    expect(link).toBe('https://brewmind.app/r/?v=1&n=C%20D&r=A%20B&d=18&y=36-40&t=25-30&rd=2026-10-12&rg=dunkel');
+  });
+
+  it('rg hängt hinten an, auch ohne die Felder davor', () => {
+    expect(baueRezeptLink({ name: 'Test', roestgrad: 'hell' })).toBe('https://brewmind.app/r/?v=1&n=Test&rg=hell');
+    expect(baueRezeptLink({ name: 'Test', roestdatum: '2026-10-12' })).toBe(
+      'https://brewmind.app/r/?v=1&n=Test&rd=2026-10-12',
+    );
   });
 
   it('ungesetzte Felder fehlen im Link', () => {
@@ -122,8 +138,14 @@ describe('Link für die App', () => {
   });
 
   it('liest sich zum selben Rezept zurück', () => {
-    const rezept: Rezept = { ...vrn, roestdatum: '2026-10-12' };
+    const rezept: Rezept = { ...vrn, roestdatum: '2026-10-12', roestgrad: 'mittel' };
     expect(parseRezept(new URL(baueAppLink(rezept)).searchParams, HEUTE)).toStrictEqual({ ok: true, rezept });
+  });
+
+  it('trägt den Röstgrad als rg ganz hinten', () => {
+    expect(baueAppLink({ ...vrn, roestgrad: 'dunkel' })).toBe(
+      'brewmindcore://r?v=1&n=VRN%2080%2F20&r=Schvarz%20Kaffee&d=19&y=47&t=28-32&rg=dunkel',
+    );
   });
 
   it('nimmt nur das geprüfte Rezept mit, Unbekanntes aus der Query fällt weg', () => {
@@ -360,6 +382,103 @@ describe('Röstdatum rd', () => {
   });
 });
 
+describe('Röstgrad rg', () => {
+  it.each<Roestgrad>(['hell', 'mittel', 'dunkel'])('rg=%s wird gelesen', (rg) => {
+    expect(rezeptAus({ rg })).toStrictEqual({ name: 'Test', roestgrad: rg });
+  });
+
+  it('ohne rg fehlt der Röstgrad im Rezept', () => {
+    expect(rezeptAus({ d: '18' })).toStrictEqual({ name: 'Test', dosisG: 18 });
+  });
+
+  it.each([
+    ['Hell'],
+    ['MITTEL'],
+    ['Dunkel'],
+    ['light'],
+    ['medium'],
+    [' mittel'],
+    ['mittel '],
+    ['hell\n'],
+    ['\u00A0dunkel'],
+    ['hell,mittel'],
+    ['hell mittel'],
+    ['1'],
+    [''],
+    ['x'],
+    ['constructor'],
+    ['__proto__'],
+    ['toString'],
+  ])('rg=%j wird ignoriert, der Rest bleibt gültig', (rg) => {
+    expect(rezeptAus({ rg, d: '18' })).toStrictEqual({ name: 'Test', dosisG: 18 });
+  });
+
+  it('ein ungültiges rg lässt alle anderen optionalen Felder stehen', () => {
+    const rezept = rezeptAus({
+      r: 'Schvarz Kaffee',
+      d: '18.5',
+      y: '36-40',
+      t: '25-30',
+      rd: '2026-10-12',
+      rg: 'Hell',
+    });
+    expect(rezept).toStrictEqual({
+      name: 'Test',
+      roesterei: 'Schvarz Kaffee',
+      dosisG: 18.5,
+      ertragG: { min: 36, max: 40 },
+      zeitS: { min: 25, max: 30 },
+      roestdatum: '2026-10-12',
+    });
+  });
+
+  it('ein gültiges rg bleibt, wenn die anderen optionalen Felder ungültig sind', () => {
+    expect(rezeptAus({ d: '999', y: 'x', t: '0', rd: '2027-01-01', rg: 'dunkel' })).toStrictEqual({
+      name: 'Test',
+      roestgrad: 'dunkel',
+    });
+  });
+
+  it('kodiert geschrieben gilt dasselbe: %20 vor dem Wert macht ihn ungültig', () => {
+    const lese = (query: string) => parseRezept(new URLSearchParams(query), HEUTE);
+    expect(lese('v=1&n=Test&rg=mittel')).toStrictEqual({ ok: true, rezept: { name: 'Test', roestgrad: 'mittel' } });
+    expect(lese('v=1&n=Test&rg=%20mittel')).toStrictEqual({ ok: true, rezept: { name: 'Test' } });
+    expect(lese('v=1&n=Test&rg=Hell')).toStrictEqual({ ok: true, rezept: { name: 'Test' } });
+    expect(lese('v=1&n=Test&rg=')).toStrictEqual({ ok: true, rezept: { name: 'Test' } });
+    expect(lese('v=1&n=Test&rg')).toStrictEqual({ ok: true, rezept: { name: 'Test' } });
+  });
+
+  it('doppeltes rg: der erste Wert gilt (URLSearchParams.get)', () => {
+    const lese = (query: string) => parseRezept(new URLSearchParams(query), HEUTE);
+    expect(lese('v=1&n=Test&rg=hell&rg=dunkel')).toStrictEqual({
+      ok: true,
+      rezept: { name: 'Test', roestgrad: 'hell' },
+    });
+    // Ist der erste ungültig, rückt der zweite nicht nach
+    expect(lese('v=1&n=Test&rg=x&rg=dunkel')).toStrictEqual({ ok: true, rezept: { name: 'Test' } });
+    expect(lese('v=1&n=Test&rg=&rg=dunkel')).toStrictEqual({ ok: true, rezept: { name: 'Test' } });
+  });
+
+  it('rg rettet kein Rezept ohne gültigen Namen oder mit fremder Version', () => {
+    expect(lies({ rg: 'hell' }, { v: '1' })).toEqual({ ok: false, grund: 'leer' });
+    expect(lies({ rg: 'hell' }, { v: '2', n: 'Test' })).toEqual({ ok: false, grund: 'version' });
+  });
+
+  it('bleibt Version 1: der gebaute Link trägt v=1', () => {
+    expect(baueRezeptLink({ name: 'Test', roestgrad: 'hell' })).toMatch(/\?v=1&/);
+  });
+
+  it('liesRoestgrad: genau die drei Werte, sonst undefined', () => {
+    expect(ROESTGRADE.map(liesRoestgrad)).toEqual(['hell', 'mittel', 'dunkel']);
+    expect(liesRoestgrad('Hell')).toBeUndefined();
+    expect(liesRoestgrad('')).toBeUndefined();
+  });
+
+  it('Anzeige: Hell, Mittel, Dunkel', () => {
+    expect(ROESTGRADE.map(formatRoestgrad)).toEqual(['Hell', 'Mittel', 'Dunkel']);
+  });
+});
+
 describe('Vorwärtskompatibilität und Kodierung', () => {
   it('ein unbekannter Parameter stört nicht', () => {
     expect(rezeptAus({ zukunft: 'x', z: '1', d: '18' })).toStrictEqual({ name: 'Test', dosisG: 18 });
@@ -477,6 +596,7 @@ describe('Formular', () => {
     zeitVon: '',
     zeitBis: '',
     roestdatum: '',
+    roestgrad: '',
   };
 
   function pruefe(eingabe: Partial<FormularEingabe>) {
@@ -514,6 +634,7 @@ describe('Formular', () => {
       zeitVon: '28',
       zeitBis: '32',
       roestdatum: '2026-10-12',
+      roestgrad: 'dunkel',
     });
     expect(ergebnis.fehler).toEqual({});
     expect(ergebnis.rezept).toStrictEqual({
@@ -523,8 +644,9 @@ describe('Formular', () => {
       ertragG: { min: 36, max: 40.5 },
       zeitS: { min: 28, max: 32 },
       roestdatum: '2026-10-12',
+      roestgrad: 'dunkel',
     });
-    expect(baueRezeptLink(ergebnis.rezept!)).toContain('d=18.5&y=36-40.5&t=28-32&rd=2026-10-12');
+    expect(baueRezeptLink(ergebnis.rezept!)).toContain('d=18.5&y=36-40.5&t=28-32&rd=2026-10-12&rg=dunkel');
     expect(rundlauf(ergebnis.rezept!)).toStrictEqual({ ok: true, rezept: ergebnis.rezept });
   });
 
@@ -565,6 +687,9 @@ describe('Formular', () => {
       { zeitVon: '28', zeitBis: '30,5' },
       { roestdatum: '2026-02-30' },
       { roestdatum: '2026-10-27' },
+      { roestgrad: 'Hell' },
+      { roestgrad: 'light' },
+      { roestgrad: ' mittel' },
     ];
     for (const eingabe of zuViel) {
       const ergebnis = pruefe(eingabe);
@@ -581,6 +706,41 @@ describe('Formular', () => {
     const ergebnis = pruefe({ name: '', dosis: 'abc', zeitVon: '999' });
     expect(Object.keys(ergebnis.fehler).sort()).toEqual(['dosis', 'name', 'zeitVon']);
     expect(ergebnis.rezept).toBeNull();
+  });
+
+  describe('Röstgrad', () => {
+    it.each<Roestgrad>(['hell', 'mittel', 'dunkel'])('%s kommt als Röstgrad ins Rezept und in den Link', (grad) => {
+      const ergebnis = pruefe({ roestgrad: grad });
+      expect(ergebnis).toStrictEqual({ rezept: { name: 'Test', roestgrad: grad }, fehler: {} });
+      expect(baueRezeptLink(ergebnis.rezept!)).toBe(`https://brewmind.app/r/?v=1&n=Test&rg=${grad}`);
+      expect(rundlauf(ergebnis.rezept!)).toStrictEqual({ ok: true, rezept: ergebnis.rezept });
+    });
+
+    it('"Keine Angabe" (leerer Wert): kein Röstgrad, kein rg im Link', () => {
+      const ergebnis = pruefe({ roestgrad: '' });
+      expect(ergebnis).toStrictEqual({ rezept: { name: 'Test' }, fehler: {} });
+      expect(baueRezeptLink(ergebnis.rezept!)).toBe('https://brewmind.app/r/?v=1&n=Test');
+    });
+
+    it.each([['Hell'], ['MITTEL'], ['light'], [' mittel'], ['mittel '], ['x'], [' ']])(
+      '%j ist ein Fehler am Feld, genau eine Meldung',
+      (roestgrad) => {
+        const ergebnis = pruefe({ roestgrad });
+        expect(ergebnis.rezept).toBeNull();
+        expect(Object.keys(ergebnis.fehler)).toEqual(['roestgrad']);
+        expect(ergebnis.fehler.roestgrad).toMatch(/Röstgrad/);
+      },
+    );
+
+    it('der Röstgrad steht im Link hinter dem Röstdatum', () => {
+      const ergebnis = pruefe({ roestdatum: '2026-10-12', roestgrad: 'hell' });
+      expect(baueRezeptLink(ergebnis.rezept!)).toBe('https://brewmind.app/r/?v=1&n=Test&rd=2026-10-12&rg=hell');
+    });
+
+    it('ein Fehler im Röstgrad kommt mit den Fehlern anderer Felder zusammen', () => {
+      const ergebnis = pruefe({ dosis: 'abc', roestgrad: 'x' });
+      expect(Object.keys(ergebnis.fehler).sort()).toEqual(['dosis', 'roestgrad']);
+    });
   });
 
   it('Röstdatum: Zukunft und ungültiges Datum haben eigene Meldungen', () => {

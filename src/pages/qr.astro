@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { ROESTGRADE, formatRoestgrad } from '../lib/rezept-link';
 
 /**
  * Der Generator für den QR-Code, der ein Espresso-Rezept im Link trägt. Wer
@@ -219,6 +220,22 @@ const knopfLeise =
             </p>
             <p id="fehler-roestdatum" class={fehler}></p>
           </div>
+
+          <div>
+            <label for="f-roestgrad" class={beschriftung}>Röstgrad</label>
+            <select
+              id="f-roestgrad"
+              name="roestgrad"
+              autocomplete="off"
+              aria-describedby="hinweis-roestgrad fehler-roestgrad"
+              class={feld}
+            >
+              <option value="">Keine Angabe</option>
+              {ROESTGRADE.map((grad) => <option value={grad}>{formatRoestgrad(grad)}</option>)}
+            </select>
+            <p id="hinweis-roestgrad" class={hinweis}>Optional. Hell, mittel oder dunkel, wie auf der Tüte.</p>
+            <p id="fehler-roestgrad" class={fehler}></p>
+          </div>
         </form>
 
         <section aria-labelledby="code-titel" class="rounded-2xl bg-surface border border-border p-6 lg:sticky lg:top-24">
@@ -294,8 +311,12 @@ const knopfLeise =
     'zeitVon',
     'zeitBis',
     'roestdatum',
+    'roestgrad',
   ];
   const SVG_NS = 'http://www.w3.org/2000/svg';
+
+  /** Textfelder und die Auswahl für den Röstgrad: alle haben `value`. */
+  type Eingabefeld = HTMLInputElement | HTMLSelectElement;
 
   function finde<T extends HTMLElement = HTMLElement>(id: string): T {
     const element = document.getElementById(id);
@@ -305,8 +326,8 @@ const knopfLeise =
 
   const formular = finde<HTMLFormElement>('formular');
   const eingaben = Object.fromEntries(
-    FELDER.map((name) => [name, finde<HTMLInputElement>(`f-${name}`)]),
-  ) as Record<FormularFeld, HTMLInputElement>;
+    FELDER.map((name) => [name, finde<Eingabefeld>(`f-${name}`)]),
+  ) as Record<FormularFeld, Eingabefeld>;
   const fehlerZeilen = Object.fromEntries(
     FELDER.map((name) => [name, finde(`fehler-${name}`)]),
   ) as Record<FormularFeld, HTMLElement>;
@@ -329,7 +350,7 @@ const knopfLeise =
   let rueckmeldungTimer: number | undefined;
 
   // Ein Röstdatum aus der Zukunft lehnt der Leser ab, also bietet der Kalender es gar nicht erst an
-  eingaben.roestdatum.max = heuteAlsIso(new Date());
+  finde<HTMLInputElement>('f-roestdatum').max = heuteAlsIso(new Date());
 
   function liesEingabe(): FormularEingabe {
     return Object.fromEntries(FELDER.map((name) => [name, eingaben[name].value])) as FormularEingabe;
@@ -472,7 +493,7 @@ const knopfLeise =
   formular.addEventListener('submit', (ereignis) => ereignis.preventDefault());
 
   formular.addEventListener('input', (ereignis) => {
-    const ziel = ereignis.target as HTMLInputElement;
+    const ziel = ereignis.target as Eingabefeld;
     const name = FELDER.find((feldname) => eingaben[feldname] === ziel);
     if (name) beruehrt.add(name);
     aktualisiere();
