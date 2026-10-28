@@ -6,9 +6,13 @@
  * `src/data/links.ts`). Die Links liegen dort, weil Hero und Header sie auch
  * zeigen.
  *
+ * Schritt 3 hat einen eigenen Link: die Play-Suche findet die App im
+ * geschlossenen Test nicht, und Google schickt keine Mail. Wer schon Tester
+ * ist, springt ueber den zweiten Knopf direkt in den Store.
+ *
  * Kein Formular: die Seite bleibt statisch und nimmt keine Daten entgegen.
  */
-import { ANDROID_GROUP_URL, ANDROID_TESTING_URL, TESTFLIGHT_URL } from '../data/links';
+import { ANDROID_GROUP_URL, ANDROID_STORE_URL, ANDROID_TESTING_URL, TESTFLIGHT_URL } from '../data/links';
 ---
 
 <section id="beta" class="py-24 px-6">
@@ -46,34 +50,51 @@ import { ANDROID_GROUP_URL, ANDROID_TESTING_URL, TESTFLIGHT_URL } from '../data/
       <div id="android" class="rounded-2xl bg-surface border border-border p-7 flex flex-col scroll-mt-24">
         <h3 class="text-xl font-semibold text-ink mb-3">Android</h3>
         <p class="text-ink-2 leading-relaxed mb-4">
-          Über Google Play, in drei Schritten mit deinem Google-Konto:
+          Über Google Play, in drei Schritten. Am einfachsten direkt auf dem
+          Handy, mit dem Google-Konto, das dort im Play Store angemeldet ist:
         </p>
-        <ol class="space-y-3 mb-6 text-ink-2 leading-relaxed">
+        <ol class="space-y-3 mb-4 text-ink-2 leading-relaxed">
           <li>
             <span class="text-accent font-semibold">1.</span>
-            <a href={ANDROID_GROUP_URL} target="_blank" rel="noopener" class="text-accent hover:text-accent-pressed underline underline-offset-2">Google-Gruppe beitreten</a>
-            (darüber schaltet Google Play dich frei, Mails gibt es keine).
+            <a href={ANDROID_GROUP_URL} target="_blank" rel="noopener" class="text-accent hover:text-accent-pressed underline underline-offset-2">Google-Gruppe beitreten</a>.
+            Darüber schaltet Google Play dich frei. Danach passiert dort
+            nichts mehr, Mails gibt es keine. Einfach weiter mit Schritt 2.
           </li>
           <li>
             <span class="text-accent font-semibold">2.</span>
             <a href={ANDROID_TESTING_URL} target="_blank" rel="noopener" class="text-accent hover:text-accent-pressed underline underline-offset-2">Tester werden</a>
-            mit demselben Konto. Falls dort „nicht gefunden“ steht, ein paar
-            Minuten warten.
+            mit demselben Konto. Steht dort „nicht gefunden“, ein paar
+            Minuten warten und die Seite neu laden.
           </li>
           <li>
             <span class="text-accent font-semibold">3.</span>
-            BrewMind aus Google Play installieren, der Link dafür steht auf
-            der Tester-Seite.
+            <a href={ANDROID_STORE_URL} target="_blank" rel="noopener" class="text-accent hover:text-accent-pressed underline underline-offset-2">BrewMind im Play Store öffnen</a>
+            und installieren. Updates kommen danach wie bei jeder App.
           </li>
         </ol>
-        <a
-          href={ANDROID_GROUP_URL}
-          target="_blank"
-          rel="noopener"
-          class="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors"
-        >
-          Mit Schritt 1 starten
-        </a>
+        <p class="text-sm text-ink-3 leading-relaxed mb-6">
+          Die Suche im Play Store findet BrewMind noch nicht, nur der Link aus
+          Schritt 3. Zeigt der Store „nicht gefunden“, oben rechts im Play
+          Store prüfen, ob dasselbe Konto aktiv ist wie in Schritt 1.
+        </p>
+        <div class="mt-auto flex flex-col gap-3">
+          <a
+            href={ANDROID_GROUP_URL}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors"
+          >
+            Mit Schritt 1 starten
+          </a>
+          <a
+            href={ANDROID_STORE_URL}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-accent/40 text-accent text-sm font-semibold hover:bg-accent/10 transition-colors"
+          >
+            Schon Tester? Zum Play Store
+          </a>
+        </div>
       </div>
     </div>
 

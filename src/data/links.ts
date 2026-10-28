@@ -16,3 +16,10 @@ export const TESTFLIGHT_URL = 'https://testflight.apple.com/join/9VptC31s';
  */
 export const ANDROID_GROUP_URL = 'https://groups.google.com/g/brewmind-beta';
 export const ANDROID_TESTING_URL = 'https://play.google.com/apps/testing/app.brewmind.core';
+
+/**
+ * Store-Eintrag fuer Tester. Solange es keine Produktionsversion gibt, findet
+ * die Suche im Play Store die App nicht; Tester kommen nur ueber diesen Link
+ * hin (Google Play Console Hilfe 9845334: Store-URL mit Testern teilen).
+ */
+export const ANDROID_STORE_URL = 'https://play.google.com/store/apps/details?id=app.brewmind.core';
