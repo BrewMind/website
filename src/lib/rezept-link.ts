@@ -20,6 +20,12 @@
  *
  * Reines Modul ohne DOM: Generator und Leseseite teilen sich dieselben Regeln,
  * vitest prüft sie ohne Browser.
+ *
+ * Die App liest denselben Link mit einem Port dieser Leseregeln. Beide Seiten
+ * prüfen sie gegen `rezept-link-faelle.json` (Läufer `rezept-link-faelle.test.ts`);
+ * die App hat eine byte-gleiche Kopie, `scripts/check-rezept-link-faelle.sh`
+ * im App-Repo (BrewMind/brewmind-core#763) vergleicht beide. Eine Regel hier zu
+ * ändern heißt: die Fall-Datei hier und in der App im selben Zug ändern.
  */
 
 export type Spanne = { min: number; max: number };
