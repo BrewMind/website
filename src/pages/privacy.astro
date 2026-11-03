@@ -58,7 +58,8 @@ import Footer from '../components/Footer.astro';
       </p>
       <p>
         There is no advertising identifier (IDFA), no ad tracking, no third-party analytics,
-        no location access, and no access to contacts, camera or photos. Crash and error data
+        no location access, and no access to contacts or photos. The app uses the camera
+        only when you scan a coffee bag (below). Crash and error data
         only reaches my processor if you turn on the Error Reports switch (section&nbsp;4).
       </p>
       <p>
@@ -76,6 +77,25 @@ import Footer from '../components/Footer.astro';
         timer. Bluetooth communication happens locally between your phone and the scale only.
         iOS and Android ask for the Bluetooth permission for this. No data is forwarded to
         the internet over Bluetooth.
+      </p>
+
+      <h3>Camera (scanning a bag)</h3>
+      <p>
+        When adding a bean you can scan the QR code on the coffee bag. The app asks for the
+        camera only when you tap &ldquo;Packung scannen&rdquo; (scan bag); without that
+        permission you enter the bean by hand. The camera only runs while the scanner is
+        open. The app reads nothing in the camera image but the QR code, stores no image and
+        never opens the address in the code. If it recognises the bean, it fills in the
+        bean's details in the form, just as if you had typed them.
+      </p>
+      <p>
+        On iOS the operating system reads the code. On Android it is read by Google's ML Kit
+        library, which is built into the app and runs on the device. ML Kit comes with its
+        own route for sending usage statistics to Google; the app blocks that route in the
+        Android build.
+        The app transmits nothing when scanning: I measured this on 3&nbsp;November 2026
+        over 24&nbsp;hours with a test build that has the same scanner as Android
+        build&nbsp;11.
       </p>
 
       <h2>4. Data Donation and Error Reports</h2>
@@ -360,7 +380,7 @@ import Footer from '../components/Footer.astro';
         future either.
       </p>
 
-      <p class="stand">Last updated: 16 October 2026</p>
+      <p class="stand">Last updated: 3 November 2026</p>
     </article>
   </main>
   <Footer />
