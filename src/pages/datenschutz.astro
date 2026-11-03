@@ -55,7 +55,8 @@ import Footer from '../components/Footer.astro';
       </p>
       <p>
         Es gibt keine Werbekennung (IDFA), kein Werbe-Tracking, keine Analyse-Dienste
-        Dritter, keinen Standortzugriff, keinen Zugriff auf Kontakte, Kamera oder Fotos.
+        Dritter, keinen Standortzugriff, keinen Zugriff auf Kontakte oder Fotos. Die Kamera
+        nutzt die App nur, wenn Sie eine Packung scannen (unten).
         Crash- und Fehlerdaten gehen nur dann an meinen Auftragsverarbeiter, wenn Sie den
         Schalter Fehlerberichte einschalten (Abschnitt&nbsp;4).
       </p>
@@ -77,6 +78,25 @@ import Footer from '../components/Footer.astro';
         Timer. Die Bluetooth-Kommunikation findet ausschlie&szlig;lich lokal zwischen Ihrem
         Smartphone und der Waage statt. iOS und Android fragen daf&uuml;r die
         Bluetooth-Berechtigung ab. &Uuml;ber Bluetooth werden keine Daten ins Internet weitergeleitet.
+      </p>
+
+      <h3>Kamera (Packung scannen)</h3>
+      <p>
+        Beim Anlegen einer Bohne k&ouml;nnen Sie den QR-Code auf der Kaffeepackung scannen.
+        Nach der Kamera fragt die App erst, wenn Sie &bdquo;Packung scannen&ldquo; antippen;
+        ohne diese Berechtigung tragen Sie die Bohne von Hand ein. Die Kamera l&auml;uft nur,
+        solange der Scanner offen ist. Die App liest im Kamerabild nur den QR-Code, speichert
+        kein Bild und &ouml;ffnet die Adresse im Code nicht. Erkennt sie die Bohne,
+        &uuml;bernimmt sie deren Angaben ins Formular, wie bei einer Eingabe von Hand.
+      </p>
+      <p>
+        Unter iOS liest das Betriebssystem den Code. Unter Android liest ihn Googles
+        Bibliothek ML Kit, die fest in die App eingebaut ist und auf dem Ger&auml;t rechnet.
+        ML Kit bringt einen eigenen Weg mit, &uuml;ber den es Nutzungsstatistiken an Google
+        senden kann; diesen Weg hat die App im Android-Build gesperrt.
+        Die App &uuml;bertr&auml;gt beim Scannen nichts: Gemessen habe ich das am
+        3.&nbsp;November 2026 &uuml;ber 24&nbsp;Stunden an einem Testbuild mit demselben
+        Scanner wie Android-Build&nbsp;11.
       </p>
 
       <h2>4. Daten-Spende und Fehlerberichte</h2>
@@ -381,7 +401,7 @@ import Footer from '../components/Footer.astro';
         k&uuml;nftig nicht.
       </p>
 
-      <p class="stand">Stand: 16. Oktober 2026</p>
+      <p class="stand">Stand: 3. November 2026</p>
     </article>
   </main>
   <Footer />
