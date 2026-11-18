@@ -21,6 +21,11 @@
  * Nonce im Token selbst. Die Formatprüfung hält nur fremde Inhalte aus dem
  * App-Link heraus.
  *
+ * Grenze der Seite: `history.replaceState` nimmt das Fragment nur aus der
+ * Adresszeile und dem Verlauf des Tabs. Im Browserverlauf (und bei Sync im
+ * Konto des Browsers) bleibt der Aufruf mit Fragment stehen. Das lässt sich
+ * bei `response_mode=fragment` von hier aus nicht verhindern.
+ *
  * Diese Datei wird als Text in die Seite eingebettet (siehe
  * `src/pages/auth/apple.astro`), deshalb ohne Importe bleiben.
  */
@@ -72,4 +77,30 @@ export function leseRueckweg(fragment: string): Rueckweg {
         : `error=${FEHLER_LEER}`;
 
   return { art: 'weiter', ziel: `${basis}?state=${encodeURIComponent(state)}&${ergebnis}` };
+}
+
+/** Was der Ablauf vom Browser braucht. Die Seite reicht `location` und `history` herein, Tests reichen Attrappen. */
+export type RueckwegUmgebung = {
+  location: { readonly hash: string; readonly pathname: string; replace(ziel: string): void };
+  history: { replaceState(daten: unknown, titel: string, adresse: string): void };
+  /** Zeigt „Zurück zu BrewMind“. `oeffne` schickt denselben Link noch einmal an die App. */
+  zeigeWeiter(oeffne: () => void): void;
+  zeigeHinweis(): void;
+};
+
+/**
+ * Der Ablauf der Seite, in dieser Reihenfolge: Fragment lesen, Fragment aus
+ * Adresszeile und Tab-Verlauf nehmen, dann erst zur App. Das Ziel bleibt in
+ * dieser Funktion (und im Knopf als Closure), es steht nie im DOM.
+ */
+export function starteRueckweg(umgebung: RueckwegUmgebung): void {
+  const ergebnis = leseRueckweg(umgebung.location.hash);
+  umgebung.history.replaceState(null, '', umgebung.location.pathname);
+  if (ergebnis.art === 'hinweis') {
+    umgebung.zeigeHinweis();
+    return;
+  }
+  const ziel = ergebnis.ziel;
+  umgebung.zeigeWeiter(() => umgebung.location.replace(ziel));
+  umgebung.location.replace(ziel);
 }

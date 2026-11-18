@@ -14,8 +14,11 @@ import regelQuelle from '../../lib/apple-rueckweg.ts?raw';
  * und die Content-Security-Policy kann alles andere verbieten. Die Hashes in
  * der Policy rechnet der Build aus genau dem Text, der in der Seite landet.
  *
- * Das Token steht nur im Speicher: nie im DOM, nie in der Adresse, nichts wird
- * gespeichert oder protokolliert. noindex und nicht in der Sitemap (siehe
+ * Das Token steht nur im Speicher: nie im DOM, nichts wird gespeichert oder
+ * protokolliert. Das Fragment verschwindet aus Adresszeile und Tab-Verlauf,
+ * nicht aber aus dem Browserverlauf (siehe Regel-Datei). `npm run build` prüft
+ * danach mit `scripts/pruefe-auth-apple.mjs`, dass die Hashes der Policy zum
+ * gebauten Skript und Stil passen. noindex und nicht in der Sitemap (siehe
  * astro.config.mjs). Die Adresse ist bei Apple als Return URL eingetragen,
  * also nicht umbenennen.
  */
@@ -23,20 +26,19 @@ import regelQuelle from '../../lib/apple-rueckweg.ts?raw';
 // Die Regel ist TypeScript, der Browser bekommt sie ohne Typen. Dieselbe Datei prüft vitest.
 const regel = (await transformWithEsbuild(regelQuelle, 'apple-rueckweg.ts', { loader: 'ts', format: 'esm' })).code;
 
+// Nur noch Verdrahtung: der Ablauf selbst (`starteRueckweg`) steht in der Regel-Datei und ist getestet
 const start = `
-const ergebnis = leseRueckweg(location.hash);
-// Erst das Fragment aus Adresse und Verlauf nehmen, dann weiter
-history.replaceState(null, '', location.pathname);
-if (ergebnis.art === 'weiter') {
-  const ziel = ergebnis.ziel;
-  document.getElementById('zurueck').addEventListener('click', () => {
-    location.href = ziel;
-  });
-  document.getElementById('weiter').hidden = false;
-  location.replace(ziel);
-} else {
-  document.getElementById('hinweis').hidden = false;
-}
+starteRueckweg({
+  location,
+  history,
+  zeigeWeiter(oeffne) {
+    document.getElementById('zurueck').addEventListener('click', oeffne);
+    document.getElementById('weiter').hidden = false;
+  },
+  zeigeHinweis() {
+    document.getElementById('hinweis').hidden = false;
+  },
+});
 `;
 const skript = `${regel}\n${start}`;
 
