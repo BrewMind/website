@@ -9,8 +9,9 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      // /r/ zeigt je nach Query ein anderes Rezept und ist noindex, gehoert also nicht in die Sitemap
-      filter: (page) => new URL(page).pathname !== '/r/'
+      // /r/ zeigt je nach Query ein anderes Rezept und ist noindex, gehoert also nicht in die Sitemap.
+      // /auth/apple/ ist nur der Rueckweg der Apple-Anmeldung in die App, ebenfalls noindex.
+      filter: (page) => !['/r/', '/auth/apple/'].includes(new URL(page).pathname)
     })
   ],
   vite: {
