@@ -12,8 +12,12 @@
  *     von `state` (dev. oder prod.). Nichts aus der Anfrage bestimmt Schema,
  *     Host oder Pfad.
  *   - Weitergegeben werden `state` und entweder `id_token` oder `error`.
- *     `code` und alles andere fällt weg.
- *   - Jeder Wert muss sein Format erfüllen, sonst geht nichts an die App.
+ *     Neben einem `id_token` geht auch Apples `code` mit
+ *     (BrewMind/brewmind-core#1014): Mit ihm trennt die App beim „Konto
+ *     löschen“ die Verbindung zu Apple. Alles andere fällt weg.
+ *   - `state`, `id_token` und `error` müssen ihr Format erfüllen, sonst geht
+ *     nichts an die App. Ein `code` im falschen Format fällt allein weg: Die
+ *     Anmeldung braucht ihn nicht und soll an ihm nicht scheitern.
  *   - Fehlen `id_token` und `error`, geht `error=leer` an die App.
  *   - Stehen beide da, gewinnt `error`: ein Fehler wird nie als Erfolg gemeldet.
  *
@@ -45,6 +49,8 @@ const ID_TOKEN = /^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/;
 /** Ein Token von Apple hat rund 1000 Zeichen. Die Grenze hält den App-Link kurz genug für jeden Browser. */
 const ID_TOKEN_MAX = 4096;
 const ERROR = /^[a-z_]{1,40}$/;
+/** Apples Authorization Code: Buchstaben, Ziffern, Punkt, Binde- und Unterstrich; in der Praxis unter 100 Zeichen. */
+const CODE = /^[A-Za-z0-9._-]{1,512}$/;
 
 export type Rueckweg =
   | { art: 'weiter'; ziel: string }
@@ -69,11 +75,14 @@ export function leseRueckweg(fragment: string): Rueckweg {
     return { art: 'hinweis' };
   }
 
+  const code = params.get('code');
+  const mitCode = code !== null && CODE.test(code) ? `&code=${encodeURIComponent(code)}` : '';
+
   const ergebnis =
     error !== null
       ? `error=${encodeURIComponent(error)}`
       : idToken !== null
-        ? `id_token=${encodeURIComponent(idToken)}`
+        ? `id_token=${encodeURIComponent(idToken)}${mitCode}`
         : `error=${FEHLER_LEER}`;
 
   return { art: 'weiter', ziel: `${basis}?state=${encodeURIComponent(state)}&${ergebnis}` };
