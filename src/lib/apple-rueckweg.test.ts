@@ -25,9 +25,38 @@ describe('leseRueckweg: Ziel', () => {
     );
   });
 
-  it('code und unbekannte Parameter fallen weg', () => {
+  it('code geht neben dem id_token mit, unbekannte Parameter fallen weg', () => {
     const link = ziel(`#state=${STATE_PROD}&code=c1234.0.abcd&id_token=${TOKEN}&user=%7B%7D&x=1`);
-    expect(link).toBe(`${RUECKWEG_ZIELE.prod}?state=${STATE_PROD}&id_token=${TOKEN}`);
+    expect(link).toBe(`${RUECKWEG_ZIELE.prod}?state=${STATE_PROD}&id_token=${TOKEN}&code=c1234.0.abcd`);
+  });
+
+  it('code steht immer hinter dem id_token, egal wo er im Fragment stand', () => {
+    expect(ziel(`#code=c1.0.ab&id_token=${TOKEN}&state=${STATE_DEV}`)).toBe(
+      `${RUECKWEG_ZIELE.dev}?state=${STATE_DEV}&id_token=${TOKEN}&code=c1.0.ab`,
+    );
+  });
+
+  it('ein code im falschen Format fällt allein weg, die Anmeldung geht weiter', () => {
+    const ohne = `${RUECKWEG_ZIELE.prod}?state=${STATE_PROD}&id_token=${TOKEN}`;
+    for (const code of ['', 'a b', encodeURIComponent('c&error=x'), encodeURIComponent('c#x'), encodeURIComponent('evil://x'), 'a'.repeat(513)]) {
+      expect(ziel(`#state=${STATE_PROD}&id_token=${TOKEN}&code=${code}`)).toBe(ohne);
+    }
+    expect(ziel(`#state=${STATE_PROD}&id_token=${TOKEN}&code=${'a'.repeat(512)}`)).toBe(`${ohne}&code=${'a'.repeat(512)}`);
+  });
+
+  it('code geht nie neben einem error mit', () => {
+    expect(ziel(`#state=${STATE_DEV}&code=c1.0.ab&error=access_denied`)).toBe(
+      `${RUECKWEG_ZIELE.dev}?state=${STATE_DEV}&error=access_denied`,
+    );
+    expect(ziel(`#state=${STATE_DEV}&code=c1.0.ab&id_token=${TOKEN}&error=invalid_request`)).toBe(
+      `${RUECKWEG_ZIELE.dev}?state=${STATE_DEV}&error=invalid_request`,
+    );
+  });
+
+  it('bei doppeltem code gilt der erste', () => {
+    expect(ziel(`#state=${STATE_DEV}&id_token=${TOKEN}&code=erster&code=zweiter`)).toBe(
+      `${RUECKWEG_ZIELE.dev}?state=${STATE_DEV}&id_token=${TOKEN}&code=erster`,
+    );
   });
 
   it('die Reihenfolge im Fragment ist egal, das # auch', () => {
@@ -130,6 +159,8 @@ describe('leseRueckweg: Hinweis oder feste Basis, nichts Drittes', () => {
     ['dev ohne beides', `#state=${STATE_DEV}`],
     ['Token und error', `#state=${STATE_DEV}&id_token=${TOKEN}&error=invalid_request`],
     ['mit code und Fremdem', `#state=${STATE_PROD}&code=x&id_token=${TOKEN}&next=${encodeURIComponent('https://evil.example')}`],
+    ['mit bösem code', `#state=${STATE_PROD}&id_token=${TOKEN}&code=${encodeURIComponent('x&next=https://evil.example')}`],
+    ['code neben error', `#state=${STATE_PROD}&code=x&error=access_denied`],
   ];
   const basen = [`${RUECKWEG_ZIELE.dev}?state=dev.`, `${RUECKWEG_ZIELE.prod}?state=prod.`];
 
@@ -137,8 +168,8 @@ describe('leseRueckweg: Hinweis oder feste Basis, nichts Drittes', () => {
     const ergebnis = leseRueckweg(fragment);
     if (ergebnis.art === 'weiter') {
       expect(basen.some((basis) => ergebnis.ziel.startsWith(basis))).toBe(true);
-      // Hinter der festen Basis nur noch die geprüften Zeichen, also kein zweites Schema und kein dritter Parameter
-      expect(ergebnis.ziel).toMatch(/^brewmindcore(dev)?:\/\/konto\/apple-rueckweg\?state=[A-Za-z0-9._-]+&(id_token|error)=[A-Za-z0-9._-]+$/);
+      // Hinter der festen Basis nur noch die geprüften Zeichen: kein zweites Schema, und als dritter Parameter nur `code` hinter einem id_token
+      expect(ergebnis.ziel).toMatch(/^brewmindcore(dev)?:\/\/konto\/apple-rueckweg\?state=[A-Za-z0-9._-]+&(id_token=[A-Za-z0-9._-]+(&code=[A-Za-z0-9._-]+)?|error=[A-Za-z0-9._-]+)$/);
     } else {
       expect(ergebnis).toEqual(HINWEIS);
     }
@@ -180,7 +211,7 @@ describe('starteRueckweg', () => {
   }
 
   const fragment = `#state=${STATE_PROD}&code=c1&id_token=${TOKEN}`;
-  const erwartetesZiel = `${RUECKWEG_ZIELE.prod}?state=${STATE_PROD}&id_token=${TOKEN}`;
+  const erwartetesZiel = `${RUECKWEG_ZIELE.prod}?state=${STATE_PROD}&id_token=${TOKEN}&code=c1`;
   const adresseBereinigt = 'replaceState [null,"","/auth/apple/"]';
 
   it('liest das Fragment, entfernt es, zeigt den Knopf und geht dann erst zur App', () => {
