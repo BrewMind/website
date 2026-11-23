@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AppHolen from '../components/AppHolen.astro';
+
+/**
+ * Die Seite hinter dem Einladungslink https://brewmind.app/e#CODE
+ * (BrewMind/brewmind-core#1193). Mit installierter App öffnet der Link die App
+ * direkt; hier landet, wer die App noch nicht hat oder den Link am Rechner
+ * öffnet. Die Seite zeigt den Code groß und den Weg in die App.
+ *
+ * Der Code steht im Fragment und bleibt im Browser: nichts geht an einen
+ * Server, nichts wird gespeichert (Regel und Tests in
+ * `src/lib/einladung-link.ts`). Ob der Code noch gilt, weiß nur die App. Das
+ * Gerüst steht im HTML, das Skript füllt es per textContent, nie per
+ * innerHTML. noindex und nicht in der Sitemap (siehe astro.config.mjs).
+ */
+const knopf =
+  'inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors';
+const knopfLeise =
+  'inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-border text-ink text-sm font-semibold hover:bg-surface-2 transition-colors';
+const textlink = 'text-accent hover:text-accent-pressed underline underline-offset-2';
+const ueberschrift = 'font-display text-4xl sm:text-5xl leading-tight text-balance';
+---
+
+<Layout
+  title="Einladung in einen Haushalt | BrewMind"
+  description="Mit diesem Link trittst du einem BrewMind-Haushalt bei und teilst Bohnen, Geräte und Shots."
+  noindex
+>
+  <Header />
+  <main class="pt-28 pb-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <noscript>
+        <p class="label mb-4">Einladung</p>
+        <h1 class={ueberschrift}>Ohne JavaScript geht es nicht</h1>
+        <p class="text-lg text-ink-2 leading-relaxed mt-4">
+          Diese Seite liest den Code im Browser aus dem Link und braucht dafür
+          JavaScript. Schalte es ein und lade die Seite neu. Es wird nichts an
+          einen Server geschickt.
+        </p>
+      </noscript>
+
+      <section id="einladung" hidden aria-labelledby="einladung-titel">
+        <p class="label mb-4">Einladung</p>
+        <h1 id="einladung-titel" class={ueberschrift}>Du bist in einen Haushalt eingeladen</h1>
+        <p class="text-lg text-ink-2 leading-relaxed mt-4">
+          In einem BrewMind-Haushalt teilt ihr Bohnen, Geräte und Shots.
+        </p>
+
+        <div class="rounded-2xl bg-surface border border-border p-6 sm:p-8 mt-10 text-center">
+          <p class="label">Dein Code</p>
+          <p
+            id="einladung-code"
+            class="tabular text-4xl sm:text-6xl font-medium tracking-[0.12em] text-ink mt-4 whitespace-nowrap"
+          >
+          </p>
+          <p class="text-sm text-ink-3 mt-4">
+            Gilt 48 Stunden und für eine Person. Ob er noch gilt, prüft die App.
+          </p>
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mt-6">
+            <a id="app-oeffnen" hidden class={knopf}>In BrewMind öffnen</a>
+            <button id="code-kopieren" type="button" hidden class={knopfLeise}>Code kopieren</button>
+          </div>
+          <p id="kopiert" hidden role="status" class="text-sm text-ok mt-3">Kopiert.</p>
+        </div>
+
+        <h2 class="text-xl font-semibold text-ink mt-14 mb-4">So trittst du bei</h2>
+        <ol class="space-y-3 text-ink-2 leading-relaxed">
+          <li>
+            <span class="text-accent font-semibold">1.</span>
+            Hast du BrewMind schon, öffne die App und geh zu Verwaltung, Haushalt,
+            „Code eingeben“. Dort tippst du den Code ein.
+          </li>
+          <li>
+            <span class="text-accent font-semibold">2.</span>
+            Noch ohne App: BrewMind unten holen und anmelden. Danach diesen Link
+            noch einmal öffnen oder den Code in der App eintippen.
+          </li>
+          <li>
+            <span class="text-accent font-semibold">3.</span>
+            Die App zeigt dir, wer dich einlädt und was ihr teilt. Erst wenn du
+            dort annimmst, trittst du bei.
+          </li>
+        </ol>
+      </section>
+
+      <section id="fehler-leer" hidden>
+        <p class="label mb-4">Einladung</p>
+        <h1 class={ueberschrift}>Kein Code gefunden</h1>
+        <p class="text-lg text-ink-2 leading-relaxed mt-4">
+          Dieser Link enthält keinen lesbaren Einladungscode. Bitte die Person,
+          die dich eingeladen hat, um einen neuen Link. Hast du den Code schon,
+          tippst du ihn in der App unter Verwaltung, Haushalt, „Code eingeben“
+          ein.
+        </p>
+        <p class="mt-6"><a href="/" class={textlink}>Zur Startseite</a></p>
+      </section>
+
+      <AppHolen />
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { baueAppLink, formatCode, liesCode } from '../lib/einladung-link';
+
+  function finde(id: string): HTMLElement {
+    const element = document.getElementById(id);
+    if (!element) throw new Error(`Element #${id} fehlt im Gerüst`);
+    return element;
+  }
+
+  let aktuell: string | undefined;
+
+  function zeige(): void {
+    aktuell = liesCode(window.location.hash);
+    finde('einladung').hidden = aktuell === undefined;
+    finde('fehler-leer').hidden = aktuell !== undefined;
+    finde('kopiert').hidden = true;
+    if (aktuell === undefined) return;
+
+    finde('einladung-code').textContent = formatCode(aktuell);
+
+    // Nur auf dem Handy: dort ist die App, am Rechner führt das Schema ins Leere
+    const oeffnen = finde('app-oeffnen');
+    const amHandy = /iPhone|iPad|Android/.test(navigator.userAgent);
+    oeffnen.hidden = !amHandy;
+    if (amHandy) oeffnen.setAttribute('href', baueAppLink(aktuell));
+
+    finde('code-kopieren').hidden = navigator.clipboard === undefined;
+  }
+
+  finde('code-kopieren').addEventListener('click', () => {
+    if (aktuell === undefined) return;
+    void navigator.clipboard.writeText(aktuell).then(
+      () => {
+        finde('kopiert').hidden = false;
+      },
+      () => undefined,
+    );
+  });
+
+  window.addEventListener('hashchange', zeige);
+  zeige();
+</script>
