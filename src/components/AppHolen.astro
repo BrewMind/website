@@ -1,0 +1,40 @@
+---
+import { TESTFLIGHT_URL } from '../data/links';
+
+/**
+ * Der Abschnitt „BrewMind holen“ für Seiten, auf denen jemand ohne App landet
+ * (/r/ und /e/). Ein Ort, damit die Wege zur Beta auf beiden gleich bleiben.
+ */
+const knopf =
+  'inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-accent text-on-accent text-sm font-semibold hover:bg-accent-pressed transition-colors';
+---
+
+<section class="mt-14" aria-labelledby="app-holen">
+  <h2 id="app-holen" class="text-xl font-semibold text-ink mb-2">BrewMind holen</h2>
+  <p class="text-ink-2 leading-relaxed mb-6">
+    BrewMind läuft als kostenlose Beta auf iPhone und Android, mit einer
+    Bluetooth-Waage oder ohne. Keine Warteliste, keine Anmeldung bei mir.
+  </p>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div class="rounded-2xl bg-surface border border-border p-6 flex flex-col">
+      <h3 class="text-lg font-semibold text-ink mb-2">iPhone</h3>
+      <p class="text-ink-2 leading-relaxed mb-5">
+        Über Apples TestFlight-App. Link öffnen, TestFlight installieren,
+        danach bist du direkt drin.
+      </p>
+      <a href={TESTFLIGHT_URL} target="_blank" rel="noopener" class={`mt-auto ${knopf}`}>
+        Beta über TestFlight öffnen
+      </a>
+    </div>
+
+    <div class="rounded-2xl bg-surface border border-border p-6 flex flex-col">
+      <h3 class="text-lg font-semibold text-ink mb-2">Android</h3>
+      <p class="text-ink-2 leading-relaxed mb-5">
+        Über Google Play, in drei Schritten mit deinem Google-Konto. Die
+        Anleitung steht auf der Startseite.
+      </p>
+      <a href="/#android" class={`mt-auto ${knopf}`}>So kommst du in die Android-Beta</a>
+    </div>
+  </div>
+</section>
