@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout alternates={{ de: '/datenschutz/', en: '/privacy/' }} title="Datenschutz | BrewMind" description="Datenschutzerkl&auml;rung von BrewMind: Lokale Speicherung auf dem Ger&auml;t, Cloud-Funktionen nur mit Ihrer Einwilligung.">
+<Layout title="Datenschutz | BrewMind" description="Datenschutzerklärung von BrewMind: Konto, Sicherung, Haushalt, Auswertung mit Widerspruchsrecht und Fehlerberichte nur mit Ihrer Einwilligung.">
   <Header />
   <main class="pt-28 pb-20 px-6">
     <article class="max-w-3xl mx-auto prose">
@@ -20,64 +20,80 @@ import Footer from '../components/Footer.astro';
 
       <h2>2. Das Wichtigste vorweg</h2>
       <p>
-        Die BrewMind App braucht <strong>kein Konto</strong>, keine E-Mail-Adresse und kein
-        Passwort. Ohne Ihr Zutun speichert sie alles, was Sie erfassen,
-        <strong>ausschlie&szlig;lich lokal auf Ihrem Ger&auml;t</strong>: keine Cloud, keine
-        Synchronisation, kein Server, der Ihre Br&uuml;hdaten entgegennimmt, und ich als
-        Betreiber sehe Ihre Shots nicht. Das &auml;ndert sich nur, wenn Sie in der Verwaltung
-        einen von zwei eigens daf&uuml;r vorgesehenen Schaltern einschalten: Daten-Spende oder
-        Fehlerberichte (Abschnitt&nbsp;4). Beide stehen nach der Installation auf aus.
+        Ab der Version mit Konto brauchen Sie für BrewMind ein Konto. Sie melden sich mit Apple
+        oder mit Google an; ein eigenes Passwort für BrewMind gibt es nicht.
       </p>
       <p>
-        Ohne diese beiden Schalter verarbeite ich personenbezogene Daten nur an zwei
-        Stellen: beim Aufruf dieser Website (Abschnitt&nbsp;7) und wenn Sie mir schreiben
-        oder an der Beta teilnehmen (Abschnitte&nbsp;5 und&nbsp;6). Schalten Sie Daten-Spende
-        oder Fehlerberichte ein, kommt Abschnitt&nbsp;4 hinzu.
+        Was Sie in der App erfassen, liegt weiter auf Ihrem Gerät und wird zusätzlich in Ihrem
+        Konto gesichert, damit Sie es nach einem Gerätewechsel wiederherstellen können
+        (Abschnitt&nbsp;4).
+      </p>
+      <p>
+        Sie können Ihr Konto mit anderen Personen zu einem Haushalt verbinden, zum Beispiel wenn
+        Sie sich eine Maschine teilen. Dann sehen alle im Haushalt dieselben Bohnen, Geräte und
+        Bezüge. Das geschieht nur, wenn Sie selbst jemanden einladen oder eine Einladung
+        annehmen (Abschnitt&nbsp;4, „Haushalt“).
+      </p>
+      <p>
+        Die gesicherten Zubereitungsdaten will ich ohne Namen und E-Mail-Adresse auswerten, um
+        die Beratung der App zu verbessern und später Röstereien zusammengefasste Zahlen je
+        Bohne zu zeigen. <strong>Dieser Auswertung können Sie jederzeit in der App
+        widersprechen</strong> (Abschnitt&nbsp;4, „Auswertung und Ihr Widerspruchsrecht“).
+      </p>
+      <p>Fehlerberichte schickt die App nur, wenn Sie Ja dazu sagen.</p>
+      <p>Es gibt keine Werbung, kein Werbe-Tracking und keine Analyse-Dienste Dritter.</p>
+      <p>
+        Nutzen Sie noch eine ältere Version ohne Konto, gilt für Sie Abschnitt&nbsp;5
+        (Daten-Spende über die Kurz-ID). Beide Wege bestehen nebeneinander, bis die Daten der
+        alten Daten-Spende gelöscht sind.
       </p>
 
       <h2>3. Daten in der App</h2>
       <p>
-        Alles, was Sie in der App anlegen, liegt in einer SQLite-Datenbank im gesch&uuml;tzten
-        Speicherbereich der App auf Ihrem iPhone oder Android-Ger&auml;t:
-      </p>
-      <ul>
-        <li>Bohnen, Maschinen, M&uuml;hlen und die gekoppelte Waage</li>
-        <li>Shots mit Dosis, Mahlgrad, Yield, Zeiten, Temperatur, Ratio und Flow-Werten</li>
-        <li>Messreihen der Waage w&auml;hrend eines Bezugs (Gewicht und Durchfluss &uuml;ber die Zeit)</li>
-        <li>Ihr Geschmacksurteil zu einem Shot</li>
-        <li>App-Einstellungen</li>
-      </ul>
-      <p>
-        Ohne die Schalter aus Abschnitt&nbsp;4 verlassen diese Daten das Ger&auml;t nicht
-        von selbst. Sie k&ouml;nnen einen einzelnen Shot oder Ihre Auswahl aus der History
-        als JSON in die Zwischenablage kopieren und selbst weitergeben. Wohin, entscheiden
-        Sie.
+        Alles, was Sie in der App anlegen, liegt in einer Datenbank im geschützten
+        Speicherbereich der App auf Ihrem Gerät: Bohnen, Maschinen, Mühlen und die gekoppelte
+        Waage, Ihre Bezüge mit Messwerten, Messreihen der Waage, Notizen, Ihr Geschmacksurteil
+        und die Einstellungen der App.
       </p>
       <p>
-        Es gibt keine Werbekennung (IDFA), kein Werbe-Tracking, keine Analyse-Dienste
-        Dritter, keinen Standortzugriff, keinen Zugriff auf Kontakte oder Fotos. Die Kamera
-        nutzt die App nur, wenn Sie eine Packung scannen (unten).
-        Crash- und Fehlerdaten gehen nur dann an meinen Auftragsverarbeiter, wenn Sie den
-        Schalter Fehlerberichte einschalten (Abschnitt&nbsp;4).
+        Mit Konto sichert die App diese Daten zusätzlich auf meinem Server (Abschnitt&nbsp;4).
+        Das Gerät bleibt der Ort, an dem die App rechnet: Sie funktioniert auch ohne Netz, und
+        gesichert wird, sobald wieder eine Verbindung besteht.
       </p>
       <p>
-        <strong>L&ouml;schen:</strong> Einzelne Shots l&ouml;schen Sie in der App. Wenn Sie
-        die App deinstallieren, entfernt das Betriebssystem (iOS oder Android) die Datenbank
-        mitsamt allen Inhalten. Solange
-        Sie keinen der beiden Schalter aus Abschnitt&nbsp;4 eingeschaltet haben, gibt es
-        auf meiner Seite nichts zu l&ouml;schen, weil nichts gespeichert wird, was &uuml;ber
-        Ihr Ger&auml;t hinausgeht. Haben Sie einen Schalter eingeschaltet, lesen Sie in
-        Abschnitt&nbsp;4, wie Sie die hochgeladenen Daten l&ouml;schen. Eine Schritt-f&uuml;r-Schritt-Anleitung
-        mit allen Wegen steht auf der Seite
-        <a href="/loeschen/">Daten l&ouml;schen</a>.
+        Sie können einen einzelnen Bezug oder Ihre Auswahl aus dem Verlauf als JSON in die
+        Zwischenablage kopieren und selbst weitergeben. Wohin, entscheiden Sie.
+      </p>
+      <p>
+        Es gibt keine Werbekennung (IDFA), kein Werbe-Tracking, keine Analyse-Dienste Dritter,
+        keinen Standortzugriff, keinen Zugriff auf Kontakte oder Fotos. Die Kamera nutzt die App
+        nur, wenn Sie eine Packung scannen (unten). Crash- und Fehlerdaten gehen nur dann an
+        meinen Auftragsverarbeiter, wenn Sie den Fehlerberichten zustimmen (Abschnitt&nbsp;4,
+        „Fehlerberichte“).
+      </p>
+      <p>
+        <strong>Löschen:</strong> Einzelne Bezüge, Bohnen oder Geräte löschen Sie in der App.
+        Was dabei im Konto geschieht, steht in Abschnitt&nbsp;4 unter „Sichern und
+        Wiederherstellen“. Wenn Sie die App deinstallieren, entfernt das Betriebssystem die
+        Datenbank auf dem Gerät. <strong>Ihr Konto und die Sicherung bleiben dabei
+        bestehen.</strong> Wie Sie das Konto löschen, steht in Abschnitt&nbsp;4 und auf der
+        Seite <a href="/loeschen/">Konto und Daten löschen</a>.
+      </p>
+      <p>
+        Auf dem Gerät speichert die App außerdem die Sitzung Ihrer Anmeldung (ein
+        Anmeldetoken), damit Sie sich nicht bei jedem Start neu anmelden müssen. Das ist für
+        das Konto technisch erforderlich (§&nbsp;25 Abs. 2 Nr. 2 TDDDG). Mit „Abmelden“ entfernt
+        die App die Sitzung und leert die Daten auf diesem Gerät; die Sicherung im Konto bleibt.
       </p>
 
       <h3>Bluetooth (BLE)</h3>
       <p>
         Die Verbindung zu einer Kaffeewaage ist optional; die App funktioniert ohne Waage als
-        Timer. Die Bluetooth-Kommunikation findet ausschlie&szlig;lich lokal zwischen Ihrem
-        Smartphone und der Waage statt. iOS und Android fragen daf&uuml;r die
-        Bluetooth-Berechtigung ab. &Uuml;ber Bluetooth werden keine Daten ins Internet weitergeleitet.
+        Timer. Die Bluetooth-Kommunikation findet ausschließlich lokal zwischen Ihrem
+        Smartphone und der Waage statt. iOS und Android fragen dafür die
+        Bluetooth-Berechtigung ab. Den Namen, unter dem sich die Waage meldet, ihre
+        Bluetooth-Kennung und die Messwerte eines Bezugs sichert die App wie Ihre übrigen Daten
+        im Konto (Abschnitt&nbsp;4, „Sichern und Wiederherstellen“).
       </p>
 
       <h3>Kamera (Packung scannen)</h3>
@@ -99,13 +115,466 @@ import Footer from '../components/Footer.astro';
         Scanner wie Android-Build&nbsp;11.
       </p>
 
-      <h2>4. Daten-Spende und Fehlerberichte</h2>
+      <h2>4. Konto</h2>
+
+      <h3>Anmeldung mit Apple oder Google</h3>
       <p>
-        In der Verwaltung der App gibt es zwei eigene Schalter, <strong>Daten-Spende</strong>
-        und <strong>Fehlerberichte</strong>. Beide stehen nach der Installation auf aus,
-        und ohne Ihre Einwilligung baut die App keine Netzverbindung auf und &uuml;bertr&auml;gt
-        keine Ihrer Daten. Dieser Abschnitt beschreibt, was passiert, wenn Sie einen oder
-        beide Schalter einschalten. Lassen Sie beide aus, gilt Abschnitt&nbsp;3 unver&auml;ndert.
+        Sie melden sich über „Mit Apple anmelden“ oder über Google an. Apple und Google
+        bestätigen mir dabei, dass Sie es sind, und verarbeiten die Anmeldung in eigener
+        Verantwortung (Apple Distribution International Ltd., Irland, beziehungsweise Google
+        Ireland Ltd., Irland; es gelten deren Datenschutzerklärungen). Beide erfahren, dass Sie
+        sich bei BrewMind anmelden.
+      </p>
+      <p>
+        Von Google erhalte ich eine Kennung, die Sie dort für BrewMind haben, Ihre
+        E-Mail-Adresse, den Namen Ihres Google-Kontos und die Adresse Ihres Profilbilds. Namen
+        und Profilbild nutzt die App nicht und zeigt sie nicht an; sie liegen im Datensatz der
+        Anmeldung und werden mit dem Konto gelöscht. Von Apple erhalte ich eine Kennung, die Sie
+        dort für BrewMind haben. Die App fragt bei Apple weder nach Ihrem Namen noch nach Ihrer
+        E-Mail-Adresse; in der Regel liegt dann keine Adresse bei Ihrem Konto. Welche Adresse
+        bei Ihrem Konto liegt, zeigt Ihnen die App unter Verwaltung, Konto.
+      </p>
+      <p>
+        Auf Android öffnet „Mit Apple anmelden“ die Anmeldeseite von Apple im Browser. Apple
+        leitet danach auf die Seite brewmind.app/auth/apple weiter, die die Antwort an die App
+        übergibt. Diese Seite speichert nichts; für ihren Aufruf gilt Abschnitt&nbsp;8 (Diese
+        Website).
+      </p>
+      <p>
+        Zum Konto speichere ich: eine zufällige Kennung, den Anbieter mit der genannten Kennung,
+        die E-Mail-Adresse, falls eine geliefert wurde, bei Google auch den Namen und die
+        Adresse des Profilbilds, den Zeitpunkt, zu dem das Konto angelegt wurde, die Zeitpunkte
+        Ihrer Anmeldungen, den Zeitpunkt Ihrer letzten Nutzung (höchstens einmal am Tag
+        fortgeschrieben) und Ihre Antworten zu Auswertung und Fehlerberichten. Geben Sie sich in
+        der App einen Namen für den Haushalt, speichere ich auch ihn (Abschnitt „Haushalt“). Die
+        E-Mail-Adresse nutze ich, um Ihre Anfragen zu Ihrem Konto zuzuordnen und um Sie im Fall
+        einer Datenpanne zu benachrichtigen, wenn das Gesetz es verlangt. Werbung oder
+        Rundschreiben schicke ich nicht.
+      </p>
+      <p>
+        Rechtsgrundlage ist die Erfüllung des Nutzungsvertrags (Art. 6 Abs. 1 lit. b DSGVO).
+        Ohne Konto lässt sich die App ab dieser Version nicht nutzen.
+      </p>
+
+      <h3>Sichern und Wiederherstellen</h3>
+      <p>Die App sichert in Ihrem Konto, was Sie erfassen:</p>
+      <ul>
+        <li>
+          Ihre Bezüge mit allen Angaben: Dosis, Menge in der Tasse, Zeiten, Durchfluss,
+          Mahlgrad, Temperatur, Druck, Getränk, Ziele des Rezepts, Ihre Bewertung und Befunde,
+          die Zeitpunkte auf die Sekunde genau und <strong>Ihre Notizen</strong> zum Bezug
+        </li>
+        <li>
+          Ihre Bohnen mit Namen, Rösterei, Röstdatum, Röstgrad, Rezept und
+          <strong>Ihren Notizen</strong>
+        </li>
+        <li>
+          Ihre Maschinen und Mühlen mit den Namen, die Sie vergeben haben, bei Mühlen auch die
+          Skala des Mahlgrads
+        </li>
+        <li>
+          Ihre Waagen mit Art, Hersteller und Modell, dazu <strong>der Name, unter dem sich die
+          Waage per Bluetooth meldet, ihre Bluetooth-Kennung</strong> und der Zeitpunkt der
+          letzten Verbindung
+        </li>
+        <li>
+          <strong>die Messkurven</strong> der Waage (Gewicht und Durchfluss über die Zeit) je
+          Bezug
+        </li>
+        <li>Ihre zwei Antworten zur Ausstattung aus der Einrichtung</li>
+        <li>
+          je Eintrag die Version der App, die ihn gesichert hat, und den Zeitpunkt des Eingangs
+        </li>
+      </ul>
+      <p>
+        Notizen sind freier Text. Schreiben Sie dort nichts hinein, was Sie nicht bei mir
+        gespeichert haben möchten oder was die Personen in Ihrem Haushalt nicht lesen sollen,
+        und keine Angaben über andere Personen.
+      </p>
+      <p>
+        Zweck ist, dass Ihre Daten einen Gerätewechsel, einen Verlust des Geräts oder eine
+        Neuinstallation überstehen: Nach der Anmeldung auf einem neuen Gerät stellt die App sie
+        wieder her. Rechtsgrundlage ist die Erfüllung des Nutzungsvertrags (Art. 6 Abs. 1 lit. b
+        DSGVO).
+      </p>
+      <p>
+        Löschen Sie einen Bezug, eine Bohne, eine Maschine, eine Mühle oder eine Waage in der
+        App, leere ich den Eintrag auch im Konto: Sein Inhalt (zum Beispiel Name, Notizen,
+        Bluetooth-Kennung) wird dort gelöscht, bei einem Bezug auch die Messkurve. Es bleibt
+        eine leere Löschmarke, damit ein anderes Gerät den Eintrag nicht zurückbringt.
+      </p>
+
+      <h3>Haushalt</h3>
+      <p>
+        Ein Haushalt verbindet bis zu sechs Personen, die BrewMind gemeinsam nutzen. Jede Person
+        hat ihr eigenes Konto und meldet sich selbst an. Ohne Einladung sind Sie allein in Ihrem
+        Haushalt, und niemand sonst sieht Ihre Daten. Der Haushalt ist freiwillig; die App
+        funktioniert ohne ihn genauso.
+      </p>
+      <p>
+        <strong>Ihr Name.</strong> Bevor Sie jemanden einladen oder eine Einladung annehmen,
+        fragt die App nach einem Namen. Sie wählen ihn selbst (höchstens 30&nbsp;Zeichen, zum
+        Beispiel Ihr Vorname); die App übernimmt ihn nicht von Apple oder Google. Den Namen
+        sehen die Personen in Ihrem Haushalt in der Liste der Personen und an Ihren Bezügen, und
+        wer eine Einladung von Ihnen öffnet, sieht ihn auch. Der Name liegt, wie die übrigen
+        gemeinsamen Daten, auch auf den Geräten der Personen in Ihrem Haushalt. Ändern können
+        Sie ihn jederzeit im Bildschirm „Haushalt“, auch in ein Kürzel. Entfernen lässt er sich
+        in der App nicht. Auf Anfrage an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> lösche ich ihn, wenn Sie allein in Ihrem Haushalt
+        sind und keine Einladung von Ihnen offen ist.
+      </p>
+      <p>
+        <strong>Einladen.</strong> Die App erzeugt für eine Einladung einen Link und einen Code
+        aus acht Zeichen. Sie schicken den Link selbst weiter, über einen Dienst Ihrer Wahl; an
+        wen und worüber, erfahre ich nicht. Auf meinem Server liegt nicht der Code, sondern nur
+        ein Prüfwert davon (Hash), dazu der Haushalt, wer eingeladen hat, wann die Einladung
+        angelegt wurde, bis wann sie gilt und ob und von wem sie eingelöst wurde. Eine Einladung
+        gilt 48&nbsp;Stunden und für eine Person. Der Link führt auf die Seite brewmind.app/e,
+        die ihn an die App übergibt; der Code steht in dem Teil der Adresse hinter dem
+        Rautezeichen, den der Browser nicht an den Server schickt. Für den Aufruf der Seite gilt
+        Abschnitt&nbsp;8.
+      </p>
+      <p>
+        Wer den Link oder den Code hat und in der App angemeldet ist, sieht vor dem Beitreten
+        eine Vorschau: Ihren Namen, die Namen von bis zu drei Bohnen und drei Geräten Ihres
+        Haushalts und wie viele Bohnen, Geräte und Bezüge dort liegen. Die Namen von Bohnen und
+        Geräten können auch andere Personen in Ihrem Haushalt vergeben haben.
+      </p>
+      <p>
+        Die Einladung wirkt wie ein Schlüssel: Wer sie hat und angemeldet ist, kann ohne weitere
+        Bestätigung beitreten und sieht dann alles im Haushalt. Zurückziehen lässt sich eine
+        Einladung in der App nicht; sie verfällt nach 48&nbsp;Stunden oder wenn sie eingelöst
+        ist. Geben Sie eine Einladung deshalb nur an die Person weiter, die Sie einladen wollen,
+        und laden Sie niemanden ein, der jünger als 18&nbsp;Jahre ist.
+      </p>
+      <p>
+        Gibt jemand einen falschen Code ein, zählt mein Server die Fehlversuche zu diesem Konto
+        (Zahl und Zeitpunkte, nicht den eingegebenen Code). Nach fünf Fehlversuchen ist die
+        Eingabe 15&nbsp;Minuten gesperrt. Das schützt Einladungen vor dem Erraten.
+      </p>
+      <p><strong>Was die Personen im Haushalt voneinander sehen.</strong></p>
+      <ul>
+        <li>
+          alle Bohnen, Maschinen, Mühlen und Waagen des Haushalts mit ihren Angaben und Notizen
+        </li>
+        <li>
+          alle Bezüge des Haushalts mit allen Angaben, mit <strong>Notizen</strong> und
+          Messkurven, und an jedem Bezug den Namen der Person, die ihn aufgezeichnet hat
+        </li>
+        <li>
+          in der Liste der Personen: den Namen, ob sich die Person mit Apple oder mit Google
+          angemeldet hat, wann sie zuletzt aktiv war und wie viele Bezüge von ihr stammen
+        </li>
+      </ul>
+      <p>
+        Die Angaben in der Liste der Personen zeige ich, damit Sie erkennen, welches Konto zu
+        wem gehört und ob es noch genutzt wird.
+      </p>
+      <p>
+        Nicht zu sehen sind für die anderen: Ihre E-Mail-Adresse, Ihre Kennung bei Apple oder
+        Google, Ihre Antworten zu Auswertung und Fehlerberichten und Ihre Fehlerberichte.
+      </p>
+      <p>
+        Die gemeinsamen Daten liegen auch auf den Geräten der anderen Personen im Haushalt, denn
+        die App arbeitet auf jedem Gerät mit einer eigenen Kopie. Die Beratung der App rechnet
+        auf dem Gerät mit den Bezügen aller Personen im Haushalt.
+      </p>
+      <p>
+        Jede Person im Haushalt kann die gemeinsamen Einträge ändern und löschen, auch Bezüge,
+        die eine andere Person aufgezeichnet hat. Eine Änderung oder Löschung gilt nach dem
+        nächsten Abgleich für alle im Haushalt.
+      </p>
+      <p>
+        <strong>Beitreten.</strong> Nehmen Sie eine Einladung an, ziehen Ihre Bohnen, Geräte und
+        Bezüge in den Haushalt um, in den Sie eingeladen wurden; Ihren bisherigen Haushalt gibt
+        es danach nicht mehr. Haben Sie schon eigene Einträge, fragt die App vorher, welche
+        davon dasselbe sind wie ein Eintrag im Haushalt (zum Beispiel dieselbe Maschine). Ihre
+        Bezüge zeigen danach auf den Eintrag des Haushalts, Ihr eigener Eintrag verschwindet.
+        Das lässt sich nicht zurücknehmen.
+      </p>
+      <p>
+        <strong>Gehen und Herausnehmen.</strong> Jede Person kann den Haushalt verlassen, und
+        jede Person kann eine andere aus dem Haushalt nehmen. Wer geht oder herausgenommen wird,
+        bekommt einen eigenen Haushalt mit einer Kopie von allem, was bis dahin im Haushalt lag:
+        Bohnen, Geräte und alle Bezüge mit Notizen und Messkurven, auch die der anderen.
+        Umgekehrt bleiben Ihre Bezüge in dem Haushalt, den Sie verlassen. Sie sind dort für alle
+        sichtbar, die im Haushalt bleiben oder ihm später beitreten. Namen stehen danach auf
+        beiden Seiten nicht mehr an den Bezügen der jeweils anderen. Neue Einträge sieht die
+        andere Seite nicht mehr.
+      </p>
+      <p>
+        <strong>Das sollten Sie vor dem Teilen wissen:</strong> In der App können Sie nicht
+        zurückholen, was Sie in einem Haushalt geteilt haben: Wer geht, behält eine Kopie. Ihre
+        Rechte nach Abschnitt&nbsp;9 bleiben davon unberührt. Wollen Sie, dass Ihre Bezüge in
+        einem früheren Haushalt oder in der Kopie einer anderen Person gelöscht werden,
+        schreiben Sie an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>, solange Ihr Konto besteht. Was bei einer Löschung Ihres Kontos
+        geschieht, steht unter „Konto löschen“.
+      </p>
+      <p>
+        Rechtsgrundlage für den Haushalt ist die Erfüllung des Nutzungsvertrags (Art. 6 Abs. 1
+        lit. b DSGVO), soweit es um das gemeinsame Nutzen geht, solange Sie im Haushalt sind:
+        Ihr Name, Einladungen, das Beitreten und dass alle im Haushalt dieselben Daten sehen und
+        bearbeiten.
+      </p>
+      <p>
+        Auf mein berechtigtes Interesse und das der anderen Personen im Haushalt (Art. 6 Abs. 1
+        lit. f DSGVO) stütze ich, was darüber hinausgeht: dass Ihre Bezüge im Haushalt bleiben,
+        wenn Sie gehen oder Ihr Konto nicht mehr besteht; dass eine Person, die geht, eine Kopie
+        des gemeinsamen Stands behält; die Vorschau einer Einladung; die Angaben in der Liste
+        der Personen; und das Zählen der Fehlversuche. Das Interesse liegt darin, dass der
+        gemeinsame Verlauf für alle vollständig und nutzbar bleibt und dass Einladungen vor
+        Missbrauch geschützt sind. Sie können dem widersprechen (Abschnitt&nbsp;9). Verlangen
+        Sie, dass Ihre Bezüge in einem früheren Haushalt oder in der Kopie einer anderen Person
+        gelöscht werden, schreiben Sie an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>.
+      </p>
+      <p>
+        Die anderen Personen im Haushalt nutzen die Daten für private Zwecke. Was sie auf ihren
+        eigenen Geräten damit tun, liegt in ihrer Hand; für die Daten auf meinem Server bleibe
+        ich verantwortlich.
+      </p>
+
+      <h3>Auswertung und Ihr Widerspruchsrecht</h3>
+      <p>Ich will die gesicherten Zubereitungsdaten für zwei Zwecke auswerten:</p>
+      <ol>
+        <li>
+          um zu prüfen, ob die Ratschläge der App zu besseren Bezügen führen, und die Beratung
+          zu verbessern;
+        </li>
+        <li>
+          um Röstereien später zusammengefasste Zahlen je Bohne zu zeigen, zum Beispiel mit
+          welchem Rezept eine Bohne gut gelingt.
+        </li>
+      </ol>
+      <p>
+        Für die Auswertung verwende ich weder Ihren Namen noch Ihre E-Mail-Adresse noch Ihre
+        Notizen. Die Daten bleiben dabei Ihrem Konto zuordenbar; sie sind nicht anonym. Zahlen
+        für Röstereien gebe ich nur zusammengefasst über mindestens fünf Haushalte weiter, nie
+        für ein einzelnes Konto. Derzeit erhält keine Rösterei Daten.
+      </p>
+      <p>
+        Im Haushalt gilt der Widerspruch je Person: Widersprechen Sie, bleiben Ihre Bezüge aus
+        der Auswertung heraus, die Bezüge der anderen Personen nicht. Bezüge, an denen kein Name
+        mehr steht, weil das Konto dahinter gelöscht ist, werte ich nicht aus.
+      </p>
+      <p>
+        Rechtsgrundlage ist mein berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO): ein
+        Produkt zu verbessern, das Sie nutzen, und es über zusammengefasste Auswertungen für
+        Röstereien wirtschaftlich zu tragen. Die App nennt Ihnen beide Zwecke direkt nach der
+        Anmeldung.
+      </p>
+      <div class="kasten">
+        <p>
+          <strong>Widerspruchsrecht (Art. 21 DSGVO).</strong> Sie können dieser Auswertung
+          jederzeit widersprechen: in der App unter Verwaltung, „Deine Daten“, „Auswertung
+          widersprechen“, oder per E-Mail an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>. Sie müssen den Widerspruch nicht begründen.
+          Er gilt sofort, kostet Sie keine Funktion, und Sie können ihn jederzeit zurücknehmen.
+          Sichern und Wiederherstellen laufen weiter.
+        </p>
+      </div>
+
+      <h3>Fehlerberichte</h3>
+      <p>
+        Nach der Anmeldung fragt die App einmal, ob sie Fehlerberichte senden darf. Sagen Sie
+        Ja, schickt sie bei einem Fehler die Fehlermeldung, den technischen Ablauf dahinter, ein
+        Stichwort zur Stelle in der App, die Build-Nummer und die Version des Datenformats, den
+        Zeitpunkt, die Angabe, ob die App danach weiterlief, und eine zufällige Kennung dieser
+        Installation, zugeordnet zu Ihrem Konto. Erkannte Gerätekennungen entfernt die App
+        vorher; ein Name, den Sie selbst vergeben haben, kann in einer Fehlermeldung trotzdem
+        auftauchen.
+      </p>
+      <p>
+        Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, §&nbsp;25 Abs. 1
+        TDDDG). Sie ist freiwillig, die App funktioniert ohne sie genauso. Sie können sie
+        jederzeit unter Verwaltung, „Deine Daten“ widerrufen; die schon gesendeten Berichte
+        lösche ich, sobald der Widerruf bei mir eingeht (ohne Netz beim nächsten Kontakt der
+        App). Die Verarbeitung bis zum Widerruf bleibt rechtmäßig.
+      </p>
+
+      <h3>Empfänger, Region, Drittland</h3>
+      <p>
+        Konto, Sicherung, Einladungen und Fehlerberichte liegen bei Supabase, Inc. (USA), die
+        sie in meinem Auftrag speichert (Auftragsverarbeiter). Die Datenbank läuft im
+        Rechenzentrum Frankfurt am Main (AWS-Region eu-central-1). Die Auftragsverarbeitung ist
+        Bestandteil der Nutzungsbedingungen von Supabase (Data Processing Addendum, Version 1
+        vom 1. August 2026); eine gesonderte Vertragsunterschrift gibt es nicht. Weil Supabase,
+        Inc. ein US-Unternehmen ist, findet dabei eine Übermittlung in ein Drittland statt; sie
+        stützt sich auf die im Auftragsverarbeitungsvertrag enthaltenen
+        EU-Standardvertragsklauseln. Die Liste der Unterauftragsverarbeiter von Supabase steht
+        unter
+        <a href="https://supabase.com/legal/customer-resources/subprocessor-list" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/subprocessor-list</a>,
+        der Auftragsverarbeitungsvertrag unter
+        <a href="https://supabase.com/legal/customer-resources/data-processing-addendum" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/data-processing-addendum</a>,
+        die Transfer Impact Assessment von Supabase unter
+        <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>
+        (Fassung, die Supabase zum Zeitpunkt dieser Erklärung bereitstellt).
+      </p>
+      <p>
+        Jede Netzverbindung überträgt technisch bedingt eine IP-Adresse. Sie steht in den
+        Anmelde-Protokollen meines Auftragsverarbeiters, nicht in Ihren Zubereitungsdaten, und
+        wird dort höchstens 30&nbsp;Tage gespeichert; die allgemeinen Zugriffsprotokolle des
+        Auftragsverarbeiters folgen dessen eigenen Fristen für Betriebs- und
+        Sicherheitsprotokolle. Rechtsgrundlage ist das berechtigte Interesse am sicheren
+        Betrieb des Dienstes (Art. 6 Abs. 1 lit. f DSGVO).
+      </p>
+      <p>
+        Sind Sie in einem Haushalt mit anderen, erhalten diese Personen die Daten, die im
+        Abschnitt „Haushalt“ genannt sind. Das gilt auch für Personen, die den Haushalt später
+        verlassen: Sie behalten ihre Kopie. Es gilt ebenso für Personen, die einem Haushalt
+        beitreten, den Sie verlassen haben: Ihre Bezüge von damals liegen dort weiter. Wer eine
+        Einladung in Ihren Haushalt öffnet, sieht die dort genannte Vorschau.
+      </p>
+      <p>
+        Löschen Sie ein Konto, das mit Apple angemeldet ist, übermittle ich Apple die
+        Aufforderung, die Verbindung zu BrewMind zu trennen (Abschnitt „Konto löschen“).
+      </p>
+      <p>Darüber hinaus gebe ich Ihre Daten an niemanden weiter.</p>
+
+      <h3>Speicherdauer</h3>
+      <div class="tabelle">
+        <table>
+          <thead>
+            <tr><th>Was</th><th>Wie lange</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Konto und alles, was darin gesichert ist</td>
+              <td>bis Sie das Konto löschen; im Haushalt mit anderen siehe „Konto löschen“</td>
+            </tr>
+            <tr>
+              <td>Konto, das Sie nicht mehr nutzen</td>
+              <td>
+                24&nbsp;Monate nach der letzten Nutzung, dann lösche ich es mit allen Daten. Sind
+                Sie in einem Haushalt mit anderen, lösche ich nur Ihr Konto: Ihre Bezüge bleiben
+                ohne Ihren Namen im Haushalt, ebenso die gemeinsamen Bohnen und Geräte. Die
+                Bezüge bleiben, weil die anderen Personen ihren Verlauf weiter nutzen (Art. 6
+                Abs. 1 lit. f DSGVO); die Personen im Haushalt können sie jederzeit löschen
+              </td>
+            </tr>
+            <tr>
+              <td>Anmeldung, bei der kein Konto zustande kam</td>
+              <td>
+                90&nbsp;Tage nach der letzten Anmeldung. Hängt daran noch eine frühere
+                Daten-Spende dieses Geräts, erst nach deren Fristen (Abschnitt&nbsp;5)
+              </td>
+            </tr>
+            <tr>
+              <td>Ihr Name für den Haushalt</td>
+              <td>
+                bis Sie ihn ändern oder Ihr Konto gelöscht wird; auf Anfrage lösche ich ihn
+                früher, wenn Sie allein in Ihrem Haushalt sind
+              </td>
+            </tr>
+            <tr>
+              <td>Einladung in einen Haushalt</td>
+              <td>
+                nicht eingelöst: 48&nbsp;Stunden nach dem Anlegen; eingelöst: 24&nbsp;Stunden
+                nach dem Anlegen. Gelöscht wird einmal am Tag, eine Einladung kann also bis zu
+                einem Tag länger liegen. Gültig ist sie in der Zeit nicht mehr
+              </td>
+            </tr>
+            <tr>
+              <td>Zähler der Fehlversuche beim Eingeben eines Codes</td>
+              <td>bis Ihr Konto gelöscht wird</td>
+            </tr>
+            <tr>
+              <td>
+                Bezüge ohne Namen in einem Haushalt (die Person dahinter hat ihr Konto gelöscht
+                oder nicht mehr genutzt)
+              </td>
+              <td>solange der Haushalt besteht oder bis eine Person im Haushalt sie löscht</td>
+            </tr>
+            <tr>
+              <td>Fehlerberichte</td>
+              <td>90&nbsp;Tage nach Eingang, oder sofort, wenn Sie die Einwilligung widerrufen</td>
+            </tr>
+            <tr>
+              <td>
+                Nachweis Ihrer Antworten (Ja oder Nein zu Fehlerberichten, Widerspruch und
+                Rücknahme, jeweils mit Zeitpunkt)
+              </td>
+              <td>bis 3&nbsp;Jahre, nachdem es Ihr Konto nicht mehr gibt</td>
+            </tr>
+            <tr>
+              <td>IP-Adresse in den Anmelde-Protokollen</td>
+              <td>höchstens 30&nbsp;Tage</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Den Nachweis bewahre ich auf, um belegen zu können, dass und wann eine Einwilligung oder
+        ein Widerspruch vorlag (Art. 5 Abs. 2, Art. 7 Abs. 1 DSGVO).
+      </p>
+
+      <h3>Konto löschen</h3>
+      <p>
+        In der App unter Verwaltung, Konto, „Konto löschen“. Damit lösche ich sofort Ihr Konto,
+        alles, was darin gesichert ist, Ihre Fehlerberichte und die Daten einer früheren
+        Daten-Spende, soweit sie mit Ihrem Konto verknüpft ist (Abschnitt&nbsp;5). Die App leert
+        danach die Daten auf dem Gerät. Es bleibt nur der Nachweis Ihrer Antworten (siehe
+        Speicherdauer).
+      </p>
+      <p>
+        <strong>Sind Sie in einem Haushalt mit anderen,</strong> löscht „Konto löschen“ Ihr
+        Konto, nicht den Haushalt. Die gemeinsamen Bohnen und Geräte bleiben für die anderen
+        bestehen. Für Ihre Bezüge fragt die App vor dem Löschen, was geschehen soll:
+      </p>
+      <ul>
+        <li>
+          <strong>„Mitlöschen“</strong> (vorausgewählt): Ihre Bezüge in diesem Haushalt werden
+          geleert, mit Notizen und Messkurven. Es bleibt je Bezug eine leere Löschmarke, und
+          beim nächsten Abgleich verschwinden die Bezüge auch von den Geräten der anderen.
+        </li>
+        <li>
+          <strong>„Im Haushalt lassen“:</strong> Ihre Bezüge bleiben mit ihrem Inhalt im
+          Haushalt, ohne Ihren Namen. Sie sind damit nicht anonym: Die Personen im Haushalt
+          können sie weiter Ihnen zuordnen, etwa über Zeitpunkt oder Notizen. Ich selbst kann
+          sie Ihnen danach nicht mehr zuordnen. Eine spätere Löschung auf Ihre Anfrage ist
+          deshalb nur möglich, wenn Sie mir Angaben machen, mit denen ich die Bezüge sicher
+          Ihnen zuordnen kann (Art. 11 Abs. 2 DSGVO). Die Personen im Haushalt können sie
+          jederzeit löschen.
+        </li>
+      </ul>
+      <p>
+        Die Wahl in der App gilt für den Haushalt, in dem Sie beim Löschen sind. Haben Sie
+        früher einen Haushalt verlassen oder hat jemand Ihren Haushalt mit einer Kopie
+        verlassen, liegen dort noch Bezüge von Ihnen. Wollen Sie auch diese löschen lassen,
+        schreiben Sie mir an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>, <strong>bevor</strong> Sie Ihr Konto löschen: Solange Ihr
+        Konto besteht, kann ich diese Bezüge finden und löschen. Löschen Sie das Konto ohne
+        diese Anfrage, bleiben sie dort ohne Ihren Namen.
+      </p>
+      <p>
+        Haben Sie sich mit Apple angemeldet, bittet die App Sie vor dem Löschen, sich noch
+        einmal bei Apple anzumelden, und trennt dann die Verbindung zwischen BrewMind und Ihrer
+        Apple-ID. Gelingt das nicht, wird das Konto nicht gelöscht, und Sie können es erneut
+        versuchen. Lösche ich ein Konto auf Anfrage per E-Mail oder weil es 24&nbsp;Monate
+        nicht genutzt wurde, bleibt der Eintrag „Mit Apple anmelden“ für BrewMind in Ihrer
+        Apple-ID bestehen; Sie entfernen ihn in den Einstellungen Ihrer Apple-ID. Bei Google
+        entfernen Sie BrewMind in Ihrem Google-Konto unter den Verbindungen zu Drittanbietern.
+      </p>
+      <p>
+        Kommen Sie nicht mehr in die App, schreiben Sie an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> von der Adresse, mit der Sie
+        sich angemeldet haben. Alle Wege stehen auf der Seite
+        <a href="/loeschen/">Konto und Daten löschen</a>.
+      </p>
+
+      <h2>5. Frühere Daten-Spende (Versionen ohne Konto)</h2>
+      <p>
+        Dieser Abschnitt gilt für Versionen der App ohne Konto und für Daten, die darüber
+        hochgeladen wurden. In diesen Versionen gibt es in der Verwaltung zwei Schalter,
+        Daten-Spende und Fehlerberichte; beide stehen nach der Installation auf aus.
+      </p>
+      <p>
+        Sobald Sie sich in einer Version mit Konto anmelden, lädt die App über die Daten-Spende
+        nichts mehr hoch. Was Sie früher gespendet haben, übernehme ich nicht in Ihr Konto. Es
+        wird nach den Fristen dieses Abschnitts gelöscht (Zubereitungsdaten nach 12&nbsp;Monaten,
+        Fehlerberichte nach 90&nbsp;Tagen). Haben Sie Ihr Konto auf dem Gerät angelegt, von dem
+        die Spende stammt, ist sie mit dem Konto verknüpft und wird sofort mitgelöscht, wenn Sie
+        das Konto löschen. Bestand Ihr Konto schon, als Sie sich auf diesem Gerät angemeldet
+        haben, widerruft die App die frühere Daten-Spende dieses Geräts bei der Anmeldung, und
+        ich lösche sie in der Regel sofort. Erreicht die App die frühere Daten-Spende nicht
+        mehr, oder haben Sie sich mit einer älteren Version an ein schon bestehendes Konto
+        angemeldet, gelten für diese Daten die Fristen, oder Sie verlangen die Löschung per
+        E-Mail mit der Kurz-ID aus der älteren Version.
       </p>
 
       <h3>Zwecke und Rechtsgrundlage</h3>
@@ -220,7 +689,7 @@ import Footer from '../components/Footer.astro';
         herausgebe oder auf fremde Anfrage l&ouml;sche (Art. 12 Abs. 6 DSGVO). Ohne
         Kurz-ID kann ich eine Anfrage in der Regel nicht zuordnen (Art. 11 Abs. 2 DSGVO)
         und bearbeite sie dann als begr&uuml;ndete Negativauskunft. Die &uuml;brigen
-        Rechte aus Abschnitt&nbsp;8 gelten unver&auml;ndert.
+        Rechte aus Abschnitt&nbsp;9 gelten unver&auml;ndert.
       </p>
 
       <h3>Freiwilligkeit und Auswertungen</h3>
@@ -247,7 +716,7 @@ import Footer from '../components/Footer.astro';
         dem Ger&auml;t nicht weiter genutzt.
       </p>
 
-      <h2>5. Teilnahme an der Beta (TestFlight und Google Play)</h2>
+      <h2>6. Teilnahme an der Beta (TestFlight und Google Play)</h2>
       <h3>iPhone: TestFlight</h3>
       <p>
         Die App wird derzeit als Beta &uuml;ber <strong>TestFlight</strong> verteilt, einen
@@ -276,7 +745,7 @@ import Footer from '../components/Footer.astro';
         94043, USA. Die Teilnahme setzt voraus, dass ich Ihre E-Mail-Adresse (die
         Adresse Ihres Google-Kontos) in die Testerliste in der Google Play Console eintrage.
         Dazu schreiben Sie mir an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>
-        (Abschnitt&nbsp;6); ich verwende die Adresse nur f&uuml;r diese Testerliste. Die
+        (Abschnitt&nbsp;7); ich verwende die Adresse nur f&uuml;r diese Testerliste. Die
         Installation und die Anmeldung laufen danach unmittelbar zwischen Ihnen und Google.
       </p>
       <p>
@@ -296,10 +765,10 @@ import Footer from '../components/Footer.astro';
       </p>
       <p>
         Wie Sie Ihre Daten auf Android (und iPhone) l&ouml;schen, steht auf der Seite
-        <a href="/loeschen/">Daten l&ouml;schen</a>.
+        <a href="/loeschen/">Konto und Daten l&ouml;schen</a>.
       </p>
 
-      <h2>6. Kontakt per E-Mail</h2>
+      <h2>7. Kontakt per E-Mail</h2>
       <p>
         Wenn Sie mir an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> schreiben,
         etwa um sich f&uuml;r die Beta zu melden, verarbeite ich Ihre E-Mail-Adresse und den
@@ -313,7 +782,7 @@ import Footer from '../components/Footer.astro';
         Anfragen).
       </p>
 
-      <h2>7. Diese Website</h2>
+      <h2>8. Diese Website</h2>
       <h3>Hosting</h3>
       <p>
         Diese Website wird &uuml;ber <strong>GitHub Pages</strong> ausgeliefert (GitHub Inc.,
@@ -334,6 +803,21 @@ import Footer from '../components/Footer.astro';
         unter dem EU-US Data Privacy Framework zertifiziert. N&auml;heres in der
         <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Datenschutzerkl&auml;rung von GitHub</a>.
       </p>
+
+      <h3>Seiten, die an die App übergeben</h3>
+      <p>
+        Die Seite brewmind.app/auth/apple ist der Rückweg von „Mit Apple anmelden“ auf Android.
+        Apple leitet Ihren Browser nach der Anmeldung dorthin und hängt die Antwort an die
+        Adresse an, und zwar in dem Teil hinter dem Rautezeichen, den der Browser nicht an den
+        Server schickt. Die Seite gibt die Antwort an die App weiter, speichert nichts und
+        entfernt die Antwort danach aus der Adresszeile. Im Verlauf Ihres Browsers kann die
+        aufgerufene Adresse stehen bleiben.
+      </p>
+      <p>
+        Die Seite brewmind.app/e öffnet eine Einladung in einen Haushalt in der App. Auch hier
+        steht der Code hinter dem Rautezeichen und erreicht den Server nicht.
+      </p>
+
 
       <h3>Keine Cookies, kein Tracking</h3>
       <p>
@@ -361,47 +845,74 @@ import Footer from '../components/Footer.astro';
         erkennbar am &bdquo;https://&ldquo; in der Adresszeile.
       </p>
 
-      <h2>8. Ihre Rechte</h2>
+      <h2>9. Ihre Rechte</h2>
       <p>Sie haben jederzeit das Recht:</p>
       <ul>
-        <li>Auskunft &uuml;ber Ihre gespeicherten personenbezogenen Daten zu erhalten (Art. 15 DSGVO)</li>
+        <li>Auskunft über Ihre gespeicherten personenbezogenen Daten zu erhalten (Art. 15 DSGVO)</li>
         <li>die Berichtigung unrichtiger Daten zu verlangen (Art. 16 DSGVO)</li>
-        <li>die L&ouml;schung Ihrer Daten zu verlangen (Art. 17 DSGVO)</li>
-        <li>die Einschr&auml;nkung der Verarbeitung zu verlangen (Art. 18 DSGVO)</li>
-        <li>Daten&uuml;bertragbarkeit zu verlangen (Art. 20 DSGVO)</li>
-        <li>Ihre Einwilligung zur Daten-Spende und zu Fehlerberichten jederzeit zu
-          widerrufen (Art. 7 Abs. 3 DSGVO), &uuml;ber die Schalter in der App</li>
-        <li>der Verarbeitung auf Grundlage berechtigter Interessen aus Gr&uuml;nden Ihrer
-          besonderen Situation zu widersprechen (Art. 21 DSGVO)</li>
-        <li>sich bei einer Aufsichtsbeh&ouml;rde zu beschweren (Art. 77 DSGVO)</li>
+        <li>die Löschung Ihrer Daten zu verlangen (Art. 17 DSGVO)</li>
+        <li>die Einschränkung der Verarbeitung zu verlangen (Art. 18 DSGVO)</li>
+        <li>Datenübertragbarkeit zu verlangen (Art. 20 DSGVO)</li>
+        <li>
+          Ihre Einwilligung zu Fehlerberichten und, in Versionen ohne Konto, zur Daten-Spende
+          jederzeit zu widerrufen (Art. 7 Abs. 3 DSGVO), in der App
+        </li>
+        <li>
+          der Verarbeitung auf Grundlage berechtigter Interessen zu widersprechen (Art. 21
+          DSGVO)
+        </li>
+        <li>sich bei einer Aufsichtsbehörde zu beschweren (Art. 77 DSGVO)</li>
       </ul>
       <p>
-        <strong>Widerspruchsrecht:</strong> Soweit ich Daten auf Grundlage von Art. 6 Abs. 1
-        lit. f DSGVO verarbeite (IP-Adressen in Anmelde-Protokollen, Missbrauchsabwehr),
-        k&ouml;nnen Sie aus Gr&uuml;nden, die sich aus Ihrer besonderen Situation ergeben,
-        jederzeit Widerspruch einlegen. Ich verarbeite die Daten dann nicht mehr, es sei
-        denn, ich kann zwingende schutzw&uuml;rdige Gr&uuml;nde nachweisen.
+        <strong>Widerspruch:</strong> Soweit ich Daten auf Grundlage meines berechtigten
+        Interesses verarbeite (Auswertung, Schutz der Einladungen, Vorschau einer Einladung,
+        Angaben in der Liste der Personen, Verbleib Ihrer Bezüge in einem Haushalt, den Sie
+        verlassen haben, und in Kopien, IP-Adressen in Anmelde-Protokollen), können Sie aus
+        Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit widersprechen, per
+        E-Mail an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>. Ich verarbeite die Daten dann nicht mehr, es sei denn, ich kann
+        zwingende schutzwürdige Gründe nachweisen. Der Auswertung Ihrer Kontodaten
+        (Abschnitt&nbsp;4) können Sie ohne Begründung widersprechen, in der App oder per E-Mail.
       </p>
       <p>
-        Wenden Sie sich dazu an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>.
-        F&uuml;r Anfragen zur Daten-Spende und zu Fehlerberichten nennen Sie bitte Ihre
-        Kurz-ID (Abschnitt&nbsp;4). Zust&auml;ndige Aufsichtsbeh&ouml;rde ist die
-        Landesbeauftragte f&uuml;r Datenschutz und Informationsfreiheit Nordrhein-Westfalen
+        <strong>Löschung:</strong> Ihr Konto löschen Sie selbst in der App (Abschnitt&nbsp;4).
+        Was im Haushalt dabei bleibt, steht dort unter „Konto löschen“. Bezüge von Ihnen in
+        einem früheren Haushalt oder in der Kopie einer anderen Person lösche ich auf Ihre
+        Anfrage per E-Mail, solange Ihr Konto besteht.
+      </p>
+      <p>
+        <strong>Auskunft:</strong> Schreiben Sie an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> von der E-Mail-Adresse, mit der Sie
+        sich angemeldet haben. Über diese Adresse ordne ich Ihre Anfrage dem Konto zu. Welche
+        Adresse bei Ihrem Konto liegt, zeigt die App unter Verwaltung, Konto; weicht sie von
+        Ihrer eigenen ab, nennen Sie sie mir bitte. Liegt zu Ihrem Konto keine Adresse vor, kann
+        ich es einer Anfrage nicht zuordnen; Ihre Daten sehen Sie dann in der App, und löschen
+        können Sie sie dort jederzeit.
+      </p>
+      <p>
+        <strong>Auskunft im Haushalt:</strong> Sind oder waren Sie in einem Haushalt mit
+        anderen, enthält die Auskunft Ihre eigenen Angaben, Ihre Bezüge (auch die, die in einem
+        früheren Haushalt liegen) und die gemeinsamen Bohnen und Geräte Ihres Haushalts. Die
+        Bezüge und Kennungen der anderen Personen enthält sie nicht. Liegen in Ihrem Haushalt
+        Bezüge ohne Namen, weil das Konto dahinter gelöscht ist, nenne ich Ihnen deren Zahl;
+        sehen können Sie sie in der App. Als Empfänger nenne ich Ihnen die Personen, die Ihre
+        Bezüge heute sehen können, in Ihrem Haushalt, in einem früheren Haushalt und bei einer
+        mitgenommenen Kopie, mit dem Namen, den sie sich in der App gegeben haben.
+      </p>
+      <p>
+        Für Anfragen zur früheren Daten-Spende und zu Fehlerberichten aus Versionen ohne Konto
+        nennen Sie bitte Ihre Kurz-ID (Abschnitt&nbsp;5). Zuständige Aufsichtsbehörde ist die
+        Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen
         (<a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de</a>).
       </p>
 
-      <h2>9. &Auml;nderungen</h2>
+      <h2>10. Änderungen</h2>
       <p>
-        Mit den Schaltern aus Abschnitt&nbsp;4 ist eine fr&uuml;here Ank&uuml;ndigung dieser
-        Erkl&auml;rung eingetreten: Die App hat eine Funktion bekommen, die Daten das
-        Ger&auml;t verlassen l&auml;sst, und die Funktion ist sichtbar in der Verwaltung
-        sowie hier mit einem eigenen Abschnitt beschrieben, bevor sie an Tester ausgeliefert
-        wurde. Kommen weitere Funktionen hinzu, die Daten das Ger&auml;t verlassen lassen,
-        passe ich diese Erkl&auml;rung vorher an; still und leise geschieht das auch
-        k&uuml;nftig nicht.
+        Mit Konto und Haushalt hat die App Funktionen bekommen, mit denen Daten das Gerät
+        verlassen. Beide sind in Abschnitt&nbsp;4 beschrieben, bevor die erste Version mit Konto
+        an Tester ausgeliefert wurde. Kommen weitere Funktionen hinzu, die Daten das Gerät
+        verlassen lassen, passe ich diese Erklärung vorher an.
       </p>
 
-      <p class="stand">Stand: 3. November 2026</p>
+      <p class="stand">Stand: 25. November 2026</p>
     </article>
   </main>
   <Footer />

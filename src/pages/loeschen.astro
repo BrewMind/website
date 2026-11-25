@@ -4,42 +4,227 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Daten l&ouml;schen | BrewMind" description="So l&ouml;schen Sie Ihre BrewMind-Daten: in der App, durch Deinstallieren oder per E-Mail. BrewMind hat keine Nutzerkonten.">
+<Layout title="Konto und Daten löschen | BrewMind" description="So löschen Sie Ihr BrewMind-Konto und Ihre Daten: in der App oder per E-Mail. Mit allem, was im Haushalt mit anderen gilt.">
   <Header />
   <main class="pt-28 pb-20 px-6">
     <article class="max-w-3xl mx-auto prose">
-      <h1>Daten l&ouml;schen</h1>
+      <h1>Konto und Daten löschen</h1>
 
       <p>
-        <strong>BrewMind hat keine Nutzerkonten.</strong> Es gibt nichts, was Sie anlegen
-        oder k&uuml;ndigen m&uuml;ssten. Diese Seite zeigt, was die App speichert und wie Sie
-        es l&ouml;schen, auf iPhone und auf Android.
+        Diese Seite gilt für die App BrewMind von Tegrovio (Dominik Palzer). Sie können Ihr
+        Konto jederzeit selbst löschen. Das kostet nichts und braucht keine Begründung. Sind Sie
+        allein in Ihrem Haushalt und haben ihn nie mit anderen geteilt, sind damit alle Daten im
+        Konto gelöscht, bis auf das Wenige, das Abschnitt&nbsp;3 nennt. Teilen Sie einen
+        Haushalt mit anderen oder haben Sie früher einen geteilt, bleibt ein Teil bestehen
+        (Abschnitt&nbsp;4).
       </p>
 
-      <h2>Was gespeichert ist</h2>
-      <ul>
+      <h2>1. In der App (der schnellste Weg)</h2>
+      <ol>
+        <li>BrewMind öffnen.</li>
+        <li>Den Tab <strong>Verwaltung</strong> öffnen, dort die Karte <strong>Konto</strong>.</li>
         <li>
-          <strong>Auf Ihrem Ger&auml;t (immer):</strong> Bohnen, Maschinen, M&uuml;hlen, die
-          gekoppelte Waage, Ihre Shots mit Messwerten und Geschmacksurteil sowie die
-          App-Einstellungen. Diese Daten verlassen das Ger&auml;t nicht von selbst.
+          <strong>Konto löschen</strong> antippen. Sind Sie in einem Haushalt mit anderen,
+          wählen Sie jetzt, was mit Ihren Bezügen geschieht (Abschnitt&nbsp;4).
         </li>
         <li>
-          <strong>Auf meinem Server (nur mit Ihrer Einwilligung):</strong> Schalten Sie in der
-          App <em>Daten spenden</em> oder <em>Fehlerberichte senden</em> ein, liegen die
-          &uuml;bertragenen Daten bei meinem Auftragsverarbeiter Supabase (Rechenzentrum
-          Frankfurt am Main), zugeordnet zu einer zuf&auml;lligen Kennung Ihrer Installation,
-          nicht zu einem Namen oder einer E-Mail-Adresse. Beide Schalter stehen nach der
-          Installation auf aus.
+          <strong>Konto endgültig löschen</strong> antippen und die Rückfrage mit
+          <strong>Löschen</strong> bestätigen.
+        </li>
+      </ol>
+      <p>
+        Haben Sie sich mit Apple angemeldet, bittet die App Sie dabei, sich noch einmal bei
+        Apple anzumelden. Damit trennt sie die Verbindung zwischen BrewMind und Ihrer Apple-ID.
+        Brechen Sie die Anmeldung ab oder gelingt das Trennen nicht, bleibt das Konto bestehen,
+        und Sie können es erneut versuchen. Zum Löschen braucht das Gerät Netz.
+      </p>
+      <p>Die Löschung gilt sofort und lässt sich nicht rückgängig machen.</p>
+
+      <h2>2. Was gelöscht wird</h2>
+      <ul>
+        <li>
+          Ihr Konto mit der Verknüpfung zu Apple oder Google und der E-Mail-Adresse, falls eine
+          vorlag
+        </li>
+        <li>
+          alles, was im Konto gesichert ist: Bezüge, Bohnen, Maschinen, Mühlen, Waagen,
+          Messkurven, Notizen. Das gilt, wenn Sie allein in Ihrem Haushalt sind und ihn nie mit
+          anderen geteilt haben; sonst gilt Abschnitt&nbsp;4
+        </li>
+        <li>Ihr Name für den Haushalt und Ihre offenen Einladungen</li>
+        <li>Ihre Fehlerberichte</li>
+        <li>
+          die Daten einer früheren Daten-Spende, wenn sie mit Ihrem Konto verknüpft ist
+          (Abschnitt&nbsp;8)
+        </li>
+        <li>die Daten der App auf dem Gerät, auf dem Sie das Konto löschen</li>
+      </ul>
+
+      <h2>3. Was bleibt</h2>
+      <ul>
+        <li>
+          <strong>Der Nachweis Ihrer Antworten:</strong> ob und wann Sie Fehlerberichten
+          zugestimmt oder der Auswertung widersprochen haben, mit einer zufälligen Kennung, ohne
+          Namen, ohne E-Mail-Adresse und ohne Inhalte. Ich bewahre ihn bis zu drei Jahre auf, um
+          belegen zu können, dass eine Einwilligung oder ein Widerspruch vorlag. Danach wird er
+          gelöscht.
+        </li>
+        <li><strong>Protokolle des Hosters</strong> mit IP-Adresse, höchstens 30&nbsp;Tage.</li>
+        <li>
+          <strong>Der Eintrag bei Google.</strong> Haben Sie sich mit Google angemeldet,
+          entfernen Sie BrewMind in Ihrem Google-Konto unter den Verbindungen zu Drittanbietern.
+          Daten von BrewMind liegen dort nicht. Bei Apple trennt die App die Verbindung beim
+          Löschen selbst (Abschnitt&nbsp;1); lösche ich das Konto auf Ihre Anfrage per E-Mail
+          (Abschnitt&nbsp;5) oder weil es nicht mehr genutzt wurde (Abschnitt&nbsp;7), entfernen
+          Sie den Eintrag „Mit Apple anmelden“ in den Einstellungen Ihrer Apple-ID.
+        </li>
+        <li>
+          <strong>Daten auf einem weiteren Gerät.</strong> Nutzen Sie BrewMind auf einem zweiten
+          Gerät, meldet die App Sie dort ab und leert ihre Daten, sobald Sie sie dort wieder
+          öffnen und das Gerät Netz hat. Bis dahin liegen die Daten noch auf diesem Gerät.
+        </li>
+        <li>
+          <strong>Im Haushalt mit anderen:</strong> die gemeinsamen Bohnen und Geräte, und je
+          nach Ihrer Wahl Ihre Bezüge ohne Ihren Namen (Abschnitt&nbsp;4).
+        </li>
+      </ul>
+
+      <h2>4. Wenn Sie einen Haushalt mit anderen teilen</h2>
+      <p>
+        Ein Haushalt verbindet mehrere Konten, die dieselben Bohnen, Geräte und Bezüge sehen.
+        Löschen Sie Ihr Konto, bleibt der Haushalt für die anderen bestehen.
+      </p>
+      <p>
+        <strong>Was in jedem Fall bleibt:</strong> die Bohnen, Maschinen, Mühlen und Waagen des
+        Haushalts, auch die, die Sie angelegt haben. Die anderen brauchen sie für ihre eigenen
+        Bezüge.
+      </p>
+      <p>
+        <strong>Ihre Bezüge:</strong> Die App fragt vor dem Löschen, was mit ihnen geschehen
+        soll.
+      </p>
+      <div class="tabelle">
+        <table>
+          <thead>
+            <tr><th>Ihre Wahl</th><th>Was geschieht</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>„Mitlöschen“ (vorausgewählt)</td>
+              <td>
+                Ihre Bezüge in diesem Haushalt werden mit Notizen und Messkurven geleert. Beim
+                nächsten Abgleich verschwinden sie auch von den Geräten der anderen. Es bleibt
+                je Bezug eine leere Löschmarke.
+              </td>
+            </tr>
+            <tr>
+              <td>„Im Haushalt lassen“</td>
+              <td>
+                Ihre Bezüge bleiben mit ihrem Inhalt im Haushalt, ohne Ihren Namen. Sie sind
+                damit nicht anonym: Die Personen im Haushalt können sie weiter Ihnen zuordnen,
+                etwa über Zeitpunkt oder Notizen. Ich selbst kann sie Ihnen danach nicht mehr
+                zuordnen. Eine spätere Löschung auf Ihre Anfrage ist deshalb nur möglich, wenn
+                Sie mir Angaben machen, mit denen ich die Bezüge sicher Ihnen zuordnen kann. Die
+                Personen im Haushalt können sie jederzeit löschen.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Was die Wahl in der App nicht erreicht:</strong></p>
+      <ul>
+        <li>
+          Haben Sie früher einen Haushalt verlassen, liegen Ihre Bezüge von damals dort weiter.
+        </li>
+        <li>
+          Hat eine andere Person Ihren Haushalt verlassen, hat sie eine Kopie mitgenommen, in
+          der auch Ihre Bezüge bis zu diesem Tag liegen.
         </li>
       </ul>
       <p>
-        Was genau &uuml;bertragen wird und was nie, steht in der
-        <a href="/datenschutz/">Datenschutzerkl&auml;rung</a>, Abschnitt&nbsp;4.
+        Wollen Sie auch diese Bezüge löschen lassen, schreiben Sie mir an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>,
+        <strong>bevor</strong> Sie Ihr Konto löschen (Abschnitt&nbsp;5): Solange Ihr Konto
+        besteht, kann ich diese Bezüge finden und löschen. Löschen Sie das Konto ohne diese
+        Anfrage, bleiben sie dort ohne Ihren Namen.
+      </p>
+      <p>
+        Auf den Geräten der anderen verschwinden gelöschte Bezüge erst, wenn deren App das
+        nächste Mal mit dem Konto abgleicht.
+      </p>
+      <p>
+        Wollen Sie einzelne Bezüge sicher aus dem Haushalt entfernen, löschen Sie sie in der
+        App, bevor Sie den Haushalt verlassen oder das Konto löschen (Abschnitt&nbsp;6). Kopien,
+        die andere schon mitgenommen haben, erreichen Sie so nicht; dafür schreiben Sie mir
+        (Abschnitt&nbsp;5).
+      </p>
+      <p>
+        <strong>Nur den Haushalt verlassen, ohne das Konto zu löschen:</strong> in der App unter
+        Verwaltung, „Haushalt“, dort „Haushalt verlassen“. Sie nehmen eine Kopie von allem mit;
+        Ihre Bezüge bleiben auch bei den anderen. Sollen sie dort gelöscht werden, schreiben Sie
+        mir (Abschnitt&nbsp;5).
       </p>
 
-      <h2>So l&ouml;schen Sie Ihre Daten</h2>
+      <h2>5. Ohne die App</h2>
+      <p>
+        Kommen Sie nicht mehr in die App, schreiben Sie an <a href="mailto:hello@brewmind.app?subject=Konto%20l%C3%B6schen">hello@brewmind.app</a>, und zwar von der
+        E-Mail-Adresse, mit der Sie sich angemeldet haben. Über diese Adresse finde ich Ihr
+        Konto. Welche Adresse bei Ihrem Konto liegt, zeigt die App unter Verwaltung, Konto;
+        weicht sie von Ihrer eigenen ab, nennen Sie sie mir.
+      </p>
+      <p>
+        Ich lösche unverzüglich, spätestens innerhalb eines Monats nach Ihrer Anfrage, und
+        bestätige es Ihnen. Vorher bitte ich Sie mit einer Antwort an die Adresse Ihres Kontos
+        um Bestätigung; ohne sie lösche ich nicht.
+      </p>
+      <p>
+        Sind Sie in einem Haushalt mit anderen, lösche ich auch Ihre Bezüge dort, wie bei
+        „Mitlöschen“ in der App. Sollen sie ohne Ihren Namen im Haushalt bleiben, schreiben Sie
+        mir das ausdrücklich. Liegen Bezüge von Ihnen in einem früheren Haushalt oder in der
+        Kopie einer anderen Person, lösche ich sie ebenfalls, wenn Sie es verlangen. Die
+        gemeinsamen Bohnen und Geräte bleiben in jedem Fall bei den anderen.
+      </p>
+      <p>
+        Auf demselben Weg können Sie Bezüge in einem früheren Haushalt oder in einer Kopie
+        löschen lassen, ohne Ihr Konto zu löschen.
+      </p>
+      <p>
+        Liegt zu Ihrem Konto keine E-Mail-Adresse vor, kann ich es einer Anfrage nicht zuordnen.
+        Dann bleibt der Weg über die App: neu installieren, anmelden, Konto löschen.
+      </p>
 
-      <h3>1. In der App: hochgeladene Daten l&ouml;schen</h3>
+      <h2>6. Nur einzelne Daten löschen</h2>
+      <p>
+        Einzelne Bezüge, Bohnen oder Geräte löschen Sie in der App. Der Eintrag wird dann auch
+        im Konto geleert, bei einem Bezug wird zusätzlich die Messkurve gelöscht. Es bleibt nur
+        eine leere Löschmarke. Die Fehlerberichte löschen Sie, indem Sie unter Verwaltung,
+        „Deine Daten“ die Fehlerberichte ausschalten.
+      </p>
+      <p>
+        Im Haushalt gilt das Löschen eines Eintrags für alle: Er verschwindet beim nächsten
+        Abgleich auch bei den anderen.
+      </p>
+
+      <h2>7. Konten, die nicht mehr genutzt werden</h2>
+      <p>
+        Ein Konto, das 24&nbsp;Monate nicht genutzt wurde, lösche ich mit allen Daten. Sind in
+        seinem Haushalt noch andere Personen, lösche ich nur das Konto: Die Bezüge bleiben ohne
+        Namen im Haushalt, ebenso die gemeinsamen Bohnen und Geräte.
+      </p>
+      <p>Einladungen in einen Haushalt lösche ich spätestens drei Tage nach dem Anlegen.</p>
+
+      <h2>8. Ältere Versionen ohne Konto (Daten-Spende)</h2>
+      <p>
+        Haben Sie in einer Version ohne Konto die Daten-Spende oder die Fehlerberichte
+        eingeschaltet, löschen Sie diese Daten wie bisher: in der App über die beiden Schalter
+        in der Verwaltung, oder per E-Mail mit Ihrer Kurz-ID. Haben Sie Ihr Konto später auf
+        demselben Gerät angelegt, ist die Daten-Spende mit dem Konto verknüpft und wird
+        mitgelöscht, wenn Sie das Konto löschen. Bestand Ihr Konto schon vorher (zum Beispiel
+        von einem anderen Gerät), gibt es diese Verknüpfung nicht: Dann bleibt die Anfrage per
+        E-Mail mit der Kurz-ID, oder die Daten fallen nach den Fristen der
+        <a href="/datenschutz/">Datenschutzerklärung</a> (Abschnitt&nbsp;5).
+      </p>
+
+      <h3>In der älteren Version: hochgeladene Daten löschen</h3>
       <ol>
         <li>Tab <strong>Verwaltung</strong> &ouml;ffnen, Karte <strong>Daten-Spende</strong>.</li>
         <li>
@@ -59,33 +244,7 @@ import Footer from '../components/Footer.astro';
         was auf Ihrem Ger&auml;t liegt, bleibt dabei erhalten.
       </p>
 
-      <h3>2. In der App: Daten auf dem Ger&auml;t l&ouml;schen</h3>
-      <ul>
-        <li>
-          <strong>Einen Shot:</strong> Shot in der History &ouml;ffnen und
-          <strong>Shot l&ouml;schen</strong> w&auml;hlen.
-        </li>
-        <li>
-          <strong>Eine Bohne, Maschine oder M&uuml;hle:</strong> in der Verwaltung den Eintrag
-          &ouml;ffnen und <strong>Bohne l&ouml;schen</strong>, <strong>Maschine l&ouml;schen</strong>
-          bzw. <strong>M&uuml;hle l&ouml;schen</strong> w&auml;hlen.
-        </li>
-        <li>
-          <strong>Aufgezeichnete Fehler:</strong> in der Verwaltung unter Diagnose
-          <strong>Fehlerliste leeren</strong>.
-        </li>
-      </ul>
-
-      <h3>3. App deinstallieren</h3>
-      <p>
-        Wenn Sie die App deinstallieren, entfernt das Betriebssystem (iOS oder Android) die
-        Datenbank auf Ihrem Ger&auml;t mitsamt allen Inhalten. Daten, die Sie zuvor &uuml;ber
-        die Daten-Spende oder die Fehlerberichte hochgeladen haben, bleiben dabei auf dem
-        Server liegen. Schalten Sie darum vor dem Deinstallieren beide Schalter aus (Weg&nbsp;1)
-        oder nutzen Sie Weg&nbsp;4.
-      </p>
-
-      <h3>4. Per E-Mail</h3>
+      <h3>Per E-Mail mit der Kurz-ID</h3>
       <p>
         Schreiben Sie an <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> und nennen
         Sie Ihre <strong>Kurz-ID</strong>. Sie finden sie in der App unter Verwaltung in der Karte
@@ -104,20 +263,26 @@ import Footer from '../components/Footer.astro';
         Monats nach Eingang (Art. 12 Abs. 3 DSGVO).
       </p>
 
-      <h2>Was nach dem L&ouml;schen noch bleibt, und wie lange</h2>
+      <h3>Was von der Daten-Spende noch bleibt, und wie lange</h3>
       <ul>
         <li><strong>Nachweis Ihrer Einwilligung und des Widerrufs</strong> (ohne Ihre Zubereitungsdaten): bis zu drei Jahre nach dem letzten Einwilligungsereignis.</li>
         <li><strong>IP-Adresse in den Anmelde-Protokollen</strong> meines Auftragsverarbeiters: h&ouml;chstens 30&nbsp;Tage.</li>
         <li><strong>Auch ohne L&ouml;schung:</strong> Zubereitungen werden automatisch 12&nbsp;Monate nach Eingang gel&ouml;scht, Fehlerberichte nach 90&nbsp;Tagen.</li>
-        <li><strong>Auf Ihrem Ger&auml;t</strong> bleibt nach dem Ausschalten der Schalter alles, bis Sie es selbst l&ouml;schen oder die App deinstallieren.</li>
         <li><strong>E-Mail-Korrespondenz</strong> mit mir (auch diese L&ouml;schanfrage): wird gel&ouml;scht, sobald sie nicht mehr gebraucht wird und keine gesetzliche Aufbewahrungspflicht entgegensteht.</li>
       </ul>
+
+      <h2>9. Daten nur auf dem Gerät</h2>
       <p>
-        Die vollst&auml;ndigen Fristen und die Rechtsgrundlagen stehen in der
-        <a href="/datenschutz/">Datenschutzerkl&auml;rung</a>. Ihre &uuml;brigen Rechte
-        (Auskunft, Berichtigung, Widerspruch, Beschwerde) finden Sie dort in Abschnitt&nbsp;8.
+        Die Daten der App auf Ihrem Gerät entfernen Sie, indem Sie die App deinstallieren.
+        <strong>Das löscht nicht Ihr Konto.</strong> Löschen Sie zuerst das Konto in der App
+        (Abschnitt&nbsp;1), dann die App.
+      </p>
+      <p>
+        Mehr zum Umgang mit Ihren Daten und Ihre übrigen Rechte (Auskunft, Berichtigung,
+        Widerspruch, Beschwerde) stehen in der <a href="/datenschutz/">Datenschutzerklärung</a>.
       </p>
 
+      <h2>Teilnahme an der Beta beenden</h2>
       <h2>Teilnahme an der Beta beenden</h2>
       <p>
         Wenn Sie &uuml;ber Google Play am geschlossenen Test teilnehmen, steht Ihre
@@ -127,7 +292,7 @@ import Footer from '../components/Footer.astro';
         E-Mail-Adresse nicht.
       </p>
 
-      <p class="stand">Stand: 11. Oktober 2026</p>
+      <p class="stand">Stand: 25. November 2026</p>
     </article>
   </main>
   <Footer />

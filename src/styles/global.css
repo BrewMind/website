@@ -205,8 +205,14 @@ body {
 }
 
 .prose p,
-.prose ul {
+.prose ul,
+.prose ol {
   margin-bottom: 1rem;
+}
+
+.prose ol {
+  padding-left: 1.25rem;
+  list-style-type: decimal;
 }
 
 .prose ul {
@@ -246,6 +252,47 @@ body {
   border: 1px solid var(--color-border);
   border-radius: 4px;
   padding: 0.1rem 0.35rem;
+}
+
+/* Tabellen in Rechtstexten (Speicherdauer, Wahl beim Loeschen); auf schmalen Telefonen seitlich wischbar */
+.prose .tabelle {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-border);
+}
+
+.prose th {
+  color: var(--color-ink);
+  font-weight: 600;
+  background: var(--color-surface);
+}
+
+/* Hervorgehobener Kasten, getrennt vom uebrigen Text (Widerspruchsrecht, Art. 21 Abs. 4 DSGVO) */
+.prose .kasten {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 8px;
+  color: var(--color-ink);
+}
+
+.prose .kasten p:last-child {
+  margin-bottom: 0;
 }
 
 /* Datumszeile am Ende eines Rechtstexts */
