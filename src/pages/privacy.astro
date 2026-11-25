@@ -4,27 +4,901 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout lang="en" title="Privacy Policy | BrewMind" description="BrewMind's privacy policy is currently available in German only.">
+<Layout lang="en" title="Privacy Policy | BrewMind" description="BrewMind privacy policy: account, backup, household, analysis with a right to object, and error reports only with your consent.">
   <Header />
   <main class="pt-28 pb-20 px-6">
     <article class="max-w-3xl mx-auto prose">
       <h1>Privacy Policy</h1>
 
       <p>
-        The privacy policy for BrewMind is currently available in German only. The German
-        version is the binding one and describes the app as it is today, including the account
-        and shared households.
-      </p>
-      <p>
-        <a href="/datenschutz/">Datenschutzerklärung (German)</a>
-      </p>
-      <p>
-        How to delete your account and data is explained, also in German, on the page
-        <a href="/loeschen/">Konto und Daten löschen</a>. If you have a question, write to
-        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>.
+        This is a translation for your convenience. Only the German version is legally binding,
+        and it prevails if the two differ:
+        <a href="/datenschutz/">Datenschutzerklärung</a>.
       </p>
 
-      <p class="stand">Last updated: November 25, 2026</p>
+      <h2>1. Controller</h2>
+      <p>
+        Tegrovio, Dominik Palzer<br />
+        Sterntalerweg 65<br />
+        40235 Düsseldorf<br />
+        Email: <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>
+      </p>
+
+      <h2>2. The essentials up front</h2>
+      <p>
+        From the version with an account onwards, you need an account for BrewMind. You sign in
+        with Apple or with Google; there is no separate password for BrewMind.
+      </p>
+      <p>
+        What you record in the app continues to be stored on your device and is additionally
+        backed up in your account so that you can restore it after changing devices
+        (Section&nbsp;4).
+      </p>
+      <p>
+        You can link your account with other people to form a household, for example if you
+        share a machine. Then everyone in the household sees the same beans, equipment and
+        shots. This happens only if you yourself invite someone or accept an invitation
+        (Section&nbsp;4, “Household”).
+      </p>
+      <p>
+        I want to analyse the backed-up brewing data without name and email address in order to
+        improve the app's advice and, later, to show roasters aggregated figures per bean.
+        <strong>You can object to this analysis at any time in the app</strong>
+        (Section&nbsp;4, “Analysis and your right to object”).
+      </p>
+      <p>The app sends error reports only if you say yes to them.</p>
+      <p>There is no advertising, no ad tracking and no third-party analytics services.</p>
+      <p>
+        If you are still using an older version without an account, Section&nbsp;5 applies to
+        you (data donation, „Daten-Spende“, via the short ID, „Kurz-ID“). Both routes exist side
+        by side until the data of the old data donation has been deleted.
+      </p>
+
+      <h2>3. Data in the app</h2>
+      <p>
+        Everything you create in the app is stored in a database in the protected storage area
+        of the app on your device: beans, machines, grinders and the paired scale, your shots
+        with measured values, measurement series from the scale, notes, your taste rating and
+        the app's settings.
+      </p>
+      <p>
+        With an account, the app additionally backs up this data on my server (Section&nbsp;4).
+        The device remains the place where the app does its calculations: it also works without
+        a network, and backing up takes place as soon as there is a connection again.
+      </p>
+      <p>
+        You can copy a single shot or your selection from the history to the clipboard as JSON
+        and pass it on yourself. Where to is your decision.
+      </p>
+      <p>
+        There is no advertising identifier (IDFA), no ad tracking, no third-party analytics
+        services, no access to location, no access to contacts or photos. The app uses the
+        camera only when you scan a package (below). Crash and error data goes to my processor
+        only if you consent to the error reports (Section&nbsp;4, “Error reports”).
+      </p>
+      <p>
+        <strong>Deletion:</strong> You delete individual shots, beans or equipment in the app.
+        What happens in the account in that case is set out in Section&nbsp;4 under “Backup and
+        restore”. If you uninstall the app, the operating system removes the database on the
+        device. <strong>Your account and the backup remain in place when you do so.</strong>
+        How you delete the account is set out in Section&nbsp;4 and on the page
+        <a href="/loeschen/">Konto und Daten löschen</a> (in German).
+      </p>
+      <p>
+        On the device, the app also stores the session of your sign-in (a sign-in token) so
+        that you do not have to sign in again every time you start it. This is technically
+        necessary for the account (Section&nbsp;25(2) no. 2 TDDDG, the German Telecommunications
+        Digital Services Data Protection Act). With „Abmelden“ (“Sign out”) the app removes the
+        session and clears the data on this device; the backup in the account remains.
+      </p>
+
+      <h3>Bluetooth (BLE)</h3>
+      <p>
+        The connection to a coffee scale is optional; the app works without a scale as a timer.
+        Bluetooth communication takes place exclusively locally between your smartphone and the
+        scale. iOS and Android ask for the Bluetooth permission for this. The name under which
+        the scale announces itself, its Bluetooth identifier and the measured values of a shot
+        are backed up by the app in the account like the rest of your data (Section&nbsp;4,
+        “Backup and restore”).
+      </p>
+
+      <h3>Camera (scanning a package)</h3>
+      <p>
+        When creating a bean, you can scan the QR code on the coffee package. The app asks for
+        the camera only when you tap „Packung scannen“ (“Scan package”); without this
+        permission you enter the bean by hand. The camera runs only while the scanner is open.
+        The app reads only the QR code in the camera image, stores no image and does not open
+        the address in the code. If it recognises the bean, it takes over its details into the
+        form, as with manual entry.
+      </p>
+      <p>
+        On iOS, the operating system reads the code. On Android, it is read by Google's ML Kit
+        library, which is built permanently into the app and does its calculations on the
+        device. ML Kit comes with its own channel through which it can send usage statistics to
+        Google; the app has blocked this channel in the Android build.
+        The app transmits nothing when scanning: I measured this on
+        3&nbsp;November 2026 over 24&nbsp;hours on a test build with the same
+        scanner as Android build&nbsp;11.
+      </p>
+
+      <h2>4. Account</h2>
+
+      <h3>Signing in with Apple or Google</h3>
+      <p>
+        You sign in via „Mit Apple anmelden“ (“Sign in with Apple”) or via Google. In doing so,
+        Apple and Google confirm to me that it is you, and they process the sign-in as
+        independent controllers (Apple Distribution International Ltd., Ireland, or Google Ireland
+        Ltd., Ireland, respectively; their privacy policies apply). Both learn that you are
+        signing in to BrewMind.
+      </p>
+      <p>
+        From Google I receive an identifier that you have there for BrewMind, your email
+        address, the name of your Google account and the address of your profile picture. The
+        app does not use the name and profile picture and does not display them; they are
+        stored in the sign-in record and are deleted with the account. From Apple I receive an
+        identifier that you have there for BrewMind. With Apple, the app asks neither for your
+        name nor for your email address; as a rule, there is then no address stored with your
+        account. Which address is stored with your account is shown to you by the app under
+        „Verwaltung“ (“Management”), „Konto“ (“Account”).
+      </p>
+      <p>
+        On Android, „Mit Apple anmelden“ opens Apple's sign-in page in the browser. Apple then
+        redirects to the page brewmind.app/auth/apple, which hands the response over to the app.
+        This page stores nothing; Section&nbsp;8 (This website) applies to accessing it.
+      </p>
+      <p>
+        For the account I store: a random identifier, the provider with the identifier
+        mentioned, the email address if one was supplied, for Google also the name and the
+        address of the profile picture, the time at which the account was created, the times of
+        your sign-ins, the time of your last use (updated at most once a day) and your answers
+        on analysis and error reports. If you give yourself a name for the household in the
+        app, I store that too (section “Household”). I use the email address to match your
+        requests to your account and to notify you in the event of a data breach if the law
+        requires it. I do not send advertising or newsletters.
+      </p>
+      <p>
+        The legal basis is the performance of the contract of use (Art. 6(1)(b) GDPR; GDPR is
+        the EU General Data Protection Regulation, in German DSGVO). From this version onwards,
+        the app cannot be used without an account.
+      </p>
+
+      <h3>Backup and restore</h3>
+      <p>The app backs up in your account what you record:</p>
+      <ul>
+        <li>
+          your shots with all details: dose, amount in the cup, times, flow rate, grind
+          setting, temperature, pressure, drink, recipe targets, your rating and findings, the
+          points in time accurate to the second and <strong>your notes</strong> on the shot
+        </li>
+        <li>
+          your beans with name, roaster, roast date, roast level, recipe and
+          <strong>your notes</strong>
+        </li>
+        <li>
+          your machines and grinders with the names you have given them, for grinders also the
+          scale of the grind setting
+        </li>
+        <li>
+          your scales with type, manufacturer and model, plus <strong>the name under which the
+          scale announces itself via Bluetooth, its Bluetooth identifier</strong> and the time
+          of the last connection
+        </li>
+        <li>
+          <strong>the measurement curves</strong> of the scale (weight and flow rate over time)
+          per shot
+        </li>
+        <li>your two answers about your equipment from the setup</li>
+        <li>
+          per entry, the version of the app that backed it up and the time of receipt
+        </li>
+      </ul>
+      <p>
+        Notes are free text. Do not write anything there that you do not want to have stored
+        with me or that the people in your household should not read, and no details about
+        other people.
+      </p>
+      <p>
+        The purpose is for your data to survive a change of device, a loss of the device or a
+        reinstallation: after signing in on a new device, the app restores it. The legal basis
+        is the performance of the contract of use (Art. 6(1)(b) GDPR).
+      </p>
+      <p>
+        If you delete a shot, a bean, a machine, a grinder or a scale in the app, I also empty
+        the entry in the account: its content (for example name, notes, Bluetooth identifier)
+        is deleted there, for a shot also the measurement curve. An empty deletion marker
+        remains so that another device does not bring the entry back.
+      </p>
+
+      <h3>Household</h3>
+      <p>
+        A household links up to six people who use BrewMind together. Each person has their own
+        account and signs in themselves. Without an invitation you are alone in your household,
+        and nobody else sees your data. The household is voluntary; the app works just the same
+        without it.
+      </p>
+      <p>
+        <strong>Your name.</strong> Before you invite someone or accept an invitation, the app
+        asks for a name. You choose it yourself (at most 30&nbsp;characters, for example your
+        first name); the app does not take it over from Apple or Google. The people in your
+        household see the name in the list of people and on your shots, and anyone who opens an
+        invitation from you sees it too. Like the other shared data, the name is also stored on
+        the devices of the people in your household. You can change it at any time on the
+        „Haushalt“ (“Household”) screen, including to an abbreviation. It cannot be removed in
+        the app. On request to <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> I delete it if you are alone in your household
+        and no invitation from you is open.
+      </p>
+      <p>
+        <strong>Inviting.</strong> For an invitation, the app generates a link and a code of
+        eight characters. You forward the link yourself, via a service of your choice; I do not
+        learn to whom or by what means. My server does not hold the code, but only a check value
+        of it (hash), plus the household, who issued the invitation, when the invitation was
+        created, until when it is valid and whether and by whom it was redeemed. An invitation
+        is valid for 48&nbsp;hours and for one person. The link leads to the page
+        brewmind.app/e, which hands it over to the app; the code is in the part of the address
+        after the hash sign, which the browser does not send to the server. Section&nbsp;8
+        applies to accessing the page.
+      </p>
+      <p>
+        Anyone who has the link or the code and is signed in to the app sees a preview before
+        joining: your name, the names of up to three beans and three pieces of equipment of
+        your household and how many beans, pieces of equipment and shots are stored there. The
+        names of beans and equipment may also have been given by other people in your household.
+      </p>
+      <p>
+        The invitation works like a key: anyone who has it and is signed in can join without
+        further confirmation and then sees everything in the household. An invitation cannot be
+        withdrawn in the app; it expires after 48&nbsp;hours or when it has been redeemed.
+        Therefore pass an invitation on only to the person you want to invite, and do not invite
+        anyone who is younger than 18&nbsp;years.
+      </p>
+      <p>
+        If someone enters a wrong code, my server counts the failed attempts for this account
+        (number and times, not the code entered). After five failed attempts, entry is blocked
+        for 15&nbsp;minutes. This protects invitations against guessing.
+      </p>
+      <p><strong>What the people in the household see of each other.</strong></p>
+      <ul>
+        <li>
+          all beans, machines, grinders and scales of the household with their details and notes
+        </li>
+        <li>
+          all shots of the household with all details, with <strong>notes</strong> and
+          measurement curves, and on each shot the name of the person who recorded it
+        </li>
+        <li>
+          in the list of people: the name, whether the person signed in with Apple or with
+          Google, when they were last active and how many shots come from them
+        </li>
+      </ul>
+      <p>
+        I show the details in the list of people so that you can tell which account belongs to
+        whom and whether it is still in use.
+      </p>
+      <p>
+        Not visible to the others are: your email address, your identifier at Apple or Google,
+        your answers on analysis and error reports, and your error reports.
+      </p>
+      <p>
+        The shared data is also stored on the devices of the other people in the household,
+        because the app works with its own copy on each device. The app's advice calculates on
+        the device with the shots of all people in the household.
+      </p>
+      <p>
+        Each person in the household can change and delete the shared entries, including shots
+        that another person recorded. A change or deletion applies to everyone in the household
+        after the next sync.
+      </p>
+      <p>
+        <strong>Joining.</strong> If you accept an invitation, your beans, equipment and shots
+        move into the household you were invited to; your previous household no longer exists
+        after that. If you already have entries of your own, the app asks beforehand which of
+        them are the same as an entry in the household (for example the same machine). Your
+        shots then point to the household's entry, and your own entry disappears. This cannot
+        be undone.
+      </p>
+      <p>
+        <strong>Leaving and removing.</strong> Each person can leave the household, and each
+        person can remove another from the household. Anyone who leaves or is removed receives a
+        household of their own with a copy of everything that was in the household up to that
+        point: beans, equipment and all shots with notes and measurement curves, including
+        those of the others. Conversely, your shots remain in the household you leave. There
+        they are visible to everyone who stays in the household or joins it later. After that,
+        on both sides, names no longer appear on the shots of the respective other side. The
+        other side no longer sees new entries.
+      </p>
+      <p>
+        <strong>What you should know before sharing:</strong> In the app you cannot retrieve
+        what you have shared in a household: anyone who leaves keeps a copy. Your rights under
+        Section&nbsp;9 remain unaffected by this. If you want your shots in a former household
+        or in another person's copy to be deleted, write to
+        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> as long as your account exists. What happens when your account is
+        deleted is set out under “Deleting your account”.
+      </p>
+      <p>
+        The legal basis for the household is the performance of the contract of use
+        (Art. 6(1)(b) GDPR), insofar as it concerns shared use, as long as you are in the
+        household: your name, invitations, joining, and the fact that everyone in the household
+        sees and edits the same data.
+      </p>
+      <p>
+        I base what goes beyond that on my legitimate interest and that of the other people in
+        the household (Art. 6(1)(f) GDPR): that your shots remain in the household when you
+        leave or your account no longer exists; that a person who leaves keeps a copy of the
+        shared state; the preview of an invitation; the details in the list of people; and the
+        counting of failed attempts. The interest lies in the shared history remaining complete
+        and usable for everyone and in invitations being protected against misuse. You can
+        object to this (Section&nbsp;9). If you request that your shots in a former household or
+        in another person's copy be erased, write to
+        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>.
+      </p>
+      <p>
+        The other people in the household use the data for private purposes. What they do with
+        it on their own devices is in their hands; I remain the controller for the data on my
+        server.
+      </p>
+
+      <h3>Analysis and your right to object</h3>
+      <p>I want to analyse the backed-up brewing data for two purposes:</p>
+      <ol>
+        <li>
+          to check whether the app's advice leads to better shots, and to improve the advice;
+        </li>
+        <li>
+          to show roasters aggregated figures per bean later, for example which recipe works
+          well for a bean.
+        </li>
+      </ol>
+      <p>
+        For the analysis I use neither your name nor your email address nor your notes. The
+        data remains attributable to your account in the process; it is not anonymous. I pass
+        on figures for roasters only in aggregated form across at least five households, never
+        for a single account. Currently no roaster receives data.
+      </p>
+      <p>
+        In the household, the objection applies per person: if you object, your shots stay out
+        of the analysis, the shots of the other people do not. I do not analyse shots that no
+        longer carry a name because the account behind them has been deleted.
+      </p>
+      <p>
+        The legal basis is my legitimate interest (Art. 6(1)(f) GDPR): to improve a product
+        that you use, and to sustain it economically through aggregated analyses for roasters.
+        The app tells you both purposes directly after signing in.
+      </p>
+      <div class="kasten">
+        <p>
+          <strong>Right to object (Art. 21 GDPR).</strong> You can object to this analysis at
+          any time: in the app under „Verwaltung“, „Deine Daten“ (“Your data”), „Auswertung
+          widersprechen“ (“Object to analysis”), or by email to <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>. You do not have to give reasons for the objection.
+          It takes effect immediately, costs you no feature, and you can withdraw your objection at any
+          time. Backup and restore continue to run.
+        </p>
+      </div>
+
+      <h3>Error reports</h3>
+      <p>
+        After sign-in, the app asks once whether it may send error reports. If you say yes,
+        then in the event of an error it sends the error message, the technical sequence behind
+        it, a keyword for the place in the app, the build number and the version of the data
+        format, the time, the information whether the app continued to run afterwards, and a
+        random identifier of this installation, assigned to your account. The app removes
+        recognised device identifiers beforehand; a name that you have given yourself can
+        nevertheless appear in an error message.
+      </p>
+      <p>
+        The legal basis is your consent (Art. 6(1)(a) GDPR, Section&nbsp;25(1) TDDDG). It is
+        voluntary; the app works just the same without it. You can withdraw it at any time
+        under „Verwaltung“, „Deine Daten“; I delete the reports already sent as soon as the
+        withdrawal reaches me (without a network, at the app's next contact). Processing up to
+        the withdrawal remains lawful.
+      </p>
+
+      <h3>Recipients, region, third country</h3>
+      <p>
+        Account, backup, invitations and error reports are held by Supabase, Inc. (USA), which
+        stores them on my behalf (processor). The database runs in the Frankfurt am Main data
+        centre (AWS region eu-central-1). The data processing agreement forms part of Supabase's terms of
+        service (Data Processing Addendum, version 1 of 1 August 2026); there is no separate
+        signed contract. Because Supabase, Inc. is a US company, a transfer to a third country
+        takes place in the process; it is based on the EU standard contractual clauses
+        contained in the data processing agreement. The list of Supabase's sub-processors is
+        available at
+        <a href="https://supabase.com/legal/customer-resources/subprocessor-list" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/subprocessor-list</a>,
+        the data processing agreement at
+        <a href="https://supabase.com/legal/customer-resources/data-processing-addendum" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/data-processing-addendum</a>,
+        Supabase's Transfer Impact Assessment at
+        <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>
+        (the version that Supabase provides at the time of this policy).
+      </p>
+      <p>
+        For technical reasons, every network connection transmits an IP address. It is in the
+        sign-in logs of my processor, not in your brewing data, and is stored there for at most
+        30&nbsp;days; the processor's general access logs follow its own periods for operational
+        and security logs. The legal basis is the legitimate interest in the secure operation
+        of the service (Art. 6(1)(f) GDPR).
+      </p>
+      <p>
+        If you are in a household with others, these people receive the data named in the
+        section “Household”. This also applies to people who leave the household later: they
+        keep their copy. It likewise applies to people who join a household that you have left:
+        your shots from that time continue to be stored there. Anyone who opens an invitation
+        to your household sees the preview described there.
+      </p>
+      <p>
+        If you delete an account that is signed in with Apple, I transmit to Apple the request
+        to disconnect the link to BrewMind (section “Deleting your account”).
+      </p>
+      <p>Beyond that, I do not pass your data on to anyone.</p>
+
+      <h3>Retention period</h3>
+      <div class="tabelle">
+        <table>
+          <thead>
+            <tr><th>What</th><th>How long</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Account and everything backed up in it</td>
+              <td>until you delete the account; in a household with others see “Deleting your account”</td>
+            </tr>
+            <tr>
+              <td>Account that you no longer use</td>
+              <td>
+                24&nbsp;months after the last use, then I delete it with all data. If you are in
+                a household with others, I delete only your account: your shots remain in the
+                household without your name, as do the shared beans and equipment. The shots
+                remain because the other people continue to use their history (Art. 6(1)(f)
+                GDPR); the people in the household can delete them at any time
+              </td>
+            </tr>
+            <tr>
+              <td>Sign-in that did not result in an account</td>
+              <td>
+                90&nbsp;days after the last sign-in. If an earlier data donation from this
+                device is still attached to it, only once the retention periods for that donation have expired (Section&nbsp;5)
+              </td>
+            </tr>
+            <tr>
+              <td>Your name for the household</td>
+              <td>
+                until you change it or your account is deleted; on request I delete it earlier
+                if you are alone in your household
+              </td>
+            </tr>
+            <tr>
+              <td>Invitation to a household</td>
+              <td>
+                not redeemed: 48&nbsp;hours after creation; redeemed: 24&nbsp;hours after
+                creation. Deletion runs once a day, so an invitation can remain up to one day
+                longer. It is no longer valid during that time
+              </td>
+            </tr>
+            <tr>
+              <td>Counter of failed attempts when entering a code</td>
+              <td>until your account is deleted</td>
+            </tr>
+            <tr>
+              <td>
+                Shots without a name in a household (the person behind them has deleted their
+                account or no longer used it)
+              </td>
+              <td>as long as the household exists or until a person in the household deletes them</td>
+            </tr>
+            <tr>
+              <td>Error reports</td>
+              <td>90&nbsp;days after receipt, or immediately if you withdraw consent</td>
+            </tr>
+            <tr>
+              <td>
+                Record of your answers (yes or no to error reports, objection and its
+                withdrawal, each with the time)
+              </td>
+              <td>until 3&nbsp;years after your account has ceased to exist</td>
+            </tr>
+            <tr>
+              <td>IP address in the sign-in logs</td>
+              <td>at most 30&nbsp;days</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        I keep the record in order to be able to demonstrate that and when a consent or an objection
+        existed (Art. 5(2), Art. 7(1) GDPR).
+      </p>
+
+      <h3>Deleting your account</h3>
+      <p>
+        In the app under „Verwaltung“, „Konto“, „Konto löschen“ (“Delete account”). With this I
+        immediately delete your account, everything backed up in it, your error reports and the
+        data of an earlier data donation insofar as it is linked to your account
+        (Section&nbsp;5). The app then clears the data on the device. Only the record of your
+        answers remains (see Retention period).
+      </p>
+      <p>
+        <strong>If you are in a household with others,</strong> „Konto löschen“ deletes your
+        account, not the household. The shared beans and equipment remain in place for the
+        others. For your shots, the app asks before deletion what should happen:
+      </p>
+      <ul>
+        <li>
+          <strong>„Mitlöschen“</strong> (“Delete as well”, preselected): your shots in this
+          household are emptied, with notes and measurement curves. An empty deletion marker
+          remains per shot, and at the next sync the shots also disappear from the devices of
+          the others.
+        </li>
+        <li>
+          <strong>„Im Haushalt lassen“</strong> (“Leave in household”): your shots remain in
+          the household with their content, without your name. They are thereby not anonymous:
+          the people in the household can continue to attribute them to you, for instance via
+          the time or notes. I myself can no longer attribute them to you afterwards. A later
+          deletion at your request is therefore only possible if you give me details with which
+          I can reliably attribute the shots to you (Art. 11(2) GDPR). The people in the
+          household can delete them at any time.
+        </li>
+      </ul>
+      <p>
+        The choice in the app applies to the household you are in at the time of deletion. If
+        you left a household earlier, or if someone left your household with a copy, shots of
+        yours are still stored there. If you want to have these deleted too, write to me at
+        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> <strong>before</strong> you delete your account: as long as your
+        account exists, I can find and delete these shots. If you delete the account without
+        this request, they remain there without your name.
+      </p>
+      <p>
+        If you signed in with Apple, the app asks you before deletion to sign in with Apple once
+        more, and then disconnects the link between BrewMind and your Apple ID. If that does
+        not succeed, the account is not deleted, and you can try again. If I delete an account
+        on request by email or because it has not been used for 24&nbsp;months, the entry
+        „Mit Apple anmelden“ for BrewMind remains in your Apple ID; you remove it in the
+        settings of your Apple ID. With Google, you remove BrewMind in your Google account
+        under the connections to third parties.
+      </p>
+      <p>
+        If you can no longer get into the app, write to <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> from the address with
+        which you signed in. All routes are set out on the page
+        <a href="/loeschen/">Konto und Daten löschen</a> (in German).
+      </p>
+
+      <h2>5. Earlier data donation (versions without an account)</h2>
+      <p>
+        This section applies to versions of the app without an account and to data that was
+        uploaded through them. In these versions there are two switches in „Verwaltung“,
+        data donation („Daten-Spende“) and error reports („Fehlerberichte“); both are set to
+        off after installation.
+      </p>
+      <p>
+        As soon as you sign in in a version with an account, the app no longer uploads anything
+        via the data donation. I do not transfer what you donated earlier into your account. It
+        is deleted according to the periods of this section (brewing data after 12&nbsp;months,
+        error reports after 90&nbsp;days). If you created your account on the device from which
+        the donation originates, it is linked to the account and is deleted along with it
+        immediately when you delete the account. If your account already existed when you
+        signed in on this device, the app withdraws the consent to the earlier data donation of this device at
+        sign-in, and I delete it immediately as a rule. If the app can no longer reach the
+        earlier data donation, or if you signed in to an already existing account with an older
+        version, the periods apply to this data, or you request deletion by email with the
+        short ID from the older version.
+      </p>
+
+      <h3>Purposes and legal basis</h3>
+      <p>
+        With the data donation I analyse your brews in order to improve and measure the app's
+        dial-in advice, and I use it to answer support requests about your installation. Later,
+        as soon as this feature has been built, aggregated analyses for roasters are
+        additionally to be created from it, for instance which grind setting suits a particular
+        bean (more on this under “Voluntariness and analyses” below). With the error reports I
+        diagnose crashes and errors in the app. The legal basis for both purposes is exclusively
+        your consent (Art. 6(1)(a) GDPR), which you give via the two switches and can withdraw
+        at any time with effect for the future.
+      </p>
+
+      <h3>What is uploaded, what never is</h3>
+      <p>
+        With the data donation switched on, the app transmits for each brew, among other things,
+        dose, grind setting, yield, times, temperature, brew pressure (one value, no curve),
+        ratio, your taste rating and details of bean, machine, grinder and scale type, plus
+        technical details on consent and app version. Names that you have given yourself (for
+        instance for bean, roaster, machine or grinder) are sent along exactly as you typed
+        them. With error reports switched on, the place in the app where the error occurred, the error message and the technical
+        sequence of the error as well as the build number are added; device and Bluetooth identifiers are
+        automatically removed from these texts beforehand, insofar as they are recognisable by
+        their format.
+      </p>
+      <p>
+        Expressly <strong>not</strong> transmitted are: the curves of a shot from the scale,
+        your free-text notes, the name of your scale, location data of any kind (neither GPS
+        nor Wi-Fi or cell tower location) and contact data. No account and no email address are
+        created in the process.
+      </p>
+      <p>
+        Irrespective of your consent, every network connection transmits an IP address for
+        technical reasons. It is in the sign-in logs of my processor, not in your brewing data;
+        the general access logs of the processor itself follow its own periods for operational
+        and security logs. For these, Supabase states a period of one day on the Free plan
+        used, after which they are deleted. The legal basis for this is not your consent but
+        the legitimate interest in the secure operation of the service (Art. 6(1)(f) GDPR).
+      </p>
+
+      <h3>Short ID</h3>
+      <p>
+        Each installation of the app receives a pseudonymous, random identifier. Of this, only
+        the short ID is visible in the app, eight hex characters in two groups of four (example
+        “4F3A&nbsp;91C2”). If you tell me this short ID, for instance in a support request, I
+        can match the data stored for your installation. Without a short ID I can, as a rule,
+        not match a request to your installation (Art. 11(2) GDPR).
+      </p>
+
+      <h3>Recipients, region, third country</h3>
+      <p>
+        The processor is Supabase, Inc., USA. The database runs in the Frankfurt am Main data
+        centre (AWS region eu-central-1). The data processing agreement forms part of Supabase's terms of
+        service (Data Processing Addendum, version 1 of 1 August 2026); there is no separate
+        signed contract. Because Supabase, Inc. is a US company, a transfer to a third country
+        takes place in the process; it is based on the EU standard contractual clauses
+        contained in the data processing agreement.
+        The list of Supabase's sub-processors is available at
+        <a href="https://supabase.com/legal/customer-resources/subprocessor-list" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/subprocessor-list</a>,
+        the data processing agreement at
+        <a href="https://supabase.com/legal/customer-resources/data-processing-addendum" target="_blank" rel="noopener noreferrer">supabase.com/legal/customer-resources/data-processing-addendum</a>,
+        Supabase's Transfer Impact Assessment at
+        <a href="https://supabase.com/downloads/docs/Supabase+TIA+250314.pdf" target="_blank" rel="noopener noreferrer">supabase.com/downloads/docs/Supabase TIA</a>
+        (the version that Supabase provides at the time of this policy).
+      </p>
+
+      <h3>Retention period</h3>
+      <ul>
+        <li><strong>Brews:</strong> 12&nbsp;months from receipt of the respective brew.</li>
+        <li><strong>Error reports:</strong> 90&nbsp;days from receipt.</li>
+        <li><strong>Scale details for a brew:</strong> deleted with the brew; if it is missing, 12&nbsp;months from their own receipt.</li>
+        <li><strong>Beans, machines, grinders, scales:</strong> as long as the associated installation is kept on record with me.</li>
+        <li><strong>Installation:</strong> as long as at least one brew, one scale link or one error report from it is still stored, but in any case until 12&nbsp;months after the last of these events: registration of the installation, its recovery (for instance on a new device), the granting or withdrawal of a consent, or the app's daily check-in with the server as long as data donation or error reports are switched on (the uploading of brews or error reports does not count as an event of its own here). If neither applies any longer, the installation is removed with its master data at the next daily deletion run.</li>
+        <li><strong>Record of your consent:</strong> as long as your installation is kept on record, thereafter for up to three more years after the last consent event.</li>
+        <li><strong>IP addresses in my sign-in logs:</strong> at most 30&nbsp;days.</li>
+      </ul>
+
+      <h3>Withdrawal</h3>
+      <p>
+        You can withdraw your consent at any time via the two switches in the app's „Verwaltung“, individually
+        per purpose, with effect for the future; the lawfulness of the processing carried out up
+        to the withdrawal remains unaffected. The withdrawal deletes the already uploaded data
+        of the respective purpose on the server, in the case of the data donation that is brews
+        together with beans, machines, grinders and scale details; if both switches are off,
+        the installation is deleted as well. What is retained is the record of the consent and
+        of the withdrawal (see Retention period) and the IP address in the sign-in logs for at
+        most 30&nbsp;days; locally on your device everything is retained. If the app cannot
+        reach the server at the moment of withdrawal, it carries out the deletion later as soon
+        as it is online again, and shows it as pending until then. After a reinstallation the
+        app receives a new identifier; I delete data for an old identifier on request with its
+        short ID, likewise if the app can no longer recover its previous identifier.
+      </p>
+
+      <h3>Your rights regarding the data donation</h3>
+      <p>
+        For access and deletion regarding your installation, contact
+        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> with your short ID. Because
+        the short ID is also in the diagnostic report and may have been passed on, I ask in
+        both cases for a second detail that matches your data (for instance the approximate
+        date of a shot, the name of a stored bean or the make and model of your scale), so that
+        I do not hand data over to the wrong person or delete it at someone else's request
+        (Art. 12(6) GDPR). Without a short ID I can, as a rule, not match a request
+        (Art. 11(2) GDPR) and will then reply, giving reasons, that I cannot attribute any data to you. The other rights
+        under Section&nbsp;9 apply unchanged.
+      </p>
+
+      <h3>Voluntariness and analyses</h3>
+      <p>
+        Both switches are voluntary and are set to off after installation; the app works fully
+        without either. No automated decision-making within the meaning of Art. 22 GDPR takes
+        place. I release analyses for roasters only once at least five different installations
+        have contributed to the respective result; I do not pass on a result with fewer
+        contributors.
+        The data donation and the error reports require that you are at least 16&nbsp;years old.
+      </p>
+
+      <h3>Session data on the device</h3>
+      <p>
+        Only with one of the two consents does the app register the installation without an
+        account with Supabase (Supabase's “anonymous sign-in”; the session is pseudonymous, not
+        anonymous, because it carries an installation identifier) and store a sign-in token,
+        the installation identifier and a secret in the protected app storage of your device.
+        This storing is strictly necessary in order to carry out the upload that you expressly
+        requested with the switch (Section&nbsp;25(2) no. 2 TDDDG); without consent no such
+        session is created, and with the withdrawal of both purposes this data on the device is
+        no longer used.
+      </p>
+
+      <h2>6. Taking part in the beta (TestFlight and Google Play)</h2>
+      <h3>iPhone: TestFlight</h3>
+      <p>
+        The app is currently distributed as a beta via <strong>TestFlight</strong>, a service
+        of Apple Inc. or Apple Distribution International Ltd., Hollyhill Industrial Estate,
+        Hollyhill, Cork, Ireland. Participation runs via a public TestFlight link. With it you
+        register directly with Apple; I do not transmit any of your data to Apple for this and
+        do not receive your email address.
+      </p>
+      <p>
+        For this, Apple provides me with information on installations, sessions and crashes of
+        the beta version in aggregated form. This analysis is carried out by Apple; neither
+        Apple nor I have access to the contents of your app database as a result.
+      </p>
+      <p>
+        Legal basis: Art. 6(1)(b) GDPR (performance of the testing relationship at your
+        request). More on the processing by Apple:
+        <a href="https://www.apple.com/legal/privacy/de-ww/" target="_blank" rel="noopener noreferrer">apple.com/legal/privacy</a>.
+      </p>
+
+      <h3>Android: Google Play (closed testing)</h3>
+      <p>
+        On Android, the beta is distributed via <strong>closed testing in Google Play</strong>,
+        a service of Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, or
+        Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA. Participation
+        requires that I enter your email address (the address of your Google account) in the
+        tester list in the Google Play Console. For this, write to me at
+        <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>
+        (Section&nbsp;7); I use the address only for this tester list. Installation and sign-in
+        then run directly between you and Google.
+      </p>
+      <p>
+        Google is the recipient of the email address in this and processes it in the Play
+        Console and in the Play Store. Google provides me with information on installations and
+        crashes of the beta version. Neither Google nor I have access to the contents of your
+        app database as a result. Because Google LLC is a US company, a transfer to a third
+        country can take place in the process; Google LLC is certified under the EU-US Data
+        Privacy Framework. If you no longer wish to take part, send me a short message; I will
+        then remove your address from the tester list.
+      </p>
+      <p>
+        Legal basis: Art. 6(1)(b) GDPR (performance of the testing relationship at your
+        request). More on the processing by Google:
+        <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
+      </p>
+      <p>
+        How you delete your data on Android (and iPhone) is set out on the page
+        <a href="/loeschen/">Konto und Daten löschen</a> (in German).
+      </p>
+
+      <h2>7. Contact by email</h2>
+      <p>
+        If you write to me at <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>,
+        for instance to register for the beta, I process your email address and the content of
+        your message in order to answer it. Your message is stored with my email provider. I
+        delete the correspondence as soon as it is no longer needed and no statutory retention
+        obligation stands in the way.
+      </p>
+      <p>
+        Legal basis: Art. 6(1)(b) GDPR insofar as it concerns participation in the beta,
+        otherwise Art. 6(1)(f) GDPR (legitimate interest in answering requests).
+      </p>
+
+      <h2>8. This website</h2>
+      <h3>Hosting</h3>
+      <p>
+        This website is delivered via <strong>GitHub Pages</strong> (GitHub Inc.,
+        88 Colin P Kelly Jr St, San Francisco, CA 94107, USA, a company of Microsoft
+        Corporation). When it is accessed, your browser transmits technically necessary data,
+        which GitHub processes in server log files:
+      </p>
+      <ul>
+        <li>IP address of the requesting computer</li>
+        <li>Date and time of the request</li>
+        <li>Address of the page accessed (URL)</li>
+        <li>Referrer URL (page visited previously)</li>
+        <li>Browser and operating system used</li>
+      </ul>
+      <p>
+        The legal basis is Art. 6(1)(f) GDPR; the legitimate interest lies in the technically
+        error-free delivery and the security of the website. GitHub Inc. is certified under the
+        EU-US Data Privacy Framework. More in
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub's privacy statement</a>.
+      </p>
+
+      <h3>Pages that hand over to the app</h3>
+      <p>
+        The page brewmind.app/auth/apple is the return route of „Mit Apple anmelden“ on Android.
+        After sign-in, Apple redirects your browser there and appends the response to the
+        address, namely in the part after the hash sign, which the browser does not send to the
+        server. The page passes the response on to the app, stores nothing and then removes the
+        response from the address bar. The address accessed may remain in your browser's
+        history.
+      </p>
+      <p>
+        The page brewmind.app/e opens an invitation to a household in the app. Here too, the
+        code is after the hash sign and does not reach the server.
+      </p>
+
+
+      <h3>No cookies, no tracking</h3>
+      <p>
+        This website sets no cookies, integrates no analytics or marketing tools and contains
+        no forms. Beta contact runs via an ordinary email link that your mail program opens.
+      </p>
+
+      <h3>Fonts</h3>
+      <p>
+        All fonts used (Inter, Calistoga, JetBrains Mono) are delivered from this server. There
+        is <strong>no connection to external font servers</strong> such as Google Fonts.
+      </p>
+
+      <h3>External links</h3>
+      <p>
+        This website links to external pages (e.g. GitHub). The respective provider is
+        responsible for their data processing.
+      </p>
+
+      <h3>Encryption</h3>
+      <p>
+        This website is retrieved via a TLS-encrypted connection, recognisable by the
+        “https://” in the address bar.
+      </p>
+
+      <h2>9. Your rights</h2>
+      <p>You have the right at any time:</p>
+      <ul>
+        <li>to obtain access to your stored personal data (Art. 15 GDPR)</li>
+        <li>to request the rectification of inaccurate data (Art. 16 GDPR)</li>
+        <li>to request the erasure of your data (Art. 17 GDPR)</li>
+        <li>to request the restriction of processing (Art. 18 GDPR)</li>
+        <li>to request data portability (Art. 20 GDPR)</li>
+        <li>
+          to withdraw your consent to error reports and, in versions without an account, to the
+          data donation at any time (Art. 7(3) GDPR), in the app
+        </li>
+        <li>
+          to object to processing on the basis of legitimate interests (Art. 21 GDPR)
+        </li>
+        <li>to lodge a complaint with a supervisory authority (Art. 77 GDPR)</li>
+      </ul>
+      <p>
+        <strong>Objection:</strong> Insofar as I process data on the basis of my legitimate
+        interest (analysis, protection of invitations, preview of an invitation, details in the
+        list of people, your shots remaining in a household that you have left and in copies,
+        IP addresses in sign-in logs), you can object at any time on grounds relating to your
+        particular situation, by email to <a href="mailto:hello@brewmind.app">hello@brewmind.app</a>. I then no longer process the data
+        unless I can demonstrate compelling legitimate grounds. You can object to the analysis
+        of your account data (Section&nbsp;4) without giving reasons, in the app or by email.
+      </p>
+      <p>
+        <strong>Erasure:</strong> You delete your account yourself in the app (Section&nbsp;4).
+        What remains in the household in that case is set out there under “Deleting your
+        account”. I delete shots of yours in a former household or in another person's copy at
+        your request by email, as long as your account exists.
+      </p>
+      <p>
+        <strong>Access:</strong> Write to <a href="mailto:hello@brewmind.app">hello@brewmind.app</a> from the email address with which you
+        signed in. I match your request to the account via this address. Which address is
+        stored with your account is shown by the app under „Verwaltung“, „Konto“; if it differs
+        from your own, please tell me what it is. If there is no address for your account, I
+        cannot match it to a request; you then see your data in the app, and you can delete it
+        there at any time.
+      </p>
+      <p>
+        <strong>Access in the household:</strong> If you are or were in a household with
+        others, my response to your access request contains your own details, your shots (including those
+        stored in a former household) and the shared beans and equipment of your household. It
+        does not contain the shots and identifiers of the other people. If there are shots
+        without a name in your household because the account behind them has been deleted, I
+        tell you their number; you can see them in the app. As recipients I name to you the
+        people who can see your shots today, in your household, in a former household and in
+        the case of a copy taken along, with the name they have given themselves in the app.
+      </p>
+      <p>
+        For requests about the earlier data donation and about error reports from versions
+        without an account, please state your short ID (Section&nbsp;5). The competent
+        supervisory authority is the Landesbeauftragte für Datenschutz und Informationsfreiheit
+        Nordrhein-Westfalen (State Commissioner for Data Protection and Freedom of Information
+        of North Rhine-Westphalia,
+        <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de</a>).
+      </p>
+
+      <h2>10. Changes</h2>
+      <p>
+        With the account and the household, the app has gained features through which data
+        leaves the device. Both are described in Section&nbsp;4, before the first version with
+        an account was delivered to testers. If further features are added that cause data to
+        leave the device, I will adapt this policy beforehand.
+      </p>
+
+      <p class="stand">Last updated: 25 November 2026</p>
     </article>
   </main>
   <Footer />
