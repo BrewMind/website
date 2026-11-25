@@ -132,10 +132,10 @@ import Footer from '../components/Footer.astro';
         signing in to BrewMind.
       </p>
       <p>
-        From Google I receive an identifier that you have there for BrewMind, your email
-        address, the name of your Google account and the address of your profile picture. The
-        app does not use the name and profile picture and does not display them; they are
-        stored in the sign-in record and are deleted with the account. From Apple I receive an
+        From Google I receive an identifier that you have there for BrewMind and your email
+        address. At sign-in, Google also transmits the name of your Google account and the
+        address of your profile picture. I do not store either: both are removed before the
+        sign-in is stored. From Apple I receive an
         identifier that you have there for BrewMind. With Apple, the app asks neither for your
         name nor for your email address; as a rule, there is then no address stored with your
         account. Which address is stored with your account is shown to you by the app under
@@ -148,8 +148,7 @@ import Footer from '../components/Footer.astro';
       </p>
       <p>
         For the account I store: a random identifier, the provider with the identifier
-        mentioned, the email address if one was supplied, for Google also the name and the
-        address of the profile picture, the time at which the account was created, the times of
+        mentioned, the email address if one was supplied, the time at which the account was created, the times of
         your sign-ins, the time of your last use (updated at most once a day) and your answers
         on analysis and error reports. If you give yourself a name for the household in the
         app, I store that too (section “Household”). I use the email address to match your
